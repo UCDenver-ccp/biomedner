@@ -1,0 +1,30 @@
+package bioner.normalization.feature.builder;
+
+import java.util.HashMap;
+import java.util.Vector;
+
+import bioner.data.document.BioNERDocument;
+import bioner.normalization.data.BioNERCandidate;
+import bioner.normalization.data.index.IndexReader;
+import bioner.normalization.data.index.IndexReaderFactory;
+
+public class IndexUntokenizedSearcher {
+	private static BioNERDocument m_currentDocument = null;
+	private static HashMap<String, BioNERCandidate[]> m_map = new HashMap<String, BioNERCandidate[]>();
+	private static IndexReader m_indexReader = IndexReaderFactory.createGeneIndexReader();
+	public static BioNERCandidate[] getCandidates(String query, BioNERDocument document)
+	{
+		if(m_currentDocument!=document) 
+		{
+			m_currentDocument = document;
+			m_map.clear();
+		}
+		BioNERCandidate[] candidates = m_map.get(query);
+		if(candidates!=null) return candidates;
+		Vector<String> tokenVector = new Vector<String>();
+		tokenVector.add(query.replaceAll("\\W+", " "));
+		candidates = m_indexReader.searchIDs(tokenVector);
+		m_map.put(query, candidates);
+		return candidates;
+	}
+}

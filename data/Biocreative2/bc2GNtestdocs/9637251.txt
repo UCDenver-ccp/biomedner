@@ -1,0 +1,3 @@
+Human RanBP3, a group of nuclear RanGTP binding proteins.
+
+A group of novel human Ran-binding proteins, RanBP3, was identified using the yeast two-hybrid system via Ran-mediated interaction with the nucleotide exchange factor RCC1. Several open reading frames, representing putative alternatively spliced products, were established by cDNA cloning. Two of them, RanBP3-a and RanBP3-b, encode nuclear hydrophilic proteins of 499 and 562 amino acid residues. The sequences contain FXFG motifs, characteristic of a subgroup of nucleoporins, and a C-terminal domain showing similarity to the Ran-binding protein RanBP1. These proteins are localized in the nucleus, preferentially bind RanGTP and may be nuclear effectors of the Ran pathway.

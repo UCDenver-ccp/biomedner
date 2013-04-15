@@ -1,0 +1,3 @@
+The cytoplasmic zinc finger protein ZPR1 accumulates in the nucleolus of proliferating cells.
+
+The zinc finger protein ZPR1 translocates from the cytoplasm to the nucleus after treatment of cells with mitogens. The function of nuclear ZPR1 has not been defined. Here we demonstrate that ZPR1 accumulates in the nucleolus of proliferating cells. The role of ZPR1 was examined using a gene disruption strategy. Cells lacking ZPR1 are not viable. Biochemical analysis demonstrated that the loss of ZPR1 caused disruption of nucleolar function, including preribosomal RNA expression. These data establish ZPR1 as an essential protein that is required for normal nucleolar function in proliferating cells.

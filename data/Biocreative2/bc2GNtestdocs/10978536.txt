@@ -1,0 +1,3 @@
+Brain-specific expression of a novel human UDP-GalNAc:polypeptide N-acetylgalactosaminyltransferase (GalNAc-T9).
+
+We isolated cDNA coding for the ninth of the UDP-GalNAc:polypeptide N-acetylgalactosaminyltransferases (GalNAc-T9) from human brain by the polymerase chain reaction. The polypeptide encoded by GalNAc-T9 contained the structural features characteristic of GalNAc transferases, such as a GT1 motif, a Gal/GalNAc transferase motif, (QXW)(3) repeats, and conserved His, Cys, and acidic amino acid residues. Northern blot analysis revealed the mRNA expression of the enzyme to be confined to the brain. The brain-specific expression of GalNAc-T9 suggested that this isozyme catalyzes O-glycosylation in the brain.

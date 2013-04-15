@@ -1,0 +1,240 @@
+  <!ELEMENT QUOSA (ArticleWithCitationSet+) >
+  <!ATTLIST QUOSA version  CDATA   #REQUIRED >
+  <!ELEMENT ArticleWithCitationSet (ArticleWithCitation+)>
+  <!ELEMENT ArticleWithCitation (MedlineCitation?, OpenURLData?, FullTextData?, ConferenceInfo?) >
+  <!ELEMENT OpenURLData (pmid?, doi?, rft?) >
+  <!ELEMENT FullTextData (ArticleLocatorList, BodyText?) >
+  <!ELEMENT ArticleLocatorList (local?, global?) >
+  <!ELEMENT ConferenceInfo (ConferenceName?, ConferenceYear?, AbstractNumber?, PosterNumber?, CustomerInfo?) >
+  <!ELEMENT ConferenceYear (#PCDATA) >
+  <!ELEMENT CustomerInfo (Score?) >
+  <!ELEMENT BodyText (#PCDATA) >
+  
+  <!ELEMENT local (#PCDATA) >
+  <!ELEMENT global (abstractURL?, pubmedFullTextURL?) >
+  <!ELEMENT abstractURL (#PCDATA) >
+  <!ELEMENT pubmedFullTextURL (#PCDATA) >
+  
+   <!ELEMENT DOI (#PCDATA) >  
+   <!ELEMENT rft (#PCDATA) > 
+   <!ELEMENT Score (#PCDATA) > 
+   <!ELEMENT DateCreated (#PCDATA)> 
+   <!ELEMENT pmid (#PCDATA)>
+   <!ELEMENT doi (#PCDATA)>   
+   
+<!-- ================================================================= -->
+<!--   Revision Notes Section 
+
+The following changes were made in the nlmmedlinecitation_070101.dtd:
+
+     a. Changed entity reference from "nlmsharedcatcit_060101.dtd" 
+             to: "nlmsharedcatcit_070101.dtd" 
+  
+     b.  Added PartialRetractionOf and PartialRetractionIn to the CommentsCorrections element
+	* = 0 or more occurrences (optional element, repeatable)
+	? = 0 or 1 occurrences (optional element, at most 1)
+	+ = 1 or more occurrences (required element, repeatable)
+	| = choice, one or the other but not both 
+	no symbol = required element
+
+   
+     Historic Revision notes for previous versions of NLMMedlineCitation DTD
+     See:
+     http://www.nlm.nih.gov/databases/dtd/history_dtd_medlinecitation.html
+
+ -->
+
+<!-- =================================================================  -->
+<!-- This is the top level element for MedlineCitation -->
+<!ELEMENT MedlineCitation (AuthorList, PMID, DateCreated,
+                           Article, MedlineJournalInfo)>
+<!ATTLIST MedlineCitation 
+    Owner CDATA   #REQUIRED
+    Status CDATA   #REQUIRED
+>
+<!--ATTLIST Article
+          PubModel %PubModel;
+-->
+<!-- End of MedlineCitation group -->
+<!-- ================================================================= -->
+<!--             Further Definition of NLM Tags         -->
+<!ELEMENT CitationSubset (#PCDATA)>
+
+<!ELEMENT GeneSymbol (#PCDATA)>
+<!ELEMENT GeneSymbolList (GeneSymbol+)>
+<!ELEMENT NlmDcmsID (#PCDATA)>
+<!ELEMENT Note (#PCDATA)>
+<!ELEMENT NumberOfReferences (#PCDATA)>
+<!-- ELEMENT OriginalReportIn (%Ref.template;) -->
+<!-- ELEMENT PartialRetractionIn (%Ref.template;) -->
+<!-- ELEMENT PartialRetractionOf (%Ref.template;) -->
+<!-- ELEMENT RefSource (#PCDATA) -->
+<!-- ELEMENT ReprintIn (%Ref.template;) -->
+<!-- ELEMENT ReprintOf (%Ref.template;) -->
+<!-- ELEMENT RepublishedFrom (%Ref.template;) -->
+<!-- ELEMENT RepublishedIn (%Ref.template;) -->
+<!-- ELEMENT RetractionIn (%Ref.template;) -->
+<!-- ELEMENT RetractionOf (%Ref.template;) -->
+<!-- ELEMENT SummaryForPatientsIn (%Ref.template;) -->
+<!-- ELEMENT UpdateIn (%Ref.template;) -->
+<!-- ELEMENT UpdateOf (%Ref.template;) -->
+<!-- ================================================================= -->
+
+
+<!--    NLMCommon.dtd
+
+        Document Type Definition for the PubMed Article DTD
+        $Id$
+-->
+<!-- ================================================================= -->
+<!--     internal DTD entities             -->   
+<!ENTITY % Abstract "#PCDATA">
+<!ENTITY % personal.name "(LastName,(ForeName|(FirstName,MiddleName?))?,
+                           Initials?,Suffix?)">
+<!ENTITY % author.name "(%personal.name; | CollectiveName)">
+<!ENTITY % data.template "#PCDATA">
+<!ENTITY % ImprintType "(Current | Original)">
+<!ENTITY % IndexingStatus "(Ceased-publication |  Continued-by-another-indexed-title | 
+                            Currently-indexed |  Currently-indexed-Title-changed |
+                            Date-range-of-indexed-citations-unspecified | 
+                            Deselected) #IMPLIED">
+<!ENTITY % IndexingTreatment "(Unknown | Full | Selective | ReferencedIn | 
+                               ReferencedInNoDetails) #IMPLIED">
+<!ENTITY % normal.date "(Year,Month,Day,(Hour,(Minute,Second?)?)?)">
+<!ENTITY % pub.date "((Year, ((Month, Day?) | Season)?) | MedlineDate)">
+<!-- ================================================================= -->
+<!-- ================================================================= -->
+<!-- This is the top level element for NCBIArticle -->
+<!ELEMENT NCBIArticle (PMID, Article, MedlineJournalInfo)>
+<!-- ================================================================= -->
+<!-- This is the top level element for Article -->
+<!ELEMENT Article (Abstract?, Affiliation?, Language+, ArticleTitle, (Journal | Book), Pagination?,
+                    PublicationTypeList?)>
+<!-- ================================================================= -->
+<!--  Further Definitions of NLM Tags                                  -->
+<!ELEMENT Abstract (#PCDATA)>
+<!-- ELEMENT AbstractText (#PCDATA) -->
+<!ELEMENT AccessionNumber (#PCDATA)>
+<!ELEMENT AccessionNumberList (AccessionNumber+)>
+<!ELEMENT Acronym (#PCDATA)>
+<!ELEMENT Affiliation (#PCDATA)>
+<!ELEMENT Agency (#PCDATA)>
+<!ELEMENT ArticleDate (%normal.date;)>
+<!ATTLIST ArticleDate
+          DateType CDATA  #FIXED "Electronic">
+<!ELEMENT ArticleTitle (#PCDATA)>
+<!ELEMENT Author ((%author.name;), Affiliation?,DatesAssociatedWithName?,
+                 NameQualifier?,OtherInformation?,TitleAssociatedWithName?)>
+<!ATTLIST Author
+	ValidYN (Y | N) "Y"
+>
+<!ELEMENT AuthorList (Author+)>
+<!ATTLIST AuthorList
+	CompleteYN (Y | N) "Y"
+>
+<!ELEMENT Book (PubDate, Publisher, Title, AuthorList?,
+                CollectionTitle?, Volume?)>
+<!ELEMENT BroadJournalHeading (#PCDATA)>
+<!ELEMENT BroadJournalHeadingList (BroadJournalHeading+)>
+<!ELEMENT Coden (#PCDATA)>
+<!ELEMENT CollectionTitle (#PCDATA)>
+<!ELEMENT CollectiveName (#PCDATA)>
+<!ELEMENT CopyrightInformation (#PCDATA)>
+<!ELEMENT Country (#PCDATA)>
+<!ELEMENT Coverage  (#PCDATA)>
+<!ELEMENT DataBank (DataBankName, AccessionNumberList?)>
+<!ELEMENT DataBankList (DataBank+)>
+<!ATTLIST DataBankList
+	CompleteYN (Y | N) "Y"
+>
+<!ELEMENT DataBankName (#PCDATA)>
+<!ELEMENT DateIssued (#PCDATA)>
+<!ELEMENT DatesAssociatedWithName (#PCDATA)>
+<!ELEMENT DatesOfSerialPublication (#PCDATA)>
+<!ELEMENT Day (#PCDATA)>
+<!ELEMENT DescriptorName (#PCDATA)>
+<!ATTLIST DescriptorName
+	MajorTopicYN (Y | N) "N"
+>
+<!ELEMENT Edition (#PCDATA)>
+<!ELEMENT EndPage (#PCDATA)>
+<!ELEMENT FirstName (#PCDATA)>
+<!ELEMENT ForeName (#PCDATA)>
+<!ELEMENT Frequency (#PCDATA)>
+<!ATTLIST Frequency 
+          FrequencyType (Current | Former) "Current"
+>
+<!ELEMENT Grant (GrantID, Acronym, Agency)>
+<!ELEMENT GrantID (#PCDATA)>
+<!ELEMENT GrantList (Grant+)>
+<!ATTLIST GrantList
+	CompleteYN (Y | N) "Y"
+>
+<!ELEMENT Hour (#PCDATA)>
+<!ELEMENT Imprint (#PCDATA)>
+<!ELEMENT Initials (#PCDATA)>
+<!ELEMENT ISOAbbreviation (#PCDATA)>
+<!ELEMENT ISSN (#PCDATA)>
+<!ATTLIST ISSN
+	  IssnType  (Electronic | Print | Undetermined) #REQUIRED
+>
+<!ELEMENT Issue (#PCDATA)>
+<!ELEMENT Journal (ISSN, JournalIssue, Coden?, Title?, ISOAbbreviation?)>
+<!ELEMENT JournalIssue (Volume?, Issue?, PubDate)>
+<!ATTLIST JournalIssue
+	CitedMedium (Internet | Print | Electronic) #REQUIRED
+>
+<!ELEMENT Language (#PCDATA)>
+<!ELEMENT LastName (#PCDATA)>
+<!ELEMENT MedlineDate (#PCDATA)>
+<!ELEMENT MedlineJournalInfo (NlmUniqueID, MedlineTA)>
+<!ELEMENT MedlinePgn (#PCDATA)>
+<!ELEMENT MedlineTA (#PCDATA)>
+<!ELEMENT MeshHeading (DescriptorName, QualifierName*)>
+<!ELEMENT MeshHeadingList (MeshHeading+)>
+<!ELEMENT MiddleName (#PCDATA)>
+<!ELEMENT Minute (#PCDATA)>
+<!ELEMENT Month (#PCDATA)>
+<!ELEMENT NameQualifier (#PCDATA)>
+<!ELEMENT NlmUniqueID (#PCDATA)>
+<!ELEMENT OtherInformation (#PCDATA)>
+<!ELEMENT Pagination ((StartPage?, EndPage?, MedlinePgn?) | MedlinePgn)>
+<!ELEMENT Place (#PCDATA)>
+<!ATTLIST Place  
+       ImprintType %ImprintType; "Current"
+>
+<!ELEMENT PlaceCode (#PCDATA)>
+<!ELEMENT PMID (#PCDATA)>
+<!ELEMENT ProjectedPublicationDate (#PCDATA)>
+<!ELEMENT PubDate (#PCDATA)>
+<!ELEMENT PublicationEndYear (#PCDATA)>
+<!ELEMENT PublicationFirstYear (#PCDATA)>
+<!ELEMENT PublicationInfo (Country?, PlaceCode?, Imprint*, Place*, 
+                           Publisher*, DateIssued*,  ProjectedPublicationDate?,
+                           PublicationFirstYear?, PublicationEndYear?, Edition?,
+                           DatesOfSerialPublication*, Frequency*)>
+<!ELEMENT PublicationType (#PCDATA)>
+<!ELEMENT PublicationTypeList (PublicationType+)>
+<!ELEMENT Publisher (#PCDATA)>
+<!ELEMENT QualifierName (#PCDATA)>
+<!ATTLIST QualifierName
+	MajorTopicYN (Y | N) "N"
+>
+<!ELEMENT Season (#PCDATA)>
+<!ELEMENT Second (#PCDATA)>
+<!ELEMENT StartPage (#PCDATA)>
+<!ELEMENT Suffix (#PCDATA)>
+<!ELEMENT Title (#PCDATA)>
+<!ELEMENT TitleAssociatedWithName (#PCDATA)>
+<!ELEMENT VernacularTitle (#PCDATA)>
+<!ELEMENT Volume (#PCDATA)>
+<!ELEMENT Year (#PCDATA)>
+
+
+
+
+
+
+
+
+

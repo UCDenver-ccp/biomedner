@@ -1,0 +1,3 @@
+The cysteine- and glycine-rich LIM domain protein CRP2 specifically interacts with a novel human protein (CRP2BP).
+
+We used the interaction trap to isolate a novel human protein that specifically interacts with the double LIM domain protein CRP2. This protein, designated CRP2BP (for CRP2 binding partner), was previously postulated by sequencing contigs of human chromosome 20. The observed interaction is mediated via the LIM1 domain of CRP2 and is of functional relevance in cellular environment. This novel single copy gene spans approximately 45-bp and is organized into at least ten exons. CRP2BP is expressed in all human tissues tested, with a major mRNA of 4-kb in size and an additional 3.2-kb transcript in placenta.

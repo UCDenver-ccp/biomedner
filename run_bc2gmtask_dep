@@ -1,0 +1,2 @@
+java -Xms128m -Xmx2048m -Djava.library.path="./:/usr/local/lib/" -classpath "./bin/:./lib/ant.jar:./lib/jakarta-ant-optional.jar:./lib/jwnl-1.3.3.jar:./lib/maxent-2.5.2.jar:./lib/opennlp-tools-1.4.3.jar:./lib/CRFPP.jar:./lib/stanford-postagger-2009-12-24.jar:./lib/grmm_dep.jar:./lib/grmm-deps.jar:./lib/mallet-deps.jar:./lib/trove.jar:./lib/stanford-parser.jar" bioner.application.bc2gm.BC2GMTaskRun
+

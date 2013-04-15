@@ -1,0 +1,3 @@
+FANCE: the link between Fanconi anaemia complex assembly and activity.
+
+The Fanconi anaemia (FA) nuclear complex (composed of the FA proteins A, C, G and F) is essential for protection against chromosome breakage. It activates the downstream protein FANCD2 by monoubiquitylation; this then forges an association with the BRCA1 protein at sites of DNA damage. Here we show that the recently identified FANCE protein is part of this nuclear complex, binding both FANCC and FANCD2. Indeed, FANCE is required for the nuclear accumulation of FANCC and provides a critical bridge between the FA complex and FANCD2. Disease-associated FANCC mutants do not bind to FANCE, cannot accumulate in the nucleus and are unable to prevent chromosome breakage.

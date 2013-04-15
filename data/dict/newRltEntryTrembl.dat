@@ -1,0 +1,2052 @@
+####1
+ID:O00145_HUMAN~
+AC:O00145~
+DE:SH2 containing inositol-5-phosphatase~
+GN:primary@INPP5D~synonym@SHIP~
+OS:NCBI@9606~Homo sapiens~human~man~
+####2
+ID:O01850_CAEEL~
+AC:O01850~
+DE:Cathepsin z protein 1~Cathepsin Z-like enzyme~CPZ-1~
+GN:primary@cpz-1~ORF@F32B5.8~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####3
+ID:O02005_DROME~
+AC:O02005~
+DE:Mitochondrial DNA polymerase accessory subunit~
+GN:primary@DNApol-gamma-35~synonym@MtPolB~ORF@CG8969~
+OS:NCBI@7227~Drosophila melangaster~Drosophila melanogaster~fruit fly~
+####4
+ID:O02042_CAEEL~
+AC:O02042~
+DE:Mediator protein 1.2~
+GN:primary@mdt-1.2~ORF@T23C6.1~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####5
+ID:O02374_DROME~
+AC:O02374~
+DE:Bruno~
+GN:primary@aret~synonym@bruno~ORF@CG31762~
+OS:NCBI@7227~Drosophila melangaster~Drosophila melanogaster~fruit fly~
+####6
+ID:O13648_SCHPO~
+AC:O13648~
+DE:EC@EC 2.1.1.-~SPBC8D2.10c protein~
+GN:ORF@SPBC8D2.10c~
+OS:NCBI@4896~Schizosaccharomyces malidevorans~Schizosaccharomyces pombe~Schizosaccharomyces pombeP~fission yeast~
+####7
+ID:O13814_SCHPO~
+AC:O13814~
+DE:Mdm10 protein~Spac17h9.17c protein~
+GN:primary@mdm10~ORF@SPAC17H9.17c~
+OS:NCBI@4896~Schizosaccharomyces malidevorans~Schizosaccharomyces pombe~Schizosaccharomyces pombeP~fission yeast~
+####8
+ID:O16420_CAEEL~
+AC:O16420~
+DE:Hypothetical protein T05B4.11~
+GN:ORF@T05B4.11~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####9
+ID:O16612_CAEEL~
+AC:O16612~
+DE:Hypothetical protein~
+GN:ORF@B0281.5~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####10
+ID:O16720_CAEEL~
+AC:O16720~
+DE:Argonaute (Plant)-like gene protein 2, isoform a~ALG-2~PLANT~
+GN:primary@alg-2~ORF@T07D3.7~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####11
+ID:O17689_CAEEL~
+AC:O17689~
+DE:Hypothetical protein~
+GN:ORF@C50B6.3~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####12
+ID:O17759_CAEEL~
+AC:O17759~
+DE:Hypothetical protein~
+GN:ORF@F01G10.1~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####13
+ID:O17953_CAEEL~
+AC:O17953~
+DE:Hypothetical protein~DIHYDROLIPOAMIDE DEHYDROGENASE~LLC1.3~
+GN:ORF@LLC1.3~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####14
+ID:O18246_CAEEL~
+AC:O18246~
+DE:Hypothetical protein~PERINUCLEAR BINDING PROTEIN~
+GN:ORF@Y57G11C.22~ORF@Y57G11C.22a~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####15
+ID:O23548_ARATH~
+AC:O23548~
+DE:Endopeptidase Clp~ATP-dependent Clp protease proteolytic subunit~CLP PROTEINASE LIKE PROTEIN~
+GN:primary@dl4550c~synonym@AT4g17040~
+OS:NCBI@3702~Arabidopsis thaliana~Arabidopsis thaliana (L.) Heynh.~Arbisopsis thaliana~mouse-ear cress~thale cress~thale-cress~
+####16
+ID:O24293_PEA~
+AC:O24293~
+DE:Chloroplast inner envelope protein, 110 kD (IEP110) precursor~
+GN:
+OS:NCBI@3888~Pisum sativum~Pisum sativum L.~garden pea~pea~peas~
+####17
+ID:O35499_MOUSE~
+AC:O35499~
+DE:Nuclear autoantigenic sperm protein~NUCLEAR AUTOANTIGENIC SPERM~
+GN:primary@Nasp~
+OS:NCBI@10090~LK3 transgenic mice~Mus muscaris~Mus musculus~Mus sp. 129SV~house mouse~mice C57BL/6xCBA/CaJ hybrid~mouse~nude mice~transgenic mice~
+####18
+ID:O39474_9HEPC~
+AC:O39474~
+DE:Non-structural 5A protein~
+GN:primary@NS5A~
+OS:NCBI@11103~HCV~Hepatitis C~Hepatitis C virus~hepatitis C virus HCV~human hepatitis C virus~human hepatitis C virus HCV~human hepatitis virus C HCV~human hepatitis virus HCV~post-transfusion hepatitis non A non B virus~
+####19
+ID:O42348_CHICK~
+AC:O42348~
+DE:PAX6 protein~
+GN:primary@Pax-6~
+OS:NCBI@9031~Gallus domesticus~Gallus gallus~Gallus gallus domesticus~bantam~chicken~chickens~dwarf Leghorn chickens~red junglefowl~
+####20
+ID:O44165_CAEEL~
+AC:O44165~
+DE:Dicer-related helicase~Dicer related helicase protein 1~DICER-RELATED HELICASE~DRH-1~
+GN:primary@drh-1~ORF@F15B10.2~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####21
+ID:O44224_DROME~
+AC:O44224~
+DE:Miranda~
+GN:primary@mira~
+OS:NCBI@7227~Drosophila melangaster~Drosophila melanogaster~fruit fly~
+####22
+ID:O45246_CAEEL~
+AC:O45246~
+DE:Hypothetical protein hsp-70~HEAT SHOCK PROTEIN 70~HSP-70~
+GN:primary@hsp-70~ORF@C12C8.1~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####23
+ID:O45546_CAEEL~
+AC:O45546~
+DE:Hypothetical protein~
+GN:ORF@F53A2.1~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####24
+ID:O45593_CAEEL~
+AC:O45593~
+DE:Hypothetical protein~
+GN:ORF@F57C2.1~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####25
+ID:O45786_CAEEL~
+AC:O45786~O45817~
+DE:Hypothetical protein~
+GN:ORF@T12D8.8~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####26
+ID:O49456_ARATH~
+AC:O49456~
+DE:Hypothetical protein AT4g28470~Hypothetical protein F20O9.150~
+GN:primary@F20O9.150~synonym@AT4g28470~ordered~locus@At4g28470~
+OS:NCBI@3702~Arabidopsis thaliana~Arabidopsis thaliana (L.) Heynh.~Arbisopsis thaliana~mouse-ear cress~thale cress~thale-cress~
+####27
+ID:O55033_MOUSE~
+AC:O55033~
+DE:SH2/SH3 adaptor protein~Non-catalytic region of tyrosine kinase adaptor protein 2~MNCK-BETA~NCK2~
+GN:primary@Nck2~synonym@mNck-beta~
+OS:NCBI@10090~LK3 transgenic mice~Mus muscaris~Mus musculus~Mus sp. 129SV~house mouse~mice C57BL/6xCBA/CaJ hybrid~mouse~nude mice~transgenic mice~
+####28
+ID:O55147_RAT~
+AC:O55147~
+DE:Rattus norvegicus utrophin~
+GN:primary@Utrn~
+OS:NCBI@10116~Buffalo rat~Gunn rats~Norway rat~Rattus PC12 clone IS~Rattus norvegicus~Rattus norvegicus8~Rattus norwegicus~Rattus rattiscus~Rattus sp. strain Wistar~Sprague-Dawley rat~Wistar rats~brown rat~laboratory rat~rat~rats~zitter rats~
+####29
+ID:O57468_XENLA~
+AC:O57468~
+DE:Ywhae-prov protein~14-3-3 protein epsilon~
+GN:
+OS:NCBI@8355~African clawed frog~Xenopus laevis~Xenopus leavis~clawed frog~
+####30
+ID:O59740_SCHPO~
+AC:O59740~
+DE:Mod5 protein~Spbc530.04 protein~
+GN:primary@mod5~ORF@SPBC530.04~
+OS:NCBI@4896~Schizosaccharomyces malidevorans~Schizosaccharomyces pombe~Schizosaccharomyces pombeP~fission yeast~
+####31
+ID:O60592_HUMAN~
+AC:O60592~
+DE:Arg/Abl-interacting protein ArgBP2a~ARGBP2A~
+GN:primary@ArgBP2a~
+OS:NCBI@9606~Homo sapiens~human~man~
+####32
+ID:O60593_HUMAN~
+AC:O60593~
+DE:Arg/Abl-interacting protein ArgBP2b~ARGBP2B~
+GN:primary@ArgBP2b~
+OS:NCBI@9606~Homo sapiens~human~man~
+####33
+ID:O67990_VIBMI~
+AC:O67990~
+DE:Metalloprotease~
+GN:primary@vmc~
+OS:NCBI@674~Vibrio mimicus~Vibrio mimicus Davis et al. 1982~
+####34
+ID:O70420_RAT~
+AC:O70420~
+DE:Cortactin isoform B~
+GN:primary@Cttn~
+OS:NCBI@10116~Buffalo rat~Gunn rats~Norway rat~Rattus PC12 clone IS~Rattus norvegicus~Rattus norvegicus8~Rattus norwegicus~Rattus rattiscus~Rattus sp. strain Wistar~Sprague-Dawley rat~Wistar rats~brown rat~laboratory rat~rat~rats~zitter rats~
+####35
+ID:O73932_XENLA~
+AC:O73932~
+DE:RNA binding protein Vera~Vg1 RNA binding protein variant D~
+GN:
+OS:NCBI@8355~African clawed frog~Xenopus laevis~Xenopus leavis~clawed frog~
+####36
+ID:O74765_SCHPO~
+AC:O74765~
+DE:SPBC24C6.03 protein~
+GN:ORF@SPBC24C6.03~
+OS:NCBI@4896~Schizosaccharomyces malidevorans~Schizosaccharomyces pombe~Schizosaccharomyces pombeP~fission yeast~
+####37
+ID:O75804_HUMAN~
+AC:O75804~
+DE:Ki-1/57 intracellular antigen~
+GN:
+OS:NCBI@9606~Homo sapiens~human~man~
+####38
+ID:O76901_DROME~
+AC:O76901~
+DE:EG:80H7.4 protein~CG14791-PB, isoform B~RAB27~
+GN:primary@Rab27~synonym@EG:80H7.4~ORF@CG14791~ORF@Dmel_CG14791~
+OS:NCBI@7227~Drosophila melangaster~Drosophila melanogaster~fruit fly~
+####39
+ID:O77051_DROME~
+AC:O77051~
+DE:E2F2~GH13089p~CG1071-PA~E2F-like transcription factor~E2F2~
+GN:primary@E2f2~synonym@dE2F2~ORF@CG1071~ORF@Dmel_CG1071~
+OS:NCBI@7227~Drosophila melangaster~Drosophila melanogaster~fruit fly~
+####40
+ID:O77291_DROME~
+AC:O77291~O77292~
+DE:Kakapo~
+GN:primary@shot~synonym@kak~ORF@CG18076~
+OS:NCBI@7227~Drosophila melangaster~Drosophila melanogaster~fruit fly~
+####41
+ID:O94538_SCHPO~
+AC:O94538~
+DE:Snu66 protein~Spac167.03c protein~
+GN:primary@snu66~ORF@SPAC167.03c~
+OS:NCBI@4896~Schizosaccharomyces malidevorans~Schizosaccharomyces pombe~Schizosaccharomyces pombeP~fission yeast~
+####42
+ID:O95973_HUMAN~
+AC:O95973~
+DE:VH4 heavy chain variable region precursor~IGM~
+GN:primary@IGM~
+OS:NCBI@9606~Homo sapiens~human~man~
+####43
+ID:P70044_XENLA~
+AC:P70044~
+DE:Cell division control protein 6~
+GN:primary@cdc6~
+OS:NCBI@8355~African clawed frog~Xenopus laevis~Xenopus leavis~clawed frog~
+####44
+ID:P72742_SYNY3~
+AC:P72742~
+DE:Slr1098 protein~
+GN:ordered~locus@slr1098~
+OS:NCBI@1148~Aphanocapsa sp. (strain N-1)~Aphanocapsa sp. N-1~Synechocystis 6803~Synechocystis PCC6803~Synechocystis sp. (ATCC 27184)~Synechocystis sp. (PCC 6803)~Synechocystis sp. (strain PCC 6803)~Synechocystis sp. ATCC 27184~Synechocystis sp. PCC 6803~Synechocystis sp. PCC 6803 A~Synechocystis sp. PCC 6803 B~Synechocystis sp. PCC6803~Synechocystis sp.PCC6803~
+####45
+ID:P73091_SYNY3~
+AC:P73091~
+DE:Slr2048 protein~
+GN:ordered~locus@slr2048~
+OS:NCBI@1148~Aphanocapsa sp. (strain N-1)~Aphanocapsa sp. N-1~Synechocystis 6803~Synechocystis PCC6803~Synechocystis sp. (ATCC 27184)~Synechocystis sp. (PCC 6803)~Synechocystis sp. (strain PCC 6803)~Synechocystis sp. ATCC 27184~Synechocystis sp. PCC 6803~Synechocystis sp. PCC 6803 A~Synechocystis sp. PCC 6803 B~Synechocystis sp. PCC6803~Synechocystis sp.PCC6803~
+####46
+ID:P73213_SYNY3~
+AC:P73213~
+DE:Ssr2857 protein~
+GN:ordered~locus@ssr2857~
+OS:NCBI@1148~Aphanocapsa sp. (strain N-1)~Aphanocapsa sp. N-1~Synechocystis 6803~Synechocystis PCC6803~Synechocystis sp. (ATCC 27184)~Synechocystis sp. (PCC 6803)~Synechocystis sp. (strain PCC 6803)~Synechocystis sp. ATCC 27184~Synechocystis sp. PCC 6803~Synechocystis sp. PCC 6803 A~Synechocystis sp. PCC 6803 B~Synechocystis sp. PCC6803~Synechocystis sp.PCC6803~
+####47
+ID:P73348_SYNY3~
+AC:P73348~
+DE:Rehydrin~
+GN:ordered~locus@slr1198~
+OS:NCBI@1148~Aphanocapsa sp. (strain N-1)~Aphanocapsa sp. N-1~Synechocystis 6803~Synechocystis PCC6803~Synechocystis sp. (ATCC 27184)~Synechocystis sp. (PCC 6803)~Synechocystis sp. (strain PCC 6803)~Synechocystis sp. ATCC 27184~Synechocystis sp. PCC 6803~Synechocystis sp. PCC 6803 A~Synechocystis sp. PCC 6803 B~Synechocystis sp. PCC6803~Synechocystis sp.PCC6803~
+####48
+ID:P73489_SYNY3~
+AC:P73489~
+DE:Ssl2245 protein~
+GN:ordered~locus@ssl2245~
+OS:NCBI@1148~Aphanocapsa sp. (strain N-1)~Aphanocapsa sp. N-1~Synechocystis 6803~Synechocystis PCC6803~Synechocystis sp. (ATCC 27184)~Synechocystis sp. (PCC 6803)~Synechocystis sp. (strain PCC 6803)~Synechocystis sp. ATCC 27184~Synechocystis sp. PCC 6803~Synechocystis sp. PCC 6803 A~Synechocystis sp. PCC 6803 B~Synechocystis sp. PCC6803~Synechocystis sp.PCC6803~
+####49
+ID:P74069_SYNY3~
+AC:P74069~
+DE:Sll1262 protein~
+GN:ordered~locus@sll1262~
+OS:NCBI@1148~Aphanocapsa sp. (strain N-1)~Aphanocapsa sp. N-1~Synechocystis 6803~Synechocystis PCC6803~Synechocystis sp. (ATCC 27184)~Synechocystis sp. (PCC 6803)~Synechocystis sp. (strain PCC 6803)~Synechocystis sp. ATCC 27184~Synechocystis sp. PCC 6803~Synechocystis sp. PCC 6803 A~Synechocystis sp. PCC 6803 B~Synechocystis sp. PCC6803~Synechocystis sp.PCC6803~
+####50
+ID:P74338_SYNY3~
+AC:P74338~
+DE:Slr1623 protein~
+GN:ordered~locus@slr1623~
+OS:NCBI@1148~Aphanocapsa sp. (strain N-1)~Aphanocapsa sp. N-1~Synechocystis 6803~Synechocystis PCC6803~Synechocystis sp. (ATCC 27184)~Synechocystis sp. (PCC 6803)~Synechocystis sp. (strain PCC 6803)~Synechocystis sp. ATCC 27184~Synechocystis sp. PCC 6803~Synechocystis sp. PCC 6803 A~Synechocystis sp. PCC 6803 B~Synechocystis sp. PCC6803~Synechocystis sp.PCC6803~
+####51
+ID:P74512_SYNY3~
+AC:P74512~
+DE:Cation-transporting ATPase; E1-E2 ATPase~
+GN:ordered~locus@slr1950~
+OS:NCBI@1148~Aphanocapsa sp. (strain N-1)~Aphanocapsa sp. N-1~Synechocystis 6803~Synechocystis PCC6803~Synechocystis sp. (ATCC 27184)~Synechocystis sp. (PCC 6803)~Synechocystis sp. (strain PCC 6803)~Synechocystis sp. ATCC 27184~Synechocystis sp. PCC 6803~Synechocystis sp. PCC 6803 A~Synechocystis sp. PCC 6803 B~Synechocystis sp. PCC6803~Synechocystis sp.PCC6803~
+####52
+ID:P74771_SYNY3~
+AC:P74771~
+DE:Ssl1690 protein~
+GN:ordered~locus@ssl1690~
+OS:NCBI@1148~Aphanocapsa sp. (strain N-1)~Aphanocapsa sp. N-1~Synechocystis 6803~Synechocystis PCC6803~Synechocystis sp. (ATCC 27184)~Synechocystis sp. (PCC 6803)~Synechocystis sp. (strain PCC 6803)~Synechocystis sp. ATCC 27184~Synechocystis sp. PCC 6803~Synechocystis sp. PCC 6803 A~Synechocystis sp. PCC 6803 B~Synechocystis sp. PCC6803~Synechocystis sp.PCC6803~
+####53
+ID:P83954_TORCA~
+AC:P83954~
+DE:Postsynaptic membrane protein~
+GN:
+OS:NCBI@7787~Pacific electric ray~Torpedo californica~Torpedo californiensis~
+####54
+ID:P88961_HHV8~
+AC:P88961~
+DE:ORF71~ORF K13~FLICE inhibitory protein~Putative apoptosis inhibitor protein~
+GN:primary@ORF71~
+OS:NCBI@37296~HHV8~Human herpesvirus 8~KSHV~Kaposi's sarcoma-associated herpes-like virus~Kaposi's sarcoma-associated herpesvirus~Kaposi's sarcoma-associated herpesvirus - Human herpesvirus 8~Kaposi's sarcoma-associated herpesvirus KSHV~Kaposi's sarcoma-associated human herpes virus~Karposi's sarcoma-associated herpes-like virus~
+####55
+ID:P91198_CAEEL~
+AC:P91198~
+DE:Hypothetical protein~
+GN:ORF@D2092.2~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####56
+ID:P91277_CAEEL~
+AC:P91277~
+DE:Hypothetical protein~
+GN:ORF@F26B1.2~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####57
+ID:P91563_CAEEL~
+AC:P91563~
+DE:Hypothetical protein~
+GN:ORF@ZC239.15~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####58
+ID:P97811_MOUSE~
+AC:P97811~
+DE:Sodium channel 2~ACCN2~MBNAC2~
+GN:primary@Accn2~synonym@mBNaC2~
+OS:NCBI@10090~LK3 transgenic mice~Mus muscaris~Mus musculus~Mus sp. 129SV~house mouse~mice C57BL/6xCBA/CaJ hybrid~mouse~nude mice~transgenic mice~
+####59
+ID:Q00308_CANAL~
+AC:Q00308~
+DE:Not specified~
+GN:
+OS:NCBI@5476~Candida albicans~Candida stellatoidea~
+####60
+ID:Q06479_YEAST~
+AC:Q06479~
+DE:Ylr352wp~YLR352W~
+GN:ordered~locus@YLR352W~
+OS:NCBI@4932~Candida robusta~Saccaromyces cerevisiae~Saccharomyces capensis~Saccharomyces cerevisiae~Saccharomyces italicus~Saccharomyces oviformis~Saccharomyces uvarum var. melibiosus~Saccharomyes cerevisiae~Sccharomyces cerevisiae~baker's yeast~brewer's yeast~lager beer yeast~yeast~
+####61
+ID:Q09983_CAEEL~
+AC:Q09983~
+DE:Hypothetical protein~
+GN:ORF@F30H5.3~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####62
+ID:Q12163_YEAST~
+AC:Q12163~
+DE:Nbp2p~YDR162C~Nap1-binding protein~NAP1-BINDING~NBP2~YDR162C~
+GN:primary@NBP2~
+OS:NCBI@4932~Candida robusta~Saccaromyces cerevisiae~Saccharomyces capensis~Saccharomyces cerevisiae~Saccharomyces italicus~Saccharomyces oviformis~Saccharomyces uvarum var. melibiosus~Saccharomyes cerevisiae~Sccharomyces cerevisiae~baker's yeast~brewer's yeast~lager beer yeast~yeast~
+####63
+ID:Q13127_HUMAN~
+AC:Q13127~
+DE:REST protein~NRSF~RE1-SILENCING TRANSCRIPTION FACTOR~REST~XBR~
+GN:primary@REST~
+OS:NCBI@9606~Homo sapiens~human~man~
+####64
+ID:Q13545_HUMAN~
+AC:Q13545~
+DE:Signaling inositol polyphosphate 5 phosphatase SIP-145~
+GN:
+OS:NCBI@9606~Homo sapiens~human~man~
+####65
+ID:Q14020_HUMAN~
+AC:Q14020~
+DE:Bcr/c-abl oncogene protein~
+GN:
+OS:NCBI@9606~Homo sapiens~human~man~
+####66
+ID:Q14901_HUMAN~
+AC:Q14901~
+DE:Myc protein~
+GN:primary@MYC~
+OS:NCBI@9606~Homo sapiens~human~man~
+####67
+ID:Q17411_CAEEL~
+AC:Q17411~
+DE:Hypothetical protein~
+GN:ORF@B0001.2~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####68
+ID:Q17545_CAEEL~
+AC:Q17545~
+DE:Dicer related helicase protein 2~DRH-2~
+GN:primary@drh-2~ORF@C01B10.1~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####69
+ID:Q18423_CAEEL~
+AC:Q18423~
+DE:Hypothetical protein~
+GN:ORF@C34C6.2~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####70
+ID:Q18572_CAEEL~
+AC:Q18572~
+DE:Hypothetical protein~
+GN:ORF@C42D4.3~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####71
+ID:Q18776_CAEEL~
+AC:Q18776~
+DE:Temporarily assigned gene name protein 303~
+GN:primary@tag-303~ORF@C52B11.2~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####72
+ID:Q18986_CAEEL~
+AC:Q18986~
+DE:Hypothetical protein~TNF ALPHA INDUCED PROTEIN B12~
+GN:ORF@D2045.8~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####73
+ID:Q19285_CAEEL~
+AC:Q19285~Q22232~
+DE:Hypothetical protein rrf-3~RRF-3~
+GN:primary@rrf-3~ORF@F10B5.7~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####74
+ID:Q19790_CAEEL~
+AC:Q19790~
+DE:Hypothetical protein dur-1~
+GN:primary@dur-1~ORF@F25H8.5~ORF@F25H8.5a~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####75
+ID:Q19929_CAEEL~
+AC:Q19929~
+DE:Temporarily assigned gene name protein 149, isoform b~
+GN:primary@tag-149~ORF@F31D5.3~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####76
+ID:Q20578_CAEEL~
+AC:Q20578~Q21129~
+DE:Hypothetical protein alg-1~ALG-1~
+GN:primary@alg-1~ORF@F48F7.1~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####77
+ID:Q20627_CAEEL~
+AC:Q20627~
+DE:Puromycin-sensitive aminopeptidase protein 1, isoform a~PAM-1~
+GN:primary@pam-1~ORF@F49E8.3~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####78
+ID:Q20667_CAEEL~
+AC:Q20667~
+DE:Cytoplasmic zinc-finger protein~Posterior segregation protein 1~POS-1~
+GN:primary@pos-1~ORF@F52E1.1~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####79
+ID:Q20676_CAEEL~
+AC:Q20676~
+DE:Hypothetical protein~PROPIONYL COA CARBOXYLASE BETA~
+GN:ORF@F52E4.1~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####80
+ID:Q20708_CAEEL~
+AC:Q20708~
+DE:Hypothetical protein~
+GN:ORF@F53B2.1~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####81
+ID:Q21351_CAEEL~
+AC:Q21351~
+DE:Hypothetical protein~
+GN:ORF@K08F4.2~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####82
+ID:Q21418_CAEEL~
+AC:Q21418~
+DE:Hypothetical protein~
+GN:ORF@K10D3.4~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####83
+ID:Q21605_CAEEL~
+AC:Q21605~
+DE:Hypothetical protein~HNRNP K~
+GN:ORF@M88.5~ORF@M88.5a~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####84
+ID:Q21900_CAEEL~
+AC:Q21900~
+DE:Hypothetical protein tag-310~RNA OR SINGLE STRANDED DNA BINDING PROTEIN~
+GN:primary@tag-310~ORF@R10E4.2~ORF@R10E4.2B~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####85
+ID:Q21924_CAEEL~
+AC:Q21924~
+DE:Hypothetical protein~
+GN:ORF@R11A8.2~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####86
+ID:Q22137_CAEEL~
+AC:Q22137~
+DE:Hypothetical protein~1,4 ALPHA GLUCAN BRANCHING ENZYME~
+GN:ORF@T04A8.7~ORF@T04A8.7a~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####87
+ID:Q22216_CAEEL~
+AC:Q22216~Q22255~
+DE:Hypothetical protein~
+GN:ORF@T06D8.10~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####88
+ID:Q22253_CAEEL~
+AC:Q22253~
+DE:Hypothetical protein rpn-9~RPN-9~
+GN:primary@rpn-9~ORF@T06D8.8~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####89
+ID:Q22617_CAEEL~
+AC:Q22617~
+DE:Hypothetical protein rde-4~RNA interference promoting factor~DOUBLE STRANDED RNA BINDING MOTIF~RDE-4~RNA INTERFERENCE PROMOTING FACTOR~
+GN:primary@rde-4~ORF@T20G5.11~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####90
+ID:Q22707_CAEEL~
+AC:Q22707~
+DE:Hypothetical protein pir-1~TYROSINE SPECIFIC PROTEIN PHOSPHATASE~
+GN:primary@pir-1~ORF@T23G7.5~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####91
+ID:Q23155_CAEEL~
+AC:Q23155~
+DE:Hypothetical protein~MITOCHONDRIAL RIBOSOMAL PROTEIN S11 LIKE~
+GN:ORF@W04D2.5~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####92
+ID:Q24213_DROME~
+AC:Q24213~
+DE:P21-activated protein kinase 1 Dpak1~
+GN:primary@Pak~ORF@CG10295~
+OS:NCBI@7227~Drosophila melangaster~Drosophila melanogaster~fruit fly~
+####93
+ID:Q24218_DROME~
+AC:Q24218~
+DE:SH2/SH3 adaptor protein~
+GN:primary@dock~ORF@CG3727~
+OS:NCBI@7227~Drosophila melangaster~Drosophila melanogaster~fruit fly~
+####94
+ID:Q2YHQ3_PIG~
+AC:Q2YHQ3~
+DE:Filamin-A~
+GN:primary@FLNA~
+OS:NCBI@9823~Sus scrofa~pig~pigs~swine~wild boar~
+####95
+ID:Q388L3_9TRYP~
+AC:Q388L3~
+DE:GPI8~GPI-anchor transamidase subunit 8~
+GN:ORF@Tb10.61.3060~
+OS:NCBI@5691~Trypanosoma (Trypanozoon) brucei~Trypanosoma brucei~Trypanosoma brucei subgroup~
+####96
+ID:Q40541_TOBAC~
+AC:Q40541~
+DE:Protein kinase~
+GN:
+OS:NCBI@4097~American tobacco~Nicotania tabacum~Nicotiana tabacum~common tobacco~tobacco~
+####97
+ID:Q4AE16_HBV~
+AC:Q4AE16~
+DE:X protein~
+GN:
+OS:NCBI@10407~HBV~Hepatitis B virus~Human hepatitis B virus~hepatitis B virus (HBV)~hepatitis B virus HBV~hepatitis B virus, HBV~human hepatitis B virus HBV~
+####98
+ID:Q4L1J4_RAT~
+AC:Q4L1J4~
+DE:Membrane associated guanylate kinase 1 b~
+GN:
+OS:NCBI@10116~Buffalo rat~Gunn rats~Norway rat~Rattus PC12 clone IS~Rattus norvegicus~Rattus norvegicus8~Rattus norwegicus~Rattus rattiscus~Rattus sp. strain Wistar~Sprague-Dawley rat~Wistar rats~brown rat~laboratory rat~rat~rats~zitter rats~
+####99
+ID:Q4VSI4_RAT~
+AC:Q4VSI4~
+DE:HAUSP~
+GN:primary@Hausp~
+OS:NCBI@10116~Buffalo rat~Gunn rats~Norway rat~Rattus PC12 clone IS~Rattus norvegicus~Rattus norvegicus8~Rattus norwegicus~Rattus rattiscus~Rattus sp. strain Wistar~Sprague-Dawley rat~Wistar rats~brown rat~laboratory rat~rat~rats~zitter rats~
+####100
+ID:Q53TQ3_HUMAN~
+AC:Q53TQ3~
+DE:Hypothetical protein FLJ20309~
+GN:primary@FLJ20309~
+OS:NCBI@9606~Homo sapiens~human~man~
+####101
+ID:Q53XJ8_HUMAN~
+AC:Q53XJ8~
+DE:Protease-activated receptor 2~Coagulation factor II (Thrombin) receptor-like 1~
+GN:primary@F2RL1~
+OS:NCBI@9606~Homo sapiens~human~man~
+####102
+ID:Q53ZZ1_HUMAN~
+AC:Q53ZZ1~
+DE:FAS ligand~
+GN:primary@FASLG~synonym@TNFSF6~
+OS:NCBI@9606~Homo sapiens~human~man~
+####103
+ID:Q55389_SYNY3~
+AC:Q55389~
+DE:Ferredoxin-thioredoxin reductase, catalytic chain~
+GN:primary@ftrC~ordered~locus@sll0554~
+OS:NCBI@1148~Aphanocapsa sp. (strain N-1)~Aphanocapsa sp. N-1~Synechocystis 6803~Synechocystis PCC6803~Synechocystis sp. (ATCC 27184)~Synechocystis sp. (PCC 6803)~Synechocystis sp. (strain PCC 6803)~Synechocystis sp. ATCC 27184~Synechocystis sp. PCC 6803~Synechocystis sp. PCC 6803 A~Synechocystis sp. PCC 6803 B~Synechocystis sp. PCC6803~Synechocystis sp.PCC6803~
+####104
+ID:Q56VH8_HUMAN~
+AC:Q56VH8~
+DE:RHEBL1c~
+GN:primary@RHEBL1~
+OS:NCBI@9606~Homo sapiens~human~man~
+####105
+ID:Q571R6_POPCA~
+AC:Q571R6~
+DE:Osmosensor histidine-aspartate kinase~
+GN:primary@hk1~
+OS:NCBI@3690~Canadian poplar~Carolina poplar~Populus deltoides X Populus nigra~Populus euramericana~Populus euramericana (Dode) Guinier~Populus x canadensis~Populus x canadensis Moench.~
+####106
+ID:Q59HD0_HUMAN~
+AC:Q59HD0~
+DE:G2/mitotic-specific cyclin F variant~
+GN:
+OS:NCBI@9606~Homo sapiens~human~man~
+####107
+ID:Q59YX6_CANAL~
+AC:Q59YX6~
+DE:Hypothetical protein STI1~
+GN:primary@STI1~ORF@CaO19.10702~
+OS:NCBI@5476~Candida albicans~Candida stellatoidea~
+####108
+ID:Q5DVT9_MIMPU~
+AC:Q5DVT9~
+DE:Plasma membrane intrinsic protein 2;1~
+GN:primary@pip2;1~
+OS:NCBI@76306~Mimosa pudica~Mimosa pudica L.~sensitive-plant~
+####109
+ID:Q5DVU0_MIMPU~
+AC:Q5DVU0~
+DE:Plasma membrane intrinsic protein 1;1~
+GN:primary@pip1;1~
+OS:NCBI@76306~Mimosa pudica~Mimosa pudica L.~sensitive-plant~
+####110
+ID:Q5HZ83_XENLA~
+AC:Q5HZ83~
+DE:GIPC protein~
+GN:primary@GIPC~
+OS:NCBI@8355~African clawed frog~Xenopus laevis~Xenopus leavis~clawed frog~
+####111
+ID:Q5IRX3_ARATH~
+AC:Q5IRX3~
+DE:ARF19~ARF11/IAA22~
+GN:primary@At1g19220~
+OS:NCBI@3702~Arabidopsis thaliana~Arabidopsis thaliana (L.) Heynh.~Arbisopsis thaliana~mouse-ear cress~thale cress~thale-cress~
+####112
+ID:Q5M834_RAT~
+AC:Q5M834~
+DE:Distrobrevin binding protein 1~
+GN:primary@Dtnbp1~
+OS:NCBI@10116~Buffalo rat~Gunn rats~Norway rat~Rattus PC12 clone IS~Rattus norvegicus~Rattus norvegicus8~Rattus norwegicus~Rattus rattiscus~Rattus sp. strain Wistar~Sprague-Dawley rat~Wistar rats~brown rat~laboratory rat~rat~rats~zitter rats~
+####113
+ID:Q5SDB4_XENLA~
+AC:Q5SDB4~
+DE:ATR-interacting protein~
+GN:primary@atrip~
+OS:NCBI@8355~African clawed frog~Xenopus laevis~Xenopus leavis~clawed frog~
+####114
+ID:Q5ST11_HUMAN~
+AC:Q5ST11~
+DE:Receptor tyrosine kinase~Discoidin domain receptor family, member 1~
+GN:primary@DDR1~synonym@DDR~ORF@DAQB-11J22.3-003~ORF@DAQB-11J22.3-005~ORF@XXbac-BCX105N19.2-003~ORF@XXbac-BPG70P20.1-005~
+OS:NCBI@9606~Homo sapiens~human~man~
+####115
+ID:Q5SZ57_HUMAN~
+AC:Q5SZ57~
+DE:Utrophin~Homologous to dystrophin~
+GN:primary@UTRN~ORF@RP11-352E13.1-001~
+OS:NCBI@9606~Homo sapiens~human~man~
+####116
+ID:Q5T185_HUMAN~
+AC:Q5T185~
+DE:SHC (Src homology 2 domain containing) transforming protein 1~
+GN:primary@SHC1~ORF@RP11-307C12.1-007~
+OS:NCBI@9606~Homo sapiens~human~man~
+####117
+ID:Q5U3B8_HUMAN~
+AC:Q5U3B8~
+DE:SH3D19 protein~
+GN:primary@SH3D19~
+OS:NCBI@9606~Homo sapiens~human~man~
+####118
+ID:Q5UBY2_ARATH~
+AC:Q5UBY2~
+DE:FAR1-related 1 protein~
+GN:primary@FRS1~
+OS:NCBI@3702~Arabidopsis thaliana~Arabidopsis thaliana (L.) Heynh.~Arbisopsis thaliana~mouse-ear cress~thale cress~thale-cress~
+####119
+ID:Q5VVJ3_HUMAN~
+AC:Q5VVJ3~
+DE:Melanoma, p16, inhibits CDK4~Cyclin-dependent kinase inhibitor 2A~
+GN:primary@CDKN2A~ORF@RP11-149I2.2-003~
+OS:NCBI@9606~Homo sapiens~human~man~
+####120
+ID:Q5VY40_HUMAN~
+AC:Q5VY40~
+DE:Rho guanine nucleotide exchange factor (GEF) 11~
+GN:primary@ARHGEF11~ORF@RP11-356J7.2-002~
+OS:NCBI@9606~Homo sapiens~human~man~
+####121
+ID:Q5WMC9_ECOLI~
+AC:Q5WMC9~
+DE:Tir, translocated intimin receptor~
+GN:primary@tir~
+OS:NCBI@562~"Bacillus coli" Migula 1895~"Bacterium coli commune" Escherich 1885~"Bacterium coli" (Migula 1895) Lehmann and Neumann 1896~Bacillus coli~Bacterium coli~Bacterium coli commune~Escherchia coli~Escherichia coli~Escherichia coli (Migula 1895) Castellani and Chalmers 1919~Escherichia coli retron Ec107~Escherichia coli retron Ec67~Escherichia coli retron Ec79~Escherichia coli retron Ec86~Eschericia coli~
+####122
+ID:Q5XIA5_RAT~
+AC:Q5XIA5~
+DE:Alpha-N-acetylglucosaminidase~
+GN:primary@Coasy~
+OS:NCBI@10116~Buffalo rat~Gunn rats~Norway rat~Rattus PC12 clone IS~Rattus norvegicus~Rattus norvegicus8~Rattus norwegicus~Rattus rattiscus~Rattus sp. strain Wistar~Sprague-Dawley rat~Wistar rats~brown rat~laboratory rat~rat~rats~zitter rats~
+####123
+ID:Q61181_MOUSE~
+AC:Q61181~Q61034~Q61173~
+DE:SH2-containing inositol phosphatase SHIP~P145~P150~
+GN:primary@Inpp5d~synonym@Ship~
+OS:NCBI@10090~LK3 transgenic mice~Mus muscaris~Mus musculus~Mus sp. 129SV~house mouse~mice C57BL/6xCBA/CaJ hybrid~mouse~nude mice~transgenic mice~
+####124
+ID:Q64451_MOUSE~
+AC:Q64451~
+DE:P53 cellular tumor antigen~
+GN:primary@Trp53~synonym@p53~
+OS:NCBI@10090~LK3 transgenic mice~Mus muscaris~Mus musculus~Mus sp. 129SV~house mouse~mice C57BL/6xCBA/CaJ hybrid~mouse~nude mice~transgenic mice~
+####125
+ID:Q659H8_POPCA~
+AC:Q659H8~
+DE:Putative histidine-containing phosphotransfer protein 2~
+GN:primary@hpt2~
+OS:NCBI@3690~Canadian poplar~Carolina poplar~Populus deltoides X Populus nigra~Populus euramericana~Populus euramericana (Dode) Guinier~Populus x canadensis~Populus x canadensis Moench.~
+####126
+ID:Q66HD7_RAT~
+AC:Q66HD7~
+DE:Myocyte-specific enhancer factor 2A~
+GN:primary@LOC309957~
+OS:NCBI@10116~Buffalo rat~Gunn rats~Norway rat~Rattus PC12 clone IS~Rattus norvegicus~Rattus norvegicus8~Rattus norwegicus~Rattus rattiscus~Rattus sp. strain Wistar~Sprague-Dawley rat~Wistar rats~brown rat~laboratory rat~rat~rats~zitter rats~
+####127
+ID:Q68CJ9_HUMAN~
+AC:Q68CJ9~
+DE:ATF family transcription factor CREB-H~
+GN:primary@HYST1481~
+OS:NCBI@9606~Homo sapiens~human~man~
+####128
+ID:Q68F15_XENLA~
+AC:Q68F15~
+DE:MGC82934 protein~
+GN:primary@MGC82934~
+OS:NCBI@8355~African clawed frog~Xenopus laevis~Xenopus leavis~clawed frog~
+####129
+ID:Q6DBN1_ARATH~
+AC:Q6DBN1~
+DE:At4g08455~
+GN:ordered~locus@At4g08455~
+OS:NCBI@3702~Arabidopsis thaliana~Arabidopsis thaliana (L.) Heynh.~Arbisopsis thaliana~mouse-ear cress~thale cress~thale-cress~
+####130
+ID:Q6DCP4_XENLA~
+AC:Q6DCP4~
+DE:Nup98 protein~
+GN:primary@Nup98~
+OS:NCBI@8355~African clawed frog~Xenopus laevis~Xenopus leavis~clawed frog~
+####131
+ID:Q6DFZ1_MOUSE~
+AC:Q6DFZ1~
+DE:Golgi-specific brefeldin A-resistance factor 1~
+GN:primary@Gbf1~
+OS:NCBI@10090~LK3 transgenic mice~Mus muscaris~Mus musculus~Mus sp. 129SV~house mouse~mice C57BL/6xCBA/CaJ hybrid~mouse~nude mice~transgenic mice~
+####132
+ID:Q6EMB3_ARATH~
+AC:Q6EMB3~
+DE:26S proteasome subunit RPN8a~
+GN:primary@RPN8a~
+OS:NCBI@3702~Arabidopsis thaliana~Arabidopsis thaliana (L.) Heynh.~Arbisopsis thaliana~mouse-ear cress~thale cress~thale-cress~
+####133
+ID:Q6EMB5_ARATH~
+AC:Q6EMB5~
+DE:26S proteasome subunit RPN7~
+GN:primary@RPN7~
+OS:NCBI@3702~Arabidopsis thaliana~Arabidopsis thaliana (L.) Heynh.~Arbisopsis thaliana~mouse-ear cress~thale cress~thale-cress~
+####134
+ID:Q6GQ06_XENLA~
+AC:Q6GQ06~
+DE:LOC443594 protein~
+GN:primary@LOC443594~
+OS:NCBI@8355~African clawed frog~Xenopus laevis~Xenopus leavis~clawed frog~
+####135
+ID:Q6H8M0_ANASO~
+AC:Q6H8M0~
+DE:Cytochrome f precursor~
+GN:primary@petA~
+OS:NCBI@1168~Anabaena PCC7119~Anabaena sp. (ATCC 29151)~Anabaena sp. (PCC 7119)~Anabaena sp. (strain PCC 7119)~Anabaena sp. PCC 7119~Nostoc PCC7119~Nostoc sp. PCC 7119~Nostoc sp. PCC7119~
+####136
+ID:Q6NZM9_MOUSE~
+AC:Q6NZM9~
+DE:Histone deacetylase 4~
+GN:primary@Hdac4~
+OS:NCBI@10090~LK3 transgenic mice~Mus muscaris~Mus musculus~Mus sp. 129SV~house mouse~mice C57BL/6xCBA/CaJ hybrid~mouse~nude mice~transgenic mice~
+####137
+ID:Q6P198_HUMAN~
+AC:Q6P198~
+DE:GATS protein~
+GN:primary@GATS~
+OS:NCBI@9606~Homo sapiens~human~man~
+####138
+ID:Q6PDM6_MOUSE~
+AC:Q6PDM6~
+DE:Mcf.2 transforming sequence-like~
+GN:primary@Mcf2l~
+OS:NCBI@10090~LK3 transgenic mice~Mus muscaris~Mus musculus~Mus sp. 129SV~house mouse~mice C57BL/6xCBA/CaJ hybrid~mouse~nude mice~transgenic mice~
+####139
+ID:Q6Q099_ECOLI~
+AC:Q6Q099~
+DE:GroEL~
+GN:primary@mopA~
+OS:NCBI@562~"Bacillus coli" Migula 1895~"Bacterium coli commune" Escherich 1885~"Bacterium coli" (Migula 1895) Lehmann and Neumann 1896~Bacillus coli~Bacterium coli~Bacterium coli commune~Escherchia coli~Escherichia coli~Escherichia coli (Migula 1895) Castellani and Chalmers 1919~Escherichia coli retron Ec107~Escherichia coli retron Ec67~Escherichia coli retron Ec79~Escherichia coli retron Ec86~Eschericia coli~
+####140
+ID:Q6Q2C8_NEUCR~
+AC:Q6Q2C8~
+DE:Glycogenin~
+GN:primary@gnn~
+OS:NCBI@5141~Neurospora crassa~
+####141
+ID:Q6Q5G7_YEAST~
+AC:Q6Q5G7~
+DE:YJL203W~
+GN:primary@PRP21~
+OS:NCBI@4932~Candida robusta~Saccaromyces cerevisiae~Saccharomyces capensis~Saccharomyces cerevisiae~Saccharomyces italicus~Saccharomyces oviformis~Saccharomyces uvarum var. melibiosus~Saccharomyes cerevisiae~Sccharomyces cerevisiae~baker's yeast~brewer's yeast~lager beer yeast~yeast~
+####142
+ID:Q6Q835_ARATH~
+AC:Q6Q835~
+DE:Pot1-like protein~
+GN:
+OS:NCBI@3702~Arabidopsis thaliana~Arabidopsis thaliana (L.) Heynh.~Arbisopsis thaliana~mouse-ear cress~thale cress~thale-cress~
+####143
+ID:Q6QMH5_HUMAN~
+AC:Q6QMH5~
+DE:ARC/mediator transcriptional coactivator subunit~
+GN:primary@MED25~synonym@ARC92~
+OS:NCBI@9606~Homo sapiens~human~man~
+####144
+ID:Q6XBM5_ARATH~
+AC:Q6XBM5~
+DE:26S proteasome subunit RPN2b~
+GN:primary@RPN2b~
+OS:NCBI@3702~Arabidopsis thaliana~Arabidopsis thaliana (L.) Heynh.~Arbisopsis thaliana~mouse-ear cress~thale cress~thale-cress~
+####145
+ID:Q6XJF4_ARATH~
+AC:Q6XJF4~
+DE:26S proteasome subunit RPN12~
+GN:primary@RPN12~
+OS:NCBI@3702~Arabidopsis thaliana~Arabidopsis thaliana (L.) Heynh.~Arbisopsis thaliana~mouse-ear cress~thale cress~thale-cress~
+####146
+ID:Q6XJG7_ARATH~
+AC:Q6XJG7~
+DE:26S proteasome subunit RPN2a~
+GN:primary@RPN2a~
+OS:NCBI@3702~Arabidopsis thaliana~Arabidopsis thaliana (L.) Heynh.~Arbisopsis thaliana~mouse-ear cress~thale cress~thale-cress~
+####147
+ID:Q6XJG8_ARATH~
+AC:Q6XJG8~
+DE:26S proteasome subunit RPN1b~
+GN:primary@RPN1b~
+OS:NCBI@3702~Arabidopsis thaliana~Arabidopsis thaliana (L.) Heynh.~Arbisopsis thaliana~mouse-ear cress~thale cress~thale-cress~
+####148
+ID:Q6Y7W8_MOUSE~
+AC:Q6Y7W8~
+DE:Grb10 interacting GYF protein 2~
+GN:primary@Tnrc15~
+OS:NCBI@10090~LK3 transgenic mice~Mus muscaris~Mus musculus~Mus sp. 129SV~house mouse~mice C57BL/6xCBA/CaJ hybrid~mouse~nude mice~transgenic mice~
+####149
+ID:Q6Y7W9_MOUSE~
+AC:Q6Y7W9~
+DE:Grb10 interacting GYF protein 1~
+GN:primary@Perq1~
+OS:NCBI@10090~LK3 transgenic mice~Mus muscaris~Mus musculus~Mus sp. 129SV~house mouse~mice C57BL/6xCBA/CaJ hybrid~mouse~nude mice~transgenic mice~
+####150
+ID:Q708Y0_ARATH~
+AC:Q708Y0~
+DE:F-box protein~EIN3-binding F-box protein 2~
+GN:primary@ebf2~synonym@EBF2~ordered~locus@At5g25350~
+OS:NCBI@3702~Arabidopsis thaliana~Arabidopsis thaliana (L.) Heynh.~Arbisopsis thaliana~mouse-ear cress~thale cress~thale-cress~
+####151
+ID:Q70E31_CHICK~
+AC:Q70E31~
+DE:Dystroglycan~
+GN:primary@DAG1~
+OS:NCBI@9031~Gallus domesticus~Gallus gallus~Gallus gallus domesticus~bantam~chicken~chickens~dwarf Leghorn chickens~red junglefowl~
+####152
+ID:Q70KF4_MOUSE~
+AC:Q70KF4~
+DE:Myospryn protein~
+GN:primary@Cmya5~
+OS:NCBI@10090~LK3 transgenic mice~Mus muscaris~Mus musculus~Mus sp. 129SV~house mouse~mice C57BL/6xCBA/CaJ hybrid~mouse~nude mice~transgenic mice~
+####153
+ID:Q711G4_ARATH~
+AC:Q711G4~
+DE:Cullin 3B~
+GN:primary@cul3B~
+OS:NCBI@3702~Arabidopsis thaliana~Arabidopsis thaliana (L.) Heynh.~Arbisopsis thaliana~mouse-ear cress~thale cress~thale-cress~
+####154
+ID:Q75SP2_HUMAN~
+AC:Q75SP2~
+DE:Survivin-3B protein~
+GN:primary@survivin-3B~
+OS:NCBI@9606~Homo sapiens~human~man~
+####155
+ID:Q765B0_9GAMM~
+AC:Q765B0~
+DE:EC@EC 5.2.1.8~Peptidylprolyl cis-trans isomerase~
+GN:primary@fklB~
+OS:NCBI@117911~Shewanella sp. SIB1~
+####156
+ID:Q7JFY6_EQUAS~
+AC:Q7JFY6~
+DE:Ryanodine receptor~
+GN:
+OS:NCBI@9793~African ass~African wild ass~Equus africanus~Equus asinus~Somali wild ass~ass~domestic ass~donkey~
+####157
+ID:Q7RTN6_HUMAN~
+AC:Q7RTN6~
+DE:STE20-related adaptor protein~
+GN:
+OS:NCBI@9606~Homo sapiens~human~man~
+####158
+ID:Q7YTW6_TRYBB~
+AC:Q7YTW6~
+DE:GPI transamidase component GPI16~
+GN:primary@TbGPI16~
+OS:NCBI@5702~Trypanosoma (Trypanozoon) brucei brucei~Trypanosoma brucei brucei~
+####159
+ID:Q7Z311_HUMAN~
+AC:Q7Z311~
+DE:Novel protein~Hypothetical protein DKFZp686D18202~Hypothetical protein DKFZp686L05272~
+GN:primary@DKFZp686L05272~synonym@DKFZp686D18202~synonym@RP3-423B22.2~ORF@RP3-423B22.2-002~
+OS:NCBI@9606~Homo sapiens~human~man~
+####160
+ID:Q7ZZY7_XENLA~
+AC:Q7ZZY7~
+DE:Rae1/Gle2~
+GN:primary@Rae1/Gle2~
+OS:NCBI@8355~African clawed frog~Xenopus laevis~Xenopus leavis~clawed frog~
+####161
+ID:Q804T2_XENLA~
+AC:Q804T2~
+DE:Ser/Thr protein kinase PAR-1A~
+GN:
+OS:NCBI@8355~African clawed frog~Xenopus laevis~Xenopus leavis~clawed frog~
+####162
+ID:Q80WM9_MOUSE~
+AC:Q80WM9~
+DE:Tumor necrosis factor receptor superfamily member 14 precursor~
+GN:primary@Tnfrsf14~
+OS:NCBI@10090~LK3 transgenic mice~Mus muscaris~Mus musculus~Mus sp. 129SV~house mouse~mice C57BL/6xCBA/CaJ hybrid~mouse~nude mice~transgenic mice~
+####163
+ID:Q812E3_MOUSE~
+AC:Q812E3~
+DE:Synaptotagmin-like homologue lacking C2 domains-b~
+GN:primary@Slac2b~synonym@Exph5~synonym@slac2-b~
+OS:NCBI@10090~LK3 transgenic mice~Mus muscaris~Mus musculus~Mus sp. 129SV~house mouse~mice C57BL/6xCBA/CaJ hybrid~mouse~nude mice~transgenic mice~
+####164
+ID:Q84LL5_ARATH~
+AC:Q84LL5~
+DE:Cullin 4~
+GN:primary@cul4~
+OS:NCBI@3702~Arabidopsis thaliana~Arabidopsis thaliana (L.) Heynh.~Arbisopsis thaliana~mouse-ear cress~thale cress~thale-cress~
+####165
+ID:Q86S29_CAEEL~
+AC:Q86S29~
+DE:Hypothetical protein T10B5.5~
+GN:ORF@T10B5.5~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####166
+ID:Q86XR7_HUMAN~
+AC:Q86XR7~
+DE:TIRAP3a~TICAM2 protein~TIRAP3a short form~TRIF-related adapter molecule~Putative NFkB activating protein~TIR-containing adapter molecule-2~TIR domain-containing adapter protein~
+GN:primary@TRAM~synonym@TICAM-2~synonym@TICAM2~synonym@TIRAP3~
+OS:NCBI@9606~Homo sapiens~human~man~
+####167
+ID:Q8AX85_XENLA~
+AC:Q8AX85~
+DE:RNA-binding protein VgRBP71~
+GN:
+OS:NCBI@8355~African clawed frog~Xenopus laevis~Xenopus leavis~clawed frog~
+####168
+ID:Q8C0E5_MOUSE~
+AC:Q8C0E5~
+DE:CONNECTION TO IKK AND SAPK/JNK~13 days embryo male testis cDNA, RIKEN full-length enriched library, clone:6030451B12 product:similar to ADAPTER PROTEIN CIKS~
+GN:primary@Traf3ip2~synonym@AI429613~
+OS:NCBI@10090~LK3 transgenic mice~Mus muscaris~Mus musculus~Mus sp. 129SV~house mouse~mice C57BL/6xCBA/CaJ hybrid~mouse~nude mice~transgenic mice~
+####169
+ID:Q8C1S0_MOUSE~
+AC:Q8C1S0~
+DE:Lung cancer metastasis-related protein 1 homolog~Adult female placenta cDNA, RIKEN full-length enriched library, clone:1600002M17 product:RIKEN cDNA 2410018M14~ES cells cDNA, RIKEN full-length enriched library, clone:2410170P04 product:Hypothetical proline-rich region/Bipartite nuclear localization signal containing protein, full insert sequence~17 days embryo heart cDNA, RIKEN full-length enriched library, clone:I920055E05 product:Hypothetical proline-rich region/Bipartite nuclear localization signal containing protein, full insert sequence~
+GN:primary@Med19~
+OS:NCBI@10090~LK3 transgenic mice~Mus muscaris~Mus musculus~Mus sp. 129SV~house mouse~mice C57BL/6xCBA/CaJ hybrid~mouse~nude mice~transgenic mice~
+####170
+ID:Q8CGK3_MOUSE~
+AC:Q8CGK3~
+DE:Mitochondrial ATP-dependent protease Lon precursor~
+GN:primary@Prss15~
+OS:NCBI@10090~LK3 transgenic mice~Mus muscaris~Mus musculus~Mus sp. 129SV~house mouse~mice C57BL/6xCBA/CaJ hybrid~mouse~nude mice~transgenic mice~
+####171
+ID:Q8CHI6_RAT~
+AC:Q8CHI6~
+DE:SKAP55 adaptor protein~
+GN:
+OS:NCBI@10116~Buffalo rat~Gunn rats~Norway rat~Rattus PC12 clone IS~Rattus norvegicus~Rattus norvegicus8~Rattus norwegicus~Rattus rattiscus~Rattus sp. strain Wistar~Sprague-Dawley rat~Wistar rats~brown rat~laboratory rat~rat~rats~zitter rats~
+####172
+ID:Q8GLI4_SYNP7~
+AC:Q8GLI4~
+DE:Light dependent period~
+GN:primary@ldpA~ordered~locus@Synpcc7942_0624~
+OS:NCBI@1140~Anacystis nidulans~Anacystis nidulans R2~Anacystis nidulans R2-SPc'~Syncchococcus PCC7942~Synechococcus 7942~Synechococcus PCC 7942~Synechococcus PCC7942~Synechococcus elongatus PCC 7942~Synechococcus sp. (PCC 7942)~Synechococcus sp. (strain PCC 7942)~Synechococcus sp. IAM M-200~Synechococcus sp. PCC 7942~Synechococcus sp. PCC7942~Synechocystis sp. PCC 7942~
+####173
+ID:Q8GUB3_MESCR~
+AC:Q8GUB3~
+DE:EC@EC 3.6.3.6~Putative vacuolar ATPase subunit H~
+GN:primary@vha-H~
+OS:NCBI@3544~Mesembryanthemum crystallinum~Mesembryanthemum crystallinum L.~common iceplant~
+####174
+ID:Q8GUB4_MESCR~
+AC:Q8GUB4~
+DE:EC@EC 3.6.3.6~Vacuolar ATPase subunit G~
+GN:primary@vha-G~
+OS:NCBI@3544~Mesembryanthemum crystallinum~Mesembryanthemum crystallinum L.~common iceplant~
+####175
+ID:Q8GUB5_MESCR~
+AC:Q8GUB5~
+DE:EC@EC 3.6.3.14~Vacuolar ATPase subunit B~
+GN:primary@vha-B~
+OS:NCBI@3544~Mesembryanthemum crystallinum~Mesembryanthemum crystallinum L.~common iceplant~
+####176
+ID:Q8GW78_ARATH~
+AC:Q8GW78~
+DE:Hypothetical protein At4g12060/F16J13_130~
+GN:primary@At4g12060/F16J13_130~ordered~locus@At4g12060~
+OS:NCBI@3702~Arabidopsis thaliana~Arabidopsis thaliana (L.) Heynh.~Arbisopsis thaliana~mouse-ear cress~thale cress~thale-cress~
+####177
+ID:Q8H195_ARATH~
+AC:Q8H195~
+DE:26S proteasome AAA-ATPase subunit RPT5a~
+GN:primary@At3g05530~
+OS:NCBI@3702~Arabidopsis thaliana~Arabidopsis thaliana (L.) Heynh.~Arbisopsis thaliana~mouse-ear cress~thale cress~thale-cress~
+####178
+ID:Q8I4B8_CAEEL~
+AC:Q8I4B8~
+DE:Hypothetical protein~
+GN:ORF@Y69H2.3~ORF@Y69H2.3d~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####179
+ID:Q8IEW0_9TRYP~
+AC:Q8IEW0~
+DE:Exosome-associated protein 4~
+GN:primary@EAP4~
+OS:NCBI@5691~Trypanosoma (Trypanozoon) brucei~Trypanosoma brucei~Trypanosoma brucei subgroup~
+####180
+ID:Q8ITW7_CAEEL~
+AC:Q8ITW7~
+DE:Hypothetical protein~
+GN:ORF@H05C05.1~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####181
+ID:Q8IZD1_HUMAN~
+AC:Q8IZD1~
+DE:Lung cancer metastasis-related protein~
+GN:primary@LCMR1~
+OS:NCBI@9606~Homo sapiens~human~man~
+####182
+ID:Q8JZZ9_MOUSE~
+AC:Q8JZZ9~
+DE:Sv2b protein~
+GN:primary@Sv2b~
+OS:NCBI@10090~LK3 transgenic mice~Mus muscaris~Mus musculus~Mus sp. 129SV~house mouse~mice C57BL/6xCBA/CaJ hybrid~mouse~nude mice~transgenic mice~
+####183
+ID:Q8K0K3_MOUSE~
+AC:Q8K0K3~
+DE:Gli2 protein~GLI2~
+GN:primary@Gli2~
+OS:NCBI@10090~LK3 transgenic mice~Mus muscaris~Mus musculus~Mus sp. 129SV~house mouse~mice C57BL/6xCBA/CaJ hybrid~mouse~nude mice~transgenic mice~
+####184
+ID:Q8L765_ARATH~
+AC:Q8L765~
+DE:Hypothetical protein At5g19000~
+GN:primary@At5g19000~
+OS:NCBI@3702~Arabidopsis thaliana~Arabidopsis thaliana (L.) Heynh.~Arbisopsis thaliana~mouse-ear cress~thale cress~thale-cress~
+####185
+ID:Q8L770_ARATH~
+AC:Q8L770~
+DE:ATP-dependent Clp protease proteolytic subunit (ClpR3), putative~
+GN:ordered~locus@At1g09130~
+OS:NCBI@3702~Arabidopsis thaliana~Arabidopsis thaliana (L.) Heynh.~Arbisopsis thaliana~mouse-ear cress~thale cress~thale-cress~
+####186
+ID:Q8L7F2_ARATH~
+AC:Q8L7F2~
+DE:ATP3_ARATH~Mitochondrial F1-ATPase, gamma subunit~
+GN:primary@At2g33040~
+OS:NCBI@3702~Arabidopsis thaliana~Arabidopsis thaliana (L.) Heynh.~Arbisopsis thaliana~mouse-ear cress~thale cress~thale-cress~
+####187
+ID:Q8MPG3_9TRYP~
+AC:Q8MPG3~
+DE:Exosome-associated protein 2~
+GN:primary@EAP2~ORF@Tb11.01.8320~
+OS:NCBI@5691~Trypanosoma (Trypanozoon) brucei~Trypanosoma brucei~Trypanosoma brucei subgroup~
+####188
+ID:Q8MQ25_CAEEL~
+AC:Q8MQ25~
+DE:Hypothetical protein~
+GN:ORF@F54D8.6~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####189
+ID:Q8MSX2_DROME~
+AC:Q8MSX2~Q9VH74~
+DE:LD15729p~RE38674p~CG9473-PA, isoform A~Cg9473-pb, isoform b~
+GN:primary@MED6~synonym@Med6~ORF@CG9473~ORF@Dmel_CG9473~
+OS:NCBI@7227~Drosophila melangaster~Drosophila melanogaster~fruit fly~
+####190
+ID:Q8MY88_DROME~
+AC:Q8MY88~
+DE:LP03784p~CG12919-PB, isoform B~TNF superfamily ligand, Eiger~Tumor necrosis factor family member DT1~
+GN:primary@egr~synonym@dt1~synonym@eiger~ORF@CG12919~ORF@Dmel_CG12919~
+OS:NCBI@7227~Drosophila melangaster~Drosophila melanogaster~fruit fly~
+####191
+ID:Q8N3X1_HUMAN~
+AC:Q8N3X1~
+DE:Formin binding protein 4~
+GN:primary@FNBP4~
+OS:NCBI@9606~Homo sapiens~human~man~
+####192
+ID:Q8N643_HUMAN~
+AC:Q8N643~
+DE:ADAMTSL4 protein~HYOTHETICAL~
+GN:primary@ADAMTSL4~
+OS:NCBI@9606~Homo sapiens~human~man~
+####193
+ID:Q8N707_HUMAN~
+AC:Q8N707~
+DE:CTTN protein~
+GN:primary@CTTN~
+OS:NCBI@9606~Homo sapiens~human~man~
+####194
+ID:Q8R509_MOUSE~
+AC:Q8R509~
+DE:Polypirimidine tract binding protein~MPTB1~POLYPIRIMIDINE TRACT BINDING~
+GN:primary@Ptbp1~synonym@mPTB1~
+OS:NCBI@10090~LK3 transgenic mice~Mus muscaris~Mus musculus~Mus sp. 129SV~house mouse~mice C57BL/6xCBA/CaJ hybrid~mouse~nude mice~transgenic mice~
+####195
+ID:Q8R525_RAT~
+AC:Q8R525~
+DE:Gamma-adaptin~
+GN:primary@Ap1g1~
+OS:NCBI@10116~Buffalo rat~Gunn rats~Norway rat~Rattus PC12 clone IS~Rattus norvegicus~Rattus norvegicus8~Rattus norwegicus~Rattus rattiscus~Rattus sp. strain Wistar~Sprague-Dawley rat~Wistar rats~brown rat~laboratory rat~rat~rats~zitter rats~
+####196
+ID:Q8RWF0_ARATH~
+AC:Q8RWF0~
+DE:26S proteasome subunit RPN9a~26S proteasome subunit-like protein~
+GN:primary@RPN9a~ordered~locus@At5g45620~
+OS:NCBI@3702~Arabidopsis thaliana~Arabidopsis thaliana (L.) Heynh.~Arbisopsis thaliana~mouse-ear cress~thale cress~thale-cress~
+####197
+ID:Q8S950_TOBAC~
+AC:Q8S950~
+DE:Kinesin-like protein NACK1~
+GN:primary@nack1~
+OS:NCBI@4097~American tobacco~Nicotania tabacum~Nicotiana tabacum~common tobacco~tobacco~
+####198
+ID:Q8SA64_9ROSI~
+AC:Q8SA64~
+DE:NIMA-related protein kinase~
+GN:
+OS:NCBI@80863~Populus alba x Populus tremula~Populus alba x tremula~Populus tremula x Populus alba~Populus x canescens~Populus x canescens (Aiton) Sm.~gray poplar~
+####199
+ID:Q8SX14_DROME~
+AC:Q8SX14~
+DE:RH13158p~
+GN:primary@Iswi~ORF@CG8625~
+OS:NCBI@7227~Drosophila melangaster~Drosophila melanogaster~fruit fly~
+####200
+ID:Q8SXH3_DROME~
+AC:Q8SXH3~
+DE:RE50350p~
+GN:primary@eIF4AIII~ORF@CG7483~
+OS:NCBI@7227~Drosophila melangaster~Drosophila melanogaster~fruit fly~
+####201
+ID:Q8T8N8_CAEEL~
+AC:Q8T8N8~
+DE:Hypothetical protein~
+GN:ORF@T08B2.7~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####202
+ID:Q8TD23_HUMAN~
+AC:Q8TD23~
+DE:TRAF6-binding zinc finger protein~TRAF6-BINDING ZINC FINGER~
+GN:
+OS:NCBI@9606~Homo sapiens~human~man~
+####203
+ID:Q8VWK0_ARATH~
+AC:Q8VWK0~
+DE:AT5g64760/MVP7_9~26S proteasome subunit RPN5b~
+GN:primary@RPN5b~ordered~locus@At5g64760~
+OS:NCBI@3702~Arabidopsis thaliana~Arabidopsis thaliana (L.) Heynh.~Arbisopsis thaliana~mouse-ear cress~thale cress~thale-cress~
+####204
+ID:Q8VWK4_ARATH~
+AC:Q8VWK4~
+DE:At1g49950~MYB transcription factor~Telomere repeat binding factor 1~Hypothetical protein At1g49950; F2J10.16~
+GN:primary@TRB1~synonym@At1g49950/F2J10.16~ordered~locus@At1g49950~
+OS:NCBI@3702~Arabidopsis thaliana~Arabidopsis thaliana (L.) Heynh.~Arbisopsis thaliana~mouse-ear cress~thale cress~thale-cress~
+####205
+ID:Q8VX38_ARATH~
+AC:Q8VX38~
+DE:Telomere repeat binding factor 2~
+GN:primary@TRB2~
+OS:NCBI@3702~Arabidopsis thaliana~Arabidopsis thaliana (L.) Heynh.~Arbisopsis thaliana~mouse-ear cress~thale cress~thale-cress~
+####206
+ID:Q8WRS2_DROME~
+AC:Q8WRS2~
+DE:Stardust protein GUK1 isoform~
+GN:primary@sdt~ORF@CG15339~
+OS:NCBI@7227~Drosophila melangaster~Drosophila melanogaster~fruit fly~
+####207
+ID:Q8WUM6_HUMAN~
+AC:Q8WUM6~
+DE:Integrin, beta 1~Integrin beta 1, isoform 1A~Fibronectin receptor, beta polypeptide, antigen CD29 includes MDF2, MSK12~
+GN:primary@ITGB1~ORF@RP11-479G22.2-001~
+OS:NCBI@9606~Homo sapiens~human~man~
+####208
+ID:Q8WWW8_HUMAN~
+AC:Q8WWW8~
+DE:GAB3~GAB3~GRB2-ASSOCIATED BINDING PROTEIN 3~
+GN:primary@GAB3~
+OS:NCBI@9606~Homo sapiens~human~man~
+####209
+ID:Q90888_CHICK~
+AC:Q90888~
+DE:MafB~
+GN:
+OS:NCBI@9031~Gallus domesticus~Gallus gallus~Gallus gallus domesticus~bantam~chicken~chickens~dwarf Leghorn chickens~red junglefowl~
+####210
+ID:Q90ZW5_CHICK~
+AC:Q90ZW5~
+DE:Spalt 2 protein~
+GN:primary@SAL2~
+OS:NCBI@9031~Gallus domesticus~Gallus gallus~Gallus gallus domesticus~bantam~chicken~chickens~dwarf Leghorn chickens~red junglefowl~
+####211
+ID:Q91569_XENLA~
+AC:Q91569~
+DE:Protein kinase C subspecies lambda/iota~
+GN:
+OS:NCBI@8355~African clawed frog~Xenopus laevis~Xenopus leavis~clawed frog~
+####212
+ID:Q91YX7_MOUSE~
+AC:Q91YX7~
+DE:RAS p21 protein activator 1~
+GN:primary@Rasa1~
+OS:NCBI@10090~LK3 transgenic mice~Mus muscaris~Mus musculus~Mus sp. 129SV~house mouse~mice C57BL/6xCBA/CaJ hybrid~mouse~nude mice~transgenic mice~
+####213
+ID:Q91ZK3_MOUSE~
+AC:Q91ZK3~
+DE:PRD class homeobox protein~Orthodenticle homolog 3, isoform b~Paired-like homeobox protein DMBX1~
+GN:primary@Dmbx1~synonym@Otx3~
+OS:NCBI@10090~LK3 transgenic mice~Mus muscaris~Mus musculus~Mus sp. 129SV~house mouse~mice C57BL/6xCBA/CaJ hybrid~mouse~nude mice~transgenic mice~
+####214
+ID:Q92171_CHICK~
+AC:Q92171~Q90786~
+DE:C-Maf long form~
+GN:
+OS:NCBI@9031~Gallus domesticus~Gallus gallus~Gallus gallus domesticus~bantam~chicken~chickens~dwarf Leghorn chickens~red junglefowl~
+####215
+ID:Q93413_CAEEL~
+AC:Q93413~
+DE:Hypothetical protein drh-3~RNA HELICASE LIKE~
+GN:primary@drh-3~ORF@D2005.5~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####216
+ID:Q93537_CAEEL~
+AC:Q93537~
+DE:Hypothetical protein~TRANSCRIPTIONAL ACTIVATOR PROTEIN PUR ALPHA LIKE~
+GN:ORF@F20D1.4~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####217
+ID:Q93WL3_ARATH~
+AC:Q93WL3~
+DE:Hypothetical protein~Hypothetical protein At4g25370~
+GN:ordered~locus@At4g25370~
+OS:NCBI@3702~Arabidopsis thaliana~Arabidopsis thaliana (L.) Heynh.~Arbisopsis thaliana~mouse-ear cress~thale cress~thale-cress~
+####218
+ID:Q93ZD4_ARATH~
+AC:Q93ZD4~
+DE:At1g12410/F5O11_7~
+GN:
+OS:NCBI@3702~Arabidopsis thaliana~Arabidopsis thaliana (L.) Heynh.~Arbisopsis thaliana~mouse-ear cress~thale cress~thale-cress~
+####219
+ID:Q940H6_ARATH~
+AC:Q940H6~
+DE:Protein kinase-like protein~
+GN:primary@At4g33950/F17I5.140~synonym@ost1~ordered~locus@At4g33950~
+OS:NCBI@3702~Arabidopsis thaliana~Arabidopsis thaliana (L.) Heynh.~Arbisopsis thaliana~mouse-ear cress~thale cress~thale-cress~
+####220
+ID:Q94230_CAEEL~
+AC:Q94230~
+DE:Pur alpha like protein protein 1~PLP-1~
+GN:primary@plp-1~ORF@F45E4.2~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####221
+ID:Q94418_CAEEL~
+AC:Q94418~
+DE:Hypothetical protein~
+GN:ORF@ZK858.2~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####222
+ID:Q94B60_ARATH~
+AC:Q94B60~
+DE:At5g45390~ATP-dependent Clp protease-like protein~
+GN:primary@MFC19.5~ordered~locus@At5g45390~
+OS:NCBI@3702~Arabidopsis thaliana~Arabidopsis thaliana (L.) Heynh.~Arbisopsis thaliana~mouse-ear cress~thale cress~thale-cress~
+####223
+ID:Q94BQ2_ARATH~
+AC:Q94BQ2~
+DE:Putative 26S proteasome AAA-ATPase subunit RPT6a~
+GN:ordered~locus@At5g20000~
+OS:NCBI@3702~Arabidopsis thaliana~Arabidopsis thaliana (L.) Heynh.~Arbisopsis thaliana~mouse-ear cress~thale cress~thale-cress~
+####224
+ID:Q94JY6_ARATH~
+AC:Q94JY6~
+DE:NClpP3~ATP-dependent Clp protease~ATP-dependent Clp protease; nClpP3~
+GN:primary@T12I7.12~synonym@At1g66670/T12I7.12~
+OS:NCBI@3702~Arabidopsis thaliana~Arabidopsis thaliana (L.) Heynh.~Arbisopsis thaliana~mouse-ear cress~thale cress~thale-cress~
+####225
+ID:Q95QU3_CAEEL~
+AC:Q95QU3~
+DE:Hypothetical protein~
+GN:ORF@C26E6.7~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####226
+ID:Q95XS0_CAEEL~
+AC:Q95XS0~
+DE:Hypothetical protein~
+GN:primary@eri-5~ORF@Y38F2AR.1~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####227
+ID:Q95XU3_CAEEL~
+AC:Q95XU3~
+DE:Ww domain protein (E3 ubiquitin ligase) protein 1, isoform b~
+GN:primary@wwp-1~ORF@Y65B4BR.4~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####228
+ID:Q95Z09_9TRYP~
+AC:Q95Z09~
+DE:EC@EC 3.1.13.-~Rrp41p homologue (Ribosomal RNA processing protein 41B)~
+GN:primary@RRP41B~ORF@Tb927.2.2180~
+OS:NCBI@5691~Trypanosoma (Trypanozoon) brucei~Trypanosoma brucei~Trypanosoma brucei subgroup~
+####229
+ID:Q95Z10_9TRYP~
+AC:Q95Z10~
+DE:Rrp6p homologue~
+GN:primary@RRP6~
+OS:NCBI@5691~Trypanosoma (Trypanozoon) brucei~Trypanosoma brucei~Trypanosoma brucei subgroup~
+####230
+ID:Q95Z11_9TRYP~
+AC:Q95Z11~
+DE:Rrp45p homologue~
+GN:primary@RRP45~
+OS:NCBI@5691~Trypanosoma (Trypanozoon) brucei~Trypanosoma brucei~Trypanosoma brucei subgroup~
+####231
+ID:Q95Z13_9TRYP~
+AC:Q95Z13~
+DE:Rrp41p homologue~
+GN:primary@RRP41A~
+OS:NCBI@5691~Trypanosoma (Trypanozoon) brucei~Trypanosoma brucei~Trypanosoma brucei subgroup~
+####232
+ID:Q95Z14_9TRYP~
+AC:Q95Z14~
+DE:Rrp40p homologue~Exosome complex exonuclease RRP40~
+GN:primary@RRP40~ORF@Tb09.160.5160~
+OS:NCBI@5691~Trypanosoma (Trypanozoon) brucei~Trypanosoma brucei~Trypanosoma brucei subgroup~
+####233
+ID:Q95Z16_9TRYP~
+AC:Q95Z16~
+DE:Rrp4p homologue~
+GN:primary@RRP4~
+OS:NCBI@5691~Trypanosoma (Trypanozoon) brucei~Trypanosoma brucei~Trypanosoma brucei subgroup~
+####234
+ID:Q95Z17_9TRYP~
+AC:Q95Z17~
+DE:Csl4p homologue~
+GN:primary@CSL4~
+OS:NCBI@5691~Trypanosoma (Trypanozoon) brucei~Trypanosoma brucei~Trypanosoma brucei subgroup~
+####235
+ID:Q965G7_CAEEL~
+AC:Q965G7~
+DE:Hypothetical protein T06A10.3~
+GN:ORF@T06A10.3~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####236
+ID:Q965M5_CAEEL~
+AC:Q965M5~
+DE:Hypothetical protein~
+GN:ORF@C17F4.8~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####237
+ID:Q965Q1_CAEEL~
+AC:Q965Q1~
+DE:Hypothetical protein Y22D7AL.10~
+GN:ORF@Y22D7AL.10~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####238
+ID:Q966M3_CAEEL~
+AC:Q966M3~
+DE:Acyl coa dehydrogenase protein 1, isoform a~
+GN:primary@acdh-1~ORF@C55B7.4~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####239
+ID:Q96EX0_HUMAN~
+AC:Q96EX0~
+DE:SORBS2 protein~
+GN:primary@SORBS2~
+OS:NCBI@9606~Homo sapiens~human~man~
+####240
+ID:Q96GA0_HUMAN~
+AC:Q96GA0~
+DE:TICAM1 protein~
+GN:primary@TICAM1~
+OS:NCBI@9606~Homo sapiens~human~man~
+####241
+ID:Q96NY8_HUMAN~
+AC:Q96NY8~
+DE:Nectin 4~PVRL4 protein~Poliovirus receptor-related 4~
+GN:primary@PVRL4~ORF@RP11-544M22.7-001~
+OS:NCBI@9606~Homo sapiens~human~man~
+####242
+ID:Q96RR9_HUMAN~
+AC:Q96RR9~
+DE:AT-hook protein AKNA~
+GN:
+OS:NCBI@9606~Homo sapiens~human~man~
+####243
+ID:Q96US6_NEUCR~
+AC:Q96US6~
+DE:EC@EC 2.4.1.11~Glycogen synthase~
+GN:primary@gsn~
+OS:NCBI@5141~Neurospora crassa~
+####244
+ID:Q9A3A9_CAUCR~
+AC:Q9A3A9~
+DE:Hypothetical protein CC3295~
+GN:ordered~locus@CC3295~
+OS:NCBI@155892~Caulobacter crescens~Caulobacter crescentus~Caulobacter crescentus Poindexter 1964~Caulobacter vibrioides~Caulobacter vibrioides Henrici and Johnson 1935~Caulobacter vibroides~
+####245
+ID:Q9AVU8_MESCR~
+AC:Q9AVU8~
+DE:EC@EC 3.6.1.34~Putative vacuolar ATP Synthase subunit A~
+GN:primary@vatA~
+OS:NCBI@3544~Mesembryanthemum crystallinum~Mesembryanthemum crystallinum L.~common iceplant~
+####246
+ID:Q9BKS1_CAEEL~
+AC:Q9BKS1~
+DE:Elongin c protein 1~ELC-1~
+GN:primary@elc-1~ORF@Y82E9BR.15~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####247
+ID:Q9BTB0_HUMAN~
+AC:Q9BTB0~
+DE:Ret proto-oncogene, isoform c~
+GN:primary@RET~
+OS:NCBI@9606~Homo sapiens~human~man~
+####248
+ID:Q9BTT4_HUMAN~
+AC:Q9BTT4~
+DE:L6~Hypothetical protein MED10~Transformation-related protein 17~Transformation-related protein 20~
+GN:primary@MED10~synonym@TRG17~synonym@TRG20~
+OS:NCBI@9606~Homo sapiens~human~man~
+####249
+ID:Q9BUE0_HUMAN~
+AC:Q9BUE0~
+DE:Yeast~P28b protein~MED18 protein~Mediator of RNA polymerase II transcription, subunit 18 homolog~
+GN:primary@MED18~synonym@p28b~ORF@RP5-1092A3.3-001~
+OS:NCBI@9606~Homo sapiens~human~man~
+####250
+ID:Q9BZL4_HUMAN~
+AC:Q9BZL4~Q9NT00~
+DE:Myosin binding subunit 85~PPP1R12C~PROTEIN PHOSPHATASE 1, REGULATORY (INHIBITOR) SUBUNIT 12C~Q9NT00~
+GN:primary@PPP1R12C~
+OS:NCBI@9606~Homo sapiens~human~man~
+####251
+ID:Q9C5T5_ARATH~
+AC:Q9C5T5~
+DE:SKP1-like protein ASK10~
+GN:primary@ASK10~
+OS:NCBI@3702~Arabidopsis thaliana~Arabidopsis thaliana (L.) Heynh.~Arbisopsis thaliana~mouse-ear cress~thale cress~thale-cress~
+####252
+ID:Q9C5U3_ARATH~
+AC:Q9C5U3~
+DE:At5g19990~AtSUG1 protein~Hypothetical protein~
+GN:primary@AtSUG1~ordered~locus@At5g19990~
+OS:NCBI@3702~Arabidopsis thaliana~Arabidopsis thaliana (L.) Heynh.~Arbisopsis thaliana~mouse-ear cress~thale cress~thale-cress~
+####253
+ID:Q9D1P4_MOUSE~
+AC:Q9D1P4~
+DE:Cysteine and histidine-rich domain (CHORD)-containing, zinc-binding protein 1~Adult male testis cDNA, RIKEN full-length enriched library, clone:4921530N14 product:cysteine and histidine-rich domain (CHORD)-containing, zinc-binding protein 1, full insert sequence~18-day embryo whole body cDNA, RIKEN full-length enriched library, clone:1110001O09 product:cysteine and histidine-rich domain (CHORD)-containing, zinc-binding protein 1, full insert sequence~CHORDC1~RIKEN CDNA 1110001O09 GENE~
+GN:primary@Chordc1~
+OS:NCBI@10090~LK3 transgenic mice~Mus muscaris~Mus musculus~Mus sp. 129SV~house mouse~mice C57BL/6xCBA/CaJ hybrid~mouse~nude mice~transgenic mice~
+####254
+ID:Q9DEU4_XENLA~
+AC:Q9DEU4~
+DE:CCAAT box transcription factor p122 subunit~
+GN:primary@CBTF122~
+OS:NCBI@8355~African clawed frog~Xenopus laevis~Xenopus leavis~clawed frog~
+####255
+ID:Q9DF71_XENLA~
+AC:Q9DF71~
+DE:Imitation switch ISWI~
+GN:primary@ISWI~
+OS:NCBI@8355~African clawed frog~Xenopus laevis~Xenopus leavis~clawed frog~
+####256
+ID:Q9DF77_CHICK~
+AC:Q9DF77~
+DE:Spalt 1~
+GN:primary@SAL1~
+OS:NCBI@9031~Gallus domesticus~Gallus gallus~Gallus gallus domesticus~bantam~chicken~chickens~dwarf Leghorn chickens~red junglefowl~
+####257
+ID:Q9DUM3_HHV8~
+AC:Q9DUM3~
+DE:Latent nuclear antigen~
+GN:
+OS:NCBI@37296~HHV8~Human herpesvirus 8~KSHV~Kaposi's sarcoma-associated herpes-like virus~Kaposi's sarcoma-associated herpesvirus~Kaposi's sarcoma-associated herpesvirus - Human herpesvirus 8~Kaposi's sarcoma-associated herpesvirus KSHV~Kaposi's sarcoma-associated human herpes virus~Karposi's sarcoma-associated herpes-like virus~
+####258
+ID:Q9ERT0_MOUSE~
+AC:Q9ERT0~
+DE:Transcription cofactor p300~
+GN:
+OS:NCBI@10090~LK3 transgenic mice~Mus muscaris~Mus musculus~Mus sp. 129SV~house mouse~mice C57BL/6xCBA/CaJ hybrid~mouse~nude mice~transgenic mice~
+####259
+ID:Q9ES52_MOUSE~
+AC:Q9ES52~
+DE:SH2-containing inositol 5-phosphatase~Inositol polyphosphate-5-phosphatase D~
+GN:primary@Inpp5d~synonym@Ship~
+OS:NCBI@10090~LK3 transgenic mice~Mus muscaris~Mus musculus~Mus sp. 129SV~house mouse~mice C57BL/6xCBA/CaJ hybrid~mouse~nude mice~transgenic mice~
+####260
+ID:Q9ES53_RAT~
+AC:Q9ES53~
+DE:UFD1~
+GN:primary@Ufd1l~
+OS:NCBI@10116~Buffalo rat~Gunn rats~Norway rat~Rattus PC12 clone IS~Rattus norvegicus~Rattus norvegicus8~Rattus norwegicus~Rattus rattiscus~Rattus sp. strain Wistar~Sprague-Dawley rat~Wistar rats~brown rat~laboratory rat~rat~rats~zitter rats~
+####261
+ID:Q9FIB6_ARATH~
+AC:Q9FIB6~
+DE:26S proteasome subunit RPN5a~26S proteasome p55 protein-like~
+GN:primary@RPN5a~ordered~locus@At5g09900~
+OS:NCBI@3702~Arabidopsis thaliana~Arabidopsis thaliana (L.) Heynh.~Arbisopsis thaliana~mouse-ear cress~thale cress~thale-cress~
+####262
+ID:Q9FPT4_ARATH~
+AC:Q9FPT4~
+DE:Ubiquitin-specific protease 6~
+GN:primary@UBP6~
+OS:NCBI@3702~Arabidopsis thaliana~Arabidopsis thaliana (L.) Heynh.~Arbisopsis thaliana~mouse-ear cress~thale cress~thale-cress~
+####263
+ID:Q9FQ08_ARATH~
+AC:Q9FQ08~
+DE:Ku70-like protein~
+GN:ordered~locus@At1g16970~
+OS:NCBI@3702~Arabidopsis thaliana~Arabidopsis thaliana (L.) Heynh.~Arbisopsis thaliana~mouse-ear cress~thale cress~thale-cress~
+####264
+ID:Q9FQ09_ARATH~
+AC:Q9FQ09~
+DE:Ku80-like protein~
+GN:ordered~locus@At1g48050~
+OS:NCBI@3702~Arabidopsis thaliana~Arabidopsis thaliana (L.) Heynh.~Arbisopsis thaliana~mouse-ear cress~thale cress~thale-cress~
+####265
+ID:Q9FXS1_TOBAC~
+AC:Q9FXS1~
+DE:WRKY transcription factor NtEIG-D48~
+GN:primary@NtEIG-D48~
+OS:NCBI@4097~American tobacco~Nicotania tabacum~Nicotiana tabacum~common tobacco~tobacco~
+####266
+ID:Q9GYJ2_CAEEL~
+AC:Q9GYJ2~
+DE:Hypothetical protein C46H11.9~
+GN:ORF@C46H11.9~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####267
+ID:Q9GZI6_CAEEL~
+AC:Q9GZI6~
+DE:Taf (Tbp-associated transcription factor) family protein 6.1~TAF-6.1~
+GN:primary@taf-6.1~ORF@W09B6.2~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####268
+ID:Q9GZI7_CAEEL~
+AC:Q9GZI7~
+DE:Hypothetical protein W09B6.3~
+GN:primary@eri-3~ORF@W09B6.3~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####269
+ID:Q9H1Y9_HUMAN~
+AC:Q9H1Y9~
+DE:Ecotropic viral integration site 5~
+GN:primary@EVI5~ORF@RP5-1014C4.2-001~
+OS:NCBI@9606~Homo sapiens~human~man~
+####270
+ID:Q9H2V6_HUMAN~
+AC:Q9H2V6~
+DE:Membrane-associated guanylate kinase-related MAGI-3~MAGI-3~
+GN:primary@MAGI-3~
+OS:NCBI@9606~Homo sapiens~human~man~
+####271
+ID:Q9H6R7_HUMAN~
+AC:Q9H6R7~
+DE:Hypothetical protein FLJ21945~
+GN:primary@FLJ21945~
+OS:NCBI@9606~Homo sapiens~human~man~
+####272
+ID:Q9HAF1_HUMAN~
+AC:Q9HAF1~
+DE:C1orf149 protein~OTTHUMP00000046232~CDNA FLJ11730 fis, clone HEMBA1005403~
+GN:primary@C1orf149~ORF@RP3-423B22.2-009~
+OS:NCBI@9606~Homo sapiens~human~man~
+####273
+ID:Q9HBC4_HUMAN~
+AC:Q9HBC4~
+DE:Membrane-associated guanylate kinase MAGI3~
+GN:
+OS:NCBI@9606~Homo sapiens~human~man~
+####274
+ID:Q9HD43_HUMAN~
+AC:Q9HD43~
+DE:Transmembrane-type protein tyrosine phosphatase H~
+GN:primary@PTPRH~
+OS:NCBI@9606~Homo sapiens~human~man~
+####275
+ID:Q9HG81_9ZYGO~
+AC:Q9HG81~
+DE:Translation elongation factor 1-alpha~
+GN:primary@EF-1alpha~
+OS:NCBI@64574~Radiomyces spectabilis~
+####276
+ID:Q9JK71_RAT~
+AC:Q9JK71~
+DE:Scaffolding protein SLIPR~
+GN:primary@Slipr~
+OS:NCBI@10116~Buffalo rat~Gunn rats~Norway rat~Rattus PC12 clone IS~Rattus norvegicus~Rattus norvegicus8~Rattus norwegicus~Rattus rattiscus~Rattus sp. strain Wistar~Sprague-Dawley rat~Wistar rats~brown rat~laboratory rat~rat~rats~zitter rats~
+####277
+ID:Q9JMJ3_MOUSE~
+AC:Q9JMJ3~
+DE:MIST~
+GN:primary@Clnk~synonym@MIST~
+OS:NCBI@10090~LK3 transgenic mice~Mus muscaris~Mus musculus~Mus sp. 129SV~house mouse~mice C57BL/6xCBA/CaJ hybrid~mouse~nude mice~transgenic mice~
+####278
+ID:Q9KHI5_SYNP7~
+AC:Q9KHI5~Q31QJ3~
+DE:Circadian input kinase~Multi-sensor hybrid histidine kinase~
+GN:primary@cikA~ordered~locus@Synpcc7942_0644~
+OS:NCBI@1140~Anacystis nidulans~Anacystis nidulans R2~Anacystis nidulans R2-SPc'~Syncchococcus PCC7942~Synechococcus 7942~Synechococcus PCC 7942~Synechococcus PCC7942~Synechococcus elongatus PCC 7942~Synechococcus sp. (PCC 7942)~Synechococcus sp. (strain PCC 7942)~Synechococcus sp. IAM M-200~Synechococcus sp. PCC 7942~Synechococcus sp. PCC7942~Synechocystis sp. PCC 7942~
+####279
+ID:Q9LP45_ARATH~
+AC:Q9LP45~
+DE:F28N24.15 protein~26S proteasome subunit RPN6a~Putative 19S proteosome subunit 9~PUTATIVE 26S PROTEASOME SUBUNITS~
+GN:primary@F28N24.15~synonym@RPN6a~ordered~locus@At1g29150~
+OS:NCBI@3702~Arabidopsis thaliana~Arabidopsis thaliana (L.) Heynh.~Arbisopsis thaliana~mouse-ear cress~thale cress~thale-cress~
+####280
+ID:Q9M2X3_ARATH~
+AC:Q9M2X3~
+DE:MYB-like protein~AT3g49850/T16K5_200~MYB transcription factor~Telomere repeat binding factor 3~TRB3~
+GN:primary@T16K5.200~synonym@TRB3~ordered~locus@At3g49850~
+OS:NCBI@3702~Arabidopsis thaliana~Arabidopsis thaliana (L.) Heynh.~Arbisopsis thaliana~mouse-ear cress~thale cress~thale-cress~
+####281
+ID:Q9MA75_ARATH~
+AC:Q9MA75~
+DE:Putative transcription factor~Putative VirE2-interacting protein VIP1~
+GN:primary@F2J6.6~ordered~locus@At1g43700~
+OS:NCBI@3702~Arabidopsis thaliana~Arabidopsis thaliana (L.) Heynh.~Arbisopsis thaliana~mouse-ear cress~thale cress~thale-cress~
+####282
+ID:Q9MAK9_ARATH~
+AC:Q9MAK9~
+DE:F27F5.8~26S proteasome AAA-ATPase subunit RPT4a-like protein~26S PROTEASOME AAA ATPASE SUBUNIT RPT4A-LIKE PROTEIN~
+GN:primary@At1g45000/F27F5.8~ordered~locus@At1g45000~
+OS:NCBI@3702~Arabidopsis thaliana~Arabidopsis thaliana (L.) Heynh.~Arbisopsis thaliana~mouse-ear cress~thale cress~thale-cress~
+####283
+ID:Q9NA29_CAEEL~
+AC:Q9NA29~
+DE:Rab27~Hypothetical protein rab-27~RAB-27~
+GN:primary@rab-27~synonym@rab27~ORF@Y87G2A.4~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####284
+ID:Q9NH88_DROME~
+AC:Q9NH88~
+DE:Partner of Inscuteable~
+GN:primary@raps~synonym@pins~ORF@CG5692~
+OS:NCBI@7227~Drosophila melangaster~Drosophila melanogaster~fruit fly~
+####285
+ID:Q9NLD1_CAEEL~
+AC:Q9NLD1~
+DE:Hypothetical protein hrp-2~HRP-2~
+GN:primary@hrp-2~ORF@F58D5.1~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####286
+ID:Q9NWA0_HUMAN~
+AC:Q9NWA0~
+DE:CDNA FLJ10193 fis, clone HEMBA1004763~Mediator of RNA polymerase II transcription, subunit 9~
+GN:primary@MED9~
+OS:NCBI@9606~Homo sapiens~human~man~
+####287
+ID:Q9NX70_HUMAN~
+AC:Q9NX70~Q9NTF4~
+DE:IXL protein~Hypothetical protein FLJ20404~Hypothetical protein DKFZp434H247~
+GN:primary@IXL~synonym@DKFZp434H247~
+OS:NCBI@9606~Homo sapiens~human~man~
+####288
+ID:Q9P086_HUMAN~
+AC:Q9P086~
+DE:HSPC296~
+GN:
+OS:NCBI@9606~Homo sapiens~human~man~
+####289
+ID:Q9QVT4_9MURI~
+AC:Q9QVT4~
+DE:MPLZF(B) PROMYELOCYTIC leukemia zinc finger protein~
+GN:
+OS:NCBI@10095~Mus sp.~mice~
+####290
+ID:Q9QZW8_RAT~
+AC:Q9QZW8~
+DE:Dnaj-like protein~
+GN:primary@LOC56764~
+OS:NCBI@10116~Buffalo rat~Gunn rats~Norway rat~Rattus PC12 clone IS~Rattus norvegicus~Rattus norvegicus8~Rattus norwegicus~Rattus rattiscus~Rattus sp. strain Wistar~Sprague-Dawley rat~Wistar rats~brown rat~laboratory rat~rat~rats~zitter rats~
+####291
+ID:Q9S834_ARATH~
+AC:Q9S834~
+DE:NClpP1~At1g02560~ATP-dependent Clp protease subunit ClpP~ATP-dependent Clp protease proteolytic subunit ClpP5~ENDOPEPTIDASE CLP~NCLPP1~
+GN:primary@clpP~synonym@T14P4.12~synonym@nclpP1~ordered~locus@At1g02560~
+OS:NCBI@3702~Arabidopsis thaliana~Arabidopsis thaliana (L.) Heynh.~Arbisopsis thaliana~mouse-ear cress~thale cress~thale-cress~
+####292
+ID:Q9SAA2_ARATH~
+AC:Q9SAA2~
+DE:ClpP6~F25C20.10 protein~ATP-dependent Clp protease proteolytic subunit~Putative ATP-dependent Clp protease proteolytic subunit ClpP6~CLPP6~
+GN:primary@F25C20.10~ordered~locus@At1g11750~
+OS:NCBI@3702~Arabidopsis thaliana~Arabidopsis thaliana (L.) Heynh.~Arbisopsis thaliana~mouse-ear cress~thale cress~thale-cress~
+####293
+ID:Q9SC41_PEA~
+AC:Q9SC41~
+DE:Translocon Tic40 precursor~
+GN:primary@Tic40~
+OS:NCBI@3888~Pisum sativum~Pisum sativum L.~garden pea~pea~peas~
+####294
+ID:Q9SEI5_ARATH~
+AC:Q9SEI5~
+DE:26S proteasome AAA-ATPase subunit RPT2a~
+GN:primary@RPT2a~
+OS:NCBI@3702~Arabidopsis thaliana~Arabidopsis thaliana (L.) Heynh.~Arbisopsis thaliana~mouse-ear cress~thale cress~thale-cress~
+####295
+ID:Q9SIV2_ARATH~
+AC:Q9SIV2~Q9C5J1~
+DE:RPN1~26S proteasome subunit RPN1a~26S proteasome regulatory subunit S2~Q9C5J1~
+GN:primary@RPN1a~ordered~locus@At2g20580~
+OS:NCBI@3702~Arabidopsis thaliana~Arabidopsis thaliana (L.) Heynh.~Arbisopsis thaliana~mouse-ear cress~thale cress~thale-cress~
+####296
+ID:Q9SKK0_ARATH~
+AC:Q9SKK0~
+DE:F-box protein~F-box protein family, AtFBL6~Hypothetical protein At2g25490~
+GN:primary@ebf1~ordered~locus@At2g25490~
+OS:NCBI@3702~Arabidopsis thaliana~Arabidopsis thaliana (L.) Heynh.~Arbisopsis thaliana~mouse-ear cress~thale cress~thale-cress~
+####297
+ID:Q9SQ03_PETCR~
+AC:Q9SQ03~
+DE:Transcription factor~
+GN:primary@WRKY3~
+OS:NCBI@4043~Petroselinum crispum~Petroselinum hortense~Petroselinum sativum~parsley~
+####298
+ID:Q9SSB4_ARATH~
+AC:Q9SSB4~
+DE:T18A20.2 protein~
+GN:primary@T18A20.2~
+OS:NCBI@3702~Arabidopsis thaliana~Arabidopsis thaliana (L.) Heynh.~Arbisopsis thaliana~mouse-ear cress~thale cress~thale-cress~
+####299
+ID:Q9SWG3_ARATH~
+AC:Q9SWG3~
+DE:Far-red impaired response protein~
+GN:primary@FAR1~
+OS:NCBI@3702~Arabidopsis thaliana~Arabidopsis thaliana (L.) Heynh.~Arbisopsis thaliana~mouse-ear cress~thale cress~thale-cress~
+####300
+ID:Q9SXP4_TOBAC~
+AC:Q9SXP4~
+DE:DNA-binding protein NtWRKY3~
+GN:
+OS:NCBI@4097~American tobacco~Nicotania tabacum~Nicotiana tabacum~common tobacco~tobacco~
+####301
+ID:Q9SYX2_ARATH~
+AC:Q9SYX2~
+DE:Phytochrome A supressor spa1~
+GN:primary@SPA1~ordered~locus@At2g46340~
+OS:NCBI@3702~Arabidopsis thaliana~Arabidopsis thaliana (L.) Heynh.~Arbisopsis thaliana~mouse-ear cress~thale cress~thale-cress~
+####302
+ID:Q9TW27_DROME~
+AC:Q9TW27~
+DE:CG17686-PD, isoform D~Disco-interacting protein~DsRBD-containing protein dip1-c splice isoform~CG17686 PD~
+GN:primary@DIP1~synonym@dip1~ORF@CG17686~ORF@Dmel_CG17686~
+OS:NCBI@7227~Drosophila melangaster~Drosophila melanogaster~fruit fly~
+####303
+ID:Q9TZB0_CAEEL~
+AC:Q9TZB0~
+DE:Hypothetical protein~
+GN:ORF@C40A11.4~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####304
+ID:Q9TZI2_CAEEL~
+AC:Q9TZI2~
+DE:Hypothetical protein~
+GN:primary@ztf-4~ORF@T10B11.3~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####305
+ID:Q9U1W1_CAEEL~
+AC:Q9U1W1~
+DE:Hypothetical protein tfg-1~TFG-1~
+GN:primary@tfg-1~ORF@Y63D3A.5~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####306
+ID:Q9U2F5_CAEEL~
+AC:Q9U2F5~
+DE:Hypothetical protein~
+GN:ORF@Y46G5A.13~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####307
+ID:Q9U489_CAEEL~
+AC:Q9U489~
+DE:LIN-41B~Hypothetical protein lin-41~C12C8.3A PROTEIN~LIN-41B~
+GN:primary@lin-41B~synonym@lin-41~ORF@C12C8.3~ORF@C12C8.3a~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####308
+ID:Q9UDG1_HUMAN~
+AC:Q9UDG1~
+DE:FRUCTOSYLLYSINE-specific binding protein~
+GN:
+OS:NCBI@9606~Homo sapiens~human~man~
+####309
+ID:Q9ULG1_HUMAN~
+AC:Q9ULG1~
+DE:KIAA1259 protein~
+GN:primary@KIAA1259~
+OS:NCBI@9606~Homo sapiens~human~man~
+####310
+ID:Q9V439_DROME~
+AC:Q9V439~
+DE:RE16720p~CG3034-PA~EG:BACR7A4.6 protein~EG:BACR7A4.6~MED24~
+GN:primary@MED22~synonym@EG:BACR7A4.6~synonym@Med24~ORF@CG3034~ORF@Dmel_CG3034~
+OS:NCBI@7227~Drosophila melangaster~Drosophila melanogaster~fruit fly~
+####311
+ID:Q9V444_DROME~
+AC:Q9V444~
+DE:RE06926p~CG13399-PA, isoform A~Cg13399-pb, isoform b~Histone-fold protein CHRAC subunit~CHRAC 14~CHRAC-14~
+GN:primary@Chrac-14~synonym@MARY~ORF@CG10890~ORF@CG32956~ORF@Dmel_CG13399~
+OS:NCBI@7227~Drosophila melangaster~Drosophila melanogaster~fruit fly~
+####312
+ID:Q9V452_DROME~
+AC:Q9V452~
+DE:RE59557p~CG15736-PA~Histone-fold protein CHRAC subunit~CHRAC 16~CHRAC-16~
+GN:primary@Chrac-16~synonym@JOEY~ORF@CG15736~ORF@Dmel_CG15736~
+OS:NCBI@7227~Drosophila melangaster~Drosophila melanogaster~fruit fly~
+####313
+ID:Q9V566_DROME~
+AC:Q9V566~
+DE:LD20892p~CG2078-PA~MyD88 adapter protein~MYD88~MYD88 ADAPTER PROTEIN~
+GN:primary@Myd88~ORF@CG2078~ORF@Dmel_CG2078~
+OS:NCBI@7227~Drosophila melangaster~Drosophila melanogaster~fruit fly~
+####314
+ID:Q9V6Q8_DROME~
+AC:Q9V6Q8~
+DE:CG6061-PA~
+GN:primary@mip120~ORF@Dmel_CG6061~
+OS:NCBI@7227~Drosophila melangaster~Drosophila melanogaster~fruit fly~
+####315
+ID:Q9V859_DROME~
+AC:Q9V859~
+DE:CG4954-PA~EIF3-S8~
+GN:primary@eIF3-S8~ORF@Dmel_CG4954~
+OS:NCBI@7227~Drosophila melangaster~Drosophila melanogaster~fruit fly~
+####316
+ID:Q9V9A6_DROME~
+AC:Q9V9A6~
+DE:CG3265-PC, isoform C~BCDNA:LD08743~EB1~
+GN:primary@Eb1~ORF@Dmel_CG3265~
+OS:NCBI@7227~Drosophila melangaster~Drosophila melanogaster~fruit fly~
+####317
+ID:Q9VEC1_DROME~
+AC:Q9VEC1~
+DE:SD10038p~CG7957-PA~Mediator transcriptional cofactor TRAP80~Thyroid hormone receptor-associated protein TRAP80~TRAP80~
+GN:primary@MED17~synonym@Trap80~ORF@CG7957~ORF@Dmel_CG7957~
+OS:NCBI@7227~Drosophila melangaster~Drosophila melanogaster~fruit fly~
+####318
+ID:Q9VF04_DROME~
+AC:Q9VF04~
+DE:RE32990p~CG5083-PA~Retinoblastoma protein homolog RBF2~RBF2~RETINOBLASTOMA PROTEIN HOMOLOG RBF2~
+GN:primary@Rbf2~synonym@rbf2~ORF@CG5083~ORF@Dmel_CG5083~
+OS:NCBI@7227~Drosophila melangaster~Drosophila melanogaster~fruit fly~
+####319
+ID:Q9VQR9_DROME~
+AC:Q9VQR9~
+DE:LP08963p~CG17593-PA~
+GN:ORF@CG17593~ORF@Dmel_CG17593~
+OS:NCBI@7227~Drosophila melangaster~Drosophila melanogaster~fruit fly~
+####320
+ID:Q9VS38_DROME~
+AC:Q9VS38~
+DE:LD46084p~CG8609-PA~TRAP36~
+GN:primary@MED4~synonym@Trap36~ORF@CG8609~ORF@Dmel_CG8609~
+OS:NCBI@7227~Drosophila melangaster~Drosophila melanogaster~fruit fly~
+####321
+ID:Q9VVP8_DROME~
+AC:Q9VVP8~
+DE:CG13701-PA~IAP-inhibitory protein Sickle~SKL~
+GN:primary@skl~synonym@Skl~ORF@Dmel_CG13701~
+OS:NCBI@7227~Drosophila melangaster~Drosophila melanogaster~fruit fly~
+####322
+ID:Q9VVS4_DROME~
+AC:Q9VVS4~
+DE:GH01072p~CG6884-PA~MED21~
+GN:primary@MED11~synonym@Med21~ORF@CG6884~ORF@Dmel_CG6884~
+OS:NCBI@7227~Drosophila melangaster~Drosophila melanogaster~fruit fly~
+####323
+ID:Q9VWS4_DROME~
+AC:Q9VWS4~
+DE:RE29502p~CG6531-PA~TNFR superfamily protein Wengen~TNFR SUPERFAMILY PROTEIN WENGEN~WENGEN~WGN~
+GN:primary@wgn~ORF@CG6531~ORF@Dmel_CG6531~
+OS:NCBI@7227~Drosophila melangaster~Drosophila melanogaster~fruit fly~
+####324
+ID:Q9W0P3_DROME~
+AC:Q9W0P3~
+DE:SD10560p~CG17183-PA~TRAP25~
+GN:primary@MED30~synonym@Trap25~ORF@CG17183~ORF@Dmel_CG17183~
+OS:NCBI@7227~Drosophila melangaster~Drosophila melanogaster~fruit fly~
+####325
+ID:Q9W2R9_DROME~
+AC:Q9W2R9~
+DE:CG11556-PA~RABPHILIN 3A~RABPHILIN-3A~
+GN:primary@Rph~ORF@Dmel_CG11556~
+OS:NCBI@7227~Drosophila melangaster~Drosophila melanogaster~fruit fly~
+####326
+ID:Q9W542_DROME~
+AC:Q9W542~
+DE:LD07342p~CG3480-PA~Myb-interacting protein 130~EG:86E4.4~
+GN:primary@mip130~synonym@EG:86E4.4~synonym@twit~ORF@CG3480~ORF@Dmel_CG3480~
+OS:NCBI@7227~Drosophila melangaster~Drosophila melanogaster~fruit fly~
+####327
+ID:Q9W5P1_DROME~
+AC:Q9W5P1~
+DE:RE10855p~CG17397-PA~Cg17397-pb~
+GN:primary@MED21~synonym@Trap19~ORF@CG17397~
+OS:NCBI@7227~Drosophila melangaster~Drosophila melanogaster~fruit fly~
+####328
+ID:Q9WH13_HPV16~
+AC:Q9WH13~
+DE:E6~
+GN:
+OS:NCBI@333760~HPV16~Human papillomavirus 16~Human papillomavirus type 16~human papillomavirus type 16 HPV 16~human papillomavirus type 16 HPV16~
+####329
+ID:Q9WU22_MOUSE~
+AC:Q9WU22~
+DE:Testis-enriched protein tyrosine phosphatase~PTPN4~
+GN:primary@Ptpn4~
+OS:NCBI@10090~LK3 transgenic mice~Mus muscaris~Mus musculus~Mus sp. 129SV~house mouse~mice C57BL/6xCBA/CaJ hybrid~mouse~nude mice~transgenic mice~
+####330
+ID:Q9XEW5_9ROSI~
+AC:Q9XEW5~
+DE:14-3-3 protein~
+GN:primary@14-3-3P20-5~
+OS:NCBI@80863~Populus alba x Populus tremula~Populus alba x tremula~Populus tremula x Populus alba~Populus x canescens~Populus x canescens (Aiton) Sm.~gray poplar~
+####331
+ID:Q9XGN0_ARATH~
+AC:Q9XGN0~
+DE:Telomere repeat-binding protein TRP1~
+GN:primary@trp1~
+OS:NCBI@3702~Arabidopsis thaliana~Arabidopsis thaliana (L.) Heynh.~Arbisopsis thaliana~mouse-ear cress~thale cress~thale-cress~
+####332
+ID:Q9XH28_ARATH~
+AC:Q9XH28~
+DE:F10A2.10 protein~Putative peptidase~PUTATIVE PEPTIDASE~
+GN:primary@F10A2.10~synonym@AT4g07670~ordered~locus@At4g07670~
+OS:NCBI@3702~Arabidopsis thaliana~Arabidopsis thaliana (L.) Heynh.~Arbisopsis thaliana~mouse-ear cress~thale cress~thale-cress~
+####333
+ID:Q9XJ35_ARATH~
+AC:Q9XJ35~
+DE:NClpP5~F2J10.14 protein~At1g49970/F2J10_5~F2J10.14 PROTEIN~NCLPP5~
+GN:primary@nclpP5~synonym@F2J10.14~ordered~locus@At1g49970~
+OS:NCBI@3702~Arabidopsis thaliana~Arabidopsis thaliana (L.) Heynh.~Arbisopsis thaliana~mouse-ear cress~thale cress~thale-cress~
+####334
+ID:Q9XTB3_CAEEL~
+AC:Q9XTB3~P92024~
+DE:MEX-1~Hypothetical protein mex-1~MEX 1~MEX-1~
+GN:primary@mex-1~ORF@W03C9.7~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####335
+ID:Q9XU82_CAEEL~
+AC:Q9XU82~Q9U6Q1~
+DE:Hypothetical protein rde-1~RNA interference promoting factor RDE-1~Q9U6Q1~RDE-1~RNA INTERFERENCE PROMOTING FACTOR RDE 1~
+GN:primary@rde-1~ORF@K08H10.7~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####336
+ID:Q9XVS2_CAEEL~
+AC:Q9XVS2~
+DE:Hypothetical protein~
+GN:ORF@C25A1.4~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####337
+ID:Q9XW83_CAEEL~
+AC:Q9XW83~
+DE:Hypothetical protein grl-15~GRL-15~
+GN:primary@grl-15~ORF@Y75B8A.20~
+OS:NCBI@6239~Caenorhabditis elegans~nematode~
+####338
+ID:Q9XYQ9_DROME~
+AC:Q9XYQ9~
+DE:TNF-receptor-associated factor 2~
+GN:primary@Traf2~synonym@TRAF2~ORF@CG10961~
+OS:NCBI@7227~Drosophila melangaster~Drosophila melanogaster~fruit fly~
+####339
+ID:Q9Y5L9_HUMAN~
+AC:Q9Y5L9~
+DE:Transcriptional activator SRCAP~SRCAP~
+GN:primary@SRCAP~
+OS:NCBI@9606~Homo sapiens~human~man~
+####340
+ID:Q9Z2K4_MOUSE~
+AC:Q9Z2K4~
+DE:RA70~SKAP55 homologue~Src-associated adaptor protein~RA70~SCAP2~SKAP55 HOMOLOGUE~
+GN:primary@Scap2~synonym@RA70~synonym@Saps~
+OS:NCBI@10090~LK3 transgenic mice~Mus muscaris~Mus musculus~Mus sp. 129SV~house mouse~mice C57BL/6xCBA/CaJ hybrid~mouse~nude mice~transgenic mice~
+####341
+ID:Q9ZSD5_TOBAC~
+AC:Q9ZSD5~
+DE:Syntaxin-related protein Nt-syr1~
+GN:primary@Nt-Syr1~
+OS:NCBI@4097~American tobacco~Nicotania tabacum~Nicotiana tabacum~common tobacco~tobacco~
+####342
+ID:Q9ZVH4_ARATH~
+AC:Q9ZVH4~
+DE:Cullin 3a~T24P13.25~T2P11.2 protein~
+GN:primary@T2P11.2~synonym@cul3a~ordered~locus@At1g26830~
+OS:NCBI@3702~Arabidopsis thaliana~Arabidopsis thaliana (L.) Heynh.~Arbisopsis thaliana~mouse-ear cress~thale cress~thale-cress~

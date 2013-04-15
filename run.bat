@@ -1,0 +1,2 @@
+java -Xms128m -Xmx1024m -classpath ./bin/;./lib/ant.jar;./lib/jakarta-ant-optional.jar;./lib/jwnl-1.3.3.jar;./lib/maxent-2.5.2.jar;./lib/opennlp-tools-1.4.3.jar;./lib/trove.jar bioner.test.TestDictionary
+pause

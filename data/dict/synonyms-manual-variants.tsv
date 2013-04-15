@@ -1,0 +1,162 @@
+#species	synonym regular expression
+species:ncbi:9606	patient
+species:ncbi:9606	participant
+species:ncbi:9606	woman|women
+species:ncbi:9606	men
+species:ncbi:9606	girl
+species:ncbi:9606	boy
+species:ncbi:9606	people
+species:ncbi:9606	child|children
+species:ncbi:9606	infant
+species:ncbi:9606	person
+species:ncbi:7227	fruit fly|fruit flies
+species:ncbi:1280	MRSA
+species:ncbi:10090	mice
+species:ncbi:9913	calf|calves
+species:ncbi:10141	guinea-pig
+species:ncbi:10090	murine
+species:ncbi:9031	chick
+species:ncbi:9940	sheep
+species:ncbi:10255	smallpox
+species:ncbi:9925	goat
+species:ncbi:2708	lemon
+species:ncbi:10633	SV40
+species:ncbi:9986	rabbit
+species:ncbi:9606	patients
+species:ncbi:10870	bacteriophage M13
+species:ncbi:1305	Streptococcus sanguis
+species:ncbi:9606	Patients
+species:ncbi:4113	potato
+species:ncbi:4570	Triticum timopheevi
+species:ncbi:4113	Potato
+species:ncbi:3888	pea
+species:ncbi:4932	S.cerevisiae
+species:ncbi:9793	donkey
+species:ncbi:10090	mouse
+species:ncbi:1117	cyanobacterial
+species:ncbi:1117	CYANOBACTERIAL
+species:ncbi:6760	crab
+species:ncbi:469008	Escherichia coli BL21 (DE3)
+species:ncbi:8015	salmon
+species:ncbi:33169	Ashbya gossypii
+species:ncbi:4097	tobacco
+species:ncbi:9606	participants
+species:ncbi:9606	persons
+species:ncbi:9606	Participants
+species:ncbi:9615	Canis familiaris
+species:ncbi:3635	cotton
+species:ncbi:11757	MMTV
+species:ncbi:10090	nude mice
+species:ncbi:9796	horse
+species:ncbi:386521	Ivory-billed Woodpecker
+species:ncbi:51359	Pileated
+species:ncbi:386521	Ivory-billed Woodpeckers
+species:ncbi:386521	Ivory-bill
+species:ncbi:9874	White-tailed Deer
+species:ncbi:12110	foot-and-mouth disease virus
+species:ncbi:12110	FMDV
+species:ncbi:10026	hamster
+species:ncbi:12110	FMDVs
+species:ncbi:169066	human rhinovirus
+species:ncbi:6687	shrimp
+species:ncbi:11676	human immunodeficiency virus type 1
+species:ncbi:11676	HIV-1
+species:ncbi:38018	bacteriophage
+species:ncbi:42810	Entomaphaga maimaiga
+species:ncbi:13122	moth
+species:ncbi:167879	Colwellia psychrerythraea 34H
+species:ncbi:345073	Vibrio cholerae 0395
+species:ncbi:345072	Vibrio cholerae MO10
+species:ncbi:345074	Vibrio cholerae RC385
+species:ncbi:345075	Vibrio cholerae V51
+species:ncbi:345076	Vibrio cholerae V52
+species:ncbi:314280	Photobacterium profundum 3TCK
+species:ncbi:314290	Vibrio MED222
+species:ncbi:314291	Vibrio splendidus12B01
+species:ncbi:298386	Photobacterium profundum SS9
+species:ncbi:196600	V. vulnificus YJ016
+species:ncbi:216895	V. vulnificus CMCP6
+species:ncbi:90371	Salmonella typhimurium
+species:ncbi:196600	YJ016
+species:ncbi:314291	V. splendiduds 12B01
+species:ncbi:670	V. parahaemoliticus
+species:ncbi:298386	P. profundum SS9
+species:ncbi:243277	V. cholerae N16961
+species:ncbi:312309	V. fischeri ES114
+species:ncbi:314291	Vibrio splendidus 12B01
+species:ncbi:7176	C. quiquefasciatus
+species:ncbi:7175	C. pipens
+species:ncbi:7178	C. tritaeniorhyncus
+species:ncbi:6941	Boophilus microplus
+species:ncbi:60189	Boophilus decoloratus
+species:ncbi:60191	Rhipicephalus zambesiensis
+species:ncbi:9606	boys
+species:ncbi:9606	girls
+species:ncbi:6239	worms
+species:ncbi:86661	Bacillus cereus group
+species:ncbi:86661	B. cereus group
+species:ncbi:30962	Oncorhynchus clarki
+species:ncbi:8022	steelhead
+species:ncbi:8032	Salmon trutta
+species:ncbi:11287	VHSV
+species:ncbi:55987	infectious salmon anaemia virus
+species:ncbi:10141	guinea-pig
+species:ncbi:10141	guinea-pigs
+species:ncbi:6339	Heligmosomoidespolygyrus
+species:ncbi:10141	Guinea-pigs
+species:ncbi:10141	guineapigs
+species:ncbi:13420	T. cani
+species:ncbi:14798	T. cani
+species:ncbi:6265	T. cani
+species:ncbi:7227	fruitfly
+species:ncbi:29170	canine hookworm
+species:ncbi:381124	corn
+species:ncbi:13684	Stagonospora nodorum
+species:ncbi:40559	Botrytis cinerea
+species:ncbi:162425	Aspergillus nidulans
+species:ncbi:13684	S. nodorum
+species:ncbi:51453	Trichoderma reesei
+species:ncbi:5207	Cryptococcus neoformans
+species:ncbi:9606	Persons
+species:ncbi:9793	donkeys
+species:ncbi:9913	cattle
+species:ncbi:1773	M.tb
+species:ncbi:12721	HIV
+species:ncbi:33892	M. bovis BCG
+species:ncbi:9606	infants
+species:ncbi:1352	Streptococcus faecium
+species:ncbi:1352	Streptococcus Faecium
+species:ncbi:1352	Streptococcusfaecium
+species:ncbi:53345	S. durans
+species:ncbi:1352	S. FAECIUM
+species:ncbi:1351	Streptococcusfaecalis
+species:ncbi:7215	fly
+species:ncbi:7215	flies
+species:ncbi:9925	Goat
+species:ncbi:9986	Rabbit
+species:ncbi:9606	peoples
+species:ncbi:9989	rodent
+species:ncbi:10116	Sprague-Dawley rats
+species:ncbi:10116	Sprague Dawley rats
+species:ncbi:1280	MRSA
+species:ncbi:138119	Desulfitobacterium hafniense Y51
+species:ncbi:511693	E. coli strain BL21
+species:ncbi:511693	E. coli BL21
+species:ncbi:8364	Xenopus tropicalis
+species:ncbi:8090	Orzzias latipes
+species:ncbi:8255	Paralichthys olivaceous
+species:ncbi:10508	adenovirus
+species:ncbi:10535	adenovirus
+species:ncbi:6239	Caenorhabds elegans
+species:ncbi:483799	shandileer
+species:ncbi:4679	onion
+species:ncbi:246543	black sage
+species:ncbi:9606	schoolchildren
+species:ncbi:204144	tulsi
+species:ncbi:477864	shadon beni
+species:ncbi:477864	Eryngium foetidium
+species:ncbi:66014	lemongrass
+species:ncbi:13569	Golden Seal
+species:ncbi:98504	Chamomile
+species:ncbi:94328	Zingibe officinale
+species:ncbi:85223	bayleaf

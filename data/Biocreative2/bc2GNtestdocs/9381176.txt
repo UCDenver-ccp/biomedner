@@ -1,0 +1,3 @@
+Functional coherence of the human Y chromosome.
+
+A systematic search of the nonrecombining region of the human Y chromosome (NRY) identified 12 novel genes or families, 10 with full-length complementary DNA sequences. All 12 genes, and six of eight NRY genes or families previously isolated by less systematic means, fell into two classes. Genes in the first group were expressed in many organs; these housekeeping genes have X homologs that escape X inactivation. The second group, consisting of Y-chromosomal gene families expressed specifically in testes, may account for infertility among men with Y deletions. The coherence of the NRY's gene content contrasts with the apparently haphazard content of most eukaryotic chromosomes.
