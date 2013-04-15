@@ -1,0 +1,734 @@
+max_value_0	1.0
+max_value_1	1.0
+max_value_2	1.0
+max_value_3	0.925
+max_value_4	1.0
+max_value_5	1.0
+max_value_6	1.0
+max_value_7	1.0
+max_value_8	1.0
+max_value_9	1.0
+max_value_10	17.009035110473633
+max_value_11	13.384693145751953
+max_value_12	15.910422325134277
+max_value_13	1.0
+max_value_14	14.547523498535156
+train with: ../../BC3GN/train/TrainData_1.txt
+develop dataset:null
+rate=0.01	last T: 200	best CorrectNum: 5127
+the BEST rate: 0.01	the BEST prediction: 	5127.0
+@relation gene_normalization
+@attribute class {1,0}
+@attribute species_in_gene_mention real
+@attribute species_nearby real
+@attribute linked_species real
+@attribute species_in_document real
+@attribute species_in_title real
+@attribute is_common_species real
+@attribute type_of_gene real
+@attribute symbol_edit_distance real
+@attribute synonyms_edit_distance real
+@attribute symbol_number_similarity real
+@attribute token_lucene_score real
+@attribute gene_in_bracket real
+@attribute gene_outside_bracket real
+@attribute synonyms_in_sentence real
+@attribute extended_gm_lucene_score real
+@data
+
+w_0	0.18814805023698222
+w_1	0.038026941950897154
+w_2	0.0783252974370508
+w_3	0.5562288411237407
+w_4	0.08686147762198207
+w_5	0.018126350515328175
+w_6	0.17631795179862944
+w_7	-0.0749977499399367
+w_8	-0.3252648443463025
+w_9	0.11012820220488358
+w_10	0.08512138821551138
+w_11	0.1771623230730281
+w_12	0.27832869305107755
+w_13	0.07057458960335744
+w_14	0.18530778248775256
+max_value_0	1.0
+max_value_1	1.0
+max_value_2	1.0
+max_value_3	0.925
+max_value_4	1.0
+max_value_5	1.0
+max_value_6	1.0
+max_value_7	1.0
+max_value_8	1.0
+max_value_9	1.0
+max_value_10	17.009035110473633
+max_value_11	13.384693145751953
+max_value_12	15.910422325134277
+max_value_13	1.0
+max_value_14	14.547523498535156
+train with: ../../BC3GN/train/TrainData_1.txt
+develop dataset:null
+rate=0.01	last T: 200	best CorrectNum: 5093
+the BEST rate: 0.01	the BEST prediction: 	5093.0
+@relation gene_normalization
+@attribute class {1,0}
+@attribute species_in_gene_mention real
+@attribute species_nearby real
+@attribute linked_species real
+@attribute species_in_document real
+@attribute species_in_title real
+@attribute is_common_species real
+@attribute type_of_gene real
+@attribute symbol_edit_distance real
+@attribute synonyms_edit_distance real
+@attribute symbol_number_similarity real
+@attribute token_lucene_score real
+@attribute gene_in_bracket real
+@attribute gene_outside_bracket real
+@attribute synonyms_in_sentence real
+@attribute extended_gm_lucene_score real
+@data
+
+w_0	0.18020355134056015
+w_1	0.044072528098474506
+w_2	0.07419560374014725
+w_3	0.565383265325305
+w_4	0.0858542234555831
+w_5	0.023308480225108907
+w_6	0.17932420483622316
+w_7	-0.0793249881627858
+w_8	-0.3244565145822999
+w_9	0.10058690666244885
+w_10	0.0815462851256941
+w_11	0.17946006879437912
+w_12	0.2906003481096016
+w_13	0.059694054033774605
+w_14	0.19873613422577446
+max_value_0	1.0
+max_value_1	1.0
+max_value_2	1.0
+max_value_3	0.925
+max_value_4	1.0
+max_value_5	1.0
+max_value_6	1.0
+max_value_7	1.0
+max_value_8	1.0
+max_value_9	1.0
+max_value_10	17.009035110473633
+max_value_11	13.384693145751953
+max_value_12	15.910422325134277
+max_value_13	1.0
+max_value_14	14.547523498535156
+train with: ../../BC3GN/train/TrainData_1.txt
+develop dataset:null
+rate=0.01	last T: 200	best CorrectNum: 5093
+the BEST rate: 0.01	the BEST prediction: 	5093.0
+@relation gene_normalization
+@attribute class {1,0}
+@attribute species_in_gene_mention real
+@attribute species_nearby real
+@attribute linked_species real
+@attribute species_in_document real
+@attribute species_in_title real
+@attribute is_common_species real
+@attribute type_of_gene real
+@attribute symbol_edit_distance real
+@attribute synonyms_edit_distance real
+@attribute symbol_number_similarity real
+@attribute token_lucene_score real
+@attribute gene_in_bracket real
+@attribute gene_outside_bracket real
+@attribute synonyms_in_sentence real
+@attribute extended_gm_lucene_score real
+@data
+
+w_0	0.18020355134056015
+w_1	0.044072528098474506
+w_2	0.07419560374014725
+w_3	0.565383265325305
+w_4	0.0858542234555831
+w_5	0.023308480225108907
+w_6	0.17932420483622316
+w_7	-0.0793249881627858
+w_8	-0.3244565145822999
+w_9	0.10058690666244885
+w_10	0.0815462851256941
+w_11	0.17946006879437912
+w_12	0.2906003481096016
+w_13	0.059694054033774605
+w_14	0.19873613422577446
+max_value_0	1.0
+max_value_1	1.0
+max_value_2	1.0
+max_value_3	0.925
+max_value_4	1.0
+max_value_5	1.0
+max_value_6	1.0
+max_value_7	1.0
+max_value_8	1.0
+max_value_9	1.0
+max_value_10	17.009035110473633
+max_value_11	13.384693145751953
+max_value_12	15.910422325134277
+max_value_13	1.0
+max_value_14	14.547523498535156
+train with: ../../BC3GN/train/TrainData_1.txt
+develop dataset:null
+rate=0.01	last T: 200	best CorrectNum: 5093
+the BEST rate: 0.01	the BEST prediction: 	5093.0
+@relation gene_normalization
+@attribute class {1,0}
+@attribute species_in_gene_mention real
+@attribute species_nearby real
+@attribute linked_species real
+@attribute species_in_document real
+@attribute species_in_title real
+@attribute is_common_species real
+@attribute type_of_gene real
+@attribute symbol_edit_distance real
+@attribute synonyms_edit_distance real
+@attribute symbol_number_similarity real
+@attribute token_lucene_score real
+@attribute gene_in_bracket real
+@attribute gene_outside_bracket real
+@attribute synonyms_in_sentence real
+@attribute extended_gm_lucene_score real
+@data
+
+w_0	0.18020355134056015
+w_1	0.044072528098474506
+w_2	0.07419560374014725
+w_3	0.565383265325305
+w_4	0.0858542234555831
+w_5	0.023308480225108907
+w_6	0.17932420483622316
+w_7	-0.0793249881627858
+w_8	-0.3244565145822999
+w_9	0.10058690666244885
+w_10	0.0815462851256941
+w_11	0.17946006879437912
+w_12	0.2906003481096016
+w_13	0.059694054033774605
+w_14	0.19873613422577446
+max_value_0	1.0
+max_value_1	1.0
+max_value_2	1.0
+max_value_3	0.925
+max_value_4	1.0
+max_value_5	1.0
+max_value_6	1.0
+max_value_7	1.0
+max_value_8	1.0
+max_value_9	1.0
+max_value_10	17.009035110473633
+max_value_11	13.384693145751953
+max_value_12	15.910422325134277
+max_value_13	1.0
+max_value_14	14.547523498535156
+train with: /home/ljc/WebTool/WebTool/train/TrainData_1.txt
+develop dataset:null
+max_value_0	1.0
+max_value_1	1.0
+max_value_2	1.0
+max_value_3	0.925
+max_value_4	1.0
+max_value_5	1.0
+max_value_6	1.0
+max_value_7	1.0
+max_value_8	1.0
+max_value_9	1.0
+max_value_10	17.009035110473633
+max_value_11	13.384693145751953
+max_value_12	15.910422325134277
+max_value_13	1.0
+max_value_14	14.547523498535156
+train with: /home/ljc/WebTool/WebTool/train/TrainData_1.txt
+develop dataset:null
+rate=0.01	last T: 200	best CorrectNum: 5093
+the BEST rate: 0.01	the BEST prediction: 	5093.0
+@relation gene_normalization
+@attribute class {1,0}
+@attribute species_in_gene_mention real
+@attribute species_nearby real
+@attribute linked_species real
+@attribute species_in_document real
+@attribute species_in_title real
+@attribute is_common_species real
+@attribute type_of_gene real
+@attribute symbol_edit_distance real
+@attribute synonyms_edit_distance real
+@attribute symbol_number_similarity real
+@attribute token_lucene_score real
+@attribute gene_in_bracket real
+@attribute gene_outside_bracket real
+@attribute synonyms_in_sentence real
+@attribute extended_gm_lucene_score real
+@data
+
+w_0	0.18020355134056015
+w_1	0.044072528098474506
+w_2	0.07419560374014725
+w_3	0.565383265325305
+w_4	0.0858542234555831
+w_5	0.023308480225108907
+w_6	0.17932420483622316
+w_7	-0.0793249881627858
+w_8	-0.3244565145822999
+w_9	0.10058690666244885
+w_10	0.0815462851256941
+w_11	0.17946006879437912
+w_12	0.2906003481096016
+w_13	0.059694054033774605
+w_14	0.19873613422577446
+max_value_0	1.0
+max_value_1	1.0
+max_value_2	1.0
+max_value_3	0.925
+max_value_4	1.0
+max_value_5	1.0
+max_value_6	1.0
+max_value_7	1.0
+max_value_8	1.0
+max_value_9	1.0
+max_value_10	17.009035110473633
+max_value_11	13.384693145751953
+max_value_12	15.910422325134277
+max_value_13	1.0
+max_value_14	14.547523498535156
+train with: /home/ljc/WebTool/WebTool/train/TrainData_1.txt
+develop dataset:null
+rate=0.01	last T: 200	best CorrectNum: 5093
+the BEST rate: 0.01	the BEST prediction: 	5093.0
+@relation gene_normalization
+@attribute class {1,0}
+@attribute species_in_gene_mention real
+@attribute species_nearby real
+@attribute linked_species real
+@attribute species_in_document real
+@attribute species_in_title real
+@attribute is_common_species real
+@attribute type_of_gene real
+@attribute symbol_edit_distance real
+@attribute synonyms_edit_distance real
+@attribute symbol_number_similarity real
+@attribute token_lucene_score real
+@attribute gene_in_bracket real
+@attribute gene_outside_bracket real
+@attribute synonyms_in_sentence real
+@attribute extended_gm_lucene_score real
+@data
+
+w_0	0.18020355134056015
+w_1	0.044072528098474506
+w_2	0.07419560374014725
+w_3	0.565383265325305
+w_4	0.0858542234555831
+w_5	0.023308480225108907
+w_6	0.17932420483622316
+w_7	-0.0793249881627858
+w_8	-0.3244565145822999
+w_9	0.10058690666244885
+w_10	0.0815462851256941
+w_11	0.17946006879437912
+w_12	0.2906003481096016
+w_13	0.059694054033774605
+w_14	0.19873613422577446
+max_value_0	0.0
+max_value_1	1.0
+max_value_2	1.0
+max_value_3	0.8333333333333334
+max_value_4	1.0
+max_value_5	1.0
+max_value_6	0.5
+max_value_7	1.0
+max_value_8	1.0
+max_value_9	1.0
+max_value_10	17.010583877563477
+max_value_11	0.0
+max_value_12	15.911971092224121
+max_value_13	1.0
+max_value_14	1.0
+train with: ./train/TrainData_1.txt
+develop dataset:null
+rate=0.01	best T: 195	best CorrectNum: 290
+the BEST rate: 0.01	the BEST prediction: 	290.0
+@relation gene_normalization
+@attribute class {1,0}
+@attribute species_in_gene_mention real
+@attribute species_nearby real
+@attribute linked_species real
+@attribute species_in_document real
+@attribute species_in_title real
+@attribute is_common_species real
+@attribute type_of_gene real
+@attribute symbol_edit_distance real
+@attribute synonyms_edit_distance real
+@attribute symbol_number_similarity real
+@attribute token_lucene_score real
+@attribute gene_in_bracket real
+@attribute gene_outside_bracket real
+@attribute synonyms_in_sentence real
+@attribute extended_gm_lucene_score real
+@data
+
+w_0	0.0
+w_1	0.036298469803207535
+w_2	0.27566522012549927
+w_3	0.32209997505811694
+w_4	-0.5295969436823256
+w_5	0.029052714525847585
+w_6	0.003329899173645659
+w_7	-0.0119892376192809
+w_8	-0.9012944929552911
+w_9	0.01085521466813128
+w_10	-0.23492133385403216
+w_11	0.0
+w_12	0.08198557892698365
+w_13	0.5064553270065837
+w_14	-0.22533678435805626
+max_value_0	0.0
+max_value_1	1.0
+max_value_2	1.0
+max_value_3	0.8333333333333334
+max_value_4	1.0
+max_value_5	1.0
+max_value_6	0.5
+max_value_7	1.0
+max_value_8	1.0
+max_value_9	1.0
+max_value_10	17.010583877563477
+max_value_11	1.0
+max_value_12	0.0
+max_value_13	15.911971092224121
+max_value_14	1.0
+max_value_15	1.0
+max_value_16	1.0
+max_value_17	1.0
+max_value_18	1.0
+max_value_19	1.0
+train with: ./train/TrainData_1.txt
+develop dataset:null
+rate=0.01	last T: 200	best CorrectNum: 339
+the BEST rate: 0.01	the BEST prediction: 	339.0
+@relation gene_normalization
+@attribute class {1,0}
+@attribute feautre_0 real
+@attribute feautre_1 real
+@attribute feautre_2 real
+@attribute feautre_3 real
+@attribute feautre_4 real
+@attribute feautre_5 real
+@attribute feautre_6 real
+@attribute feautre_7 real
+@attribute feautre_8 real
+@attribute feautre_9 real
+@attribute feautre_10 real
+@attribute feautre_11 real
+@attribute feautre_12 real
+@attribute feautre_13 real
+@attribute feautre_14 real
+@attribute feautre_15 real
+@attribute feautre_16 real
+@attribute feautre_17 real
+@attribute feautre_18 real
+@attribute feautre_19 real
+@data
+
+w_0	0.0
+w_1	0.013908517067213085
+w_2	0.3198992755614883
+w_3	0.49784635923221393
+w_4	-0.544905465718524
+w_5	-0.05547881740696831
+w_6	0.007088758927642113
+w_7	0.20225880677181024
+w_8	-0.9898013902550005
+w_9	0.03321908185972916
+w_10	-0.1498974276268683
+w_11	-0.3882188536878062
+w_12	0.0
+w_13	0.030944637987284727
+w_14	0.29980260923815183
+w_15	-0.1006125492994846
+w_16	0.20093607526732785
+w_17	-0.37438555646601723
+w_18	0.09016727449635314
+w_19	0.6430969704361337
+max_value_0	0.0
+max_value_1	1.0
+max_value_2	1.0
+max_value_3	0.8333333333333334
+max_value_4	1.0
+max_value_5	1.0
+max_value_6	0.5
+max_value_7	1.0
+max_value_8	1.0
+max_value_9	1.0
+max_value_10	17.010583877563477
+max_value_11	1.0
+max_value_12	0.0
+max_value_13	15.911971092224121
+max_value_14	1.0
+max_value_15	1.0
+max_value_16	1.0
+max_value_17	1.0
+max_value_18	1.0
+max_value_19	1.0
+train with: ./train/TrainData_1.txt
+develop dataset:null
+rate=0.01	last T: 200	best CorrectNum: 339
+the BEST rate: 0.01	the BEST prediction: 	339.0
+@relation gene_normalization
+@attribute class {1,0}
+@attribute feautre_0 real
+@attribute feautre_1 real
+@attribute feautre_2 real
+@attribute feautre_3 real
+@attribute feautre_4 real
+@attribute feautre_5 real
+@attribute feautre_6 real
+@attribute feautre_7 real
+@attribute feautre_8 real
+@attribute feautre_9 real
+@attribute feautre_10 real
+@attribute feautre_11 real
+@attribute feautre_12 real
+@attribute feautre_13 real
+@attribute feautre_14 real
+@attribute feautre_15 real
+@attribute feautre_16 real
+@attribute feautre_17 real
+@attribute feautre_18 real
+@attribute feautre_19 real
+@data
+
+w_0	0.0
+w_1	0.013908517067213085
+w_2	0.3198992755614883
+w_3	0.49784635923221393
+w_4	-0.544905465718524
+w_5	-0.05547881740696831
+w_6	0.007088758927642113
+w_7	0.20225880677181024
+w_8	-0.9898013902550005
+w_9	0.03321908185972916
+w_10	-0.1498974276268683
+w_11	-0.3882188536878062
+w_12	0.0
+w_13	0.030944637987284727
+w_14	0.29980260923815183
+w_15	-0.1006125492994846
+w_16	0.20093607526732785
+w_17	-0.37438555646601723
+w_18	0.09016727449635314
+w_19	0.6430969704361337
+max_value_0	0.0
+max_value_1	1.0
+max_value_2	1.0
+max_value_3	0.8333333333333334
+max_value_4	1.0
+max_value_5	1.0
+max_value_6	0.5
+max_value_7	1.0
+max_value_8	1.0
+max_value_9	1.0
+max_value_10	17.010583877563477
+max_value_11	1.0
+max_value_12	0.0
+max_value_13	15.911971092224121
+max_value_14	1.0
+max_value_15	1.0
+max_value_16	1.0
+max_value_17	1.0
+max_value_18	1.0
+max_value_19	1.0
+train with: ./train/TrainData_1.txt
+develop dataset:null
+rate=0.01	last T: 200	best CorrectNum: 339
+the BEST rate: 0.01	the BEST prediction: 	339.0
+@relation gene_normalization
+@attribute class {1,0}
+@attribute feautre_0 real
+@attribute feautre_1 real
+@attribute feautre_2 real
+@attribute feautre_3 real
+@attribute feautre_4 real
+@attribute feautre_5 real
+@attribute feautre_6 real
+@attribute feautre_7 real
+@attribute feautre_8 real
+@attribute feautre_9 real
+@attribute feautre_10 real
+@attribute feautre_11 real
+@attribute feautre_12 real
+@attribute feautre_13 real
+@attribute feautre_14 real
+@attribute feautre_15 real
+@attribute feautre_16 real
+@attribute feautre_17 real
+@attribute feautre_18 real
+@attribute feautre_19 real
+@data
+
+w_0	0.0
+w_1	0.013908517067213085
+w_2	0.3198992755614883
+w_3	0.49784635923221393
+w_4	-0.544905465718524
+w_5	-0.05547881740696831
+w_6	0.007088758927642113
+w_7	0.20225880677181024
+w_8	-0.9898013902550005
+w_9	0.03321908185972916
+w_10	-0.1498974276268683
+w_11	-0.3882188536878062
+w_12	0.0
+w_13	0.030944637987284727
+w_14	0.29980260923815183
+w_15	-0.1006125492994846
+w_16	0.20093607526732785
+w_17	-0.37438555646601723
+w_18	0.09016727449635314
+w_19	0.6430969704361337
+max_value_0	1.0
+max_value_1	1.0
+max_value_2	1.0
+max_value_3	1.0
+max_value_4	1.0
+max_value_5	0.8823529411764706
+max_value_6	1.0
+max_value_7	1.0
+max_value_8	1.0
+max_value_9	1.0
+max_value_10	1.0
+max_value_11	1.0
+max_value_12	1.0
+max_value_13	17.010583877563477
+max_value_14	1.0
+max_value_15	13.297012329101562
+max_value_16	16.09429359436035
+max_value_17	1.0
+max_value_18	1.0
+max_value_19	1.0
+max_value_20	1.0
+max_value_21	1.0
+max_value_22	1.0
+max_value_23	1.0
+train with: ./train/TrainData_1.txt
+develop dataset:null
+rate=0.01	last T: 200	best CorrectNum: 4737
+the BEST rate: 0.01	the BEST prediction: 	4737.0
+@relation gene_normalization
+@attribute class {1,0}
+@attribute species_in_gene_mention real
+@attribute species_nearby real
+@attribute linked_species real
+@attribute species_in_document real
+@attribute species_in_title real
+@attribute is_common_species real
+@attribute type_of_gene real
+@attribute symbol_edit_distance real
+@attribute synonyms_edit_distance real
+@attribute symbol_number_similarity real
+@attribute token_lucene_score real
+@attribute gene_in_bracket real
+@attribute gene_outside_bracket real
+@attribute synonyms_in_sentence real
+@attribute extended_gm_lucene_score real
+@data
+
+w_0	-0.00212543134926538
+w_1	-0.34013725933739525
+w_2	0.13185825674242768
+w_3	-0.08602945969338285
+w_4	0.17568907010233714
+w_5	0.6132363106785645
+w_6	0.006648409884593874
+w_7	-0.00848622857537792
+w_8	0.015640510699748623
+w_9	0.17349324830438775
+w_10	0.0927058966087463
+w_11	0.16941540462547897
+w_12	0.04039026758238305
+w_13	0.02661237885869941
+w_14	0.19040510045821774
+w_15	0.09323847327146159
+w_16	0.34683274610432274
+w_17	0.05853070886080892
+w_18	0.030676235420561797
+w_19	-0.018472427956971384
+w_20	0.01587078500453689
+w_21	-0.04990026201113325
+w_22	0.4574911692892625
+w_23	0.0162112511874399
+max_value_0	1.0
+max_value_1	1.0
+max_value_2	1.0
+max_value_3	1.0
+max_value_4	1.0
+max_value_5	0.8823529411764706
+max_value_6	1.0
+max_value_7	1.0
+max_value_8	1.0
+max_value_9	1.0
+max_value_10	1.0
+max_value_11	1.0
+max_value_12	1.0
+max_value_13	17.010583877563477
+max_value_14	1.0
+max_value_15	13.297012329101562
+max_value_16	16.09429359436035
+max_value_17	1.0
+max_value_18	1.0
+max_value_19	1.0
+max_value_20	1.0
+max_value_21	1.0
+max_value_22	1.0
+max_value_23	1.0
+train with: ./train/TrainData_1.txt
+develop dataset:null
+rate=0.01	last T: 200	best CorrectNum: 4739
+the BEST rate: 0.01	the BEST prediction: 	4739.0
+@relation gene_normalization
+@attribute class {1,0}
+@attribute species_in_gene_mention real
+@attribute species_nearby real
+@attribute linked_species real
+@attribute species_in_document real
+@attribute species_in_title real
+@attribute is_common_species real
+@attribute type_of_gene real
+@attribute symbol_edit_distance real
+@attribute synonyms_edit_distance real
+@attribute symbol_number_similarity real
+@attribute token_lucene_score real
+@attribute gene_in_bracket real
+@attribute gene_outside_bracket real
+@attribute synonyms_in_sentence real
+@attribute extended_gm_lucene_score real
+@data
+
+w_0	-0.002307077129544819
+w_1	-0.339422734924599
+w_2	0.1325486259202604
+w_3	-0.08593872690408334
+w_4	0.17590613791244525
+w_5	0.6131357296542571
+w_6	0.006786632508137903
+w_7	-0.008129550046989826
+w_8	0.016106729291892646
+w_9	0.1730660322302462
+w_10	0.09244179598707593
+w_11	0.17225235412450618
+w_12	0.04015933380467739
+w_13	0.026624744686785138
+w_14	0.1919348262572779
+w_15	0.09320610556069638
+w_16	0.34664347265009
+w_17	0.05818545607943684
+w_18	0.031041605529576716
+w_19	-0.01942729121428034
+w_20	0.013651004908387969
+w_21	-0.04858294436060243
+w_22	0.4586671197941752
+w_23	0.015901283365251522

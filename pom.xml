@@ -1,0 +1,198 @@
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+
+    <groupId>edu.ucdenver.ccp</groupId>
+    <artifactId>genetukit-run</artifactId>
+    <version>0.1-SNAPSHOT</version>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>amc-bakeoff.ucdenver.pvt</id>
+            <name>amc-bakeoff.ucdenver.pvt</name>
+            <url>http://amc-bakeoff.ucdenver.pvt:8081/artifactory/libs-snapshot-local</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+
+    <dependencies>
+
+		<!-- dependencies with groupId genetukit are those whose true identity remains
+             unknown. They are deployed locally from the lib directory included with
+             geneTUKit, hence their groupId genetukit. -->
+
+		<!-- from geneTUKit/lib -->	
+		<dependency>
+			<groupId>genetukit</groupId>
+			<artifactId>mallet</artifactId>
+			<version>mallet</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.lucene</groupId>
+			<artifactId>lucene-core</artifactId>
+			<version>3.0.1</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.12</version>
+		</dependency>
+		            
+		<dependency>
+			<groupId>postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<!--<version>7.4.1</version>-->
+			<version>9.0-801.jdbc3</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.ant</groupId>
+			<artifactId>ant</artifactId>
+			<version>1.8.0</version>
+		</dependency>
+		
+		<!-- from geneTUKit/lib -->	
+		<dependency>
+    		<groupId>genetukit</groupId>
+    		<artifactId>jakarta-ant-optional</artifactId>
+    		<version>jakarta-ant-optional</version>
+		</dependency>
+	
+		<dependency>
+			<groupId>net.sf.jwordnet</groupId>
+			<artifactId>jwnl</artifactId>
+			<version>1.3.3</version>
+		</dependency>
+	
+		<!-- from geneTUKit/lib -->	
+		<dependency>
+			<groupId>org.apache.opennlp</groupId>
+			<artifactId>opennlp-maxent</artifactId>
+			<version>2.5.2</version>
+		</dependency>
+		
+		<!-- from geneTUKit/lib -->	
+		<dependency>
+			<groupId>org.apache.opennlp</groupId>
+			<artifactId>opennlp-tools</artifactId>
+			<version>1.4.3</version>
+		</dependency>
+		
+		<!-- from geneTUKit/lib -->	
+		<dependency>
+			<groupId>genetukit</groupId>
+			<artifactId>linnaeus</artifactId>
+			<version>linnaeus</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>trove</groupId>
+			<artifactId>trove</artifactId>
+			<version>1.0.2</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>abner</groupId>
+			<artifactId>abner</artifactId>
+			<version>original</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>banner</groupId>
+			<artifactId>dragontool</artifactId>
+			<version>20111108-SNAPSHOT</version>
+		</dependency>
+		
+		<!-- from geneTUKit/lib -->	
+		<dependency>
+			<groupId>genetukit</groupId>
+			<artifactId>banner</artifactId>
+			<version>banner</version>
+		</dependency>
+		
+		
+		<!--:$GT_HOME/lib/stanford-postagger-2009-12-24.jar-->
+		<!-- from geneTUKit/lib -->	
+		<dependency>
+    		<groupId>edu.stanford.nlp</groupId>
+    		<artifactId>stanford-postagger</artifactId>
+    		<version>2009-12-24</version>
+		</dependency>
+
+		<!-- from geneTUKit/lib -->	
+		<dependency>
+		    <groupId>genetukit</groupId>
+		    <artifactId>weka</artifactId>
+		    <version>weka</version>
+		</dependency>
+		
+		<!-- from geneTUKit/lib -->	
+		<dependency>
+		    <groupId>genetukit</groupId>
+		    <artifactId>libsvm</artifactId>
+		    <version>libsvm</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>hepple</groupId>
+		    <artifactId>heptag</artifactId>
+		    <version>heptag</version>
+		</dependency>
+		
+		
+		<!-- from geneTUKit/lib -->	
+		<dependency>
+			<groupId>rank-tool</groupId>
+			<artifactId>rank-tool</artifactId>
+			<version>rank-tool</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>genetukit</groupId>
+			<artifactId>genetukit</artifactId>
+			<version>genetukit</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>CRFPP</groupId>
+			<artifactId>CRFPP</artifactId>
+			<version>CRFPP</version>
+		</dependency>
+    </dependencies>
+
+	<build>
+		<sourceDirectory>src</sourceDirectory>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.1</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <mainClass>bioner.application.webtool.GNRun</mainClass>
+                    <arguments>
+                      <argument>-x</argument>
+                      <argument>2858709.nxml</argument>
+                     <argument>-banner</argument> 
+                    </arguments>
+                </configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
+
