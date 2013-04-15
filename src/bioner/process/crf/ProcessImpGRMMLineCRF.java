@@ -26,11 +26,11 @@ import edu.umass.cs.mallet.base.types.Label;
 import edu.umass.cs.mallet.base.types.Labels;
 import edu.umass.cs.mallet.base.types.LabelsSequence;
 import edu.umass.cs.mallet.base.util.FileUtils;
-import edu.umass.cs.mallet.grmm.learning.ACRF;
-import edu.umass.cs.mallet.grmm.learning.ACRFEvaluator;
-import edu.umass.cs.mallet.grmm.learning.ACRFTrainer;
-import edu.umass.cs.mallet.grmm.learning.GenericAcrfData2TokenSequence;
-import edu.umass.cs.mallet.grmm.learning.MultiSegmentationEvaluatorACRF;
+//import edu.umass.cs.mallet.grmm.learning.ACRF;
+//import edu.umass.cs.mallet.grmm.learning.ACRFEvaluator;
+//import edu.umass.cs.mallet.grmm.learning.ACRFTrainer;
+//import edu.umass.cs.mallet.grmm.learning.GenericAcrfData2TokenSequence;
+//import edu.umass.cs.mallet.grmm.learning.MultiSegmentationEvaluatorACRF;
 import bioner.data.document.BioNERDocument;
 import bioner.data.document.BioNEREntity;
 import bioner.data.document.BioNERSentence;
@@ -38,10 +38,11 @@ import bioner.data.document.BioNERToken;
 import bioner.global.GlobalConfig;
 import bioner.process.BioNERProcess;
 import bioner.process.proteinner.GetNERSentence;
-import bsh.EvalError;
+//import bsh.EvalError;
 
-public class ProcessImpGRMMLineCRF implements BioNERProcess {
-
+public class ProcessImpGRMMLineCRF //implements BioNERProcess 
+{
+/*
 	private ACRF m_CRF = null;
 	private TokenFeatureBuilder[] featureBuilderPipeline = TokenFeatureBuilderFactory.createTokenFeatureBuilderPipeline();
 	private Pipe m_pipe = null;
@@ -162,4 +163,5 @@ public class ProcessImpGRMMLineCRF implements BioNERProcess {
 		}
  		return sb.toString();
 	}
+*/
 }

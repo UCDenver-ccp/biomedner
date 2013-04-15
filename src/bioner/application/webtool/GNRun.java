@@ -41,7 +41,8 @@ public class GNRun {
 		}
 		
 		
-		
+		/*
+		 * evil cheap way of cleaning up System.out.println() calls...
 		PrintStream consoleStream = System.out;
 		PrintStream tempStream = new PrintStream(new OutputStream() {
 			
@@ -52,6 +53,7 @@ public class GNRun {
 			}
 		});
 		System.setOut(tempStream);
+		*/
 		
 		GNProcessor.FileType fileType = null;
 		if(args[0].equals("-x"))
@@ -96,7 +98,7 @@ public class GNRun {
 			File file = files[i];
 			GNResultItem[] items = processor.process(file.getAbsolutePath(), fileType);
 			
-			System.setOut(consoleStream);
+			//System.setOut(consoleStream);
 			System.out.println("Results for "+file.getAbsolutePath()+" :");
 			for(int j=0; j<items.length; j++)
 			{
@@ -115,7 +117,7 @@ public class GNRun {
 				System.out.println(sb.toString());
 			}
 			System.out.println();
-			System.setOut(tempStream);
+			//	System.setOut(tempStream);
 			long endTime = System.currentTimeMillis();
 			long time = endTime - beginTime;
 			System.err.println("Finished! "+time+" ms");

@@ -2,7 +2,7 @@ package bioner.application.geniagm;
 
 import bioner.application.api.BioNERProcessFactory;
 import bioner.process.BioNERProcess;
-import bioner.process.crf.ProcessImpGRMMLineCRF;
+//import bioner.process.crf.ProcessImpGRMMLineCRF;
 import bioner.process.common.ProcessImpEntityFilter;
 import bioner.process.common.ProcessImpGetEntityFromLabel;
 import bioner.process.knowledgebase.ProcessImpDiseaseNER;
@@ -29,7 +29,7 @@ public class GENIAGMProcessFactory implements BioNERProcessFactory{
 		pipeline[5] = new ProcessImpOrgnismNER();
 		pipeline[6] = new ProcessImpSetLable();
 		//pipeline[7] = new ProcessImpSetLabelByCRF();
-		pipeline[7] = new ProcessImpGRMMLineCRF();
+		//pipeline[7] = new ProcessImpGRMMLineCRF();
 		pipeline[8] = new ProcessImpRightBoundAdjust();
 		pipeline[9] = new ProcessImpGetEntityFromLabel();
 		pipeline[10] = new ProcessImpPostProcessEntityFilter();
