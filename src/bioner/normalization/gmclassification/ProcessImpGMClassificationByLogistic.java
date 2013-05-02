@@ -33,10 +33,16 @@ public class ProcessImpGMClassificationByLogistic implements BioNERProcess {
 	        logistic.buildClassifier(instancesTrain);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
+			System.err.println("error in ProcessImpGMClassificiationByLogistic:" + e);
+			System.err.println("trainfile is: " + trainfile );
 			e.printStackTrace();
+			throw new RuntimeException(e);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
+			System.err.println("error in ProcessImpGMClassificiationByLogistic:" + e);
+			System.err.println("trainfile is: " + trainfile );
 			e.printStackTrace();
+			throw new RuntimeException(e);
 		}
 		LogisticFile train = new LogisticFile( trainfile );
 		m_header = train.getHeader();
@@ -82,14 +88,15 @@ public class ProcessImpGMClassificationByLogistic implements BioNERProcess {
 			return score;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
+			System.err.println("error in ProcessImpGMClassificiationByLogistic:" + e);
 			e.printStackTrace();
+			throw new RuntimeException(e);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
+			System.err.println("error in ProcessImpGMClassificiationByLogistic:" + e);
 			e.printStackTrace();
+			throw new RuntimeException(e);
 		}
-	        
-		
-		return 0.0;
 	}
 
 }

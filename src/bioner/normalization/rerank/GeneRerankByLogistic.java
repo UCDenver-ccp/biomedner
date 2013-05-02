@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Vector;
-
+import java.util.Enumeration;
 import bioner.data.document.BioNERDocument;
 import bioner.data.document.BioNEREntity;
 import bioner.normalization.GeneIDRerankFeatureBuilder;
@@ -16,6 +16,7 @@ import bioner.normalization.data.BioNERCandidate;
 import statistics.common.LogisticFile;
 import weka.classifiers.functions.Logistic;
 import weka.core.Instances;
+import weka.core.Instance;
 import weka.core.converters.ArffLoader;
 
 public class GeneRerankByLogistic {
@@ -31,6 +32,12 @@ public class GeneRerankByLogistic {
 	   		//logistic.setOptions(options);
 	        ArffLoader atf1 = new ArffLoader(); 
         	File inputFile = new File( trainfile );
+if (!inputFile.exists()) {
+	System.err.println("ERROR: file not found:" + trainfile + ", " + inputFile.getAbsolutePath());
+}
+else {
+	System.err.println("OK  :" + trainfile + ", " + inputFile.getAbsolutePath());
+}
  			atf1.setFile(inputFile);
 			Instances instancesTrain = atf1.getDataSet();
 			
@@ -55,24 +62,39 @@ public class GeneRerankByLogistic {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		// Get header from a file
 		LogisticFile train = new LogisticFile( trainfile );
 		m_header = train.getHeader();
+		System.out.println("HEADER:----->" + m_header + "<--------");
 	}
 	
-	public void rerank(BioNERDocument document, HashMap<String, Vector<BioNEREntity>> map, BioNERCandidate[] candidates)
-	{
-		for(int i=0; i<candidates.length; i++)
-		{
+	public void rerank(BioNERDocument document, HashMap<String, Vector<BioNEREntity>> map, BioNERCandidate[] candidates) {
+		for(int i=0; i<candidates.length; i++) {
+
+			//String[] headerStrs = m_featureBuilder.getWekaAttributeFileHead();
+			//StringBuffer headerBuffer = new StringBuffer();
+			//for(int j=0; j<headerStrs.length; j++) {	
+			//	headerBuffer.append(headerStrs[j]);
+			//	headerBuffer.append(", ");
+			//}
+			//String headerHeader = "@relation gene_normalization\n@attribute class {1,0}\n";
+			//String headerFooter = "\n@data\n";
+			//m_header =  headerHeader + headerBuffer.toString().replace(",","\n") + headerFooter;
+			//System.out.println("HEADER header:----->" + headerHeader + "<--------");
+			//System.out.println("HEADER buffer:----->" + headerBuffer.toString() + "<--------");
+			//System.out.println("HEADER:----->" + m_header + "<--------");
+
 			String[] featureStrs = m_featureBuilder.getFeatures(document, map, candidates[i]);
-			
-			StringBuffer sb = new StringBuffer("?");
-			
-			for(int j=0; j<featureStrs.length; j++)
-			{
-				sb.append(",");
-				sb.append(featureStrs[j]);
+			StringBuffer featureBuffer = new StringBuffer("1,");
+			for(int j=0; j<featureStrs.length; j++) {
+				featureBuffer.append(featureStrs[j]);
+				featureBuffer.append(", ");
 			}
-			String dataString = m_header + sb.toString();
+
+
+			String dataString = featureBuffer.toString();
+			dataString = m_header + dataString.substring(0, dataString.length() -2);
+			System.out.println("dataString length: " + dataString.length());
 			InputStream in = new ByteArrayInputStream(dataString.getBytes());
 	        
 			double[] features = new double[featureStrs.length];
@@ -93,10 +115,13 @@ public class GeneRerankByLogistic {
 				candidates[i].setScore(score);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
+				System.out.println("in string is: " + dataString);
 				e.printStackTrace();
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
+				System.out.println("in string is: " + dataString);
 				e.printStackTrace();
+				throw new RuntimeException(e);
 			}
 	        
 		}

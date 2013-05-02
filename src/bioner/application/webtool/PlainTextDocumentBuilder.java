@@ -37,8 +37,13 @@ public class PlainTextDocumentBuilder implements BioNERDocumentBuilder {
 		doc.setID(id);
 		try {
 			BufferedReader freader = new BufferedReader(new FileReader(file));
+
+			// title 
 			String line = freader.readLine();
 			doc.setTitle(line);
+
+
+			// abstract
 			line = freader.readLine();
 			String[] sentences = sentenceSpliter.sentenceSplit(line);
 			String absText = "";
@@ -52,7 +57,10 @@ public class PlainTextDocumentBuilder implements BioNERDocumentBuilder {
 			paragraph.setSentence(sentences);
 			section.addParagraph(paragraph);
 			doc.setAbstractSection(section);
-			
+		
+
+			// following sections:
+			// one line read, one paragraph, one section
 			while((line=freader.readLine())!=null)
 			{
 				sentences = sentenceSpliter.sentenceSplit(line);
@@ -63,7 +71,9 @@ public class PlainTextDocumentBuilder implements BioNERDocumentBuilder {
 				}
 				section = new BioNERSection();
 				paragraph = new BioNERParagraph();
-				paragraph.setText(absText);
+				// bug?
+				//paragraph.setText(absText);
+				paragraph.setText(paraText);
 				paragraph.setSentence(sentences);
 				section.addParagraph(paragraph);
 				doc.addSection(section);
@@ -80,6 +90,54 @@ public class PlainTextDocumentBuilder implements BioNERDocumentBuilder {
 		}
 		return doc;
 	}
+
+
+	public static BioNERDocument getOneDocumentFromStringArray(String[] lines, String docId)
+	{
+		BioNERDocument doc = new BioNERDocument();
+		doc.setID(docId);
+
+		// title 
+		doc.setTitle(lines[0]);
+
+
+		// abstract
+		{
+			String[] sentences = sentenceSpliter.sentenceSplit(lines[1]);
+			String absText = "";
+			for(int j=0; j<sentences.length; j++) {
+				absText += sentences[j]+ " ";
+			}
+			BioNERSection section = new BioNERSection();
+			BioNERParagraph paragraph = new BioNERParagraph();
+			paragraph.setText(absText);
+			paragraph.setSentence(sentences);
+			section.addParagraph(paragraph);
+			doc.setAbstractSection(section);
+		}	
+
+		// following sections:
+		// one line read, one paragraph, one section
+		{
+			for (int i=2; i<lines.length; i++) {
+				String[] sentences = sentenceSpliter.sentenceSplit(lines[i]);
+				String paraText = "";
+				for(int j=0; j<sentences.length; j++) {
+					paraText += sentences[j]+ " ";
+				}
+				BioNERSection section = new BioNERSection();
+				BioNERParagraph paragraph = new BioNERParagraph();
+				paragraph.setText(paraText);
+				paragraph.setSentence(sentences);
+				section.addParagraph(paragraph);
+				doc.addSection(section);
+			}
+		}
+		
+		doc.linkComponent();
+		return doc;
+	}
+
 	@Override
 	public BioNERDocument[] buildDocuments() {
 		// TODO Auto-generated method stub

@@ -72,6 +72,11 @@ public class GNProcessor {
 		{
 			document = PlainTextDocumentBuilder.getOneDocument(filename);
 		}
+
+		return process(document);
+	}
+
+	public GNResultItem[] process(BioNERDocument document) {
 		for(int j=0; j<pipeline.length; j++)
 		{
 			pipeline[j].Process(document);

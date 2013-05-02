@@ -276,31 +276,24 @@ public class BC3GNBuildNormalizationTrainData {
 	 * @throws IOException 
 	 */
 	public static void main(String[] args) throws IOException {
-		// TODO Auto-generated method stub
 		String genelistFilename = "../../BC3GN/data/TrainingSet2.txt";
 		String dataDir = "../../BC3GN/xmls/";
 		String outputFilename = "../../BC3GN/TrainData_10.txt";
-		//writerDataFile(dataDir, genelistFilename, outputFilename, 10);
 		outputFilename = "../../BC3GN/TrainData_50.txt";
 		
-		if(args.length==3)
-		{
+		if(args.length==3) {
 			dataDir = args[0];
 			genelistFilename = args[1];
 			outputFilename = args[2];
 		}
+
+		System.out.println("running with dataDir: " + dataDir);
+		System.out.println("running with genelistFilename: " + genelistFilename);
+		System.out.println("running with output filename: " + outputFilename);
+
+
 		GlobalConfig.BC3GN_DATADIR = dataDir;
 		writerDataFile(dataDir, genelistFilename, outputFilename, 50);
-		
-		/*
-		genelistFilename = "../../BC2GN/data/testing.genelist";
-		dataDir = "../../BC2GN/data/testingData";
-		
-		outputFilename = "../../BC2GN/TestData_10.txt";
-		//writerDataFile(dataDir, genelistFilename, outputFilename, 10);
-		outputFilename = "../../BC2GN/TestData_50.txt";
-		//writerDataFile(dataDir, genelistFilename, outputFilename, 50);*/
-		
 	}
 	
 	public static int haveCorrectID(BioNERCandidate[] candidates, int rank, Vector<String> idVector)

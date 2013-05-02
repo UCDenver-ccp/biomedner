@@ -3,7 +3,9 @@ package crf.featurebuild.bc2gm;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.File;
 import java.io.IOException;
+
 import java.util.Hashtable;
 import java.util.Vector;
 
@@ -13,6 +15,7 @@ import bioner.data.document.BioNERParagraph;
 import bioner.data.document.BioNERSection;
 import bioner.data.document.BioNERSentence;
 import bioner.global.GlobalConfig;
+
 import crf.featurebuild.FeatureBuildDocumentBuilder;
 
 public class BC2GMFeatureBuildDocumentBuilder implements
@@ -20,13 +23,15 @@ public class BC2GMFeatureBuildDocumentBuilder implements
 
 	@Override
 	public BioNERDocument[] buildDocuments() {
-		// TODO Auto-generated method stub
-		BioNERDocument[] documents = null;
 		String filepath = GlobalConfig.BC2_GM_TRAIN_DATA_FILEPATH;
-		//String filepath = "./data/Biocreative2/GM.test.in";
+		return buildDocuments(new File(filepath), new File(filepath + ".eval"));
+	}
+
+	public BioNERDocument[] buildDocuments(File sentencesFile, File evalFile) {
+		BioNERDocument[] documents = null;
 		try {
 			Vector<BioNERDocument> docVector = new Vector<BioNERDocument>();
-			BufferedReader freader = new BufferedReader(new FileReader(filepath));
+			BufferedReader freader = new BufferedReader(new FileReader(sentencesFile));
 			Hashtable<String, BioNERDocument> docTable = new Hashtable<String, BioNERDocument>();
 			String line;
 			while((line=freader.readLine()) != null)
@@ -50,7 +55,7 @@ public class BC2GMFeatureBuildDocumentBuilder implements
 			}
 			freader.close();
 			
-			freader = new BufferedReader(new FileReader(filepath+".eval"));
+			freader = new BufferedReader(new FileReader(evalFile));
 			while((line=freader.readLine()) != null)
 			{
 				String[] parts = line.split("\\|");
@@ -106,11 +111,13 @@ public class BC2GMFeatureBuildDocumentBuilder implements
 			}
 					
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+			System.out.println("error in BC2GMFeatureBuildDocumentBuilder;" + e);
 			e.printStackTrace();
+			throw new RuntimeException(e);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			System.out.println("error in BC2GMFeatureBuildDocumentBuilder;" + e);
 			e.printStackTrace();
+			throw new RuntimeException(e);
 		}
 		return documents;
 	}

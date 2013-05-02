@@ -17,9 +17,18 @@ import bioner.process.proteinner.GetNERSentence;
 public class ProcessImpCRFPP implements BioNERProcess {
 	static {
 	  try {
+		System.out.println("loading jni lib libcrfpp....");
 	    System.loadLibrary("CRFPP");
-	  } catch (UnsatisfiedLinkError e) {
-	    System.err.println("Cannot load the example native code.\nMake sure your LD_LIBRARY_PATH contains \'.\'\n" + e);
+		System.out.println("...loaded, calling....");
+		String modelPath = "../../BC2GM/model_gm";
+		Tagger tagger = new Tagger("-m "+modelPath/*+" -v 3 -n2"*/);
+		System.out.println("....done loading jni lib libcrfpp.");
+	  } 
+	  catch (UnsatisfiedLinkError e) {
+	    System.err.println("Error in ProcessImpCRFPP: Cannot load the example native code.\nMake sure your LD_LIBRARY_PATH contains \'.\'\n" + e);
+	    System.err.println("   On Mac OS X,  DYLD_LIBRARY_PATH contains \'.\'");
+	    System.err.println("   On Mac OS X,  the library should be called libcrfpp.jnilib");
+	    System.err.println("" + e);
 	    System.exit(1);
 	  }
 	}
@@ -34,7 +43,15 @@ public class ProcessImpCRFPP implements BioNERProcess {
 	public ProcessImpCRFPP(String modelPath, String label)
 	{
 		System.err.println("Load CRF++ model from "+modelPath);
+	  try {
 		tagger = new Tagger("-m "+modelPath/*+" -v 3 -n2"*/);
+	  } 
+	  catch (UnsatisfiedLinkError e) {
+	    System.err.println("Error in ProcessImpCRFPP: Cannot load the example native code.\nMake sure your LD_LIBRARY_PATH contains \'.\'\n" + e);
+	    System.err.println("   On Mac OS X,  DYLD_LIBRARY_PATH contains \'.\'\n" + e);
+	    System.err.println("   On Mac OS X,  the library should be called libcrfpp.jnilib");
+		throw new RuntimeException(e);
+	  }
 		m_label = label;
 	}
 	

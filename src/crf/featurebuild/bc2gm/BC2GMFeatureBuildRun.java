@@ -2,6 +2,7 @@ package crf.featurebuild.bc2gm;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
+import java.io.File;
 import java.io.IOException;
 import java.util.Vector;
 
@@ -16,23 +17,34 @@ import crf.featurebuild.LabelBuilder;
 
 public class BC2GMFeatureBuildRun {
 
-	/**
-	 * @param args
-	 */
+	
+
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+
+		// input
+		String docFileName = args[0];
+		File docFile = new File(docFileName); 				//GM.train.in
+
+	
+		String evalFileName = args[1];
+		File evalFile = new File(evalFileName ); 	//GM.train.in.eval
+
+		// output
+		String trainDataFileName = args[2];					// "../../BC2GM/TrainData.gm.crfpp"
+		File trainDataFile = new File(trainDataFileName);
+
+	
 		GlobalConfig.ReadConfigFile();
-		FeatureBuildDocumentBuilder docBuilder = new BC2GMFeatureBuildDocumentBuilder();
+		//FeatureBuildDocumentBuilder docBuilder = new BC2GMFeatureBuildDocumentBuilder();
+		BC2GMFeatureBuildDocumentBuilder docBuilder = new BC2GMFeatureBuildDocumentBuilder();
 		
-		//CorpFeatureBuilder builder = new CorpFeatureBuilder();
-		//builder.buildCorpFeature(docBuilder,  GlobalConfig.BC2_GM_TRAIN_OUTPUT_PATH);
 		FeatureBuilder featureBuilder = new FeatureBuilder();
 		LabelBuilder labelBuilder = new LabelBuilder();
 		try {
-			BufferedWriter fwriter = new BufferedWriter(new FileWriter("../../BC2GM/TrainData.gm.crfpp"));
+			BufferedWriter fwriter = new BufferedWriter(new FileWriter(trainDataFile));
 		
 			int num=0;
-			BioNERDocument[] documents = docBuilder.buildDocuments();
+			BioNERDocument[] documents = docBuilder.buildDocuments(docFile, evalFile);
 			for(int j=0; j<documents.length; j++)
 			{
 				BioNERDocument document = documents[j];
@@ -55,8 +67,9 @@ public class BC2GMFeatureBuildRun {
 			}
 			fwriter.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			System.out.println("error in BC2GMFeatureBuildRun:" + e);
 			e.printStackTrace();
+			System.exit(-1);
 		}
 	}
 
