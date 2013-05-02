@@ -8,7 +8,29 @@ BC2_DATA=/Users/roederc/work/sources/biocreative2
 BC3_DATA=/Users/roederc/work/sources/biocreativeiii
 BIOMED_NER_HOME=/Users/roederc/work/git/biomedner
 
+
+CREATE_DB=0
+CREATE_INDEX=0
 TRAIN=0
+
+
+# Create DB
+
+# Create Index
+if (( $CREATE_INDEX )) 
+then
+	mkdir -p index/gene 2> /dev/null
+	java -cp "target/classes:./bin/:./lib/biomedner.jar:./lib/lucene-core-3.0.1.jar:./lib/servlet-api-2.4.jar"\
+	 	bioner.normalization.data.index.LuceneSpeciesIndexBuilder \
+		./data/dict/FullNameNew.txt ./index/gene
+	java -cp "target/classes:./bin/:./lib/biomedner.jar:./lib/lucene-core-3.0.1.jar:./lib/servlet-api-2.4.jar" \
+		bioner.normalization.data.index.LuceneGeneIndexBuilder \
+		gene_info.gz
+
+fi
+
+
+
 
 # Train CRFPP: BC2GMFeatureBuildRun, crf_learn
 TRAIN_FILE=$BC2_DATA/bc2geneMention/train/train.in
