@@ -45,13 +45,14 @@ public class LuceneSpeciesIndexBuilder {
 		return vector;
 	}
 	
-	public static void indexKnowledgeBase(String filename)
+	public static void indexKnowledgeBase(String filename) {
+		String indexFilename = IndexConfig.SPECIES_INDEX_DIRECTORY;
+		indexKnowledgeBase(filename, indexFilename);
+	}
+
+	public static void indexKnowledgeBase(String filename, String indexFilename)
 	{
 		Analyzer analyzer = new StandardAnalyzer(Version.LUCENE_CURRENT);
-		
-		String indexFilename = IndexConfig.SPECIES_INDEX_DIRECTORY;
-
-		
 
 		try {
 			Directory directory = FSDirectory.open(new File(indexFilename));
@@ -222,7 +223,12 @@ public class LuceneSpeciesIndexBuilder {
 	{
 		IndexConfig.ReadConfigFile();
 		System.out.println("Indexing Species");
-		indexKnowledgeBase(args[0]);
+		if (args.length < 2) {
+			indexKnowledgeBase(args[0]);
+		}
+		else {
+			indexKnowledgeBase(args[0], args[1]);
+		}
 		System.out.println("Done!");
 	}
 }

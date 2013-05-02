@@ -21,11 +21,16 @@ import org.apache.lucene.util.Version;
 import bioner.normalization.GeneMentionTokenizer;
 
 public class LuceneGeneIndexBuilder {
-	public static void indexKnowledgeBase(String filename)
+
+	public static void indexKnowledgeBase(String filename) {
+		String indexFilename = IndexConfig.GENE_INDEX_DIRECTORY;
+		indexKnowledgeBase(filename, indexFilename);
+	}
+
+	public static void indexKnowledgeBase(String filename, String indexFilename)
 	{
 		Analyzer analyzer = new StandardAnalyzer(Version.LUCENE_CURRENT);
 		
-		String indexFilename = IndexConfig.GENE_INDEX_DIRECTORY;
 
 		
 
@@ -276,13 +281,13 @@ public class LuceneGeneIndexBuilder {
 	{
 		IndexConfig.ReadConfigFile();
 		System.out.println("Indexing Gene");
-		indexKnowledgeBase(args[0]);
+		if (args.length < 2) {
+			indexKnowledgeBase(args[0]);
+		}
+		else {
+			indexKnowledgeBase(args[0], args[1]);
+		}
+	
 		System.out.println("Done!");
-		//System.out.println("Indexing Gene for idf");
-		//indexKnowledgeBaseForIDF(args[0]);
-		//System.out.println("Done!");
-		//System.out.println("Indexing Gene for semantic");
-		//indexKnowledgeBaseForSemantic(args[0]);
-		//System.out.println("Done!");
 	}
 }

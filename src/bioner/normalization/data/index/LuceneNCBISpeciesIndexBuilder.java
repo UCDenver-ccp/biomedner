@@ -19,7 +19,8 @@ import org.apache.lucene.util.Version;
 import bioner.normalization.GeneMentionTokenizer;
 
 public class LuceneNCBISpeciesIndexBuilder {
-	private static Vector<String> m_commonSpeciesVector = readCommonSpeciesList(IndexConfig.COMMON_SPEICIES_FILENAME);
+
+
 	public static Vector<String> readCommonSpeciesList(String filename)
 	{
 		Vector<String> vector = new Vector<String>();
@@ -69,11 +70,15 @@ public class LuceneNCBISpeciesIndexBuilder {
 		return array;
 	}
 	
-	public static void indexKnowledgeBase(String filename)
-	{
-		Analyzer analyzer = new StandardAnalyzer(Version.LUCENE_CURRENT);
-		
+	public static void indexKnowledgeBase(String filename) {
 		String indexFilename = IndexConfig.SPECIES_INDEX_DIRECTORY;
+		indexKnowledgeBase(filename, indexFilename, IndexConfig.COMMON_SPEICIES_FILENAME);
+	}
+
+	public static void indexKnowledgeBase(String filename, String indexFilename, String speciesFilename) {
+		Analyzer analyzer = new StandardAnalyzer(Version.LUCENE_CURRENT);
+		Vector<String> m_commonSpeciesVector = readCommonSpeciesList(speciesFilename);
+		
 		int pos = filename.lastIndexOf('/');
 		String nodeFilename = filename.substring(0, pos+1)+"nodes.dmp";
 		
@@ -248,7 +253,12 @@ public class LuceneNCBISpeciesIndexBuilder {
 	{
 		IndexConfig.ReadConfigFile();
 		System.out.println("Indexing Species");
-		indexKnowledgeBase(args[0]);
+		if (args.length < 2) {	
+			indexKnowledgeBase(args[0]);
+		}
+		else {
+			indexKnowledgeBase(args[0], args[1], args[2]);
+		}
 		System.out.println("Done!");
 	}
 }
