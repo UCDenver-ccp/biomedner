@@ -4,14 +4,18 @@
 # Dependencies:
 #  -crfpp needs to be installed
 
-BC2_DATA=/Users/roederc/work/sources/biocreative2
-BC3_DATA=/Users/roederc/work/sources/biocreativeiii
-BIOMED_NER_HOME=/Users/roederc/work/git/biomedner
-
 
 CREATE_DB=0
 CREATE_INDEX=0
 TRAIN=0
+
+#BC2_DATA=/Users/roederc/work/sources/biocreative2
+BC2_DATA=/home/roederc/work/sources/biocreative2
+#BC3_DATA=/Users/roederc/work/sources/biocreativeiii
+BC3_DATA=/home/roederc/work/sources/biocreativeiii
+#BIOMED_NER_HOME=/Users/roederc/work/git/biomedner
+BIOMED_NER_HOME=/home/roederc/work/git/biomedner
+
 
 
 # Create DB
