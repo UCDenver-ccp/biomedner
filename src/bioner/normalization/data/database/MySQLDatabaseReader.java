@@ -38,8 +38,8 @@ public class MySQLDatabaseReader implements DatabaseReader {
 					"user="+DatabaseConfig.DATABASE_USERNAME+"&password="+DatabaseConfig.DATABASE_PASSWORD);
 			stmt = conn.createStatement();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.err.println("MySQLDatabaseReader: ERROR, could not connect to database. " + e);
+			throw new RuntimeException(e);	
 		}
 	}
 	
@@ -49,8 +49,8 @@ public class MySQLDatabaseReader implements DatabaseReader {
 		try {
 			conn.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.err.println("MySQLDatabaseReader: ERROR, could not connect to database. " + e);
+			throw new RuntimeException(e);	
 		}
 	}
 	@Override
