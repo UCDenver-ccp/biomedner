@@ -17,15 +17,19 @@ import bioner.process.proteinner.GetNERSentence;
 public class ProcessImpCRFPP implements BioNERProcess {
 	static {
 	  try {
-		System.out.println("loading jni lib libcrfpp....");
-	    System.loadLibrary("CRFPP");
+		System.out.println("ProcessImpCRFPP: loading jni lib libcrfpp....");
+
+        // need libCRFPP_JNI.so as well as libcrfpp.so.0.0.0 on the path
+        // the first is the SWIG generated java-cpp bridge, the other is
+        // the real code
+        // If this runs slow, check the CFLAGS and CXXFLAGS in the Makefile
+        // for the library and make sure it's built with -o3, not -ggdb
+        // (optimized, not debugged)
+	    System.loadLibrary("CRFPP_JNI");
 		System.out.println("...loaded, calling....");
-		String modelPath = "../../BC2GM/model_gm";
-		Tagger tagger = new Tagger("-m "+modelPath/*+" -v 3 -n2"*/);
-		System.out.println("....done loading jni lib libcrfpp.");
 	  } 
 	  catch (UnsatisfiedLinkError e) {
-	    System.err.println("Error in ProcessImpCRFPP: Cannot load the example native code.\nMake sure your LD_LIBRARY_PATH contains \'.\'\n" + e);
+	    System.err.println("Error in ProcessImpCRFPP (static): Cannot load the example native code.\nMake sure your LD_LIBRARY_PATH contains \'.\'\n" + e);
 	    System.err.println("   On Mac OS X,  DYLD_LIBRARY_PATH contains \'.\'");
 	    System.err.println("   On Mac OS X,  the library should be called libcrfpp.jnilib");
 	    System.err.println("" + e);
@@ -47,9 +51,11 @@ public class ProcessImpCRFPP implements BioNERProcess {
 		tagger = new Tagger("-m "+modelPath/*+" -v 3 -n2"*/);
 	  } 
 	  catch (UnsatisfiedLinkError e) {
-	    System.err.println("Error in ProcessImpCRFPP: Cannot load the example native code.\nMake sure your LD_LIBRARY_PATH contains \'.\'\n" + e);
+	    System.err.println("Error in ProcessImpCRFPP (ctor): Cannot load the example native code.\nMake sure your LD_LIBRARY_PATH contains \'.\'\n" + e);
 	    System.err.println("   On Mac OS X,  DYLD_LIBRARY_PATH contains \'.\'\n" + e);
 	    System.err.println("   On Mac OS X,  the library should be called libcrfpp.jnilib");
+		System.err.println("   called here with " + modelPath +  " label:" + label);
+	    System.err.println("" + e);
 		throw new RuntimeException(e);
 	  }
 		m_label = label;
