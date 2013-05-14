@@ -237,11 +237,13 @@ public class BC3GNBuildSecondRankTrainData {
 			}
 			freader.close();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+            System.out.println("BC3GNBuildSecondRankTrainData error: " + e);
 			e.printStackTrace();
+            throw new RuntimeException(e);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+            System.out.println("BC3GNBuildSecondRankTrainData error: " + e);
 			e.printStackTrace();
+            throw new RuntimeException(e);
 		}
 		return table;
 	}
