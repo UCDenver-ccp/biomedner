@@ -31,7 +31,14 @@ import bioner.process.proteinner.ProcessImpProteinIndexNER;
 
 public class BC3GNBuildNormalizationTrainData {
 
-	public static void writerDataFile(String dataDir, String genelistFilename, String outputFilename, int maxNum) throws IOException
+	public static void writerDataFile(String dataDir, String genelistFilename, String outputFilename, int maxNum) 
+	throws IOException {
+		writerDataFile(dataDir, genelistFilename, outputFilename, maxNum, GlobalConfig.CRF_INEXACT_MODEL_FILEPATH);
+	}
+
+	public static void writerDataFile(String dataDir, String genelistFilename, String outputFilename, int maxNum,
+		String modelFilepath) 
+	throws IOException
 	{
 		GlobalConfig.ReadConfigFile();
 		
@@ -41,11 +48,8 @@ public class BC3GNBuildNormalizationTrainData {
 		BioNERDocument[] documents = docBuilder.buildDocuments();
 		
 		BioNERProcess[] pipeline = new BioNERProcess[6];
-		//pipeline[0] = new ProcessImpGoldStandardNER(genelistFilename);
-		pipeline[0] = new ProcessImpCRFPP(GlobalConfig.CRF_INEXACT_MODEL_FILEPATH, GlobalConfig.ENTITY_LABEL_CRF);
-		//pipeline[0] = new ProcessImpProteinBANNER();
-		//pipeline[0] = new ProcessImpCRFPP(GlobalConfig.CRF_MODEL_FILEPATH, GlobalConfig.ENTITY_LABEL_CRF);
-		//pipeline[0] = new ProcessImpGRMMLineCRF();
+		//pipeline[0] = new ProcessImpCRFPP(GlobalConfig.CRF_INEXACT_MODEL_FILEPATH, GlobalConfig.ENTITY_LABEL_CRF);
+		pipeline[0] = new ProcessImpCRFPP(modelFilepath, GlobalConfig.ENTITY_LABEL_CRF);
 		pipeline[1] = new ProcessImpProteinIndexNER();
 		pipeline[2] = new ProcessImpProteinABNER();
 		
@@ -276,24 +280,29 @@ public class BC3GNBuildNormalizationTrainData {
 	 * @throws IOException 
 	 */
 	public static void main(String[] args) throws IOException {
-		String genelistFilename = "../../BC3GN/data/TrainingSet2.txt";
 		String dataDir = "../../BC3GN/xmls/";
+		String genelistFilename = "../../BC3GN/data/TrainingSet2.txt";
 		String outputFilename = "../../BC3GN/TrainData_10.txt";
-		outputFilename = "../../BC3GN/TrainData_50.txt";
-		
-		if(args.length==3) {
+		String modelFilepath = GlobalConfig.CRF_INEXACT_MODEL_FILEPATH;
+	
+
+        System.out.println("Java LIbrary Path:" + System.getProperty("java.library.path"));
+	
+		if(args.length==4) {
 			dataDir = args[0];
 			genelistFilename = args[1];
 			outputFilename = args[2];
+			modelFilepath = args[3];
 		}
 
 		System.out.println("running with dataDir: " + dataDir);
 		System.out.println("running with genelistFilename: " + genelistFilename);
 		System.out.println("running with output filename: " + outputFilename);
+		System.out.println("running modelFilepath: " + modelFilepath);
 
 
 		GlobalConfig.BC3GN_DATADIR = dataDir;
-		writerDataFile(dataDir, genelistFilename, outputFilename, 50);
+		writerDataFile(dataDir, genelistFilename, outputFilename, 50, modelFilepath);
 	}
 	
 	public static int haveCorrectID(BioNERCandidate[] candidates, int rank, Vector<String> idVector)
@@ -330,11 +339,13 @@ public class BC3GNBuildNormalizationTrainData {
 			}
 			freader.close();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+            System.err.println("BC3GNBuildNormalizationTrainData error:" + e);
 			e.printStackTrace();
+            throw new RuntimeException(e);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+            System.err.println("BC3GNBuildNormalizationTrainData error:" + e);
 			e.printStackTrace();
+            throw new RuntimeException(e);
 		}
 		return table;
 	}
