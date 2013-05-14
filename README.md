@@ -3,6 +3,9 @@ biomedner
 
 a fork of: http://biomedner.googlecode.com/svn
 
+See:
+- http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3065680/
+
 TODO:
 - The jar dependencies aren't fully identified, but included. 
   The pom.xml file makes generic refereneces to libs that you
