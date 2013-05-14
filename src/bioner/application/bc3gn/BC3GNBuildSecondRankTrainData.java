@@ -189,6 +189,9 @@ public class BC3GNBuildSecondRankTrainData {
 			firstRankTrainData = args[2];
 			outputFilename = args[3];
 		}
+		else {
+			System.out.println("BC3GNBuildSecondRankTrainData got " + args.length +  " args, using defaults.");
+		}
 		
 		writerDataFile(dataDir, genelistFilename, firstRankTrainData, outputFilename, 5);
 		
