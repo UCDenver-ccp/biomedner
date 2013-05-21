@@ -83,15 +83,15 @@ public class BC3GNBuildGMRerankTrainData {
 		
 		
 		int rank = maxNum;
-		for(int i=0; i<documents.length ; i++)
-		{
+		for (int i=0; i<documents.length ; i++) {
 			//if(i!=9) continue;
 			long beginTime = System.currentTimeMillis();
-			System.out.print("Build rerank train data. Processing #"+i+" "+documents[i].getID()+"....");
+			System.out.print(" BC3GNBuldGMRerankTrainData: Build rerank train data. Processing #"+i+" "+documents[i].getID()+"....");
 			BioNERDocument document = documents[i];
-			for(int j=0; j<pipeline.length; j++)
-			{
+			for (int j=0; j<pipeline.length; j++) {
+                System.out.println("=====> process #" + j + "======");
 				pipeline[j].Process(document);
+                System.out.println("<----- process #" + j + "------");
 			}
 			Vector<String> idVector = idTable.get(document.getID());
 			if(idVector==null) continue;

@@ -29,84 +29,78 @@ import bioner.process.proteinner.ProcessImpProteinIndexNER;
 
 public class GNRun {
 	public static int rank = 1;
-	/**
-	 * @param args
-	 */
+
+    public static void usage() {
+        System.out.println("arg0: needs -x or -p for xml or plain text");
+        System.out.println("arg1: dir");
+        System.out.println("arg2: crf model filename");
+        System.out.println("arg3: training data filename");
+        System.out.println("arg4: rerank training data filename");
+
+        System.out.println("arg5: -banner is optional if you want banner instead of crf");
+    }
+
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		if(args.length!=2 && args.length!=3)
-		{
-			System.err.println("Args num error!");
+		GNProcessor.FileType fileType = null;
+        String crfModelFilepath;
+        String trainingFilepath;
+        String rerankFilepath;
+		boolean useBanner;
+
+		if (args.length!=5 && args.length!=6) {
+			System.err.println("Args num error! " + args.length);
+            usage();
 			System.exit(1);
 		}
 		
 		
-		/*
-		 * evil cheap way of cleaning up System.out.println() calls...
-		PrintStream consoleStream = System.out;
-		PrintStream tempStream = new PrintStream(new OutputStream() {
-			
-			@Override
-			public void write(int arg0) throws IOException {
-				// TODO Auto-generated method stub
-				
-			}
-		});
-		System.setOut(tempStream);
-		*/
-		
-		GNProcessor.FileType fileType = null;
-		if(args[0].equals("-x"))
-		{
+		if (args[0].equals("-x")) {
 			fileType = GNProcessor.FileType.NXML;
 		}
-		else if(args[0].equals("-p"))
-		{
+		else if (args[0].equals("-p")) {
 			fileType = GNProcessor.FileType.PLAIN;
 		}
-		else
-		{
+		else {
 			System.err.println("Arg 1 error!");
 			System.exit(1);
 		}
 		
+
+        crfModelFilepath = args[2];
+        trainingFilepath = args[3];
+        rerankFilepath = args[4];		
 		
-		
-		boolean useBanner;
-		if(args.length==3&&args[2].equals("-banner"))
-		{
+		if (args.length==6 && args[5].equals("-banner")) {
 			useBanner = true;
 		}
-		else
+		else {
 			useBanner = false;
+        }
+
+
 		
-		GNProcessor processor = new GNProcessor();
+		GNProcessor processor = new GNProcessor(trainingFilepath, rerankFilepath, crfModelFilepath);
 		processor.open(useBanner);
 		File rootFile = new File(args[1]);
 		File[] files;
-		if(rootFile.isDirectory())
-		{
+		if (rootFile.isDirectory()) {
 			files = rootFile.listFiles();
 		}
-		else
-		{
+		else {
 			files = new File[]{rootFile};
 		}
-		for(int i=0; i<files.length; i++)
-		{
+		for (int i=0; i<files.length; i++) {
 			long beginTime = System.currentTimeMillis();
 			File file = files[i];
 			GNResultItem[] items = processor.process(file.getAbsolutePath(), fileType);
 			
 			//System.setOut(consoleStream);
 			System.out.println("Results for "+file.getAbsolutePath()+" :");
-			for(int j=0; j<items.length; j++)
-			{
+			for (int j=0; j<items.length; j++) {
 				StringBuffer sb = new StringBuffer();
 				sb.append(items[j].getID());
 				sb.append("\t");
-				for(int k=0; k<items[j].getGeneMentionList().size(); k++)
-				{
+				for (int k=0; k<items[j].getGeneMentionList().size(); k++) {
 					if(k!=0) sb.append("|");
 					sb.append(items[j].getGeneMentionList().get(k));
 				}

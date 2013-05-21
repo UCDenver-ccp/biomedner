@@ -74,7 +74,7 @@ public class BC3GNBuildRerankTrainData {
 		{
 			//if(i>=0) continue;
 			long beginTime = System.currentTimeMillis();
-			System.out.print("Build rerank train data. Processing #"+i+" "+documents[i].getID()+"....");
+			System.out.print("BC3GNBuldRerankTrainData: Build rerank train data. Processing #"+i+" "+documents[i].getID()+"....");
 			BioNERDocument document = documents[i];
 			Vector<String> idVector = idTable.get(document.getID());
 			goldDocIDVector.add(document.getID());
@@ -83,9 +83,10 @@ public class BC3GNBuildRerankTrainData {
 				System.out.println("no gold standard.");
 				continue;
 			}
-			for(int j=0; j<pipeline.length; j++)
-			{
+			for (int j=0; j<pipeline.length; j++) {
+                System.out.println("=====> " + j + "======");
 				pipeline[j].Process(document);
+                System.out.println("<----- " + j + "======");
 			}
 			HashMap<String, Vector<BioNEREntity>> geneIDMap = new HashMap<String, Vector<BioNEREntity>>();
 			Vector<BioNERCandidate> geneIDVector = new Vector<BioNERCandidate>();
@@ -261,17 +262,25 @@ public class BC3GNBuildRerankTrainData {
 			secondRankTrainData = args[3];
 			outputFilename = args[4];
 		}
+
+
+        System.out.println("dataDir " + dataDir);
+        System.out.println("genelist" + genelistFilename);
+        System.out.println("candidate" + candidateTrainDataFilename);
+        System.out.println("second Rank" + secondRankTrainData);
+        System.out.println("outputFilename" + outputFilename);
 		GlobalConfig.BC3GN_DATADIR = dataDir;
 		writerDataFile(dataDir, genelistFilename, candidateTrainDataFilename, secondRankTrainData, outputFilename, 50);
 		
-		/*
+		/******
 		genelistFilename = "../../BC2GN/data/testing.genelist";
 		dataDir = "../../BC2GN/data/testingData";
 		
 		outputFilename = "../../BC2GN/TestData_10.txt";
 		//writerDataFile(dataDir, genelistFilename, outputFilename, 10);
 		outputFilename = "../../BC2GN/TestData_50.txt";
-		//writerDataFile(dataDir, genelistFilename, outputFilename, 50);*/
+		//writerDataFile(dataDir, genelistFilename, outputFilename, 50);
+		*******/
 		
 	}
 	

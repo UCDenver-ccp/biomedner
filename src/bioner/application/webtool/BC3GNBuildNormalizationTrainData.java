@@ -29,8 +29,8 @@ import bioner.process.proteinner.ProcessImpProteinIndexNER;
 
 public class BC3GNBuildNormalizationTrainData {
 
-	public static void writerDataFile(String dataDir, String genelistFilename, String outputFilename, int maxNum) throws IOException
-	{
+	public static void writerDataFile(String dataDir, String genelistFilename, String outputFilename, int maxNum, String modelFilepath) 
+    throws IOException {
 		GlobalConfig.ReadConfigFile();
 		
 		HashMap<String, Vector<String>> idTable = getGeneIDTable(genelistFilename);
@@ -40,7 +40,9 @@ public class BC3GNBuildNormalizationTrainData {
 		
 		BioNERProcess[] pipeline = new BioNERProcess[6];
 		//pipeline[0] = new ProcessImpGoldStandardNER(genelistFilename);
-		pipeline[0] = new ProcessImpCRFPP();
+		//pipeline[0] = new ProcessImpCRFPP();
+        pipeline[0] = new ProcessImpCRFPP(modelFilepath, GlobalConfig.ENTITY_LABEL_CRF);
+
 		//pipeline[0] = new ProcessImpGRMMLineCRF();
 		pipeline[1] = new ProcessImpProteinIndexNER();
 		pipeline[2] = new ProcessImpProteinABNER();
@@ -79,7 +81,7 @@ public class BC3GNBuildNormalizationTrainData {
 			//if(i!=9) continue;
 			//if(!documents[i].getID().equals("2730050")) continue;
 			long beginTime = System.currentTimeMillis();
-			System.out.print("Build first rank train data. Processing #"+i+" "+documents[i].getID()+"....");
+			System.out.print("Build first rank train data. Processing #"+i+" "+documents[i].getID()+"....\n");
 			BioNERDocument document = documents[i];
 			for(int j=0; j<pipeline.length; j++)
 			{
@@ -171,31 +173,26 @@ public class BC3GNBuildNormalizationTrainData {
 	 * @throws IOException 
 	 */
 	public static void main(String[] args) throws IOException {
-		// TODO Auto-generated method stub
-		String genelistFilename = "../../BC3GN/data/TrainingSet2.txt";
 		String dataDir = "../../BC3GN/xmls/";
+		String genelistFilename = "../../BC3GN/data/TrainingSet2.txt";
+        String modelFilepath = "";
 		String outputFilename = "../../BC3GN/TrainData_10.txt";
 		//writerDataFile(dataDir, genelistFilename, outputFilename, 10);
 		outputFilename = "../../BC3GN/TrainData_50.txt";
 		
-		if(args.length==3)
-		{
+		if (args.length==4) {
 			dataDir = args[0];
 			genelistFilename = args[1];
 			outputFilename = args[2];
+            modelFilepath = args[3];
 		}
+        else {
+            System.out.println("need 4 arguments:");
+            System.out.println("usage: <java...> dataDir genelist output model ");
+            System.exit(-1);
+        }
 		
-		writerDataFile(dataDir, genelistFilename, outputFilename, 50);
-		
-		/*
-		genelistFilename = "../../BC2GN/data/testing.genelist";
-		dataDir = "../../BC2GN/data/testingData";
-		
-		outputFilename = "../../BC2GN/TestData_10.txt";
-		//writerDataFile(dataDir, genelistFilename, outputFilename, 10);
-		outputFilename = "../../BC2GN/TestData_50.txt";
-		//writerDataFile(dataDir, genelistFilename, outputFilename, 50);*/
-		
+		writerDataFile(dataDir, genelistFilename, outputFilename, 50, modelFilepath);
 	}
 	
 	public static int haveCorrectID(BioNERCandidate[] candidates, int rank, Vector<String> idVector)
@@ -232,11 +229,13 @@ public class BC3GNBuildNormalizationTrainData {
 			}
 			freader.close();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+            System.err.println("BC3GNBuildNormalizationTrainData error:" + e);
+            e.printStackTrace();
+            throw new RuntimeException(e);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+            System.err.println("BC3GNBuildNormalizationTrainData error:" + e);
+            e.printStackTrace();
+            throw new RuntimeException(e);
 		}
 		return table;
 	}

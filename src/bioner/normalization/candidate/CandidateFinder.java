@@ -13,8 +13,11 @@ import bioner.normalization.data.index.IndexReaderFactory;
 import bioner.normalization.feature.builder.NCBIRankFinder;
 
 public class CandidateFinder {
-	
+
+    // genes	
 	private DatabaseReader m_databaseReader = DatabaseReaderFactory.createDatabaseReader();
+
+    // index from synonyms to ids
 	private IndexReader m_indexReader = IndexReaderFactory.createGeneIndexReader();
 	private NCBIRankFinder m_ncbiFinder = new NCBIRankFinder();
 	public CandidateFinder()

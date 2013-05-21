@@ -175,10 +175,9 @@
 		</dependency>
 		
 		<dependency>
-			<groupId>CRFPP</groupId>
-			<artifactId>CRFPP</artifactId>
-			<!--<version>CRFPP</version> -->
-			<version>0.2-SNAPSHOT</version>
+			<groupId>CRFPP_JNI</groupId>
+			<artifactId>CRFPP_JNI</artifactId> 
+			<version>CRFPP_JNI</version>
 		</dependency>
     </dependencies>
 

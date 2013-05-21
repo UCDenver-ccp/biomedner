@@ -38,8 +38,7 @@ public class BC3GNBuildNormalizationTrainData {
 
 	public static void writerDataFile(String dataDir, String genelistFilename, String outputFilename, int maxNum,
 		String modelFilepath) 
-	throws IOException
-	{
+	throws IOException {
 		GlobalConfig.ReadConfigFile();
 		
 		HashMap<String, Vector<String>> idTable = getGeneIDTable(genelistFilename);
@@ -69,8 +68,7 @@ public class BC3GNBuildNormalizationTrainData {
 		fwriter.write("@attribute class {1,0}");
 		fwriter.newLine();
 		
-		for(int i=0; i<fileAttributeHeads.length; i++)
-		{
+		for (int i=0; i<fileAttributeHeads.length; i++) {
 			fwriter.write(fileAttributeHeads[i]);
 			fwriter.newLine();
 		}
@@ -83,76 +81,76 @@ public class BC3GNBuildNormalizationTrainData {
 		int rank = maxNum;
 		Vector<String> instanceStrVector = new Vector<String>();
 		Vector<String> goldDocIDVector = new Vector<String>();
-		for(int i=0; i<documents.length ; i++)
-		{
+		for (int i=0; i<documents.length ; i++) {
 			//if(i>=0) continue;
 			//if(!documents[i].getID().equals("2730050")) continue;
 			long beginTime = System.currentTimeMillis();
-			System.out.print("Build first rank train data. Processing #"+i+" "+documents[i].getID()+"....");
+			System.out.println("\nBuild first rank train data. Processing #"+i+" "+documents[i].getID()+"....");
 			BioNERDocument document = documents[i];
 			goldDocIDVector.add(document.getID());
-			for(int j=0; j<pipeline.length; j++)
-			{
+			for (int j=0; j<pipeline.length; j++) {
+                System.out.println("after pipeline element " + j);
 				pipeline[j].Process(document);
+                for (BioNEREntity entity: document.getAllEntity()) {
+                    System.out.println("  ENTITY: " + entity.toString());
+                } 
 			}
 			
 			int sentence_num = 0;
 			int entityNum = 0;
 			Vector<String> idVector = idTable.get(document.getID());
-			if(idVector==null) continue;
-			for(BioNERSentence sentence : document.getAllSentence())
-			{
+			if (idVector==null) continue;
+			for (BioNERSentence sentence : document.getAllSentence()) {
 				sentence_num++;
-				//System.out.println("Sentence #"+sentence_num);
+				System.out.println("Sentence #"+sentence_num);
 				//fwriter.write(sentence.getSentenceText());
 				//fwriter.newLine();
 				
-				for(BioNEREntity entity : sentence.getAllEntities())
-				{
+				for (BioNEREntity entity : sentence.getAllEntities()) {
+                    System.out.println("  got an entity...");
 					StringBuffer sb = new StringBuffer();
 					BioNERCandidate[] candidates = entity.getCandidates();
 					int correctIndex = haveCorrectID(candidates, rank, idVector);
 					
-					if(correctIndex >= 0 && candidates.length>1)
-					{
+					if (correctIndex >= 0 && candidates.length>1) {
 						entityNum++;
 						String correctID = candidates[correctIndex].getRecord().getID();
 						
 						Vector<String> lineVector = new Vector<String>();
 						int correctNum = 0;
-						for(int j=0; j<rank && j<candidates.length; j++)
-						{
+						for (int j=0; j<rank && j<candidates.length; j++) {
+                            System.out.println("    got candidates...");
 							String recordID = candidates[j].getRecord().getID();
 							StringBuffer sbLine = new StringBuffer();
-							if(idVector.contains(recordID))
-							{
+							if (idVector.contains(recordID)) {
 								sbLine.append("1");
 								correctNum++;
 							}
-							else
-							{
+							else {
 								sbLine.append("0");
 							}
 							String[] features = featureBuilder.getFeatures(candidates[j]);
-							for(int k=0; k<features.length; k++)
-							{
+							for (int k=0; k<features.length; k++) {
 								sbLine.append(","+features[k]);
 							}
 							
 							String line = sbLine.toString();
-							if(!lineVector.contains(line)) lineVector.add(line);
-							//fwriter.write("|"+candidates[j].getRecord().toString());
+                    System.out.println("line:" + line );
+							if (!lineVector.contains(line)) {
+                                lineVector.add(line);
+                            }
+                            // was commented out
+							fwriter.write("|"+candidates[j].getRecord().toString());
 							
 							
 						}//candidate
-						for(String line : lineVector)
-						{
+						for (String line : lineVector) {
 							sb.append(line);
 							sb.append("\n");
 						}
 						String instanceStr = sb.toString();
-						if(!instanceStrVector.contains(instanceStr))
-						{
+                    System.out.println("instance string:" + sb.toString() );
+						if (!instanceStrVector.contains(instanceStr)) {
 							instanceStrVector.add(instanceStr);
 							fwriter.write("%"+correctID+"_"+document.getID()+"_"+entityNum+" "+correctNum);
 							fwriter.newLine();
@@ -161,6 +159,9 @@ public class BC3GNBuildNormalizationTrainData {
 							fwriter.newLine();
 						}
 					}
+                    else {
+                        System.out.println("do not have correctID " + correctIndex);
+                    }
 				}//entity
 				
 			}//sentence
@@ -307,10 +308,9 @@ public class BC3GNBuildNormalizationTrainData {
 	
 	public static int haveCorrectID(BioNERCandidate[] candidates, int rank, Vector<String> idVector)
 	{
-		for(int i=0; i<rank && i<candidates.length; i++)
-		{
+		for (int i=0; i < rank && i<candidates.length; i++) {
 			String id= candidates[i].getRecord().getID();
-			if(idVector.contains(id)) return i;
+			if (idVector.contains(id)) return i;
 		}
 		return -1;
 	}

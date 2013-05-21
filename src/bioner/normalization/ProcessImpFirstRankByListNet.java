@@ -23,6 +23,8 @@ public class ProcessImpFirstRankByListNet implements BioNERProcess {
 		}
 		else
 		{
+            System.out.println("ProcessImpFirstRankByListNet: training and creating: " + modelFile.getAbsolutePath());
+            System.out.println("ProcessImpFirstRankByListNet: training and creating: " + filename);
 			m_listNet.train(filename, null);
 			//m_listNet.writeModelToFile(filename+".model");
 		}
@@ -43,8 +45,11 @@ public class ProcessImpFirstRankByListNet implements BioNERProcess {
 	private void processEntity(BioNEREntity entity)
 	{
 		BioNERCandidate[] candidates = entity.getCandidates();
-		if(candidates==null) return;
-		for(int i=0; i<candidates.length; i++)
+		if (candidates==null) {
+            System.out.println("info ProcessImpFirstRankByListNet: no candidates");
+            return;
+        }
+		for (int i=0; i<candidates.length; i++)
 		{
 			String[] featureStrs = m_featureBuilder.getFeatures(candidates[i]);
 			double[] features = new double[featureStrs.length+1];
@@ -62,10 +67,14 @@ public class ProcessImpFirstRankByListNet implements BioNERProcess {
 			}
 			candidates[i].setFeatures(features);
 		}
+        System.out.println("info ProcessImpFirstRankByListNet, about to RankCandidate()");
 		RankCandidate.RankCandidate(candidates);
-		
+        System.out.println("info ProcessImpFirstRankByListNet done RankCandidate'ing");
+	
+	
 		//normalize the score to 0.0--1.0
-		/*if(candidates.length==1)
+		/******
+        if(candidates.length==1)
 		{
 			candidates[0].setScore(1.0);
 		}
@@ -80,7 +89,8 @@ public class ProcessImpFirstRankByListNet implements BioNERProcess {
 				score = (score - minScore) / distance;
 				candidates[i].setScore(score);
 			}
-		}*/
+		}
+        ********/
 		
 		entity.setCandidates(candidates);
 	}

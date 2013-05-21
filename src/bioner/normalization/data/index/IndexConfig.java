@@ -40,11 +40,13 @@ public class IndexConfig {
 			}
 			freader.close();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+            System.out.println("IndexConfig.ReadConfig(): error" + e);
 			e.printStackTrace();
+            throw new RuntimeException(e);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+            System.out.println("IndexConfig.ReadConfig(): error" + e);
 			e.printStackTrace();
+            throw new RuntimeException(e);
 		}
 	}
 	private static String getValueStr(String line)
