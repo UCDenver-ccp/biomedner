@@ -64,42 +64,36 @@ public class ProcessImpCRFPP implements BioNERProcess {
 	private FeatureBuilder m_featureBuilder = new FeatureBuilder();
 	@Override
 	public void Process(BioNERDocument document) {
-		// TODO Auto-generated method stub
-		for(BioNERSentence sentence : GetNERSentence.getNERSentence(document))
-		{
+		for (BioNERSentence sentence : GetNERSentence.getNERSentence(document)) {
 			processSentence(sentence);
 		}
 		
 	}
-	private void processSentence(BioNERSentence sentence)
-	{
+
+	private void processSentence(BioNERSentence sentence) {
 		tagger.clear();
 		Vector<String> featureVector = m_featureBuilder.buildFeature(sentence);
 		
-		for(int i=0; i<featureVector.size(); i++)
-		{
+		for (int i=0; i<featureVector.size(); i++) {
 			tagger.add(featureVector.elementAt(i));
 		}
+
 		tagger.parse();
 		String[] labels = new String[featureVector.size()];
-		for(int i=0; i<labels.length; i++)
-		{
+		for (int i=0; i<labels.length; i++) {
 			labels[i] = tagger.y2(i);
 		}
 		
 		PostprocessLabels.postProcessLabels(labels, sentence.getTokens());
 		
 		int i=0;
-		while(i<labels.length)
-		{
+		while (i<labels.length) {
 			String label = labels[i];
-			if(label.startsWith("B"))
-			{
+			if (label.startsWith("B")) {
 				String typeLabel = label.substring(2);
 				String innerLabel = "I-"+typeLabel;
 				int j=i+1;
-				while(j<labels.length && labels[j].equals(innerLabel))
-				{
+				while (j<labels.length && labels[j].equals(innerLabel)) {
 					j++;
 				}
 				BioNEREntity entity = new BioNEREntity();
@@ -109,8 +103,7 @@ public class ProcessImpCRFPP implements BioNERProcess {
 				sentence.addEntity(entity);
 				i = j;
 			}
-			else
-			{
+			else {
 				i++;
 			}
 		}

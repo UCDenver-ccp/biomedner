@@ -31,7 +31,13 @@ public class LuceneIndexNER implements NERProcessor{
 	private IndexSearcher isearcher;
 	private Analyzer analyzer = new StandardAnalyzer(Version.LUCENE_CURRENT);
 	private QueryParser parser = new QueryParser(Version.LUCENE_CURRENT,"names", analyzer);
+    private String label = null;
 	
+	public LuceneIndexNER(String indexDir, String label) {
+        this(indexDir);
+        this.label = label;
+    }
+
 	public LuceneIndexNER(String indexDir)
 	{
 		IndexConfig.ReadConfigFile();
@@ -74,6 +80,9 @@ public class LuceneIndexNER implements NERProcessor{
 				entity.set_Sentence(sentence);
 				entity.set_position(begin, end);
 				entity.addID(patternStr.getID());
+                if (label != null) {
+                    entity.addLabel(label);
+                }
 				entityVector.add(entity);
 			}
 		}

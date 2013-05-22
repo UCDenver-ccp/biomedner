@@ -47,6 +47,7 @@ public class ProcessImpFilterGeneMention implements BioNERProcess {
 	}
 	
 	//filter out the GMs contained by a species name. This kind of GM should be errors, such as cell line names.
+	//  This is about confusing species mentions for gene mentions, not about normalization.
 	private void filterGMCoveredBySpecies(BioNERDocument document)
 	{
 		
@@ -54,34 +55,36 @@ public class ProcessImpFilterGeneMention implements BioNERProcess {
 		Vector<String> speciesTextVector = new Vector<String>();
 		
 		//collect all the species names found in the article
-		for(BioNEREntity speciesEntity : speciesVector)
-		{
+		//  TODO: use sets
+		for (BioNEREntity speciesEntity : speciesVector) {
 			String speciesText = speciesEntity.getText();
 			if(!speciesTextVector.contains(speciesText))
 				speciesTextVector.add(speciesText);
 		}
 		
 		
-		for(BioNERSentence sentence : document.getAllSentence())
-		{//examine the sentences one by one
+		for (BioNERSentence sentence : document.getAllSentence()) {
+            //examine the sentences one by one
 			BioNEREntity[] entityArray = sentence.getAllEntities();
 			sentence.clearEntities();
-			for(BioNEREntity entity : entityArray)
-			{
+			for (BioNEREntity entity : entityArray) {
 				String entityText = entity.getText();
 				boolean shouldFilter = false;
-				for(String speciesText : speciesTextVector)
-				{
-					if(speciesText.contains(entityText))
-					{//if the GM is contained by a species name
+				for (String speciesText : speciesTextVector) {
+					if (speciesText.contains(entityText)) {
+                        // if the GM is contained by a species name
 						shouldFilter = true;
 						break;
 					}
 				}
-				if(!shouldFilter)
-				{//The GMs not contained by species names
+				if (!shouldFilter) {
+                    //The GMs not contained by species names
 					sentence.addEntity(entity);
 				}
+                else {
+                    System.out.println("------------> ProcessImpFilterGeneMention.filterGMCoveredBySpecies: not covered:" 
+                        + entity.getText() );
+                }
 			}
 		}
 	}
@@ -129,15 +132,22 @@ public class ProcessImpFilterGeneMention implements BioNERProcess {
 	{
 		BioNEREntity[] entityArray = sentence.getAllEntities();
 		sentence.clearEntities();
-		for(BioNEREntity entity : entityArray)
-		{//Only keep the gene mentions with 'ita' label or have more than one labels.
-			if(entity.containLabel("ita"))
-			{
+		for(BioNEREntity entity : entityArray) {    
+            // Only keep the gene mentions with 'ita' label or have more than one labels.
+			if (entity.containLabel("ita")) {
 				sentence.addEntity(entity);
-			}else if(entity.getLabelVector().size()>=2)
-			{
+			} else if (entity.getLabelVector().size()>=2) {
 				sentence.addEntity(entity);
 			}
+            else {
+                System.out.println("ProcessImpFilterGeneMention.filterUnreliable...() Entity " 
+                    + " had too few labels:" + entity.getLabelVector().size());
+                System.out.print("    " + entity.getText() + ": ");
+                for (String l : entity.getLabelVector()) {
+                    System.out.print("\"" + l + "\",");
+                }
+                System.out.println("\n");
+            }
 		}
 	}
 	
@@ -304,15 +314,20 @@ public class ProcessImpFilterGeneMention implements BioNERProcess {
 		{
 			String gmStr = entity.getText();
 			Matcher matcher = m_GMFilterPattern.matcher(gmStr);
-			if(!matcher.matches())
+			if (!matcher.matches())
 			{
 				sentence.addEntity(entity);
 			}
+            //else {
+            //    System.out.println("ProcessImpFilterGeneMention.filterGMByLIst() dropping mention \"" + gmStr 
+            //        + "\" readGMFilterList(\"./data/filter/tabulist.txt\")" );
+            //}
 		}
 	}
 	
 	
 	private static Pattern[] patterns = getPatterns();
+
 	private void processSentence(BioNERSentence sentence)
 	{
 		BioNEREntity[] entityArray = sentence.getAllEntities();
@@ -331,7 +346,12 @@ public class ProcessImpFilterGeneMention implements BioNERProcess {
 					break;
 				}
 			}
-			if(!shouldFilterOut) sentence.addEntity(entity);
+			if (!shouldFilterOut) {
+                sentence.addEntity(entity);
+            }
+            else {
+                System.out.println("ProcessImpFilterGeneMention.processSentence() dropping mention for failing pattern: " + entityText);
+            }
 		}
 	}
 	
@@ -388,12 +408,15 @@ public class ProcessImpFilterGeneMention implements BioNERProcess {
 	private static Pattern[] getPatterns()
 	{
 		Pattern[] patterns = new Pattern[2];
-		String patternStr = ".*(aa|bp\\s[0-9]{1,2}|kd|mg|Ki|nM|CD|Sci|Proc|Acad|[\\d\\.]+[\\s\\-]?[Kk][Dd][Aa]|or\\sin|and\\s[1Ii]|for\\s4|[Aa]\\sgene|[Aa]t\\s5|[Aa]\\sC|is\\s1|at\\s\\d|factor[\\s\\-]\\d|factor[\\s\\-](alpha|beta|gamma|delta)|receptor\\s\\d|[A-Z]\\receptor|protein\\s[A-Za-z]|protein[\\s\\-][0-9]+|beta[\\s\\-]\\d+|\\d+[\\s\\-]beta([\\s\\-]\\d+)?|alpha[\\s\\-]\\d+|\\d+[\\s\\-]alpha([\\s\\-]\\d+)?|(alpha|beta|gamma|delta|epsilon|eta|kappa|lambda)\\s[A-Za-z0-9]|[A-Za-z0-9][\\s\\-](alpha|beta|gamma|delta|epsilon|eta|kappa|lambda)|(alpha|beta|gamma|delta|epsilon|eta|kappa|lambda)\\schain|[A-Za-z][\\s\\-]protein|[Aa]\\s[0-9]{1,2})$";
-		//patterns[0] = Pattern.compile(patternStr);
+
+		//String patternStr1 = ".*(aa|bp\\s[0-9]{1,2}|kd|mg|Ki|nM|CD|Sci|Proc|Acad|[\\d\\.]+[\\s\\-]?[Kk][Dd][Aa]|or\\sin|and\\s[1Ii]|for\\s4|[Aa]\\sgene|[Aa]t\\s5|[Aa]\\sC|is\\s1|at\\s\\d|factor[\\s\\-]\\d|factor[\\s\\-](alpha|beta|gamma|delta)|receptor\\s\\d|[A-Z]\\receptor|protein\\s[A-Za-z]|protein[\\s\\-][0-9]+|beta[\\s\\-]\\d+|\\d+[\\s\\-]beta([\\s\\-]\\d+)?|alpha[\\s\\-]\\d+|\\d+[\\s\\-]alpha([\\s\\-]\\d+)?|(alpha|beta|gamma|delta|epsilon|eta|kappa|lambda)\\s[A-Za-z0-9]|[A-Za-z0-9][\\s\\-](alpha|beta|gamma|delta|epsilon|eta|kappa|lambda)|(alpha|beta|gamma|delta|epsilon|eta|kappa|lambda)\\schain|[A-Za-z][\\s\\-]protein|[Aa]\\s[0-9]{1,2})$";
+		//patterns[0] = Pattern.compile(patternStr1);
 		patterns[0] = Pattern.compile(".{0,1}");
-		//patternStr = ".*([\\s\\,\\.\\-\\;\\:\\(\\)]|isoform|subunit|ligand|complement|chain|site|form|domain|autoantigen|antigen|sequence|homolog|type|subtype|motif|group|candidate|molecule|superfamily|family|subfamily|transcript|[Ff]ragment|[fF]actor|regulator|inhibitor|suppressor|translocator|activator|[rR]eceptor|[lL]igand|adaptor|adapter|nucleoprotein|oncoprotein|phosphoprotein|glycoprotein|[pP]rotein|RNA|DNA|dna|rna|mRNA|mrna|mRna|tRNA|tRna|trna|histone|collagen|neuron|caspase|kinase|phosphatase|polymerase|coactivator|activator|transporter|[eE]xpression|activation|transduction|transcription|adhesion|interaction|[aA]ssociated|induced|coupled|related|linked|associated|conserved|mediated|expressed|advanced|activating|regulating|signaling|binding|bound|containing|docking|transforming|breast|colon|stem|cell|muscle|cellular|extracellular|intestinal|nuclear|surface|membrane|brain|epidermal|ectodermal|vesicle|mitochondrial|pancreatic|ubiquitous|fetal|chicken|mammalian|human|cancer|carcinoma|tumor|obesity|apoptosis|death|growth|maturation|necrosis|signal|repair|survival|stress|division|adhesion|control|excision|fusion|cycle|heat|shock|proteoglycan|core|chemokine|cytokine|potassium|calcium|sodium|retinol|tyrosine|pyruvate|vitamin|glutamate|zinc|estrogen|thrombin|arrestin|actin|ubiquitin|mucin|urotensin|disintegrin|activin|chromatin|calmodulin|tubulin|cyclin|immunoglobulin|heparin|GTP|low|high|highly|non|heterogeneous|homogeneous|light|heavy|negative|novel|putative|dependent|accessory|peripheral|regulatory|deficient|terminal|transcriptional|inducible|soluble|dual|specificity|specific|nucleic|acid|putative|peroxisomal|basic|[a-z]+ine[\\s\\-]rich|[a-z]+ant|two|to|by|that|like|a|[tT]he|for|of|and|or|with|in|mobility|programmed|matrix|channel|end|ciliary|neurotrophic|retinoid|germinal|center|neural|finger|[Aa]ntigen|lymphocyte|cytoplasmic|helicase|retinoic|acid|plasminogen|cytoskeletal|anchor|[Aa]nti|integral|membrane|[Nn]eutrophil|ubiquitin|basic|leucine|zipper|putative|transmembrane|proteasome|responsive)+('?s)?$";
-		patternStr = ".*([\\s\\,\\.\\-\\;\\:\\(\\)]|domain|region|family|ligand|sequence|homolog|superfamily|polymeric|cell|acid|antibody|antibodies|proteins|complex|genes|antigen|subfamily|group|reagent|et al)+('?s)?$";
-		patterns[1] = Pattern.compile(patternStr);
+
+		//String patternStr2 = ".*([\\s\\,\\.\\-\\;\\:\\(\\)]|isoform|subunit|ligand|complement|chain|site|form|domain|autoantigen|antigen|sequence|homolog|type|subtype|motif|group|candidate|molecule|superfamily|family|subfamily|transcript|[Ff]ragment|[fF]actor|regulator|inhibitor|suppressor|translocator|activator|[rR]eceptor|[lL]igand|adaptor|adapter|nucleoprotein|oncoprotein|phosphoprotein|glycoprotein|[pP]rotein|RNA|DNA|dna|rna|mRNA|mrna|mRna|tRNA|tRna|trna|histone|collagen|neuron|caspase|kinase|phosphatase|polymerase|coactivator|activator|transporter|[eE]xpression|activation|transduction|transcription|adhesion|interaction|[aA]ssociated|induced|coupled|related|linked|associated|conserved|mediated|expressed|advanced|activating|regulating|signaling|binding|bound|containing|docking|transforming|breast|colon|stem|cell|muscle|cellular|extracellular|intestinal|nuclear|surface|membrane|brain|epidermal|ectodermal|vesicle|mitochondrial|pancreatic|ubiquitous|fetal|chicken|mammalian|human|cancer|carcinoma|tumor|obesity|apoptosis|death|growth|maturation|necrosis|signal|repair|survival|stress|division|adhesion|control|excision|fusion|cycle|heat|shock|proteoglycan|core|chemokine|cytokine|potassium|calcium|sodium|retinol|tyrosine|pyruvate|vitamin|glutamate|zinc|estrogen|thrombin|arrestin|actin|ubiquitin|mucin|urotensin|disintegrin|activin|chromatin|calmodulin|tubulin|cyclin|immunoglobulin|heparin|GTP|low|high|highly|non|heterogeneous|homogeneous|light|heavy|negative|novel|putative|dependent|accessory|peripheral|regulatory|deficient|terminal|transcriptional|inducible|soluble|dual|specificity|specific|nucleic|acid|putative|peroxisomal|basic|[a-z]+ine[\\s\\-]rich|[a-z]+ant|two|to|by|that|like|a|[tT]he|for|of|and|or|with|in|mobility|programmed|matrix|channel|end|ciliary|neurotrophic|retinoid|germinal|center|neural|finger|[Aa]ntigen|lymphocyte|cytoplasmic|helicase|retinoic|acid|plasminogen|cytoskeletal|anchor|[Aa]nti|integral|membrane|[Nn]eutrophil|ubiquitin|basic|leucine|zipper|putative|transmembrane|proteasome|responsive)+('?s)?$";
+		String patternStr3 = ".*([\\s\\,\\.\\-\\;\\:\\(\\)]|domain|region|family|ligand|sequence|homolog|superfamily|polymeric|cell|acid|antibody|antibodies|proteins|complex|genes|antigen|subfamily|group|reagent|et al)+('?s)?$";
+		patterns[1] = Pattern.compile(patternStr3);
+
 		return patterns;
 	}
 	

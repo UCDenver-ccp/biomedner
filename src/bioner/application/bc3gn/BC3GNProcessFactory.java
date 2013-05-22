@@ -44,6 +44,7 @@ public class BC3GNProcessFactory implements BioNERProcessFactory {
 	public BioNERProcess[] buildProcessPipeline() {
 		// TODO Auto-generated method stub
 		BioNERProcess[] pipeline = new BioNERProcess[8];
+
 		pipeline[0] = new ProcessImpCRFPP(GlobalConfig.CRF_INEXACT_MODEL_FILEPATH, GlobalConfig.ENTITY_LABEL_CRF);
 		//pipeline[0] = new ProcessImpProteinBANNER();
 		//pipeline[0] = new ProcessImpCRFPP(GlobalConfig.CRF_MODEL_FILEPATH, GlobalConfig.ENTITY_LABEL_CRF);
@@ -55,6 +56,7 @@ public class BC3GNProcessFactory implements BioNERProcessFactory {
 		pipeline[5] = new ProcessImpFilterAfterGetCandidate();
 		pipeline[6] = new ProcessImpAddIDGM();
 		pipeline[7] = new ProcessImpFirstRankByListNet(m_trainingDataFilename, new BC3GNFirstRankFeatureBuilder());
+
 		//pipeline[7] = new ProcessImpFirstRankBySVM(m_trainingDataFilename, new BC3GNFirstRankFeatureBuilder());
 		//pipeline[7] = new ProcessImpFirstRankByRankNet(m_trainingDataFilename, new BC3GNFirstRankFeatureBuilder());
 		//pipeline[6] = new ProcessImpRerankBySVM(m_trainingDataFilename);
@@ -64,13 +66,16 @@ public class BC3GNProcessFactory implements BioNERProcessFactory {
 		//pipeline[7] = new ProcessImpRerankGeneIDByListNet(m_rerankTrainFilename);
 		//pipeline[8] = new ProcessImpRerankGeneIDByLogistic(m_rerankTrainFilename);
 		//pipeline[9] = new ProcessImpFilterAfterGeneIDRerank();
-		/*pipeline = new BioNERProcess[6];
+
+		/***
+        pipeline = new BioNERProcess[6];
 		pipeline[0] = new ProcessImpGoldStandardNER("../../BC3GN/TrainingSet1.gm.txt");
 		pipeline[1] = new ProcessImpFilterGeneMention();
 		pipeline[2] = new ProcessImpGetCandidateID(m_finder);
 		pipeline[3] = new ProcessImpRerankByListNet(m_trainingDataFilename);
 		pipeline[4] = new ProcessImpFilterAfterRank();
-		pipeline[5] = new ProcessImpRerankGeneIDByListNet(m_rerankTrainFilename);*/
+		pipeline[5] = new ProcessImpRerankGeneIDByListNet(m_rerankTrainFilename);
+        ***/
 		return pipeline;
 	}
 

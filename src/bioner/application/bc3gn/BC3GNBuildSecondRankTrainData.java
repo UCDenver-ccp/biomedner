@@ -191,7 +191,16 @@ public class BC3GNBuildSecondRankTrainData {
 		}
 		else {
 			System.out.println("BC3GNBuildSecondRankTrainData got " + args.length +  " args, using defaults.");
+            for (String s: args) {
+			    System.out.println("  " + s);
+            }
 		}
+        System.out.println("BC3GNBuildSecondRankTrainingData: " );
+        System.out.println("  dataDir" + dataDir );
+        System.out.println("  genelist" + genelistFilename );
+        System.out.println("  firstRank" + firstRankTrainData );
+        System.out.println("  output"  + outputFilename);
+
 		
 		writerDataFile(dataDir, genelistFilename, firstRankTrainData, outputFilename, 5);
 		
@@ -240,11 +249,13 @@ public class BC3GNBuildSecondRankTrainData {
 			}
 			freader.close();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+            System.out.println("BC3GNBuildSecondRankTrainData error: " + e);
 			e.printStackTrace();
+            throw new RuntimeException(e);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+            System.out.println("BC3GNBuildSecondRankTrainData error: " + e);
 			e.printStackTrace();
+            throw new RuntimeException(e);
 		}
 		return table;
 	}

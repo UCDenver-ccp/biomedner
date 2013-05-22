@@ -21,8 +21,7 @@ public class ProcessImpRerankGeneIDByLogistic implements BioNERProcess {
 
 	private Logistic logistic;
 	private String m_header;
-	public ProcessImpRerankGeneIDByLogistic(String trainfile)
-	{
+	public ProcessImpRerankGeneIDByLogistic(String trainfile) {
 		try {
 	   		logistic = new Logistic();
 	        ArffLoader atf1 = new ArffLoader(); 
@@ -33,15 +32,18 @@ public class ProcessImpRerankGeneIDByLogistic implements BioNERProcess {
 	        instancesTrain.setClassIndex(0);
 	        logistic.buildClassifier(instancesTrain);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+            System.err.println("ProcessImpRerankGeneIDByLogistic:" + e);
 			e.printStackTrace();
+            throw new RuntimeException(e);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+            System.err.println("ProcessImpRerankGeneIDByLogistic:" + e);
+		    e.printStackTrace();
+            throw new RuntimeException(e);
 		}
 		LogisticFile train = new LogisticFile( trainfile );
 		m_header = train.getHeader();
 	}
+
 	@Override
 	public void Process(BioNERDocument document) {
 		// TODO Auto-generated method stub
@@ -81,11 +83,13 @@ public class ProcessImpRerankGeneIDByLogistic implements BioNERProcess {
 				double score = result[0];
 				candidates[i].setScore(score);
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
+                System.err.println("ProcessImpRerankGeneIDByLogistic:" + e);
 				e.printStackTrace();
+                throw new RuntimeException(e);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
+                System.err.println("ProcessImpRerankGeneIDByLogistic:" + e);
 				e.printStackTrace();
+                throw new RuntimeException(e);
 			}
 	        
 		}

@@ -23,21 +23,16 @@ public class GeneRerankByLogistic {
 	private Logistic logistic;
 	private String m_header;
 	private GeneIDRerankFeatureBuilder m_featureBuilder;
-	public GeneRerankByLogistic(String trainfile, GeneIDRerankFeatureBuilder featureBuilder)
-	{
+
+	public GeneRerankByLogistic(String trainfile, GeneIDRerankFeatureBuilder featureBuilder) {
 		m_featureBuilder = featureBuilder;
+        File inputFile = null;
 		try {
 	   		logistic = new Logistic();
 	   		//String[] options=weka.core.Utils.splitOptions("-D");
 	   		//logistic.setOptions(options);
 	        ArffLoader atf1 = new ArffLoader(); 
-        	File inputFile = new File( trainfile );
-if (!inputFile.exists()) {
-	System.err.println("ERROR: file not found:" + trainfile + ", " + inputFile.getAbsolutePath());
-}
-else {
-	System.err.println("OK  :" + trainfile + ", " + inputFile.getAbsolutePath());
-}
+        	inputFile = new File( trainfile );
  			atf1.setFile(inputFile);
 			Instances instancesTrain = atf1.getDataSet();
 			
@@ -46,8 +41,7 @@ else {
 	        System.out.println(logistic.debugTipText());
 	        double[][] coefficients = logistic.coefficients();
 	        System.out.println("Logistic coefficients:");
-	        for(int i=0; i<coefficients.length; i++)
-	        {
+	        for (int i=0; i<coefficients.length; i++) {
 	        	System.out.print(i+":\t");
 	        	for(int j=0; j<coefficients[i].length; j++)
 	        	{
@@ -56,20 +50,25 @@ else {
 	        	System.out.println();
 	        }
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+	        System.err.println("GeneRerankByLogistic ERROR: " + e);
+	        System.err.println("...ERROR possibly relatd to this file:: " + trainfile + " or this one: " + inputFile.getAbsolutePath());
 			e.printStackTrace();
+            throw new RuntimeException(e);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+	        System.err.println("GeneRerankByLogistic ERROR: " + e);
+	        System.err.println("...ERROR possibly relatd to this file:: " + trainfile + " or this one: " + inputFile.getAbsolutePath());
 			e.printStackTrace();
+            throw new RuntimeException(e);
 		}
 		// Get header from a file
 		LogisticFile train = new LogisticFile( trainfile );
 		m_header = train.getHeader();
-		System.out.println("HEADER:----->" + m_header + "<--------");
+		System.out.println("HEADER: " + trainfile + "----->" + m_header + "<--------");
 	}
 	
 	public void rerank(BioNERDocument document, HashMap<String, Vector<BioNEREntity>> map, BioNERCandidate[] candidates) {
-		for(int i=0; i<candidates.length; i++) {
+
+		for (int i=0; i<candidates.length; i++) {
 
 			//String[] headerStrs = m_featureBuilder.getWekaAttributeFileHead();
 			//StringBuffer headerBuffer = new StringBuffer();
@@ -114,12 +113,11 @@ else {
 				double score = result[0];
 				candidates[i].setScore(score);
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				System.out.println("in string is: " + dataString);
+				System.out.println("GeneRerankByLogistic.rerank() in string is: \n" + dataString + "\n  end of rerank() string");
 				e.printStackTrace();
+				throw new RuntimeException(e);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				System.out.println("in string is: " + dataString);
+				System.out.println("GeneRerankByLogistic.rerank() in string is: " + dataString + "\n  end of rerank() string");
 				e.printStackTrace();
 				throw new RuntimeException(e);
 			}

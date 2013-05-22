@@ -2,6 +2,7 @@ package bioner.normalization;
 
 import java.util.HashMap;
 import java.util.Vector;
+import java.util.ArrayList;
 
 import bioner.data.document.BioNERDocument;
 import bioner.data.document.BioNEREntity;
@@ -16,150 +17,168 @@ public class ProcessImpFilterAfterGetCandidate implements BioNERProcess {
 
 	@Override
 	public void Process(BioNERDocument document) {
-		// TODO Auto-generated method stub
+
 		HashMap<String, Integer> countMap = getGMCountMap(document);
-		//Vector<BioNEREntity> speciesEntityVector = SpeciesEntityStore.getSpeciesEntities(document);
-		for(BioNERSentence sentence : document.getAllSentence())
-		{
+
+        ArrayList<BioNERSentence> debugList = new ArrayList<BioNERSentence>();
+
+        // FILTER
+		for (BioNERSentence sentence : document.getAllSentence()) {
 			filterByScore(sentence, countMap);
 		}
-		for(BioNERSentence sentence : document.getAllSentence())
-		{
-			for(BioNEREntity entity : sentence.getAllEntities())
-			{
-				//filterGeneIDbyExplicitSpecies(entity, speciesEntityVector);
+	
+        // MATCH	
+        for (BioNERSentence sentence : document.getAllSentence()) {
+			for (BioNEREntity entity : sentence.getAllEntities()) {
 				removeNotMatchedCandidates(entity);
 			}
+        }
+
+        // CANDIDATES???
+        for (BioNERSentence sentence : document.getAllSentence()) {
+
+            // rebuild a sentence's entities list with only those who have candidates
 			BioNEREntity[] entityArray = sentence.getAllEntities();
 			sentence.clearEntities();
-			for(BioNEREntity entity : entityArray)
-			{
-				if(entity.getCandidates().length>0) sentence.addEntity(entity);
+			for (BioNEREntity entity : entityArray) {
+				if (entity.getCandidates().length > 0) {
+                     sentence.addEntity(entity);
+                }
 			}
 		}
+
+        // PRINT RESULTS
+        for (BioNERSentence sen : debugList) {
+            for (BioNEREntity entity : sen.getAllEntities()) {
+                System.out.println("     D " + entity);    
+            }
+        }
 	}
-	
-	private void removeNotMatchedCandidates(BioNEREntity entity)
-	{
+
+private static void dump(String label, Vector<String> vec) {
+        System.out.print(label + " \"");
+        for (String s:vec) {
+            System.out.print(s + "\", \"");
+        }
+        System.out.println("");
+}
+
+       // WTF?!!	
+	private void removeNotMatchedCandidates(BioNEREntity entity) {
 		BioNERCandidate[] candidates = entity.getCandidates();
 		Vector<BioNERCandidate> candidateVector = new Vector<BioNERCandidate>();
 		Vector<String> gmTokenVector = GeneMentionTokenizer.getTokens(entity.getText());
 		String gmText = entity.getText();
-		
-		/*for(int i=0; i<candidates.length; i++)
-		{
-			String symbol = candidates[i].getRecord().getSymbol();
-			if(gmText.equals(symbol)) candidateVector.add(candidates[i]);
-		}*/
-		/*if(candidateVector.isEmpty())
-		{
-			for(int i=0; i<candidates.length; i++)
-			{
-				for(String synonym : candidates[i].getRecord().getSynonyms())
-				{
-					if(gmText.equals(synonym)) 
-						candidateVector.add(candidates[i]);
-				}
-				
-			}
-		}*/
-		String[] parts = gmText.split("\\W+");
-		int tokenNum = parts.length;
-		
-		if(candidateVector.isEmpty())
-		{
-			for(int i=0; i<candidates.length; i++)
-			{
-				double maxR =0.0;
-				double maxP =0.0;
-				for(String synonym : candidates[i].getRecord().getSynonyms())
-				{
+        System.out.println("====== Entity (recognized mention): " + entity.getIDNum() 
+            + ", \"" + entity.getText() 
+            + "\", " + entity.getScore() 
+            + " begin:" + entity.get_Begin()
+            + " end:" + entity.get_End());
+        System.out.print("label vector: ");
+        for (String s : entity.getLabelVector()) {
+                System.out.print(s + ", ");
+        }
+        System.out.println(" ....has " + candidates.length + " candidates");
+        dump("Tokens:", gmTokenVector);
+	
+			for (int i=0; i < candidates.length; i++) {
+                boolean candidateAdded=false;
+                System.out.println(" ---- Caniddate (potential id)" + i 
+                                + "  id: " + candidates[i].getRecord().getID() 
+                                + ", speciesID: " + candidates[i].getRecord().getSpeciesID()
+                                + ", symbol: " + candidates[i].getRecord().getSymbol());
+				for (String synonym : candidates[i].getRecord().getSynonyms()) {
+                    System.out.println("      synonym " + synonym );
 					Vector<String> synonymTokenVector = GeneMentionTokenizer.getTokens(synonym);
+                    System.out.println("      ---->gm vector:" + gmTokenVector.size() +  " synonym vector: " + synonymTokenVector.size());
+                    dump("      synonym tokenss:", synonymTokenVector);
 					double valueP = GMCoveredRateFeatureBuilder.getCoveredRate(gmTokenVector, synonymTokenVector);
-					
 					double valueR = GMCoveredRateFeatureBuilder.getCoveredRate(synonymTokenVector, gmTokenVector);
-					
-					if(!gmText.matches("[a-z\\W]+") && !synonym.matches("[a-z\\W]+"))
-					{
-						if(gmText.toLowerCase().replaceAll("\\W+", "").equals(synonym.toLowerCase().replaceAll("\\W+", "")))
-						{
+				    System.out.println("      valueP:" + valueP + " valueR:" + valueR);	
+					if (!gmText.matches("[a-z\\W]+") && !synonym.matches("[a-z\\W]+")) {
+                        System.out.println("xx.removeNotMatchedCandidates: " + gmText + ", " + synonym  + " do match the regex"); 
+						if (gmText.toLowerCase().replaceAll("\\W+", "").equals(synonym.toLowerCase().replaceAll("\\W+", ""))) {
 							valueP = 1.0;
 							valueR = 1.0;
+                            System.out.println("xx.removeNotMatchedCandidates: " + gmText + ", " + synonym  + " do match the  special regex"); 
 						}
 					}
-					if(valueP>maxP) maxP = valueP;
-					if(valueR>maxR) maxR = valueR;
-					if(tokenNum<3)
-					{
-						if(valueP>0.49 && valueR>0.49)
-						{
-							candidateVector.add(candidates[i]);
-							break;
-						}
-					}
-					else
-					{
-						if(valueP>0.49 && valueR>0.49)
-						{
-							candidateVector.add(candidates[i]);
-							break;
-						}
+                    else {
+                        System.out.println("xx.removeNotMatchedCandidates: " + gmText + ", " + synonym  + " do not match the regex"); 
+                    }
+					if (valueP>0.49 && valueR>0.49) {
+						candidateVector.add(candidates[i]);
+                        candidateAdded=true;
+						break;
 					}
 				}
-				//if(maxP>0.60 && maxR>0.9) 
-				//	candidateVector.add(candidates[i]);
 			}
-		}
-		BioNERCandidate[] newCandidates = new BioNERCandidate[candidateVector.size()];
-		for(int i=0; i<newCandidates.length; i++)
-		{
-			newCandidates[i] = candidateVector.elementAt(i);
-		}
-		entity.setCandidates(newCandidates);
+        System.out.print("\n");
+
+		//BioNERCandidate[] newCandidates = new BioNERCandidate[candidateVector.size()];
+		//for (int i=0; i<newCandidates.length; i++) {
+		//	newCandidates[i] = candidateVector.elementAt(i);
+		//}
+		entity.setCandidates(candidateVector.toArray(new BioNERCandidate[0]));
 	}
+
 	
-	
-	private void filterByScore(BioNERSentence sentence, HashMap<String, Integer> countMap)
-	{
+	private void filterByScore(BioNERSentence sentence, HashMap<String, Integer> countMap) {
 		BioNEREntity[] entityArray = sentence.getAllEntities();
-		sentence.clearEntities();
+		sentence.clearEntities(); // <---  !
 		
-		for(BioNEREntity entity : entityArray)
-		{
+		for (BioNEREntity entity : entityArray) {
 			String text = entity.getText();
 			Integer count = countMap.get(text);
 			BioNERCandidate[] candidates = entity.getCandidates();
-			if(candidates==null || candidates.length==0 ||count==null) continue;
+			if (candidates==null || candidates.length==0 ||count==null)  {
+                continue;
+            }
 			double score = candidates[0].getScore();
-			if(count>=2)
-			{
-				//if(score>3.0) sentence.addEntity(entity);
-				sentence.addEntity(entity);
+
+
+				if (score > 1.9) {
+                    sentence.addEntity(entity); 
+                }
+                else {
+                    System.out.println("ProcessImpFilterAfterGetCandidate.filterByScore() score is too low: " + score + " " + text);
+                }
+/*
+			if (count >= 4) {
+				if (score > 3.0) {
+				    sentence.addEntity(entity);
+                }
 			}
-			else if(count>=3)//3<=count<=9
-			{
-				if(score>4.0) sentence.addEntity(entity);
+			else if (count >= 3) {
+				if (score > 4.0) {
+                    sentence.addEntity(entity);
+                }
 			}
-			else if(count>=2)//count==2
-			{
-				if(score>5.0) sentence.addEntity(entity);
+			else if (count >= 2) {
+				if (score > 5.0) {
+                    sentence.addEntity(entity);
+                }
 			}
-			else //count==1
-			{
-				if(score>2.0) sentence.addEntity(entity);
+			else {
+				//if (score > 2.0) {
+				if (score > 1.9) {
+                    sentence.addEntity(entity); 
+                }
 			}
+*/
 		}
 	}
+
+    // keys are entities' text strings
+    // values are the number of times that key appears with an entity
 	private HashMap<String, Integer> getGMCountMap(BioNERDocument document)
 	{
 		HashMap<String, Integer> map = new HashMap<String, Integer>();
-		for(BioNERSentence sentence : document.getAllSentence())
-		{
-			for(BioNEREntity entity : sentence.getAllEntities())
-			{
+		for (BioNERSentence sentence : document.getAllSentence()) {
+			for (BioNEREntity entity : sentence.getAllEntities()) {
 				String text = entity.getText();
 				Integer num = map.get(text);
-				if(num==null) num=0;
+				if (num==null) { num=0; }
 				num++;
 				map.put(text, num);
 			}
