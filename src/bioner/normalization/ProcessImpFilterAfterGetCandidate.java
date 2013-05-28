@@ -19,18 +19,25 @@ public class ProcessImpFilterAfterGetCandidate implements BioNERProcess {
 	public void Process(BioNERDocument document) {
 
 		HashMap<String, Integer> countMap = getGMCountMap(document);
-
+        Vector<BioNEREntity> speciesEntityVector = SpeciesEntityStore.getSpeciesEntities(document);
         ArrayList<BioNERSentence> debugList = new ArrayList<BioNERSentence>();
 
         // FILTER
 		for (BioNERSentence sentence : document.getAllSentence()) {
 			filterByScore(sentence, countMap);
 		}
-	
         // MATCH	
         for (BioNERSentence sentence : document.getAllSentence()) {
 			for (BioNEREntity entity : sentence.getAllEntities()) {
-				removeNotMatchedCandidates(entity);
+                // DISABLED
+                if (false) {	 
+                // I think this was from experimentation at some point, it's too restrictive
+				    //System.out.println("Before removeNotMathcedCandidates: " + entity.getCandidates().length );
+				    removeNotMatchedCandidates(entity);
+				    //System.out.println("after removeNotMathcedCandidates: " + entity.getCandidates().length );
+                }
+                // this was commented out in source, but matches the paper
+                /////filterGeneIDbyExplicitSpecies(entity, speciesEntityVector);      
 			}
         }
 
@@ -69,57 +76,63 @@ private static void dump(String label, Vector<String> vec) {
 		Vector<BioNERCandidate> candidateVector = new Vector<BioNERCandidate>();
 		Vector<String> gmTokenVector = GeneMentionTokenizer.getTokens(entity.getText());
 		String gmText = entity.getText();
-        System.out.println("====== Entity (recognized mention): " + entity.getIDNum() 
-            + ", \"" + entity.getText() 
-            + "\", " + entity.getScore() 
-            + " begin:" + entity.get_Begin()
-            + " end:" + entity.get_End());
-        System.out.print("label vector: ");
-        for (String s : entity.getLabelVector()) {
-                System.out.print(s + ", ");
+        //System.out.println("====== Entity (recognized mention): " + entity.getIDNum() + ", " + entity.getText()); 
+
+
+        // try matching record symbol with candidate text (rarely works, commented out in original code)
+        if (false) {
+        for (BioNERCandidate cand : candidates) {
+            System.out.println("gm text:" + gmText + " symbol:" + cand.getRecord().getSymbol());
+            if (gmText.equals(cand.getRecord().getSymbol())) {
+                candidateVector.add(cand);
+            }
         }
-        System.out.println(" ....has " + candidates.length + " candidates");
-        dump("Tokens:", gmTokenVector);
+        }
+          
+        // try exact matches on the synonyms (why?)         
+
 	
 			for (int i=0; i < candidates.length; i++) {
                 boolean candidateAdded=false;
-                System.out.println(" ---- Caniddate (potential id)" + i 
-                                + "  id: " + candidates[i].getRecord().getID() 
-                                + ", speciesID: " + candidates[i].getRecord().getSpeciesID()
-                                + ", symbol: " + candidates[i].getRecord().getSymbol());
 				for (String synonym : candidates[i].getRecord().getSynonyms()) {
-                    System.out.println("      synonym " + synonym );
+                    //System.out.println("      synonym " + synonym );
 					Vector<String> synonymTokenVector = GeneMentionTokenizer.getTokens(synonym);
-                    System.out.println("      ---->gm vector:" + gmTokenVector.size() +  " synonym vector: " + synonymTokenVector.size());
-                    dump("      synonym tokenss:", synonymTokenVector);
 					double valueP = GMCoveredRateFeatureBuilder.getCoveredRate(gmTokenVector, synonymTokenVector);
 					double valueR = GMCoveredRateFeatureBuilder.getCoveredRate(synonymTokenVector, gmTokenVector);
-				    System.out.println("      valueP:" + valueP + " valueR:" + valueR);	
+
+                    // DEBUG
+                    if (false && valueP > 0.01 && valueR > 0.01) {
+                        System.out.println("      ---->" + valueP + ", " + valueR);
+                        dump("      gm  tokens:", gmTokenVector);
+                        dump("      syn tokens:", synonymTokenVector);
+                    }
+
+                    // regex removal TODO: explain/identify in algorithm description
 					if (!gmText.matches("[a-z\\W]+") && !synonym.matches("[a-z\\W]+")) {
-                        System.out.println("xx.removeNotMatchedCandidates: " + gmText + ", " + synonym  + " do match the regex"); 
+                        //System.out.println("xx.removeNotMatchedCandidates: " + gmText + ", " + synonym  + " do match the regex"); 
 						if (gmText.toLowerCase().replaceAll("\\W+", "").equals(synonym.toLowerCase().replaceAll("\\W+", ""))) {
 							valueP = 1.0;
 							valueR = 1.0;
-                            System.out.println("xx.removeNotMatchedCandidates: " + gmText + ", " + synonym  + " do match the  special regex"); 
+                            //System.out.println("xx.removeNotMatchedCandidates: " + gmText + ", " + synonym  + " do match the  special regex"); 
 						}
 					}
                     else {
-                        System.out.println("xx.removeNotMatchedCandidates: " + gmText + ", " + synonym  + " do not match the regex"); 
+                        //System.out.println("xx.removeNotMatchedCandidates: " + gmText + ", " + synonym  + " do not match the regex"); 
                     }
+
 					if (valueP>0.49 && valueR>0.49) {
 						candidateVector.add(candidates[i]);
                         candidateAdded=true;
+				        System.out.println("      Candidate:" + candidates[i].getRecord().getSymbol()  + " measured up: valueP:" + valueP + " valueR:" + valueR);	
 						break;
 					}
 				}
 			}
-        System.out.print("\n");
 
-		//BioNERCandidate[] newCandidates = new BioNERCandidate[candidateVector.size()];
-		//for (int i=0; i<newCandidates.length; i++) {
-		//	newCandidates[i] = candidateVector.elementAt(i);
-		//}
 		entity.setCandidates(candidateVector.toArray(new BioNERCandidate[0]));
+        if (entity.getCandidates().length > 0) {
+        System.out.println("OMGWTF: " + entity.getCandidates().length);
+        }
 	}
 
 	
@@ -134,14 +147,29 @@ private static void dump(String label, Vector<String> vec) {
 			if (candidates==null || candidates.length==0 ||count==null)  {
                 continue;
             }
+
+            // original code here would pass an entity only if the first
+            // candidate has a high enough score
+            // Q:  ARE THEY SORTED?
 			double score = candidates[0].getScore();
+
+            // A: check and see if you run into a higher value
+            {
+                for (BioNERCandidate bnc : candidates) {
+                    if (bnc.getScore() > score) {
+                        System.out.println("\n\nFOUND A BIGGER ONE!!!" + score + " < " + bnc.getScore() + "\n\n");
+                    }
+                }
+            }
 
 
 				if (score > 1.9) {
                     sentence.addEntity(entity); 
+                    ///System.out.println("ProcessImpFilterAfterGetCandidate.filterByScore() score is good: " + score + " " + text);
                 }
                 else {
-                    System.out.println("ProcessImpFilterAfterGetCandidate.filterByScore() score is too low: " + score + " " + text);
+                    sentence.addEntity(entity); 
+                   //////// System.out.println("ProcessImpFilterAfterGetCandidate.filterByScore() score sucks add it anyway: " + score + " " + text);
                 }
 /*
 			if (count >= 4) {

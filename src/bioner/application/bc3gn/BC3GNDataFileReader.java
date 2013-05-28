@@ -45,8 +45,9 @@ FeatureBuildDocumentBuilder {
 			domfac.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
 			dombuilder = domfac.newDocumentBuilder();
 		} catch (ParserConfigurationException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+            System.out.println("BC3GNDataFileReader.ctor() error:" + e);
+            throw new RuntimeException(e);
 		}
 	}
 	
@@ -91,13 +92,18 @@ FeatureBuildDocumentBuilder {
 			}
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
+            System.out.println("BC3GNDataFileReader.buildDocument() error:" + e);
 			e.printStackTrace();
+            throw new RuntimeException(e);
 		} catch (SAXException e) {
 			// TODO Auto-generated catch block
+            System.out.println("BC3GNDataFileReader.buildDocument() error:" + e);
 			e.printStackTrace();
+            throw new RuntimeException(e);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+            System.out.println("BC3GNDataFileReader.buildDocument() error:" + e);
 			e.printStackTrace();
+            throw new RuntimeException(e);
 		}
 		return documents;
 	}
@@ -107,7 +113,7 @@ FeatureBuildDocumentBuilder {
 		String filename = file.getName();
 		int pos = filename.indexOf('.');
 		String docID = filename.substring(0, pos);
-		
+	System.out.println("XXXXXXXXXXXXXXXX docID is:\"" + docID + "\"");	
 		InputStream is;
 		try {
 			is = new FileInputStream(file.getAbsolutePath());
@@ -131,17 +137,19 @@ FeatureBuildDocumentBuilder {
 			document.linkComponent();
 			return document;
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+            System.out.println("BC3GNDataFileReader.getOneDocument() error:" + e);
 			e.printStackTrace();
+            throw new RuntimeException(e);
 		} catch (SAXException e) {
-			// TODO Auto-generated catch block
+            System.out.println("BC3GNDataFileReader.getOneDocument() error:" + e);
 			e.printStackTrace();
+            throw new RuntimeException(e);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+            System.out.println("BC3GNDataFileReader.getOneDocument() error:" + e);
 			e.printStackTrace();
+            throw new RuntimeException(e);
 		}
 		
-		return null;
 	}
 	
 	

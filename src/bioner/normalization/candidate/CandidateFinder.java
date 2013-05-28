@@ -34,43 +34,61 @@ public class CandidateFinder {
 	{
 		Vector<String> tokenVector = GeneMentionTokenizer.getTokens(geneStr);
 		tokenVector.add(geneStr.replaceAll("\\W", " "));
+
 		BioNERCandidate[] candidates = m_indexReader.searchIDs(tokenVector);
 		//BioNERCandidate[] candidates = m_ncbiFinder.getCandidates(geneStr);
+		
 		String[] ids = new String[candidates.length];
-		for(int i=0; i<candidates.length; i++)
-		{
-			ids[i] = candidates[i].getRecordID();
-		}
+        for (int i=0; i<candidates.length; i++) {
+             ids[i] = candidates[i].getRecordID();
+        }
 		HashMap<String, BioNERRecord> recordTable = m_databaseReader.searchRecords(ids);
-		for(int i=0; i<candidates.length; i++)
-		{
+
+
+        // debug 
+        if (false) {
+	        StringBuilder sb = new StringBuilder();
+			for (int i=0; i< candidates.length; i++) {
+				ids[i] = candidates[i].getRecordID();
+				sb.append(" " + ids[i]);
+			}
+	        if (recordTable == null) {
+	            System.out.println("xxx CandidateFinder.getCandidatesForGeneMentionString: " + geneStr + 
+	                " null record table " + sb);
+	        }
+	        else {
+	            System.out.println("xxx CandidateFinder.getCandidatesForGeneMentionString: " + geneStr + 
+	                " found " + recordTable.size() + " matching records  " + sb);
+	        }
+        }
+
+
+		for (int i=0; i<candidates.length; i++) {
 			String id = candidates[i].getRecordID();
 			BioNERRecord record = recordTable.get(id);
-			if(record==null)
-			{
+			if (record==null) {
 				candidates[i]=null;
 			}
-			else
-				candidates[i].setRecord(record);
+			else {
+				candidates[i].setRecord(record); 
+            }
 		}
 		
 		int size=0;
-		for(int i=0; i<candidates.length; i++)
-		{
+		for (int i=0; i<candidates.length; i++) {
 			if(candidates[i]!=null) size++;
 		}
-		if(size==candidates.length) return candidates;
+		if (size==candidates.length) {
+            return candidates;
+        }
 		BioNERCandidate[] newCandidates = new BioNERCandidate[size];
 		
-		for(int i=0,j=0; i<candidates.length; i++)
-		{
-			if(candidates[i]!=null)
-			{
+		for (int i=0,j=0; i<candidates.length; i++) {
+			if (candidates[i]!=null) {
 				newCandidates[j] = candidates[i];
 				j++;
 			}
 		}
-		
 		return newCandidates;
 	}
 	

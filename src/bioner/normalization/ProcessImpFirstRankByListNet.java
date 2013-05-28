@@ -16,18 +16,19 @@ public class ProcessImpFirstRankByListNet implements BioNERProcess {
 	private FirstRankFeatureBuilder m_featureBuilder;
 	public ProcessImpFirstRankByListNet(String filename, FirstRankFeatureBuilder featureBuilder)
 	{
+        // TODO: put some unix 'make' style logic in here where  you rebuild if the input is newer
 		File modelFile = new File(filename+".model");
-		if(modelFile.exists())
-		{
-			m_listNet.readModelFromFile(filename+".model");
-		}
-		else
-		{
+		//if(modelFile.exists())
+		//{
+		//	m_listNet.readModelFromFile(filename+".model");
+		//}
+		//else
+		//{
             System.out.println("ProcessImpFirstRankByListNet: training and creating: " + modelFile.getAbsolutePath());
             System.out.println("ProcessImpFirstRankByListNet: training and creating: " + filename);
 			m_listNet.train(filename, null);
-			//m_listNet.writeModelToFile(filename+".model");
-		}
+			m_listNet.writeModelToFile(filename+".model");
+		//}
 		m_featureBuilder = featureBuilder;
 	}
 	@Override

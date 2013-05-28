@@ -81,10 +81,6 @@ public class ProcessImpFilterGeneMention implements BioNERProcess {
                     //The GMs not contained by species names
 					sentence.addEntity(entity);
 				}
-                else {
-                    System.out.println("------------> ProcessImpFilterGeneMention.filterGMCoveredBySpecies: not covered:" 
-                        + entity.getText() );
-                }
 			}
 		}
 	}
@@ -138,10 +134,20 @@ public class ProcessImpFilterGeneMention implements BioNERProcess {
 				sentence.addEntity(entity);
 			} else if (entity.getLabelVector().size()>=2) {
 				sentence.addEntity(entity);
+
+                // debug
+                if (false) {
+                    System.out.println("had enough labels:" + entity.getLabelVector().size());
+                    System.out.print("    " + entity.getText() + ": ");
+                    for (String l : entity.getLabelVector()) {
+                        System.out.print("\"" + l + "\",");
+                    }
+                    System.out.println("\n");
+                }
 			}
-            else {
-                System.out.println("ProcessImpFilterGeneMention.filterUnreliable...() Entity " 
-                    + " had too few labels:" + entity.getLabelVector().size());
+            else if (false) {
+                // debug
+                System.out.println("had too few labels:" + entity.getLabelVector().size());
                 System.out.print("    " + entity.getText() + ": ");
                 for (String l : entity.getLabelVector()) {
                     System.out.print("\"" + l + "\",");
@@ -348,9 +354,6 @@ public class ProcessImpFilterGeneMention implements BioNERProcess {
 			}
 			if (!shouldFilterOut) {
                 sentence.addEntity(entity);
-            }
-            else {
-                System.out.println("ProcessImpFilterGeneMention.processSentence() dropping mention for failing pattern: " + entityText);
             }
 		}
 	}

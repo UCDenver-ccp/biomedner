@@ -17,13 +17,14 @@ public class MySQLDatabaseBuilder {
 	
 	public MySQLDatabaseBuilder()
 	{
-		try{
-			//The new Instance() call is a work around for some
-			//broken Java implementations
+		try {
+			// The new Instance() call is a work around for some
+			// broken Java implementations.
 			Class.forName(DatabaseConfig.DATABASE_DRIVER_CLASS).newInstance();
-		}catch(Exception ex){
-			//handle the error
+		} catch(Exception ex) {
+			// handle the error
 			ex.printStackTrace();
+            throw new RuntimeException(ex);
 		}
 		DatabaseConfig.ReadConfigFile();
 	}
@@ -33,8 +34,8 @@ public class MySQLDatabaseBuilder {
 			conn = DriverManager.getConnection("jdbc:"+DatabaseConfig.DATABASE_DRIVER_NAME+"://"+DatabaseConfig.DATABASE_HOST+"/"+DatabaseConfig.DATABASE_NAME+"?"+
 												"user="+DatabaseConfig.DATABASE_USERNAME+"&password="+DatabaseConfig.DATABASE_PASSWORD);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+            throw new RuntimeException(e);
 		}
 	}
 	public void close()
@@ -42,8 +43,8 @@ public class MySQLDatabaseBuilder {
 		try {
 			conn.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+            throw new RuntimeException(e);
 		}
 	}
 	
@@ -73,12 +74,12 @@ public class MySQLDatabaseBuilder {
 			stmt.execute("drop table "+tableName);
 			}catch(SQLException e)
 			{
-				System.out.println("Table doesn't exist! Create new table");
+				System.out.println("INFO: Table doesn't exist! Create new table");
 			}
 			stmt.execute(sql);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+            throw new RuntimeException(e);
 		}
 		
 	}
@@ -105,7 +106,9 @@ public class MySQLDatabaseBuilder {
 					if(i>0) sql.append(",");
 					if(!parts[i].equals("-"))
 					{
-						sql.append("'"+parts[i]+"'");
+						//sql.append("'"+parts[i]+"'");
+						//     http://stackoverflow.com/questions/12316953/insert-varchar-with-single-quotes-in-postgresql
+						sql.append("E'"+parts[i]+"'");
 					}
 					else
 					{
