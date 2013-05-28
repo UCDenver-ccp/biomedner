@@ -35,9 +35,11 @@ BIOMED_NER_HOME=/home/roederc/work/git/biomedner
 
 
 # Create DB
+GENE_INFO=gene_info.gz
 if (( $CREATE_DB )) 
 then
-	# FINISH THIS ********
+	mvn -e exec:java -Dexec.mainClass="bioner.normalization.data.database.MySQLDatabaseBuilder" \
+				 -Dexec.args="$GENE_INFO" > /dev/null
 	STATUS=$?
 	if (( $STATUS != 0 ))
 	then
@@ -198,6 +200,7 @@ mvn -e exec:java -Dexec.mainClass="bioner.application.webtool.GNRun" \
 		exit -1
 	fi
 fi
+
 
 
 

@@ -24,6 +24,7 @@ public class MySQLDatabaseBuilder {
 		}catch(Exception ex){
 			//handle the error
 			ex.printStackTrace();
+			throw new RuntimeException(ex);
 		}
 		DatabaseConfig.ReadConfigFile();
 	}
@@ -35,6 +36,7 @@ public class MySQLDatabaseBuilder {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			throw new RuntimeException(e);
 		}
 	}
 	public void close()
@@ -44,6 +46,7 @@ public class MySQLDatabaseBuilder {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			throw new RuntimeException(e);
 		}
 	}
 	
@@ -79,18 +82,21 @@ public class MySQLDatabaseBuilder {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			throw new RuntimeException(e);
 		}
 		
 	}
 	public void importData(String filename)
 	{
 		String tableName = DatabaseConfig.DATABASE_GENEINFO_TABLE_NAME;
+		StringBuilder sql = null;
 		try {
 			BufferedReader freader = new BufferedReader(new InputStreamReader(new GZIPInputStream(new FileInputStream(filename))));
 			String line;
 			int num=0;
+			int bogusNum=0;
 			Statement stmt = conn.createStatement();
-			StringBuffer sql = new StringBuffer("INSERT INTO "+tableName + " VALUES ");
+			sql = new StringBuilder("INSERT INTO "+tableName + " VALUES ");
 			while((line=freader.readLine()) != null)
 			{
 				if(line.length()<=0 || line.startsWith("#")) continue;
@@ -105,46 +111,69 @@ public class MySQLDatabaseBuilder {
 					if(i>0) sql.append(",");
 					if(!parts[i].equals("-"))
 					{
-						sql.append("'"+parts[i]+"'");
+						//sql.append("'"+parts[i]+"'");
+						// http://stackoverflow.com/questions/12316953/insert-varchar-with-single-quotes-in-postgresql
+						sql.append("E'"+parts[i]+"'");
 					}
 					else
 					{
 						sql.append("null");
 					}
 				}
-				sql.append("),");
+				//sql.append("),");
+				sql.append(");");
+
+				// BATCHES
 				if(num%1000==0) 
 				{
-					System.out.println("Adding #"+num+" Record");
+					System.err.println("Adding #"+num+" Record");
 					
-					if(sql.charAt(sql.length()-1)==',')
-					{
-						sql.deleteCharAt(sql.length()-1);
-					}
+				//	if(sql.charAt(sql.length()-1)==',')
+				//	{
+				//		sql.deleteCharAt(sql.length()-1);
+				//	}
+				//	stmt.execute(sql.toString());
+				//	sql = new StringBuilder("INSERT INTO "+tableName + " VALUES ");
+				}
+		
+				// ONE-by-ONE
+				try {
 					stmt.execute(sql.toString());
-					sql = new StringBuffer("INSERT INTO "+tableName + " VALUES ");
+					sql = new StringBuilder("INSERT INTO "+tableName + " VALUES ");
+				}
+				catch (Exception x) {
+					bogusNum++;
+					System.err.println("\nERROR:" + x);
+					System.err.println("did not insert:" + bogusNum + "/" +  num + " "  + sql);
+					sql = new StringBuilder("INSERT INTO "+tableName + " VALUES ");
 				}
 				
 			}
-			System.out.println("Adding #"+num+" Record");
 			
-			if(sql.charAt(sql.length()-1)==',')
-			{
-				sql.deleteCharAt(sql.length()-1);
-			}
-			stmt.execute(sql.toString());
+			//if(sql.charAt(sql.length()-1)==',')
+			//{
+			//	sql.deleteCharAt(sql.length()-1);
+			//}
+			//stmt.execute(sql.toString());
+			System.out.println("Done Adding #"+num+" Record");
 			freader.close();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			throw new RuntimeException(e);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			throw new RuntimeException(e);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			System.out.println("\nERROR with STATEMENT: " + sql.toString());
 			e.printStackTrace();
-		}
-		
+			throw new RuntimeException(e);
+		} catch (Exception e) {
+			System.out.println("\n ERROR with STATEMENT: " + sql.toString());
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}	
 	}
 	
 	/**
