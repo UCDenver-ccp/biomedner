@@ -3,6 +3,9 @@ package genetukit.api;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Vector;
+import java.util.List;
+import java.util.Collection;
+import java.util.ArrayList;
 
 import bioner.application.webtool.BC3GNDataFileReader;
 import bioner.application.webtool.BC3GNFirstRankFeatureBuilder;
@@ -32,10 +35,10 @@ import bioner.process.common.ProcessImpDebug;
  */
 public class GNProcessor {
 	public static int rank = 1;
-	BioNERProcess[] pipeline = null;
 	GeneRerankByLogistic rerank = null;
 	CandidateFinder finder = null;
 	BC3GNDataFileReader docBuilder;
+    Collection<BioNERProcess> pipeline = new ArrayList<BioNERProcess>();
 
 
 	public enum FileType {
@@ -62,38 +65,50 @@ public class GNProcessor {
 		GlobalConfig.ReadConfigFile();
 		docBuilder = new BC3GNDataFileReader();
 		finder = new CandidateFinder();
-		pipeline = new BioNERProcess[13];
+	
 		if (useBanner) {
-			pipeline[0] = new ProcessImpProteinBANNER();
+			pipeline.add(new ProcessImpProteinBANNER());
 		}
 		else {
-			pipeline[0] = new ProcessImpCRFPP(modelFilename, GlobalConfig.ENTITY_LABEL_CRF);
+			pipeline.add(new ProcessImpCRFPP(modelFilename, GlobalConfig.ENTITY_LABEL_CRF));
         }
+
+
 		//pipeline[0] = new ProcessImpGRMMLineCRF();
 		
 
         if (false) {		
-		pipeline[1] = new ProcessImpProteinIndexNER();
-        pipeline[2] = new ProcessImpProteinABNER();
-		pipeline[3] = new ProcessImpFilterGeneMention();
-		pipeline[4] = new ProcessImpGetCandidateID(finder);
-		pipeline[5] = new ProcessImpFilterAfterGetCandidate();
-		pipeline[6] = new ProcessImpFirstRankByListNet(trainingDataFilename, new BC3GNFirstRankFeatureBuilder());
+		pipeline.add(new ProcessImpProteinIndexNER());
+        pipeline.add(new ProcessImpProteinABNER());
+		pipeline.add(new ProcessImpFilterGeneMention());
+		pipeline.add(new ProcessImpGetCandidateID(finder));
+		pipeline.add(new ProcessImpFilterAfterGetCandidate());
+		pipeline.add(new ProcessImpFirstRankByListNet(trainingDataFilename, new BC3GNFirstRankFeatureBuilder()));
         }
 
-		pipeline[1] = new ProcessImpProteinIndexNER();
-	    pipeline[2] = new ProcessImpDebug("after index NER");	
-        pipeline[3] = new ProcessImpProteinABNER();
-	    pipeline[4] = new ProcessImpDebug("after ABNER");	
-		pipeline[5] = new ProcessImpFilterGeneMention();
-	    pipeline[6] = new ProcessImpDebug("after filter gene mention");	
-		pipeline[7] = new ProcessImpGetCandidateID(finder);
-	    pipeline[8] = new ProcessImpDebug("after get candidate ID");	
-		pipeline[9] = new ProcessImpFilterAfterGetCandidate();
-	    pipeline[10] = new ProcessImpDebug("after filter after get canddiate");	
-		pipeline[11] = new ProcessImpFirstRankByListNet(trainingDataFilename, new BC3GNFirstRankFeatureBuilder());
-	    pipeline[12] = new ProcessImpDebug("after RankByListNext");	
+		pipeline.add(new ProcessImpProteinIndexNER());
+	    pipeline.add(new ProcessImpDebug("after index NER"));	
+        pipeline.add(new ProcessImpProteinABNER());
+	    pipeline.add(new ProcessImpDebug("after ABNER"));	
+			pipeline.add(new ProcessImpProteinBANNER());
+	        pipeline.add(new ProcessImpDebug("after BANNER"));	
+		pipeline.add(new ProcessImpFilterGeneMention());
+	    pipeline.add(new ProcessImpDebug("after filter gene mention"));	
+		pipeline.add(new ProcessImpGetCandidateID(finder));
+	    pipeline.add(new ProcessImpDebug("after get candidate ID"));	
+		pipeline.add(new ProcessImpFilterAfterGetCandidate());
+	    pipeline.add(new ProcessImpDebug("after filter after get canddiate"));	
+		pipeline.add(new ProcessImpFirstRankByListNet(trainingDataFilename, new BC3GNFirstRankFeatureBuilder()));
+	    pipeline.add(new ProcessImpDebug("after RankByListNext"));	
 
+       
+        {
+            // check to see if this file exists since the error messages from in there aren't so good
+            File testFile = new File(rerankTrainFilename);
+            if (!testFile.canRead()) {
+                System.err.println("GNProcessor.open() can't read:" + rerankTrainFilename);
+            }
+        } 
 		rerank = new GeneRerankByLogistic(rerankTrainFilename, new BC3GNGeneIDRerankFeatureBuilder());
 	}
 
@@ -110,9 +125,8 @@ public class GNProcessor {
 	}
 
 	public GNResultItem[] process(BioNERDocument document) {
-		for (int j=0; j<pipeline.length; j++) {
-			pipeline[j].Process(document);
-			//System.err.println("step "+j+" GM="+getGMNumber(document));
+		for (BioNERProcess process : pipeline) {
+			process.Process(document);
 		}
 		
 		

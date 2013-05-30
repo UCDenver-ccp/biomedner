@@ -15,12 +15,11 @@ CREATE_DB=0
 CREATE_INDEX=0
 PREPARE_TRAIN=0
 TRAIN=0
-NORMALIZATION=0 # using TrainData_1.txt/NORM_FILE from distro, this is broken
-SECOND=0
+NORMALIZATION=1 
+##SECOND=0
 RERANK=0
 TASK=0
-
-RUN=1
+RUN=0
 
 # mac
 #BC2_DATA=/Users/roederc/work/sources/biocreative2
@@ -99,20 +98,19 @@ fi
 XMLS_DIR_32="$BC3_DATA/BC3GNTraining/32_xmls/"   ## String dataDir = "../../BC3GN/xmls/";
 XMLS_DIR="$BC3_DATA/BC3GNTraining/xmls"   ## String dataDir = "../../BC3GN/xmls/";
 GENE_LIST_FILE=$BC3_DATA/BC3GNTraining/TrainingSet1.txt ## String genelistFilename = "../../BC3GN/data/TrainingSet2.txt";
-NORM_FILE_BC3GN=$BIOMED_NER_HOME/RankTrainData_bc3gn.txt  ## String outputFilename = "../../BC3GN/TrainData_10.txt";
-NORM_FILE_WEB=$BIOMED_NER_HOME/RankTrainData_webtool.txt  ## String outputFilename = "../../BC3GN/TrainData_10.txt";
-NORM_FILE=train/TrainData_1.txt
+NORM_FILE=$BIOMED_NER_HOME/RankTrainData_webtool.txt  ## String outputFilename = "../../BC3GN/TrainData_10.txt";
+##NORM_FILE=$BIOMED_NER_HOME/RankTrainData_bc3gn.txt  ## String outputFilename = "../../BC3GN/TrainData_10.txt";
+##NORM_FILE=train/TrainData_1.txt
 
 if (( $NORMALIZATION )) 
 then
 echo "maven.sh: prepparing normalization train data"
 echo "LD_LIBRARY_PATH: $LD_LIBRARY_PATH"
 # Pipeline stage 1: BC3GNBuildNormalizationTrainData
-### DIFFERENT!!
 #mvn -e exec:java -Dexec.mainClass="bioner.application.bc3gn.BC3GNBuildNormalizationTrainData" \
 #                 -Dexec.args="$XMLS_DIR_32 $GENE_LIST_FILE $NORM_FILE_BC3GN $CRFPP_MODEL"  
 mvn -e exec:java -Dexec.mainClass="bioner.application.webtool.BC3GNBuildNormalizationTrainData" \
-                 -Dexec.args="$XMLS_DIR_32 $GENE_LIST_FILE $NORM_FILE_WEB $CRFPP_MODEL"
+                 -Dexec.args="$XMLS_DIR_32 $GENE_LIST_FILE $NORM_FILE $CRFPP_MODEL"
 
 	STATUS=$?
 	if (( $STATUS != 0 ))
@@ -122,36 +120,39 @@ mvn -e exec:java -Dexec.mainClass="bioner.application.webtool.BC3GNBuildNormaliz
 	fi
 fi
 
+# FORCE creation of a new model file by removing the old one
+# else the new training data won't make a difference
+rm $NORM_FILE.model
 
-# Pipeline stage 2: BC3GNBuildSecondRankTrainData
-SECOND_RANK_DATA=$BIOMED_NER_HOME/SecondRankTrainData.txt  ## String outputFilename = "../../BC3GN/TrainData_10.txt";
+##### Pipeline stage 2: BC3GNBuildSecondRankTrainData
+####SECOND_RANK_DATA=$BIOMED_NER_HOME/SecondRankTrainData.txt  ## String outputFilename = "../../BC3GN/TrainData_10.txt";
+####
+####if (( $SECOND )) 
+####then
+####### BASICALLY THE SAME!
+#######mvn -e exec:java -Dexec.mainClass="bioner.application.bc3gn.BC3GNBuildSecondRankTrainData" \
+######				  -Dexec.args="$XMLS_DIR_32 $GENE_LIST_FILE $NORM_FILE $SECOND_RANK_DATA"    
+####mvn -e exec:java -Dexec.mainClass="bioner.application.webtool.BC3GNBuildSecondRankTrainData" \
+####				  -Dexec.args="$XMLS_DIR_32 $GENE_LIST_FILE $NORM_FILE $SECOND_RANK_DATA"    
+####				  ###-Dexec.args="$XMLS_DIR_32 $GENE_LIST_FILE $NORM_FILE_WEB $SECOND_RANK_DATA"    
+####	STATUS=$?
+####	if (( $STATUS != 0 ))
+####	then
+####		echo "maven.sh: ERROR preparing BC3GN second rank data: $STATUS"
+####		exit -1
+####	fi
+####fi
 
-if (( $SECOND )) 
-then
-### BASICALLY THE SAME!
-###mvn -e exec:java -Dexec.mainClass="bioner.application.bc3gn.BC3GNBuildSecondRankTrainData" \
-##				  -Dexec.args="$XMLS_DIR_32 $GENE_LIST_FILE $NORM_FILE $SECOND_RANK_DATA"    
-mvn -e exec:java -Dexec.mainClass="bioner.application.webtool.BC3GNBuildSecondRankTrainData" \
-				  -Dexec.args="$XMLS_DIR_32 $GENE_LIST_FILE $NORM_FILE $SECOND_RANK_DATA"    
-				  ###-Dexec.args="$XMLS_DIR_32 $GENE_LIST_FILE $NORM_FILE_WEB $SECOND_RANK_DATA"    
-	STATUS=$?
-	if (( $STATUS != 0 ))
-	then
-		echo "maven.sh: ERROR preparing BC3GN second rank data: $STATUS"
-		exit -1
-	fi
-fi
 
 # Pipeline stage 3: BC3GNBuildRerankTrainData
-RERANK_DATA=RerankTrainData.txt
-RERANK_DATA_WEB=RerankTrainData_webtool.txt
+###RERANK_DATA=RerankTrainData.txt
+RERANK_DATA=RerankTrainData_webtool.txt
 if (( $RERANK )) 
 then
 ##mvn -e exec:java -Dexec.mainClass="bioner.application.bc3gn.rank.BC3GNBuildRerankTrainData" \
 ##				  -Dexec.args="$XMLS_DIR_32 $GENE_LIST_FILE $NORM_FILE $SECOND_RANK_DATA $RERANK_DATA"  
 mvn -e exec:java -Dexec.mainClass="bioner.application.webtool.rank.BC3GNBuildRerankTrainData" \
-				  -Dexec.args="$XMLS_DIR_32 $GENE_LIST_FILE $NORM_FILE $SECOND_RANK_DATA $RERANK_DATA_WEB"  
-				  ##-Dexec.args="$XMLS_DIR_32 $GENE_LIST_FILE $NORM_FILE_WEB $SECOND_RANK_DATA $RERANK_DATA_WEB"  
+				  -Dexec.args="$XMLS_DIR_32 $GENE_LIST_FILE $NORM_FILE meaningless_placeholder $RERANK_DATA"  
 	STATUS=$?
 	if (( $STATUS != 0 ))
 	then
@@ -159,6 +160,10 @@ mvn -e exec:java -Dexec.mainClass="bioner.application.webtool.rank.BC3GNBuildRer
 		exit -1
 	fi
 fi
+# FORCE creation of a new model file by removing the old one
+# else the new training data won't make a difference
+rm $RERANK_DATA.svm_model
+
 
 # Pipeline stage 4: B3GNTaskRun
 # many versions:
@@ -187,12 +192,13 @@ mvn -e exec:java -Dexec.mainClass="bioner.application.webtool.BC3GNTaskRun" \
 	fi
 fi
 
+
 if (( $RUN )) 
 then
 ## args are all different here, but what files does it use? where does it find them?:
 mvn -e exec:java -Dexec.mainClass="bioner.application.webtool.GNRun" \
-				  -Dexec.args="-x $XMLS_DIR/2660273.nxml /home/roederc/GeneTUKit/GeneTUKit/train/model  $NORM_FILE $DIST_RERANK_DATA -banner"
-				  #-Dexec.args="-x $XMLS_DIR $CRFPP_MODEL $NORM_FILE_WEB $RERANK_DATA_WEB"
+				  -Dexec.args="-x $XMLS_DIR $CRFPP_MODEL $NORM_FILE $RERANK_DATA"
+				  ##-Dexec.args="-x $XMLS_DIR/2660273.nxml /home/roederc/GeneTUKit/GeneTUKit/train/model  $NORM_FILE $DIST_RERANK_DATA -banner"
 	STATUS=$?
 	if (( $STATUS != 0 ))
 	then

@@ -58,7 +58,7 @@ public class ProcessImpProteinBANNER implements BioNERProcess {
 	    	List<Token> tokenList = sentence2.getTokens();
 	    	
 	    	entity.set_position(tokenList.get(mention.getStart()).getStart(), tokenList.get(mention.getEnd()-1).getEnd()-1);
-	    	entity.addLabel(GlobalConfig.ENTITY_LABEL_CRF);
+	    	entity.addLabel(GlobalConfig.ENTITY_LABEL_BANNER);
 	    	sentence.addEntity(entity);
 	    }
 	}

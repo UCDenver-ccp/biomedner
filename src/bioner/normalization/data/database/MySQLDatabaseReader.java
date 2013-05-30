@@ -24,6 +24,8 @@ public class MySQLDatabaseReader implements DatabaseReader {
 		}catch(Exception ex){
 			//handle the error
 			ex.printStackTrace();
+			System.err.println("MySQLDatabaseReader: ERROR, could not get the driver class. " + ex);
+			throw new RuntimeException(ex);	
 		}
 		DatabaseConfig.ReadConfigFile();
 		m_tableName = DatabaseConfig.DATABASE_GENEINFO_TABLE_NAME;
@@ -68,11 +70,14 @@ public class MySQLDatabaseReader implements DatabaseReader {
 			}
 			queryBuffer.append("GeneID='"+idArray[i]+"' ");
 		}
-		
+	
+	
 		HashMap<String, BioNERRecord> recordTable = new HashMap<String, BioNERRecord>();
+
+
 		try {
 			ResultSet rs = stmt.executeQuery(queryBuffer.toString());
-			int i=0;
+			//int i=0;
 			while(rs.next())
 			{
 				BioNERRecord record = new BioNERRecord();
@@ -100,8 +105,9 @@ public class MySQLDatabaseReader implements DatabaseReader {
 				recordTable.put(record.getID(), record);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+            System.err.println("MySQLDatabaseReader.searchRecords: ERROR " + e);
 			e.printStackTrace();
+            throw new RuntimeException(e);
 		}
 		return recordTable;
 	}

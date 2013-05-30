@@ -84,14 +84,13 @@ public class BC3GNBuildRerankTrainData {
 		int rank = maxNum;
 		Vector<String> goldDocIDVector = new Vector<String>();
 		for (int i=0; i<documents.length ; i++) {
-			//if(i>=0) continue;
 			long beginTime = System.currentTimeMillis();
 			System.out.print("BC3GNBuldRerankTrainData: Build rerank train data. Processing #"+i+" "+documents[i].getID()+"....");
 			BioNERDocument document = documents[i];
 			Vector<String> idVector = idTable.get(document.getID());
 			goldDocIDVector.add(document.getID());
 			if (idVector==null) {
-				System.out.println("no gold standard.");
+				System.out.println("no gold standard, skipping this document.");
 				continue;
 			}
 			for (int j=0; j<pipeline.length; j++) {
@@ -131,6 +130,7 @@ public class BC3GNBuildRerankTrainData {
 				}
 				sb.append("}");
 				String line = sb.toString();
+System.out.println("document" + i + " line:" + line);
 				if (!lineVector.contains(line)) {
 					lineVector.add(line);
 					if (idVector.contains(id)) correctNum++;

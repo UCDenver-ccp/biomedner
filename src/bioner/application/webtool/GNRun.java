@@ -69,13 +69,15 @@ public class GNRun {
         crfModelFilepath = args[2];
         trainingFilepath = args[3];
         rerankFilepath = args[4];		
-		
-		if (args.length==6 && args[5].equals("-banner")) {
+
+			useBanner = true;
+		/*if args.length==6 && args[5].equals("-banner")) {
 			useBanner = true;
 		}
 		else {
 			useBanner = false;
         }
+        */
 
 
 		

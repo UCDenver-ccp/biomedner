@@ -34,6 +34,7 @@ public class BC3GNBuildNormalizationTrainData {
 		GlobalConfig.ReadConfigFile();
 		
 		HashMap<String, Vector<String>> idTable = getGeneIDTable(genelistFilename);
+
 		BC3GNDataFileReader docBuilder = new BC3GNDataFileReader(dataDir);
 		CandidateFinder finder = new CandidateFinder();
 		BioNERDocument[] documents = docBuilder.buildDocuments();
@@ -81,34 +82,65 @@ public class BC3GNBuildNormalizationTrainData {
 			//if(i!=9) continue;
 			//if(!documents[i].getID().equals("2730050")) continue;
 			long beginTime = System.currentTimeMillis();
-			System.out.print("Build first rank train data. Processing #"+i+" "+documents[i].getID()+"....\n");
+			System.err.print("Build first rank train data. Processing #"+i+" "+documents[i].getID()+"....\n");
 			BioNERDocument document = documents[i];
-			for(int j=0; j<pipeline.length; j++)
-			{
+			for (int j=0; j<pipeline.length; j++) {
 				pipeline[j].Process(document);
 			}
 			
 			int sentence_num = 0;
 			int entityNum = 0;
 			Vector<String> idVector = idTable.get(document.getID());
-			if(idVector==null) continue;
-			for(BioNERSentence sentence : document.getAllSentence())
-			{
+			if (idVector==null) {
+                System.err.println("skipping this doc. because it's idvector  (gold standard list of genes) is null. ID is :\"" + document.getID() + "\"");
+                 continue;
+            }
+            
+			for (BioNERSentence sentence : document.getAllSentence()) {
 				sentence_num++;
-				//System.out.println("Sentence #"+sentence_num);
-				//fwriter.write(sentence.getSentenceText());
-				//fwriter.newLine();
-				
-				for(BioNEREntity entity : sentence.getAllEntities())
-				{
+                if (sentence.getAllEntities().length > 0) {
+                    System.out.println("\nconsidering sentence  #" + sentence_num + " entities  " + sentence.getAllEntities().length);
+                }
+
+                // DEBUG
+                if (false)  {
+                boolean sentenceHasCandidates=false;
+				for (BioNEREntity entity : sentence.getAllEntities()) {
 					StringBuffer sb = new StringBuffer();
 					BioNERCandidate[] candidates = entity.getCandidates();
+                    for (BioNERCandidate cand : candidates) {
+                        System.err.print("   candidate score:" + cand.getScore() 
+                                + " species: " + cand.getRecord().getSpeciesID()
+                                + " symbol: "  + cand.getRecord().getSymbol()
+                        );
+                        //System.out.print(" synonyms:");
+                        //for (String syn : cand.getRecord().getSynonyms()) {
+                        //    System.out.print(syn + ", ");
+                        //}
+                        System.out.println("");
+                        sentenceHasCandidates=true;
+                    }
+                }
+                if (sentenceHasCandidates) {
+				    System.err.println("Sentence #"+sentence_num + " " + sentence.getSentenceText() + "\n");
+                }
+                }
+    
+				//fwriter.write(sentence.getSentenceText());
+				//fwriter.newLine();
+if (sentence.getAllEntities().length > 0) {				
+System.out.println("sentence: " + sentence_num + " has num entities:" + sentence.getAllEntities().length);
+}
+				for (BioNEREntity entity : sentence.getAllEntities()) {
+					StringBuffer sb = new StringBuffer();
+					BioNERCandidate[] candidates = entity.getCandidates();
+
 					int correctIndex = haveCorrectID(candidates, rank, idVector);
 					
-					if(correctIndex >= 0)
-					{
+					if (correctIndex >= 0) {
 						entityNum++;
 						String correctID = candidates[correctIndex].getRecord().getID();
+      System.out.println("doing this sentence, it's correctIndex is:" + correctIndex + " ID is :" + correctID);
 						
 						Vector<String> lineVector = new Vector<String>();
 						int correctNum = 0;
@@ -132,19 +164,23 @@ public class BC3GNBuildNormalizationTrainData {
 							}
 							
 							String line = sbLine.toString();
-							if(!lineVector.contains(line)) lineVector.add(line);
+System.out.println("adding candidate:" + line);
+							if (!lineVector.contains(line)) lineVector.add(line);
 							//fwriter.write("|"+candidates[j].getRecord().toString());
 							
 							
 						}//candidate
-						for(String line : lineVector)
-						{
+
+
+						for (String line : lineVector) {
 							sb.append(line);
 							sb.append("\n");
 						}
+
+                        System.err.println("--------- adding line: " + sb);
+
 						String instanceStr = sb.toString();
-						if(!instanceStrVector.contains(instanceStr))
-						{
+						if (!instanceStrVector.contains(instanceStr)) {
 							instanceStrVector.add(instanceStr);
 							fwriter.write("%"+correctID+"_"+document.getID()+"_"+entityNum+" "+correctNum);
 							fwriter.newLine();
@@ -153,10 +189,14 @@ public class BC3GNBuildNormalizationTrainData {
 							fwriter.newLine();
 						}
 					}
+                    else {
+                        System.err.println("skipping this sentence because it's correctIndex is < 0. ID is :" + correctIndex
+                            + "(meaning none of the candidate genes are in the gold standard)");
+                    }
 				}//entity
-				
 			}//sentence
 			
+			System.out.println(" . ");	
 			
 			documents[i]=null;
 			long endTime = System.currentTimeMillis();
@@ -194,14 +234,28 @@ public class BC3GNBuildNormalizationTrainData {
 		
 		writerDataFile(dataDir, genelistFilename, outputFilename, 50, modelFilepath);
 	}
-	
-	public static int haveCorrectID(BioNERCandidate[] candidates, int rank, Vector<String> idVector)
-	{
-		for(int i=0; i<rank && i<candidates.length; i++)
-		{
+
+    /**
+     * checks to see if the idVector contains at least one candidate's record ID
+     */
+	public static int haveCorrectID(BioNERCandidate[] candidates, int rank, Vector<String> idVector) {
+        // TODO use SETS!!
+        StringBuilder sbVector = new StringBuilder();
+        for (String s : idVector) {
+            sbVector.append(s + ", ");
+        }
+
+
+        StringBuilder sbCandidates = new StringBuilder();
+		for (int i=0; i<rank && i<candidates.length; i++) {
 			String id= candidates[i].getRecord().getID();
-			if(idVector.contains(id)) return i;
+            sbCandidates.append(id + ", ");
+			if (idVector.contains(id)) {
+                System.out.println("accepting correct id:" + sbCandidates + "\n    <-->" + idVector);
+                return i;
+            }
 		}
+        //System.out.println("rejecting incorrect id:" + sbCandidates + "\n    <-->" + idVector);
 		return -1;
 	}
 	
@@ -215,16 +269,16 @@ public class BC3GNBuildNormalizationTrainData {
 			while((line=freader.readLine()) != null)
 			{
 				String[] parts = line.split("\\t+");
-				if(parts.length<2) continue;
-				String docID = parts[0];
-				Vector<String> entityVector = table.get(docID);
-				if(entityVector==null)
-				{
-					entityVector = new Vector<String>();
-					table.put(docID, entityVector);
-				}
+				if (parts.length > 1) {
+				    String docID = parts[0];
+				    Vector<String> entityVector = table.get(docID);
+				    if (entityVector==null) {
+					    entityVector = new Vector<String>();
+					    table.put(docID, entityVector);
+				    }
 				
-				entityVector.add(parts[1]);
+				    entityVector.add(parts[1]);
+                }
 				
 			}
 			freader.close();

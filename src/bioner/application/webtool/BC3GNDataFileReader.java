@@ -28,10 +28,11 @@ import bioner.tools.nlptools.SentenceSpliter;
 
 import crf.featurebuild.FeatureBuildDocumentBuilder;
 
-public class BC3GNDataFileReader implements
-FeatureBuildDocumentBuilder {
+public class BC3GNDataFileReader implements FeatureBuildDocumentBuilder {
+
 	DocumentBuilderFactory domfac;
 	DocumentBuilder dombuilder;
+
 	public BC3GNDataFileReader()
 	{
 		domfac = DocumentBuilderFactory.newInstance();
@@ -42,10 +43,11 @@ FeatureBuildDocumentBuilder {
 			domfac.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
 			dombuilder = domfac.newDocumentBuilder();
 		} catch (ParserConfigurationException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+            throw new RuntimeException(e);
 		}
 	}
+
 	public BC3GNDataFileReader(String fileDir)
 	{
 		domfac = DocumentBuilderFactory.newInstance();
@@ -58,6 +60,7 @@ FeatureBuildDocumentBuilder {
 		} catch (ParserConfigurationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+            throw new RuntimeException(e);
 		}
 	}
 	
@@ -95,12 +98,15 @@ FeatureBuildDocumentBuilder {
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+            throw new RuntimeException(e);
 		} catch (SAXException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+            throw new RuntimeException(e);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+            throw new RuntimeException(e);
 		}
 		return documents;
 	}
@@ -110,7 +116,7 @@ FeatureBuildDocumentBuilder {
 		String filename = file.getName();
 		int pos = filename.indexOf('.');
 		String docID = filename.substring(0, pos);
-		
+	System.err.println("XXXXXX docID is:\"" + docID + "\"");	
 		InputStream is;
 		try {
 			is = new FileInputStream(file.getAbsolutePath());
@@ -130,15 +136,17 @@ FeatureBuildDocumentBuilder {
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+            throw new RuntimeException(e);
 		} catch (SAXException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+            throw new RuntimeException(e);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+            throw new RuntimeException(e);
 		}
 		
-		return null;
 	}
 	
 	public BioNERDocument getOneDocument(InputStream inputStream)
@@ -162,15 +170,17 @@ FeatureBuildDocumentBuilder {
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+            throw new RuntimeException(e);
 		} catch (SAXException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+            throw new RuntimeException(e);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+            throw new RuntimeException(e);
 		}
 		
-		return null;
 	}
 	
 	

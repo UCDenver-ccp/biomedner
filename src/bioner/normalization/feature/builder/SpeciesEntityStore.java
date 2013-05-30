@@ -24,6 +24,7 @@ public class SpeciesEntityStore {
 	private static LuceneIndexSpeicesIDFinder m_idFinder = new LuceneIndexSpeicesIDFinder();
 	private static Vector<String> m_filterVector = getFilterVector("./data/filter/tabulist_species.txt");
 	private static Vector<String> m_commonSpeciesVector = LuceneSpeciesIndexBuilder.readCommonSpeciesList(IndexConfig.COMMON_SPEICIES_FILENAME); 
+
 	private static Vector<String> getFilterVector(String filename)
 	{
 		Vector<String> vector = new Vector<String>();

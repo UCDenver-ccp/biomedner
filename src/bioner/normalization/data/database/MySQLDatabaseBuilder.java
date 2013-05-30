@@ -81,7 +81,7 @@ public class MySQLDatabaseBuilder {
 			stmt.execute(sql);
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new RuntimeException(e);
+            throw new RuntimeException(e);
 		}
 		
 	}
