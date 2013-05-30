@@ -63,7 +63,7 @@ public class GeneRerankByLogistic {
 		// Get header from a file
 		LogisticFile train = new LogisticFile( trainfile );
 		m_header = train.getHeader();
-		System.out.println("HEADER: " + trainfile + "----->" + m_header + "<--------");
+		//System.out.println("HEADER: " + trainfile + "----->" + m_header + "<--------");
 	}
 	
 	public void rerank(BioNERDocument document, HashMap<String, Vector<BioNEREntity>> map, BioNERCandidate[] candidates) {
@@ -93,7 +93,6 @@ public class GeneRerankByLogistic {
 
 			String dataString = featureBuffer.toString();
 			dataString = m_header + dataString.substring(0, dataString.length() -2);
-			System.out.println("dataString length: " + dataString.length());
 			InputStream in = new ByteArrayInputStream(dataString.getBytes());
 	        
 			double[] features = new double[featureStrs.length];
@@ -123,6 +122,7 @@ public class GeneRerankByLogistic {
 			}
 	        
 		}
+        // sorts candidates by score
 		RankCandidate.RankCandidate(candidates);
 	}
 }

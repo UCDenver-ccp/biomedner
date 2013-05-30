@@ -19,7 +19,8 @@ public class CandidateFinder {
 
     // index from synonyms to ids
 	private IndexReader m_indexReader = IndexReaderFactory.createGeneIndexReader();
-	private NCBIRankFinder m_ncbiFinder = new NCBIRankFinder();
+	//private NCBIRankFinder m_ncbiFinder = new NCBIRankFinder();
+
 	public CandidateFinder()
 	{
 		m_databaseReader.connect();
@@ -30,11 +31,14 @@ public class CandidateFinder {
 		m_databaseReader.close();
 		m_indexReader.close();
 	}
+
 	public BioNERCandidate[] getCandidatesForGeneMentionString(String geneStr)
 	{
 		Vector<String> tokenVector = GeneMentionTokenizer.getTokens(geneStr);
 		tokenVector.add(geneStr.replaceAll("\\W", " "));
 
+
+        // Get Lucene Candidates
 		BioNERCandidate[] candidates = m_indexReader.searchIDs(tokenVector);
 		//BioNERCandidate[] candidates = m_ncbiFinder.getCandidates(geneStr);
 		
@@ -63,6 +67,7 @@ public class CandidateFinder {
         }
 
 
+        // Get Matching Records 
 		for (int i=0; i<candidates.length; i++) {
 			String id = candidates[i].getRecordID();
 			BioNERRecord record = recordTable.get(id);
@@ -73,7 +78,8 @@ public class CandidateFinder {
 				candidates[i].setRecord(record); 
             }
 		}
-		
+	
+        // Tweak array size and copy etc. TODO: use real data structures	
 		int size=0;
 		for (int i=0; i<candidates.length; i++) {
 			if(candidates[i]!=null) size++;
@@ -91,6 +97,7 @@ public class CandidateFinder {
 		}
 		return newCandidates;
 	}
+
 	
 	public static void main(String args[])
 	{

@@ -15,6 +15,7 @@ public class MySQLDatabaseReader implements DatabaseReader {
 	private Connection conn=null;
 	private Statement stmt = null;
 	private String m_tableName = null;
+
 	public MySQLDatabaseReader()
 	{
 		try{
@@ -36,6 +37,10 @@ public class MySQLDatabaseReader implements DatabaseReader {
 	public void connect()
 	{
 		try {
+            System.err.println("attempting to connect to " 
+                    + DatabaseConfig.DATABASE_HOST + " "
+                    + DatabaseConfig.DATABASE_NAME + " "
+                    + DatabaseConfig.DATABASE_USERNAME );
 			conn = DriverManager.getConnection("jdbc:"+DatabaseConfig.DATABASE_DRIVER_NAME+"://"+DatabaseConfig.DATABASE_HOST+"/"+DatabaseConfig.DATABASE_NAME+"?"+
 					"user="+DatabaseConfig.DATABASE_USERNAME+"&password="+DatabaseConfig.DATABASE_PASSWORD);
 			stmt = conn.createStatement();
@@ -55,9 +60,9 @@ public class MySQLDatabaseReader implements DatabaseReader {
 			throw new RuntimeException(e);	
 		}
 	}
+
 	@Override
 	public HashMap<String, BioNERRecord> searchRecords(String[] idArray) {
-		// TODO Auto-generated method stub
 		if(idArray.length==0) return null;
 		StringBuffer queryBuffer = new StringBuffer("SELECT * FROM ");
 		queryBuffer.append(m_tableName);
@@ -111,6 +116,7 @@ public class MySQLDatabaseReader implements DatabaseReader {
 		}
 		return recordTable;
 	}
+
 	private void addSynonyms(String dataStr, Vector<String> synonymVector)
 	{
 		if(dataStr==null) return;

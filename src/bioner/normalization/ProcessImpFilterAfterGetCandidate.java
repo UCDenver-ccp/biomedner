@@ -29,15 +29,8 @@ public class ProcessImpFilterAfterGetCandidate implements BioNERProcess {
         // MATCH	
         for (BioNERSentence sentence : document.getAllSentence()) {
 			for (BioNEREntity entity : sentence.getAllEntities()) {
-                // DISABLED
-                if (false) {	 
-                // I think this was from experimentation at some point, it's too restrictive
-				    //System.out.println("Before removeNotMathcedCandidates: " + entity.getCandidates().length );
-				    removeNotMatchedCandidates(entity);
-				    //System.out.println("after removeNotMathcedCandidates: " + entity.getCandidates().length );
-                }
-                // this was commented out in source, but matches the paper
-                /////filterGeneIDbyExplicitSpecies(entity, speciesEntityVector);      
+				removeNotMatchedCandidates(entity);
+                //filterGeneIDbyExplicitSpecies(entity, speciesEntityVector);      
 			}
         }
 
@@ -55,22 +48,23 @@ public class ProcessImpFilterAfterGetCandidate implements BioNERProcess {
 		}
 
         // PRINT RESULTS
-        for (BioNERSentence sen : debugList) {
-            for (BioNEREntity entity : sen.getAllEntities()) {
-                System.out.println("     D " + entity);    
+        if (false) {
+            for (BioNERSentence sen : debugList) {
+                for (BioNEREntity entity : sen.getAllEntities()) {
+                    System.out.println("     D " + entity);    
+                }
             }
         }
 	}
 
-private static void dump(String label, Vector<String> vec) {
+    private static void dump(String label, Vector<String> vec) {
         System.out.print(label + " \"");
         for (String s:vec) {
             System.out.print(s + "\", \"");
         }
         System.out.println("");
-}
+    }
 
-       // WTF?!!	
 	private void removeNotMatchedCandidates(BioNEREntity entity) {
 		BioNERCandidate[] candidates = entity.getCandidates();
 		Vector<BioNERCandidate> candidateVector = new Vector<BioNERCandidate>();
@@ -81,12 +75,12 @@ private static void dump(String label, Vector<String> vec) {
 
         // try matching record symbol with candidate text (rarely works, commented out in original code)
         if (false) {
-        for (BioNERCandidate cand : candidates) {
+            for (BioNERCandidate cand : candidates) {
             System.out.println("gm text:" + gmText + " symbol:" + cand.getRecord().getSymbol());
-            if (gmText.equals(cand.getRecord().getSymbol())) {
-                candidateVector.add(cand);
+                if (gmText.equals(cand.getRecord().getSymbol())) {
+                    candidateVector.add(cand);
+                }
             }
-        }
         }
           
         // try exact matches on the synonyms (why?)         
@@ -123,16 +117,13 @@ private static void dump(String label, Vector<String> vec) {
 					if (valueP>0.49 && valueR>0.49) {
 						candidateVector.add(candidates[i]);
                         candidateAdded=true;
-				        System.out.println("      Candidate:" + candidates[i].getRecord().getSymbol()  + " measured up: valueP:" + valueP + " valueR:" + valueR);	
+				        //System.out.println("      Candidate:" + candidates[i].getRecord().getSymbol()  + " measured up: valueP:" + valueP + " valueR:" + valueR);	
 						break;
 					}
 				}
 			}
 
 		entity.setCandidates(candidateVector.toArray(new BioNERCandidate[0]));
-        if (entity.getCandidates().length > 0) {
-        System.out.println("OMGWTF: " + entity.getCandidates().length);
-        }
 	}
 
 	
@@ -148,29 +139,15 @@ private static void dump(String label, Vector<String> vec) {
                 continue;
             }
 
-            // original code here would pass an entity only if the first
-            // candidate has a high enough score
-            // Q:  ARE THEY SORTED?
+            // The original code here would pass an entity only if the first
+            // candidate has a high enough score. It seems to assume a sorted list.
 			double score = candidates[0].getScore();
 
-            // A: check and see if you run into a higher value
-            {
-                for (BioNERCandidate bnc : candidates) {
-                    if (bnc.getScore() > score) {
-                        System.out.println("\n\nFOUND A BIGGER ONE!!!" + score + " < " + bnc.getScore() + "\n\n");
-                    }
-                }
-            }
-
-
-				if (score > 1.9) {
+				//if (score > 1.9) {
+				//if (score > 0.9) { // normalized scores to 0 < x < 1
                     sentence.addEntity(entity); 
                     ///System.out.println("ProcessImpFilterAfterGetCandidate.filterByScore() score is good: " + score + " " + text);
-                }
-                else {
-                    sentence.addEntity(entity); 
-                   //////// System.out.println("ProcessImpFilterAfterGetCandidate.filterByScore() score sucks add it anyway: " + score + " " + text);
-                }
+                //}
 /*
 			if (count >= 4) {
 				if (score > 3.0) {
@@ -243,8 +220,7 @@ private static void dump(String label, Vector<String> vec) {
 		String gmText = entity.getText();
 		String speciesInGM = getSpeciesStrInGM(gmText);
 		String speciesIDInGM = getSpeciesIDInGM(speciesInGM);
-		if(!speciesIDInGM.equals(""))
-		{
+		if (!speciesIDInGM.equals("")) {
 			speciesIDVector.add(speciesIDInGM);
 			return speciesIDVector;
 		}

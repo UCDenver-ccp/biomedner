@@ -11,15 +11,19 @@ export MAVEN_OPTS="-Xmx2g -d64"
 export LD_LIBRARY_PATH=.:/usr/local/lib
 
 # phases
+# - DB & Lucene
 CREATE_DB=0
 CREATE_INDEX=0
+# - CRF
 PREPARE_TRAIN=0
 TRAIN=0
-NORMALIZATION=1 
+# - WEKA
+NORMALIZATION=0
 ##SECOND=0
 RERANK=0
+# - Tasks
 TASK=0
-RUN=0
+RUN=1
 
 # mac
 #BC2_DATA=/Users/roederc/work/sources/biocreative2
@@ -181,7 +185,7 @@ then
 ##mvn -e exec:java -Dexec.mainClass="bioner.application.bc3gn.BC3GNTaskRun" \
               #   -Dexec.args="$XMLS_DIR $DIST_TRAIN_DATA $RANK_DATA $SECOND_RANK_DATA $RERANK_DATA_WEB $GN_TXT"  
 mvn -e exec:java -Dexec.mainClass="bioner.application.webtool.BC3GNTaskRun" \
-                 -Dexec.args="$XMLS_DIR $NORM_FILE_WEB  $SECOND_RANK_DATA $RERANK_DATA_WEB $GN_TXT"  
+                 -Dexec.args="$XMLS_DIR $NORM_FILE meaningless_placeholder $RERANK_DATA $GN_TXT"  
 	STATUS=$?
 	if (( $STATUS != 0 ))
 	then
@@ -195,7 +199,8 @@ if (( $RUN ))
 then
 ## args are all different here, but what files does it use? where does it find them?:
 mvn -e exec:java -Dexec.mainClass="bioner.application.webtool.GNRun" \
-				  -Dexec.args="-x $XMLS_DIR $CRFPP_MODEL $NORM_FILE $RERANK_DATA"
+				  -Dexec.args="-x $XMLS_DIR/2660273.nxml $CRFPP_MODEL $NORM_FILE $RERANK_DATA"
+				  #-Dexec.args="-x $XMLS_DIR $CRFPP_MODEL $NORM_FILE $RERANK_DATA"
 				  ##-Dexec.args="-x $XMLS_DIR/2660273.nxml /home/roederc/GeneTUKit/GeneTUKit/train/model  $NORM_FILE $DIST_RERANK_DATA -banner"
 	STATUS=$?
 	if (( $STATUS != 0 ))

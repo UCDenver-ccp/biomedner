@@ -9,6 +9,8 @@ import java.util.Vector;
 import bioner.data.document.BioNERDocument;
 import bioner.data.document.BioNEREntity;
 import bioner.data.document.BioNERSentence;
+import bioner.normalization.data.BioNERCandidate;
+import bioner.normalization.data.BioNERRecord;
 import bioner.global.GlobalConfig;
 import bioner.process.BioNERProcess;
 
@@ -26,7 +28,6 @@ public class ProcessImpDebug implements BioNERProcess {
 	
 	@Override
 	public void Process(BioNERDocument document) {
-		// TODO Auto-generated method stub
 		BioNERSentence[] sentences = document.getAllSentence();
         System.out.println("begin---------------------------- debug --- " + label);
 		for (BioNERSentence sentence : sentences) {
@@ -37,7 +38,13 @@ public class ProcessImpDebug implements BioNERProcess {
                         System.out.print(entity.getText() +  " null, ");
                     }
                     else {
-                        System.out.print(entity.getText() +  " " + entity.getCandidates().length + ", ");
+                        System.out.println(entity.getText() +  " " + entity.getCandidates().length + ", ");
+                        for (BioNERCandidate cand : entity.getCandidates() ) {
+                            System.out.println("    " + cand.getRecordID() + " " + cand.getScore());
+                            BioNERRecord record = cand.getRecord();
+                            System.out.println("    " + record.getID()  + " " + record.getSymbol() );
+                        }
+                        System.out.println(" ");
                     }
                 }
                 System.out.println("");

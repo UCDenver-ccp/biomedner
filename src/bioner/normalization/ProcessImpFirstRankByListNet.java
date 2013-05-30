@@ -68,9 +68,7 @@ public class ProcessImpFirstRankByListNet implements BioNERProcess {
 			}
 			candidates[i].setFeatures(features);
 		}
-        System.out.println("info ProcessImpFirstRankByListNet, about to RankCandidate()");
 		RankCandidate.RankCandidate(candidates);
-        System.out.println("info ProcessImpFirstRankByListNet done RankCandidate'ing");
 	
 	
 		//normalize the score to 0.0--1.0
