@@ -45,9 +45,10 @@ public class GNRun {
         String crfModelFilepath;
         String trainingFilepath;
         String rerankFilepath;
+        String filterFilepath;
 		boolean useBanner;
 
-		if (args.length!=5 && args.length!=6) {
+		if (args.length!=6 && args.length!=7) {
 			System.err.println("Args num error! " + args.length);
             usage();
 			System.exit(1);
@@ -69,6 +70,7 @@ public class GNRun {
         crfModelFilepath = args[2];
         trainingFilepath = args[3];
         rerankFilepath = args[4];		
+        filterFilepath = args[5];		
 
 			useBanner = true;
 		/*if args.length==6 && args[5].equals("-banner")) {
@@ -81,7 +83,7 @@ public class GNRun {
 
 
 		
-		GNProcessor processor = new GNProcessor(trainingFilepath, rerankFilepath, crfModelFilepath);
+		GNProcessor processor = new GNProcessor(trainingFilepath, rerankFilepath, crfModelFilepath, filterFilepath);
 		processor.open(useBanner);
 		File rootFile = new File(args[1]);
 		File[] files;

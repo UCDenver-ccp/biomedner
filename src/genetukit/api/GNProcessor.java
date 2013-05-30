@@ -48,17 +48,22 @@ public class GNProcessor {
 	String trainingDataFilename;
 	String rerankTrainFilename;
     String modelFilename;
+    String filterFilename;
     
     public GNProcessor() {
 	    trainingDataFilename = GlobalConfig.ROOT_DIR+"train/TrainData_1.txt";
 	    rerankTrainFilename = GlobalConfig.ROOT_DIR+"train/RerankTrainData_1.txt";
         modelFilename = GlobalConfig.CRF_MODEL_FILEPATH;
+        filterFilename = GlobalConfig.ENTITYFILTER_TABULIST_PATH; 
     }
         
-    public GNProcessor(String trainingDataFilename, String rerankTrainFilename, String modelFilename ){
+    public GNProcessor(String trainingDataFilename, String rerankTrainFilename, 
+        String modelFilename, String filterFilename ){
+
 	    this.trainingDataFilename = trainingDataFilename;
 	    this.rerankTrainFilename = rerankTrainFilename;
         this.modelFilename = modelFilename;
+        this.filterFilename = filterFilename;
     }
 
 	public void open(boolean useBanner) {
@@ -77,27 +82,17 @@ public class GNProcessor {
 		//pipeline[0] = new ProcessImpGRMMLineCRF();
 		
 
-        if (false) {		
-		pipeline.add(new ProcessImpProteinIndexNER());
-        pipeline.add(new ProcessImpProteinABNER());
-		pipeline.add(new ProcessImpFilterGeneMention());
-		pipeline.add(new ProcessImpGetCandidateID(finder));
-		pipeline.add(new ProcessImpFilterAfterGetCandidate());
-		pipeline.add(new ProcessImpFirstRankByListNet(trainingDataFilename, new BC3GNFirstRankFeatureBuilder()));
-        }
-
-        boolean _debug_ = true;
+        boolean _debug_ = false;
 		pipeline.add(new ProcessImpProteinIndexNER());
         if (_debug_) pipeline.add(new ProcessImpDebug("after index NER"));	
 
         pipeline.add(new ProcessImpProteinABNER());
         if (_debug_) pipeline.add(new ProcessImpDebug("after ABNER"));	
 
-        /*** could be trouble, the consensus still goes for 2/4 instead of 2/3 or 3/4 */
-		pipeline.add(new ProcessImpProteinBANNER());
-        if (_debug_) pipeline.add(new ProcessImpDebug("after BANNER"));	
+		//pipeline.add(new ProcessImpProteinBANNER());
+        //if (_debug_) pipeline.add(new ProcessImpDebug("after BANNER"));	
 
-		pipeline.add(new ProcessImpFilterGeneMention());
+		pipeline.add(new ProcessImpFilterGeneMention(filterFilename));
         if (_debug_) pipeline.add(new ProcessImpDebug("after filter gene mention"));	
 
 		pipeline.add(new ProcessImpGetCandidateID(finder));

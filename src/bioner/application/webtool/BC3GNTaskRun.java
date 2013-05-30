@@ -33,12 +33,12 @@ public class BC3GNTaskRun {
 		String outputFilename = "../../BC3GN/gn.eval";
 		String trainingDataFilename = "../../BC3GN/TrainData_50.txt";
 		String rerankTrainFilename = "../../BC3GN/RerankTrainData.txt";
-		String secondRankTrainFilename = "../../BC3GN/secondRankTrainData.txt";
+		String filterFilename = GlobalConfig.ENTITYFILTER_TABULIST_PATH;
 		if(args.length==5)
 		{
 			dataDir = args[0];
 			trainingDataFilename = args[1];
-			secondRankTrainFilename = args[2];
+			filterFilename = args[2];
 			rerankTrainFilename = args[3];
 			outputFilename = args[4];
 			
@@ -49,7 +49,8 @@ public class BC3GNTaskRun {
 		BC3GNOutput output = new BC3GNOutput(outputFilename);
 		output.init();
 		CandidateFinder finder = new CandidateFinder();
-		BioNERProcessFactory processFactory = new BC3GNProcessFactory(finder,trainingDataFilename, secondRankTrainFilename, rerankTrainFilename);
+		BioNERProcessFactory processFactory = new BC3GNProcessFactory(finder,trainingDataFilename, 
+            rerankTrainFilename, filterFilename);
 		
 		BioNERProcess[] pipeline = processFactory.buildProcessPipeline();
 		GeneRerankByLogistic rerank = new GeneRerankByLogistic(rerankTrainFilename, new BC3GNGeneIDRerankFeatureBuilder());

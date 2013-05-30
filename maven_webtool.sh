@@ -15,12 +15,11 @@ export LD_LIBRARY_PATH=.:/usr/local/lib
 CREATE_DB=0
 CREATE_INDEX=0
 # - CRF
-PREPARE_TRAIN=0
-TRAIN=0
+PREPARE_TRAIN=1
+TRAIN=1
 # - WEKA
-NORMALIZATION=0
-##SECOND=0
-RERANK=0
+NORMALIZATION=1
+RERANK=1
 # - Tasks
 TASK=0
 RUN=1
@@ -100,6 +99,7 @@ fi
 XMLS_DIR_32="$BC3_DATA/BC3GNTraining/32_xmls/"   ## String dataDir = "../../BC3GN/xmls/";
 XMLS_DIR="$BC3_DATA/BC3GNTraining/xmls"   ## String dataDir = "../../BC3GN/xmls/";
 GENE_LIST_FILE=$BC3_DATA/BC3GNTraining/TrainingSet1.txt ## String genelistFilename = "../../BC3GN/data/TrainingSet2.txt";
+FILTER_FILE="./data/filter/tabulist.txt";
 NORM_FILE=$BIOMED_NER_HOME/RankTrainData_webtool.txt  ## String outputFilename = "../../BC3GN/TrainData_10.txt";
 ##NORM_FILE=$BIOMED_NER_HOME/RankTrainData_bc3gn.txt  ## String outputFilename = "../../BC3GN/TrainData_10.txt";
 ##NORM_FILE=train/TrainData_1.txt
@@ -112,7 +112,7 @@ echo "LD_LIBRARY_PATH: $LD_LIBRARY_PATH"
 #mvn -e exec:java -Dexec.mainClass="bioner.application.bc3gn.BC3GNBuildNormalizationTrainData" \
 #                 -Dexec.args="$XMLS_DIR_32 $GENE_LIST_FILE $NORM_FILE_BC3GN $CRFPP_MODEL"  
 mvn -e exec:java -Dexec.mainClass="bioner.application.webtool.BC3GNBuildNormalizationTrainData" \
-                 -Dexec.args="$XMLS_DIR_32 $GENE_LIST_FILE $NORM_FILE $CRFPP_MODEL"
+                 -Dexec.args="$XMLS_DIR_32 $GENE_LIST_FILE $NORM_FILE $CRFPP_MODEL $FILTER_FILE"
 
 	STATUS=$?
 	if (( $STATUS != 0 ))
@@ -124,26 +124,8 @@ fi
 
 # FORCE creation of a new model file by removing the old one
 # else the new training data won't make a difference
-rm $NORM_FILE.model
+rm $NORM_FILE.model 2> /dev/null > /dev/null
 
-##### Pipeline stage 2: BC3GNBuildSecondRankTrainData
-####SECOND_RANK_DATA=$BIOMED_NER_HOME/SecondRankTrainData.txt  ## String outputFilename = "../../BC3GN/TrainData_10.txt";
-####
-####if (( $SECOND )) 
-####then
-####### BASICALLY THE SAME!
-#######mvn -e exec:java -Dexec.mainClass="bioner.application.bc3gn.BC3GNBuildSecondRankTrainData" \
-######				  -Dexec.args="$XMLS_DIR_32 $GENE_LIST_FILE $NORM_FILE $SECOND_RANK_DATA"    
-####mvn -e exec:java -Dexec.mainClass="bioner.application.webtool.BC3GNBuildSecondRankTrainData" \
-####				  -Dexec.args="$XMLS_DIR_32 $GENE_LIST_FILE $NORM_FILE $SECOND_RANK_DATA"    
-####				  ###-Dexec.args="$XMLS_DIR_32 $GENE_LIST_FILE $NORM_FILE_WEB $SECOND_RANK_DATA"    
-####	STATUS=$?
-####	if (( $STATUS != 0 ))
-####	then
-####		echo "maven.sh: ERROR preparing BC3GN second rank data: $STATUS"
-####		exit -1
-####	fi
-####fi
 
 
 # Pipeline stage 3: BC3GNBuildRerankTrainData
@@ -151,10 +133,8 @@ rm $NORM_FILE.model
 RERANK_DATA=RerankTrainData_webtool.txt
 if (( $RERANK )) 
 then
-##mvn -e exec:java -Dexec.mainClass="bioner.application.bc3gn.rank.BC3GNBuildRerankTrainData" \
-##				  -Dexec.args="$XMLS_DIR_32 $GENE_LIST_FILE $NORM_FILE $SECOND_RANK_DATA $RERANK_DATA"  
 mvn -e exec:java -Dexec.mainClass="bioner.application.webtool.rank.BC3GNBuildRerankTrainData" \
-				  -Dexec.args="$XMLS_DIR_32 $GENE_LIST_FILE $NORM_FILE meaningless_placeholder $RERANK_DATA"  
+				  -Dexec.args="$XMLS_DIR_32 $GENE_LIST_FILE $NORM_FILE $FILTER_FILE $RERANK_DATA"  
 	STATUS=$?
 	if (( $STATUS != 0 ))
 	then
@@ -174,7 +154,6 @@ rm $RERANK_DATA.svm_model
 # args:
 #  0 xmls               XMLS_DIR
 #  1 TrainData_50.txt  AKA TrainData_1.txt 
-#  2 secondRankTrainData SECOND_RANK_DATA
 #  3 rerankTrainData     RERANK_DATA
 #  4 gn.eval (output)    GN_TXT
 GN_TXT=gn.txt
@@ -194,12 +173,11 @@ mvn -e exec:java -Dexec.mainClass="bioner.application.webtool.BC3GNTaskRun" \
 	fi
 fi
 
-
 if (( $RUN )) 
 then
 ## args are all different here, but what files does it use? where does it find them?:
 mvn -e exec:java -Dexec.mainClass="bioner.application.webtool.GNRun" \
-				  -Dexec.args="-x $XMLS_DIR/2660273.nxml $CRFPP_MODEL $NORM_FILE $RERANK_DATA"
+				  -Dexec.args="-x $XMLS_DIR/2660273.nxml $CRFPP_MODEL $NORM_FILE $RERANK_DATA $FILTER_FILE"
 				  #-Dexec.args="-x $XMLS_DIR $CRFPP_MODEL $NORM_FILE $RERANK_DATA"
 				  ##-Dexec.args="-x $XMLS_DIR/2660273.nxml /home/roederc/GeneTUKit/GeneTUKit/train/model  $NORM_FILE $DIST_RERANK_DATA -banner"
 	STATUS=$?

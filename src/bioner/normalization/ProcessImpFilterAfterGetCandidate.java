@@ -143,11 +143,10 @@ public class ProcessImpFilterAfterGetCandidate implements BioNERProcess {
             // candidate has a high enough score. It seems to assume a sorted list.
 			double score = candidates[0].getScore();
 
-				//if (score > 1.9) {
+				if (score > 1.9) {
 				//if (score > 0.9) { // normalized scores to 0 < x < 1
                     sentence.addEntity(entity); 
-                    ///System.out.println("ProcessImpFilterAfterGetCandidate.filterByScore() score is good: " + score + " " + text);
-                //}
+                }
 /*
 			if (count >= 4) {
 				if (score > 3.0) {

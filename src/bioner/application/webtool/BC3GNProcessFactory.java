@@ -27,13 +27,15 @@ public class BC3GNProcessFactory implements BioNERProcessFactory {
 	private CandidateFinder m_finder;
 	private String m_trainingDataFilename;
 	private String m_rerankTrainFilename;
-	private String m_secondRankTrainFilename;
-	public BC3GNProcessFactory(CandidateFinder finder, String trainingDataFilename, String secondRankTrainFilename,String rerankTrainFilename)
+    private String m_filterFilename;
+
+	public BC3GNProcessFactory(CandidateFinder finder, String trainingDataFilename, 
+        String rerankTrainFilename, String filterFilename)
 	{
 		m_finder = finder;
 		m_trainingDataFilename = trainingDataFilename;
 		m_rerankTrainFilename = rerankTrainFilename;
-		m_secondRankTrainFilename = secondRankTrainFilename;
+        m_filterFilename = filterFilename;
 	}
 	@Override
 	public BioNERProcess[] buildProcessPipeline() {
@@ -43,20 +45,18 @@ public class BC3GNProcessFactory implements BioNERProcessFactory {
 		//pipeline[0] = new ProcessImpGRMMLineCRF();
 		pipeline[1] = new ProcessImpProteinIndexNER();
 		pipeline[2] = new ProcessImpProteinABNER();
-		pipeline[3] = new ProcessImpFilterGeneMention();
+		pipeline[3] = new ProcessImpFilterGeneMention(m_filterFilename);
 		pipeline[4] = new ProcessImpGetCandidateID(m_finder);
 		pipeline[5] = new ProcessImpFilterAfterGetCandidate();
 		pipeline[6] = new ProcessImpFirstRankByListNet(m_trainingDataFilename, new BC3GNFirstRankFeatureBuilder());
 		//pipeline[6] = new ProcessImpRerankBySVM(m_trainingDataFilename);
-		//pipeline[6] = new ProcessImpSecondRankByListNet(m_secondRankTrainFilename);
-		//pipeline[6] = new ProcessImpSecondRankByRankNet(m_secondRankTrainFilename);
 		//pipeline[7] = new ProcessImpFilterAfterRank();
 		//pipeline[7] = new ProcessImpRerankGeneIDByListNet(m_rerankTrainFilename);
 		//pipeline[8] = new ProcessImpRerankGeneIDByLogistic(m_rerankTrainFilename);
 		//pipeline[9] = new ProcessImpFilterAfterGeneIDRerank();
 		/*pipeline = new BioNERProcess[6];
 		pipeline[0] = new ProcessImpGoldStandardNER("../../BC3GN/TrainingSet1.gm.txt");
-		pipeline[1] = new ProcessImpFilterGeneMention();
+		pipeline[1] = new ProcessImpFilterGeneMention(m_filterFilename);
 		pipeline[2] = new ProcessImpGetCandidateID(m_finder);
 		pipeline[3] = new ProcessImpRerankByListNet(m_trainingDataFilename);
 		pipeline[4] = new ProcessImpFilterAfterRank();

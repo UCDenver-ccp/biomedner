@@ -29,7 +29,8 @@ import bioner.process.proteinner.ProcessImpProteinIndexNER;
 
 public class BC3GNBuildNormalizationTrainData {
 
-	public static void writerDataFile(String dataDir, String genelistFilename, String outputFilename, int maxNum, String modelFilepath) 
+	public static void writerDataFile(String dataDir, String genelistFilename, String outputFilename, 
+            int maxNum, String modelFilepath, String filterFilepath) 
     throws IOException {
 		GlobalConfig.ReadConfigFile();
 		
@@ -50,7 +51,7 @@ public class BC3GNBuildNormalizationTrainData {
 		
 		
 		//pipeline[0] = new ProcessImpGoldStandardNER("../../BC3GN/TrainingSet1.gm.txt");
-		pipeline[3] = new ProcessImpFilterGeneMention();
+		pipeline[3] = new ProcessImpFilterGeneMention(filterFilepath);
 		pipeline[4] = new ProcessImpGetCandidateID(finder);
 		pipeline[5] = new ProcessImpFilterAfterGetCandidate();
 		
@@ -217,14 +218,16 @@ System.out.println("adding candidate:" + line);
 		String genelistFilename = "../../BC3GN/data/TrainingSet2.txt";
         String modelFilepath = "";
 		String outputFilename = "../../BC3GN/TrainData_10.txt";
+        String filterFilepath = GlobalConfig.ENTITYFILTER_TABULIST_PATH;
 		//writerDataFile(dataDir, genelistFilename, outputFilename, 10);
 		outputFilename = "../../BC3GN/TrainData_50.txt";
 		
-		if (args.length==4) {
+		if (args.length==5) {
 			dataDir = args[0];
 			genelistFilename = args[1];
 			outputFilename = args[2];
             modelFilepath = args[3];
+            filterFilepath = args[4];
 		}
         else {
             System.out.println("need 4 arguments:");
@@ -232,7 +235,7 @@ System.out.println("adding candidate:" + line);
             System.exit(-1);
         }
 		
-		writerDataFile(dataDir, genelistFilename, outputFilename, 50, modelFilepath);
+		writerDataFile(dataDir, genelistFilename, outputFilename, 50, modelFilepath, filterFilepath);
 	}
 
     /**

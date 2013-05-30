@@ -25,10 +25,18 @@ import bioner.tools.nlptools.DocumentFullNameRecognizer;
 
 public class ProcessImpFilterGeneMention implements BioNERProcess {
 
+    String filterListFilepath;
+    public ProcessImpFilterGeneMention() {
+        filterListFilepath = GlobalConfig.ENTITYFILTER_TABULIST_PATH;
+    }
+        
+    public ProcessImpFilterGeneMention(String filterListFilepath) {
+        this.filterListFilepath = filterListFilepath;
+    }
+
 	@Override
 	public void Process(BioNERDocument document) {
-		// TODO Auto-generated method stub
-		readGMFilterList("./data/filter/tabulist.txt");
+		readGMFilterList(filterListFilepath);
 		for (BioNERSentence sentence : document.getAllSentence()) {
 			filterBySection(sentence);
 			mergeCoveredEntities(sentence, true);
