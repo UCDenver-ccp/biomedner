@@ -122,16 +122,10 @@ public class BC3GNBuildNormalizationTrainData {
                         sentenceHasCandidates=true;
                     }
                 }
-                if (sentenceHasCandidates) {
-				    System.err.println("Sentence #"+sentence_num + " " + sentence.getSentenceText() + "\n");
-                }
                 }
     
 				//fwriter.write(sentence.getSentenceText());
 				//fwriter.newLine();
-if (sentence.getAllEntities().length > 0) {				
-System.out.println("sentence: " + sentence_num + " has num entities:" + sentence.getAllEntities().length);
-}
 				for (BioNEREntity entity : sentence.getAllEntities()) {
 					StringBuffer sb = new StringBuffer();
 					BioNERCandidate[] candidates = entity.getCandidates();
@@ -141,7 +135,6 @@ System.out.println("sentence: " + sentence_num + " has num entities:" + sentence
 					if (correctIndex >= 0) {
 						entityNum++;
 						String correctID = candidates[correctIndex].getRecord().getID();
-      System.out.println("doing this sentence, it's correctIndex is:" + correctIndex + " ID is :" + correctID);
 						
 						Vector<String> lineVector = new Vector<String>();
 						int correctNum = 0;
@@ -165,7 +158,6 @@ System.out.println("sentence: " + sentence_num + " has num entities:" + sentence
 							}
 							
 							String line = sbLine.toString();
-System.out.println("adding candidate:" + line);
 							if (!lineVector.contains(line)) lineVector.add(line);
 							//fwriter.write("|"+candidates[j].getRecord().toString());
 							
@@ -178,7 +170,6 @@ System.out.println("adding candidate:" + line);
 							sb.append("\n");
 						}
 
-                        System.err.println("--------- adding line: " + sb);
 
 						String instanceStr = sb.toString();
 						if (!instanceStrVector.contains(instanceStr)) {
@@ -190,14 +181,9 @@ System.out.println("adding candidate:" + line);
 							fwriter.newLine();
 						}
 					}
-                    else {
-                        System.err.println("skipping this sentence because it's correctIndex is < 0. ID is :" + correctIndex
-                            + "(meaning none of the candidate genes are in the gold standard)");
-                    }
 				}//entity
 			}//sentence
 			
-			System.out.println(" . ");	
 			
 			documents[i]=null;
 			long endTime = System.currentTimeMillis();
