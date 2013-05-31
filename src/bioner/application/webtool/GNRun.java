@@ -72,7 +72,7 @@ public class GNRun {
         rerankFilepath = args[4];		
         filterFilepath = args[5];		
 
-			useBanner = true;
+			useBanner = false;
 		/*if args.length==6 && args[5].equals("-banner")) {
 			useBanner = true;
 		}
