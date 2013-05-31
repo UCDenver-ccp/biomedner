@@ -82,9 +82,9 @@ public class BC3GNBuildRerankTrainData {
 				continue;
 			}
 			for (int j=0; j<pipeline.length; j++) {
-                System.out.println("=====> " + j + "======");
+                //System.out.println("BC3GNBuildRerankTrainData starting process # " + j + pipeline[j].getClass().getName() );
 				pipeline[j].Process(document);
-                System.out.println("<----- " + j + "======");
+                //System.out.println("BC3GNBuildRerankTrainData completed process # " + j );
 			}
 			HashMap<String, Vector<BioNEREntity>> geneIDMap = new HashMap<String, Vector<BioNEREntity>>();
 			Vector<BioNERCandidate> geneIDVector = new Vector<BioNERCandidate>();
@@ -118,7 +118,6 @@ public class BC3GNBuildRerankTrainData {
 				}
 				sb.append("}");
 				String line = sb.toString();
-System.out.println("document" + i + " line:" + line);
 				if (!lineVector.contains(line)) {
 					lineVector.add(line);
 					if (idVector.contains(id)) correctNum++;
@@ -138,12 +137,14 @@ System.out.println("document" + i + " line:" + line);
 			documents[i]=null;
 			long endTime = System.currentTimeMillis();
 			long time = endTime - beginTime;
-			System.out.println("Finished! "+time+" ms");
+			//System.out.println("Finished! "+time+" ms");
 		}
-		
+
+           // TODO: more file paths hard-coded		
 		/*GlobalConfig.BC3GN_DATADIR = "../../BC3GN/525_data/";
 		File[] files = (new File("../../BC3GN/525_data/")).listFiles();
 		idTable = getGeneIDTable("../../BC3GN/TrainingSet2.txt");
+
 		for (int i=0; i<files.length; i++) {
 			long beginTime = System.currentTimeMillis();
 			BioNERDocument document = docBuilder.getOneDocument(files[i]);
@@ -151,11 +152,11 @@ System.out.println("document" + i + " line:" + line);
 			System.out.print("Build rerank train data for 523 data. #"+i+" "+document.getID()+"....");
 			Vector<String> idVector = idTable.get(document.getID());
 			if (idVector==null) {
-				System.out.println("no gold standard.");
+				//System.out.println("no gold standard.");
 				continue;
 			}
 			if (goldDocIDVector.contains(document.getID())) {
-				System.out.println("in 32 gold standard. Skip.");
+				//System.out.println("in 32 gold standard. Skip.");
 				continue;
 			}
 			for (int j=0; j<pipeline.length; j++) {

@@ -35,8 +35,8 @@ public class BC3GNAnalysisRankData {
 		CandidateFinder finder = new CandidateFinder();
 		BioNERDocument[] documents = docBuilder.buildDocuments();
 		
-		BC3GNProcessFactory pipelineFactory = new BC3GNProcessFactory(finder,trainingDataFilename, rerankTrainFilename,
-            GlobalConfig.ENTITYFILTER_TABULIST_PATH);
+		BC3GNProcessFactory pipelineFactory = new BC3GNProcessFactory(finder,trainingDataFilename, 
+            GlobalConfig.ENTITYFILTER_TABULIST_PATH, rerankTrainFilename );
 		BioNERProcess[] pipeline = pipelineFactory.buildProcessPipeline();
 		
 		

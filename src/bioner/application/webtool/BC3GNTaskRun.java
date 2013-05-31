@@ -50,7 +50,7 @@ public class BC3GNTaskRun {
 		output.init();
 		CandidateFinder finder = new CandidateFinder();
 		BioNERProcessFactory processFactory = new BC3GNProcessFactory(finder,trainingDataFilename, 
-            rerankTrainFilename, filterFilename);
+            filterFilename, rerankTrainFilename);
 		
 		BioNERProcess[] pipeline = processFactory.buildProcessPipeline();
 		GeneRerankByLogistic rerank = new GeneRerankByLogistic(rerankTrainFilename, new BC3GNGeneIDRerankFeatureBuilder());
