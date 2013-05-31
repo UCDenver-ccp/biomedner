@@ -27,7 +27,7 @@ public class BC3GNTaskRun {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		// TODO  hard-coded paths, use GlobalConfig
 		GlobalConfig.ReadConfigFile();
 		String dataDir = "../../BC3GN/xmls/";
 		String outputFilename = "../../BC3GN/gn.eval";
@@ -57,34 +57,36 @@ public class BC3GNTaskRun {
 		//GeneRerankBySVM rerank = new GeneRerankBySVM(rerankTrainFilename);
 		for(int i=0; i<files.length; i++)
 		{
-			long beginTime = System.currentTimeMillis();
-			BioNERDocument document = docBuilder.getOneDocument(files[i]);
-			System.out.print("Processing #"+i+" "+document.getID()+"....");
-			for(int j=0; j<pipeline.length; j++)
-			{
-				pipeline[j].Process(document);
-			}
-			
-			HashMap<String, Vector<BioNEREntity>> geneIDMap = new HashMap<String, Vector<BioNEREntity>>();
-			Vector<BioNERCandidate> geneIDVector = new Vector<BioNERCandidate>();
-			BuildGeneIDVectorMap.buildGeneIDVectorMap(document, geneIDMap, geneIDVector, rank);
-			FilterBySpecies.filter(geneIDVector, document, geneIDMap);
-			
-			BioNERCandidate[] candidates = new BioNERCandidate[geneIDVector.size()];
-			for(int j=0; j<geneIDVector.size(); j++)
-			{
-				candidates[j] = geneIDVector.elementAt(j);
-			}
-			//FrequenceGeneRerank.rerank(candidates, geneIDMap);
-			rerank.rerank(document, geneIDMap, candidates);
-			
-			
-			
-			output.outputByGeneID(candidates, document);
-			document=null;
-			long endTime = System.currentTimeMillis();
-			long time = endTime - beginTime;
-			System.out.println("Finished! "+time+" ms");
+            if (files[i].isFile()) {
+				long beginTime = System.currentTimeMillis();
+				BioNERDocument document = docBuilder.getOneDocument(files[i]);
+				System.out.print("Processing #"+i+" "+document.getID()+"....");
+				for(int j=0; j<pipeline.length; j++)
+				{
+					pipeline[j].Process(document);
+				}
+				
+				HashMap<String, Vector<BioNEREntity>> geneIDMap = new HashMap<String, Vector<BioNEREntity>>();
+				Vector<BioNERCandidate> geneIDVector = new Vector<BioNERCandidate>();
+				BuildGeneIDVectorMap.buildGeneIDVectorMap(document, geneIDMap, geneIDVector, rank);
+				FilterBySpecies.filter(geneIDVector, document, geneIDMap);
+				
+				BioNERCandidate[] candidates = new BioNERCandidate[geneIDVector.size()];
+				for(int j=0; j<geneIDVector.size(); j++)
+				{
+					candidates[j] = geneIDVector.elementAt(j);
+				}
+				//FrequenceGeneRerank.rerank(candidates, geneIDMap);
+				rerank.rerank(document, geneIDMap, candidates);
+				
+				
+				
+				output.outputByGeneID(candidates, document);
+				document=null;
+				long endTime = System.currentTimeMillis();
+				long time = endTime - beginTime;
+				System.out.println("Finished! "+time+" ms");
+            }
 		}
 		
 		finder.close();

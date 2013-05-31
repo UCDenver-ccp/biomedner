@@ -19,10 +19,10 @@ PREPARE_TRAIN=0
 TRAIN=0
 # - WEKA
 NORMALIZATION=0
-RERANK=1
+RERANK=0
 # - Tasks
-TASK=0
-RUN=1
+TASK=1
+RUN=0
 
 # mac
 #BC2_DATA=/Users/roederc/work/sources/biocreative2
@@ -161,10 +161,9 @@ DIST_TRAIN_DATA=train/TrainData_1.txt
 DIST_RERANK_DATA=train/RerankTrainData_1.txt
 if (( $TASK )) 
 then
-##mvn -e exec:java -Dexec.mainClass="bioner.application.bc3gn.BC3GNTaskRun" \
-              #   -Dexec.args="$XMLS_DIR $DIST_TRAIN_DATA $RANK_DATA $SECOND_RANK_DATA $RERANK_DATA_WEB $GN_TXT"  
 mvn -e exec:java -Dexec.mainClass="bioner.application.webtool.BC3GNTaskRun" \
-                 -Dexec.args="$XMLS_DIR $NORM_FILE meaningless_placeholder $RERANK_DATA $GN_TXT"  
+                 -Dexec.args="$XMLS_DIR_32 $NORM_FILE $FILTER_FILE $RERANK_DATA $GN_TXT"  
+                 #-Dexec.args="$XMLS_DIR $NORM_FILE $FILTER_FILE $RERANK_DATA $GN_TXT"  
 	STATUS=$?
 	if (( $STATUS != 0 ))
 	then

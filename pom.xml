@@ -4,35 +4,25 @@
     <modelVersion>4.0.0</modelVersion>
 
 
-    <groupId>croeder</groupId>
+    <groupId>edu.ucdenver.ccp</groupId>
     <artifactId>genetukit</artifactId>
-    <version>0.1-SNAPSHOT</version>
+    <version>0.2-SNAPSHOT</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <distributionManagement>
-        <!--
-		<repository>
-            <id>repo</id>
-            <url>https://github.com/croeder/croeder-mvn-repo/raw/master/releases</url>
-        </repository>
-        <snapshotRepository>
-            <id>snapshot-repo</id>
-            <url>https://github.com/croeder/croeder-mvn-repo/raw/master/snapshots</url>
-        </snapshotRepository>
-		-->
+
         <repository>
             <id>repo</id>
-            <url>http://54.225.110.188:8081/artifactory/libs-release-local</url>
+            <url>http://amc-bakeoff.ucdenver.pvt:8081/artifactory/libs-release-local</url>
         </repository>
         <snapshotRepository>
             <id>snapshot-repo</id>
-            <url>http://54.225.110.188:8081/artifactory/libs-snapshot-local</url>
+            <url>http://amc-bakeoff.ucdenver.pvt:8081/artifactory/libs-snapshot-local</url>
         </snapshotRepository>
     </distributionManagement>
-
 
     <dependencies>
 

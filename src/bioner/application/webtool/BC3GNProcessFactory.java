@@ -46,7 +46,7 @@ public class BC3GNProcessFactory implements BioNERProcessFactory {
         int i=0;
 
            // TODO: use a real data structure here in place of the array
-		BioNERProcess[] pipeline = new BioNERProcess[8];
+		BioNERProcess[] pipeline = new BioNERProcess[7];
 
 		pipeline[i++] = new ProcessImpCRFPP();
 		//pipeline[0] = new ProcessImpGRMMLineCRF();

@@ -32,6 +32,7 @@ public class BC3GNDataFileReader implements FeatureBuildDocumentBuilder {
 
 	DocumentBuilderFactory domfac;
 	DocumentBuilder dombuilder;
+	private String m_fileDir = "../../BC3GN/xmls/";
 
 	public BC3GNDataFileReader()
 	{
@@ -64,7 +65,6 @@ public class BC3GNDataFileReader implements FeatureBuildDocumentBuilder {
 		}
 	}
 	
-	private String m_fileDir = "../../BC3GN/xmls/";
 	@Override
 	public BioNERDocument[] buildDocuments() {
 		// TODO Auto-generated method stub
@@ -72,28 +72,29 @@ public class BC3GNDataFileReader implements FeatureBuildDocumentBuilder {
 		BioNERDocument[] documents = new BioNERDocument[files.length];
 		try {
 			int num=0;
-			for(File file : files)
-			{
-				String filename = file.getName();
-				int pos = filename.indexOf('.');
-				String docID = filename.substring(0, pos);
-				System.out.print("Reading #"+num+" "+docID+"...");
-				InputStream is = new FileInputStream(file.getAbsolutePath());
-				Document doc=dombuilder.parse(is);
-				BioNERDocument document = new BioNERDocument();
-				Element root=doc.getDocumentElement();
-				for(Node node = root.getFirstChild(); node!=null; node = node.getNextSibling())
-				{
-					if(node.getNodeType()!=Node.ELEMENT_NODE) continue;
-					parseDocumentTree(node, document);
-				}
-				
-				
-				document.setID(docID);
-				document.linkComponent();
-				documents[num] = document;
-				num++;
-				System.out.println("Finished!");
+			for (File file : files) {
+                if (file.isFile()) {
+					String filename = file.getName();
+					int pos = filename.indexOf('.');
+					String docID = filename.substring(0, pos);
+					System.out.print("Reading #"+num+" "+docID+"...");
+					InputStream is = new FileInputStream(file.getAbsolutePath());
+					Document doc=dombuilder.parse(is);
+					BioNERDocument document = new BioNERDocument();
+					Element root=doc.getDocumentElement();
+					for(Node node = root.getFirstChild(); node!=null; node = node.getNextSibling())
+					{
+						if(node.getNodeType()!=Node.ELEMENT_NODE) continue;
+						parseDocumentTree(node, document);
+					}
+					
+					
+					document.setID(docID);
+					document.linkComponent();
+					documents[num] = document;
+					num++;
+					System.out.println("Finished!");
+                }
 			}
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
