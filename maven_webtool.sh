@@ -21,18 +21,22 @@ TRAIN=0
 NORMALIZATION=0
 RERANK=0
 # - Tasks
-TASK=1
-RUN=0
+TASK=0
+RUN=1
 
-# mac
-#BC2_DATA=/Users/roederc/work/sources/biocreative2
-#BC3_DATA=/Users/roederc/work/sources/biocreativeiii
-#BIOMED_NER_HOME=/Users/roederc/work/git/biomedner
+if [ `uname -s` == 'Darwin' ]
+then
+	# mac
+	BC2_DATA=/Users/roederc/work/sources/biocreative2
+	BC3_DATA=/Users/roederc/work/sources/biocreativeiii
+	BIOMED_NER_HOME=/Users/roederc/work/git/biomedner2/biomedner
+else
+	# linux
+	BC2_DATA=/home/roederc/work/sources/biocreative2
+	BC3_DATA=/home/roederc/work/sources/biocreativeiii
+	BIOMED_NER_HOME=/home/roederc/work/git/biomedner
+fi
 
-# linux
-BC2_DATA=/home/roederc/work/sources/biocreative2
-BC3_DATA=/home/roederc/work/sources/biocreativeiii
-BIOMED_NER_HOME=/home/roederc/work/git/biomedner
 
 
 
@@ -162,8 +166,7 @@ DIST_RERANK_DATA=train/RerankTrainData_1.txt
 if (( $TASK )) 
 then
 mvn -e exec:java -Dexec.mainClass="bioner.application.webtool.BC3GNTaskRun" \
-                 -Dexec.args="$XMLS_DIR_32 $NORM_FILE $FILTER_FILE $RERANK_DATA $GN_TXT"  
-                 #-Dexec.args="$XMLS_DIR $NORM_FILE $FILTER_FILE $RERANK_DATA $GN_TXT"  
+                 -Dexec.args="$XMLS_DIR $NORM_FILE $FILTER_FILE $RERANK_DATA $GN_TXT"  
 	STATUS=$?
 	if (( $STATUS != 0 ))
 	then
