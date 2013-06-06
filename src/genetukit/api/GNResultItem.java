@@ -11,31 +11,32 @@ public class GNResultItem {
 	private String m_speciesID = null;
 	private double m_score = 0.0;
 	private ArrayList<String> m_gmList = new ArrayList<String>();
-	public void setID(String ID) {
-		this.m_ID = ID;
-	}
-	public String getID() {
-		return m_ID;
-	}
-	public void setSpeciesID(String speciesID) {
-		this.m_speciesID = speciesID;
-	}
-	public String getSpeciesID() {
-		return m_speciesID;
-	}
-	public void setScore(double score) {
-		this.m_score = score;
-	}
-	public double getScore() {
-		return m_score;
-	}
+	private ArrayList<GNSpan> m_spanList = new ArrayList<GNSpan>();
+
+	public void setID(String ID) { this.m_ID = ID; }
+
+	public String getID() { return m_ID; }
+
+	public void setSpeciesID(String speciesID) { this.m_speciesID = speciesID; }
+
+	public String getSpeciesID() { return m_speciesID; }
+
+	public void setScore(double score) { this.m_score = score; }
+
+	public double getScore() { return m_score; }
+
 	public void addGeneMention(String gennMentionStr) {
-		if(!m_gmList.contains(gennMentionStr))
-		{
+		if (!m_gmList.contains(gennMentionStr)) {
 			m_gmList.add(gennMentionStr);
 		}
 	}
-	public ArrayList<String> getGeneMentionList() {
-		return m_gmList;
-	}
+
+    public void addGNSpan(GNSpan span) {
+        m_spanList.add(span);
+    }
+
+	public ArrayList<String> getGeneMentionList() { return m_gmList; }
+	public ArrayList<GNSpan> getSpanList() { return m_spanList; }
+
 }
+

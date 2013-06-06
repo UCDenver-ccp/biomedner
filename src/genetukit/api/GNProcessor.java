@@ -150,9 +150,18 @@ public class GNProcessor {
 			items[i].setID(candidates[i].getRecord().getID());
 			items[i].setSpeciesID(candidates[i].getRecord().getSpeciesID());
 			items[i].setScore(candidates[i].getScore());
+
 			Vector<BioNEREntity> gmVector = geneIDMap.get(candidates[i].getRecord().getID());
 			for (BioNEREntity gmEntity : gmVector) {
 				items[i].addGeneMention(gmEntity.getText());
+                items[i].addGNSpan(new GNSpan(
+                    gmEntity.getText(), 
+                    //gmEntity.get_Sentence().getBegin() + gmEntity.get_Begin(), 
+                    //gmEntity.get_Sentence().getBegin() + gmEntity.get_End(),
+                    gmEntity.get_Begin(), 
+                    gmEntity.get_End(),
+                    gmEntity.get_Sentence().getSentenceText(),
+                    gmEntity.get_Sentence() ) );
 			}
 		}
 		return items;
