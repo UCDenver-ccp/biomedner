@@ -8,6 +8,14 @@
     <artifactId>genetukit</artifactId>
     <version>0.1-SNAPSHOT</version>
 
+    <licenses>
+      <license>
+        <name>Eclipse Public License 1.0</name>
+        <url>http://opensource.org/licenses/eclipse-1.0.php</url>
+        <distribution>repo</distribution>
+      </license>
+    </licenses>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
