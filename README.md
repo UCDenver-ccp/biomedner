@@ -1,7 +1,15 @@
 biomedner
 =========
+biomedner is a normalizing gene mention identifier.
+It does more than a named entity recognizer by 
+finding a species-specific ontology id for the mention.
 
-a fork of: http://biomedner.googlecode.com/svn
+This is a fork of: http://biomedner.googlecode.com/svn.
+The goals are primarily to make it easier to get this 
+code up and running. Secondary goals are to simplify
+the code and make it easier to identify and work with
+the feature sets and special cases of processing.
+
 
 a key component of GeneTUKit, http://www.qanswers.net/GeneTUKit/demo.jsp
 
