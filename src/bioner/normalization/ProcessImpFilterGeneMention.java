@@ -29,8 +29,7 @@ public class ProcessImpFilterGeneMention implements BioNERProcess {
 	public void Process(BioNERDocument document) {
 		// TODO Auto-generated method stub
 		readGMFilterList("./data/filter/tabulist.txt");
-		for(BioNERSentence sentence : document.getAllSentence())
-		{
+		for (BioNERSentence sentence : document.getAllSentence()) {
 			filterBySection(sentence);
 			mergeCoveredEntities(sentence, true);
 			extendGeneMentionBoundary(sentence);
@@ -129,10 +128,13 @@ public class ProcessImpFilterGeneMention implements BioNERProcess {
 		BioNEREntity[] entityArray = sentence.getAllEntities();
 		sentence.clearEntities();
 		for(BioNEREntity entity : entityArray) {    
+
             // Only keep the gene mentions with 'ita' label or have more than one labels.
 			if (entity.containLabel("ita")) {
 				sentence.addEntity(entity);
 			} else if (entity.getLabelVector().size()>=2) {
+
+                // keep entity if a concensus of NERs have labelled it
 				sentence.addEntity(entity);
 
                 // debug
@@ -180,15 +182,23 @@ public class ProcessImpFilterGeneMention implements BioNERProcess {
 	private void filterBySection(BioNERSentence sentence)
 	{
 		BioNERSection section = sentence.getSection();
-		if(section==null) return;
+
+		if (section==null) return;
+
 		String type = section.getType();
-		if(type==null) return;
-		if(type.contains("material") || type.contains("method") || type.contains("supporting") || type.contains("supplementary"))
-		{
+		if (type==null) return;
+
+		if (type.contains("material") 
+            || type.contains("method") 
+            || type.contains("supporting") 
+            || type.contains("supplementary")) {
+
 			sentence.clearEntities();
 		}
 	}
-	/*private void filterBySection(BioNERSentence sentence)
+
+	/******
+    private void filterBySection(BioNERSentence sentence)
 	{		
 		BioNERSection currentSection = sentence.getSection();
 		while(currentSection!=null)
@@ -214,7 +224,8 @@ public class ProcessImpFilterGeneMention implements BioNERProcess {
 			}
 			currentSection = currentSection.getParentSection();
 		}
-	}*/
+	}
+    *******/
 	
 	private void mergeCoveredEntities(BioNERSentence sentence, boolean intersection)
 	{
@@ -242,21 +253,31 @@ public class ProcessImpFilterGeneMention implements BioNERProcess {
 						if(intersection)
 						{
 							//Use the big one as the begin index
-							if(entity.getTokenBeginIndex()>entity_in_sentence.getTokenBeginIndex()) begin = entity.getTokenBeginIndex();
-							else begin = entity_in_sentence.getTokenBeginIndex();
+							if (entity.getTokenBeginIndex()>entity_in_sentence.getTokenBeginIndex()) 
+                                begin = entity.getTokenBeginIndex();
+							else    
+                                begin = entity_in_sentence.getTokenBeginIndex();
+
 							//Use the small one as the end index
-							if(entity.getTokenEndIndex() < entity_in_sentence.getTokenEndIndex()) end = entity.getTokenEndIndex();
-							else end = entity_in_sentence.getTokenEndIndex();
+							if (entity.getTokenEndIndex() < entity_in_sentence.getTokenEndIndex()) 
+                                end = entity.getTokenEndIndex();
+							else 
+                                end = entity_in_sentence.getTokenEndIndex();
 							entity_in_sentence.setTokenIndex(begin, end);
 						}
 						else
 						{
 							//Use the small one as the begin index
-							if(entity.getTokenBeginIndex()<entity_in_sentence.getTokenBeginIndex()) begin = entity.getTokenBeginIndex();
-							else begin = entity_in_sentence.getTokenBeginIndex();
+							if (entity.getTokenBeginIndex()<entity_in_sentence.getTokenBeginIndex()) 
+                                begin = entity.getTokenBeginIndex();
+							else 
+                                begin = entity_in_sentence.getTokenBeginIndex();
+
 							//Use the big one as the end index
-							if(entity.getTokenEndIndex() > entity_in_sentence.getTokenEndIndex()) end = entity.getTokenEndIndex();
-							else end = entity_in_sentence.getTokenEndIndex();
+							if (entity.getTokenEndIndex() > entity_in_sentence.getTokenEndIndex()) 
+                                end = entity.getTokenEndIndex();
+							else 
+                                end = entity_in_sentence.getTokenEndIndex();
 							entity_in_sentence.setTokenIndex(begin, end);
 						}
 						
@@ -296,19 +317,20 @@ public class ProcessImpFilterGeneMention implements BioNERProcess {
 			BufferedReader freader = new BufferedReader(new FileReader(filename));
 			String line = freader.readLine();
 			StringBuffer sb = new StringBuffer(line);
-			while((line=freader.readLine()) != null)
-			{
+			while ((line=freader.readLine()) != null) {
 				sb.append("|");
 				sb.append(line);
 			}
 			freader.close();
 			m_GMFilterPattern = Pattern.compile(sb.toString());
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+            System.err.println("error on ProcessImpFilterGeneMention.readGMFilterList() " + e);
 			e.printStackTrace();
+            throw new RuntimeException(e);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+            System.err.println("error on ProcessImpFilterGeneMention.readGMFilterList() " + e);
 			e.printStackTrace();
+            throw new RuntimeException(e);
 		}
 	}
 	private void filterGMByList(BioNERSentence sentence)
@@ -320,14 +342,13 @@ public class ProcessImpFilterGeneMention implements BioNERProcess {
 		{
 			String gmStr = entity.getText();
 			Matcher matcher = m_GMFilterPattern.matcher(gmStr);
-			if (!matcher.matches())
-			{
+			if (!matcher.matches()) {
 				sentence.addEntity(entity);
 			}
-            //else {
-            //    System.out.println("ProcessImpFilterGeneMention.filterGMByLIst() dropping mention \"" + gmStr 
-            //        + "\" readGMFilterList(\"./data/filter/tabulist.txt\")" );
-            //}
+            else if (false) {
+                System.out.println("ProcessImpFilterGeneMention.filterGMByLIst() dropping mention \"" + gmStr 
+                    + "\" readGMFilterList(\"./data/filter/tabulist.txt\")" );
+            }
 		}
 	}
 	
@@ -349,6 +370,7 @@ public class ProcessImpFilterGeneMention implements BioNERProcess {
 				if(matcher.matches())
 				{
 					shouldFilterOut = true;
+                    //System.err.println("ProcessImpFilterGeneMention.processSentence()  removing entity:" + entityText );
 					break;
 				}
 			}

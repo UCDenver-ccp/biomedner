@@ -28,6 +28,8 @@ public class LuceneIndexReader implements IndexReader{
 	private Analyzer analyzer = new StandardAnalyzer(Version.LUCENE_CURRENT);
 	private QueryParser parser = new QueryParser(Version.LUCENE_CURRENT,"names", analyzer);
 	private Similarity sim;
+
+
 	public LuceneIndexReader(String indexDir)
 	{
 		IndexConfig.ReadConfigFile();
@@ -47,8 +49,9 @@ public class LuceneIndexReader implements IndexReader{
 			sim = isearcher_idf.getSimilarity();
 			
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+            System.err.println("LuceneIndexReader ERROR:" + e);
 			e.printStackTrace();
+            throw new RuntimeException(e);
 		}
 		
 	}
@@ -87,16 +90,19 @@ public class LuceneIndexReader implements IndexReader{
 			{
 				candidates[i] = candidateVector.elementAt(i);
 			}
+
+            normalizeScores(candidates);
 			
 			return candidates;
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
+            System.err.println("LuceneIndexReader ERROR:" + e);
 			e.printStackTrace();
+            throw new RuntimeException(e);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+            System.err.println("LuceneIndexReader ERROR:" + e);
 			e.printStackTrace();
+            throw new RuntimeException(e);
 		}
-		return null;
 	}
 	
 	@Override
@@ -106,8 +112,9 @@ public class LuceneIndexReader implements IndexReader{
 			directory.close();
 			isearcher.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+            System.err.println("LuceneIndexReader ERROR:" + e);
 			e.printStackTrace();
+            throw new RuntimeException(e);
 		}
 		
 	}
@@ -138,10 +145,10 @@ public class LuceneIndexReader implements IndexReader{
 			if(normalScore<score) score = normalScore;
 			return score;
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+            System.err.println("LuceneIndexReader ERROR:" + e);
 			e.printStackTrace();
+            throw new RuntimeException(e);
 		}
-		return 0.0;
 	}
 	
 	public static void main(String args[])
@@ -168,4 +175,21 @@ public class LuceneIndexReader implements IndexReader{
 		}
 		return search(strBuffer.toString(),maxNum);
 	}
+
+  /** added by roederc **/
+  private static void normalizeScores(BioNERCandidate[] candidates)
+    {
+        double max = -Double.MAX_VALUE;
+        for(int i=0; i<candidates.length; i++)
+        {
+            double score = candidates[i].getScore();
+            if(score>max) max = score;
+        }
+        for(int i=0; i<candidates.length; i++)
+        {
+            double score = candidates[i].getScore();
+            candidates[i].setScore(score/max);
+        }
+    }
+
 }

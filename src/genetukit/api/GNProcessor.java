@@ -86,20 +86,28 @@ public class GNProcessor {
 		pipeline.add(new ProcessImpFirstRankByListNet(trainingDataFilename, new BC3GNFirstRankFeatureBuilder()));
         }
 
+        boolean _debug_ = true;
 		pipeline.add(new ProcessImpProteinIndexNER());
-	    pipeline.add(new ProcessImpDebug("after index NER"));	
+        if (_debug_) pipeline.add(new ProcessImpDebug("after index NER"));	
+
         pipeline.add(new ProcessImpProteinABNER());
-	    pipeline.add(new ProcessImpDebug("after ABNER"));	
-			pipeline.add(new ProcessImpProteinBANNER());
-	        pipeline.add(new ProcessImpDebug("after BANNER"));	
+        if (_debug_) pipeline.add(new ProcessImpDebug("after ABNER"));	
+
+        /*** could be trouble, the consensus still goes for 2/4 instead of 2/3 or 3/4 */
+		pipeline.add(new ProcessImpProteinBANNER());
+        if (_debug_) pipeline.add(new ProcessImpDebug("after BANNER"));	
+
 		pipeline.add(new ProcessImpFilterGeneMention());
-	    pipeline.add(new ProcessImpDebug("after filter gene mention"));	
+        if (_debug_) pipeline.add(new ProcessImpDebug("after filter gene mention"));	
+
 		pipeline.add(new ProcessImpGetCandidateID(finder));
-	    pipeline.add(new ProcessImpDebug("after get candidate ID"));	
+        if (_debug_) pipeline.add(new ProcessImpDebug("after get candidate ID"));	
+
 		pipeline.add(new ProcessImpFilterAfterGetCandidate());
-	    pipeline.add(new ProcessImpDebug("after filter after get canddiate"));	
+        if (_debug_) pipeline.add(new ProcessImpDebug("after filter after get canddiate"));	
+
 		pipeline.add(new ProcessImpFirstRankByListNet(trainingDataFilename, new BC3GNFirstRankFeatureBuilder()));
-	    pipeline.add(new ProcessImpDebug("after RankByListNext"));	
+        if (_debug_) pipeline.add(new ProcessImpDebug("after RankByListNext"));	
 
        
         {
