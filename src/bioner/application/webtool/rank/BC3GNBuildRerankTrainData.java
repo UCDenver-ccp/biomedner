@@ -17,29 +17,17 @@ import bioner.application.webtool.BC3GNFirstRankFeatureBuilder;
 import bioner.application.webtool.BC3GNGeneIDRerankFeatureBuilder;
 import bioner.application.webtool.BC3GNProcessFactory;
 import bioner.application.webtool.BC3GNTaskRun;
-//import bioner.application.bc3gn.BC3GNDataFileReader;
-//import bioner.application.bc3gn.BC3GNFirstRankFeatureBuilder;
-//import bioner.application.bc3gn.BC3GNGeneIDRerankFeatureBuilder;
-//import bioner.application.bc3gn.BC3GNProcessFactory;
-//import bioner.application.bc3gn.BC3GNTaskRun;
 
 import bioner.data.document.BioNERDocument;
 import bioner.data.document.BioNEREntity;
 import bioner.global.GlobalConfig;
 import bioner.normalization.FirstRankFeatureBuilder;
 import bioner.normalization.GeneIDRerankFeatureBuilder;
-import bioner.normalization.ProcessImpFilterAfterGetCandidate;
-import bioner.normalization.ProcessImpFilterGeneMention;
-import bioner.normalization.ProcessImpFirstRankByListNet;
-import bioner.normalization.ProcessImpGetCandidateID;
 import bioner.normalization.candidate.CandidateFinder;
 import bioner.normalization.data.BioNERCandidate;
 import bioner.normalization.rerank.BuildGeneIDVectorMap;
 import bioner.normalization.rerank.FilterBySpecies;
 import bioner.process.BioNERProcess;
-import bioner.process.crf.ProcessImpCRFPP;
-import bioner.process.proteinner.ProcessImpProteinABNER;
-import bioner.process.proteinner.ProcessImpProteinIndexNER;
 
 /**
  * copied from bc3gn and chnange the associated classes as in the 
@@ -49,7 +37,7 @@ import bioner.process.proteinner.ProcessImpProteinIndexNER;
 public class BC3GNBuildRerankTrainData {
 
 	public static void writerDataFile(String dataDir, String genelistFilename, String candidateTrainDataFilename, 
-        String secondRankTrainData,String outputFilename, int maxNum) 
+         String filterFilepath, String outputFilename, int maxNum)
     throws IOException
 	{
 		GlobalConfig.ReadConfigFile();
@@ -58,7 +46,7 @@ public class BC3GNBuildRerankTrainData {
 		BC3GNDataFileReader docBuilder = new BC3GNDataFileReader(dataDir);
 		CandidateFinder finder = new CandidateFinder();
 		BioNERDocument[] documents = docBuilder.buildDocuments();
-		BioNERProcessFactory processFactory = new BC3GNProcessFactory(finder,candidateTrainDataFilename, secondRankTrainData, outputFilename);
+		BioNERProcessFactory processFactory = new BC3GNProcessFactory(finder, candidateTrainDataFilename, filterFilepath, outputFilename);
 		BioNERProcess[] pipeline = processFactory.buildProcessPipeline();
 		
 		GeneIDRerankFeatureBuilder rerankFeatureBuilder = new BC3GNGeneIDRerankFeatureBuilder();
@@ -94,9 +82,9 @@ public class BC3GNBuildRerankTrainData {
 				continue;
 			}
 			for (int j=0; j<pipeline.length; j++) {
-                System.out.println("=====> " + j + "======");
+                //System.out.println("BC3GNBuildRerankTrainData starting process # " + j + pipeline[j].getClass().getName() );
 				pipeline[j].Process(document);
-                System.out.println("<----- " + j + "======");
+                //System.out.println("BC3GNBuildRerankTrainData completed process # " + j );
 			}
 			HashMap<String, Vector<BioNEREntity>> geneIDMap = new HashMap<String, Vector<BioNEREntity>>();
 			Vector<BioNERCandidate> geneIDVector = new Vector<BioNERCandidate>();
@@ -130,7 +118,6 @@ public class BC3GNBuildRerankTrainData {
 				}
 				sb.append("}");
 				String line = sb.toString();
-System.out.println("document" + i + " line:" + line);
 				if (!lineVector.contains(line)) {
 					lineVector.add(line);
 					if (idVector.contains(id)) correctNum++;
@@ -150,12 +137,14 @@ System.out.println("document" + i + " line:" + line);
 			documents[i]=null;
 			long endTime = System.currentTimeMillis();
 			long time = endTime - beginTime;
-			System.out.println("Finished! "+time+" ms");
+			//System.out.println("Finished! "+time+" ms");
 		}
-		
+
+           // TODO: more file paths hard-coded		
 		/*GlobalConfig.BC3GN_DATADIR = "../../BC3GN/525_data/";
 		File[] files = (new File("../../BC3GN/525_data/")).listFiles();
 		idTable = getGeneIDTable("../../BC3GN/TrainingSet2.txt");
+
 		for (int i=0; i<files.length; i++) {
 			long beginTime = System.currentTimeMillis();
 			BioNERDocument document = docBuilder.getOneDocument(files[i]);
@@ -163,11 +152,11 @@ System.out.println("document" + i + " line:" + line);
 			System.out.print("Build rerank train data for 523 data. #"+i+" "+document.getID()+"....");
 			Vector<String> idVector = idTable.get(document.getID());
 			if (idVector==null) {
-				System.out.println("no gold standard.");
+				//System.out.println("no gold standard.");
 				continue;
 			}
 			if (goldDocIDVector.contains(document.getID())) {
-				System.out.println("in 32 gold standard. Skip.");
+				//System.out.println("in 32 gold standard. Skip.");
 				continue;
 			}
 			for (int j=0; j<pipeline.length; j++) {
@@ -237,40 +226,34 @@ System.out.println("document" + i + " line:" + line);
 	 * @throws IOException 
 	 */
 	public static void main(String[] args) throws IOException {
-		// TODO Auto-generated method stub
 		String genelistFilename = "../../BC3GN/data/TrainingSet2.txt";
 		String dataDir = "../../BC3GN/xmls/";
 		String outputFilename = "../../BC3GN/TrainData_10.txt";
 		String candidateTrainDataFilename = "../../BC3GN/TrainData_50.txt";
-		//writerDataFile(dataDir, genelistFilename, outputFilename, 10);
 		outputFilename = "../../BC3GN/RerankTrainData.txt";
-		String secondRankTrainData = "../../BC3GN/secondRankTrainData.txt";
+        String filterFilepath = GlobalConfig.ENTITYFILTER_TABULIST_PATH;
+
 		if (args.length==5) {
 			dataDir = args[0];
 			genelistFilename = args[1];
 			candidateTrainDataFilename = args[2];
-			secondRankTrainData = args[3];
+            filterFilepath = args[3];
 			outputFilename = args[4];
 		}
+        else  if (args.length != 0) {
+            System.out.println("Error. needs 5 args:");
+            System.out.println(" datadir, genelist file, train data file, filter file, output file.");
+        }
 
 
         System.out.println("dataDir " + dataDir);
         System.out.println("genelist" + genelistFilename);
         System.out.println("candidate" + candidateTrainDataFilename);
-        System.out.println("second Rank" + secondRankTrainData);
         System.out.println("outputFilename" + outputFilename);
+        System.out.println("entity filter tabulist Filename" + filterFilepath);
+
 		GlobalConfig.BC3GN_DATADIR = dataDir;
-		writerDataFile(dataDir, genelistFilename, candidateTrainDataFilename, secondRankTrainData, outputFilename, 50);
-		
-		/******
-		genelistFilename = "../../BC2GN/data/testing.genelist";
-		dataDir = "../../BC2GN/data/testingData";
-		
-		outputFilename = "../../BC2GN/TestData_10.txt";
-		//writerDataFile(dataDir, genelistFilename, outputFilename, 10);
-		outputFilename = "../../BC2GN/TestData_50.txt";
-		//writerDataFile(dataDir, genelistFilename, outputFilename, 50);
-		*******/
+		writerDataFile(dataDir, genelistFilename, candidateTrainDataFilename, filterFilepath, outputFilename, 50);
 		
 	}
 	

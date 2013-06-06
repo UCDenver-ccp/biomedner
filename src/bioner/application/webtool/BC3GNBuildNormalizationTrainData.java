@@ -29,7 +29,8 @@ import bioner.process.proteinner.ProcessImpProteinIndexNER;
 
 public class BC3GNBuildNormalizationTrainData {
 
-	public static void writerDataFile(String dataDir, String genelistFilename, String outputFilename, int maxNum, String modelFilepath) 
+	public static void writerDataFile(String dataDir, String genelistFilename, String outputFilename, 
+            int maxNum, String modelFilepath, String filterFilepath) 
     throws IOException {
 		GlobalConfig.ReadConfigFile();
 		
@@ -50,7 +51,7 @@ public class BC3GNBuildNormalizationTrainData {
 		
 		
 		//pipeline[0] = new ProcessImpGoldStandardNER("../../BC3GN/TrainingSet1.gm.txt");
-		pipeline[3] = new ProcessImpFilterGeneMention();
+		pipeline[3] = new ProcessImpFilterGeneMention(filterFilepath);
 		pipeline[4] = new ProcessImpGetCandidateID(finder);
 		pipeline[5] = new ProcessImpFilterAfterGetCandidate();
 		
@@ -121,16 +122,10 @@ public class BC3GNBuildNormalizationTrainData {
                         sentenceHasCandidates=true;
                     }
                 }
-                if (sentenceHasCandidates) {
-				    System.err.println("Sentence #"+sentence_num + " " + sentence.getSentenceText() + "\n");
-                }
                 }
     
 				//fwriter.write(sentence.getSentenceText());
 				//fwriter.newLine();
-if (sentence.getAllEntities().length > 0) {				
-System.out.println("sentence: " + sentence_num + " has num entities:" + sentence.getAllEntities().length);
-}
 				for (BioNEREntity entity : sentence.getAllEntities()) {
 					StringBuffer sb = new StringBuffer();
 					BioNERCandidate[] candidates = entity.getCandidates();
@@ -140,7 +135,6 @@ System.out.println("sentence: " + sentence_num + " has num entities:" + sentence
 					if (correctIndex >= 0) {
 						entityNum++;
 						String correctID = candidates[correctIndex].getRecord().getID();
-      System.out.println("doing this sentence, it's correctIndex is:" + correctIndex + " ID is :" + correctID);
 						
 						Vector<String> lineVector = new Vector<String>();
 						int correctNum = 0;
@@ -164,7 +158,6 @@ System.out.println("sentence: " + sentence_num + " has num entities:" + sentence
 							}
 							
 							String line = sbLine.toString();
-System.out.println("adding candidate:" + line);
 							if (!lineVector.contains(line)) lineVector.add(line);
 							//fwriter.write("|"+candidates[j].getRecord().toString());
 							
@@ -177,7 +170,6 @@ System.out.println("adding candidate:" + line);
 							sb.append("\n");
 						}
 
-                        System.err.println("--------- adding line: " + sb);
 
 						String instanceStr = sb.toString();
 						if (!instanceStrVector.contains(instanceStr)) {
@@ -189,14 +181,9 @@ System.out.println("adding candidate:" + line);
 							fwriter.newLine();
 						}
 					}
-                    else {
-                        System.err.println("skipping this sentence because it's correctIndex is < 0. ID is :" + correctIndex
-                            + "(meaning none of the candidate genes are in the gold standard)");
-                    }
 				}//entity
 			}//sentence
 			
-			System.out.println(" . ");	
 			
 			documents[i]=null;
 			long endTime = System.currentTimeMillis();
@@ -217,14 +204,16 @@ System.out.println("adding candidate:" + line);
 		String genelistFilename = "../../BC3GN/data/TrainingSet2.txt";
         String modelFilepath = "";
 		String outputFilename = "../../BC3GN/TrainData_10.txt";
+        String filterFilepath = GlobalConfig.ENTITYFILTER_TABULIST_PATH;
 		//writerDataFile(dataDir, genelistFilename, outputFilename, 10);
 		outputFilename = "../../BC3GN/TrainData_50.txt";
 		
-		if (args.length==4) {
+		if (args.length==5) {
 			dataDir = args[0];
 			genelistFilename = args[1];
 			outputFilename = args[2];
             modelFilepath = args[3];
+            filterFilepath = args[4];
 		}
         else {
             System.out.println("need 4 arguments:");
@@ -232,7 +221,7 @@ System.out.println("adding candidate:" + line);
             System.exit(-1);
         }
 		
-		writerDataFile(dataDir, genelistFilename, outputFilename, 50, modelFilepath);
+		writerDataFile(dataDir, genelistFilename, outputFilename, 50, modelFilepath, filterFilepath);
 	}
 
     /**

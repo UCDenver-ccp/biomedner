@@ -5,10 +5,14 @@ a fork of: http://biomedner.googlecode.com/svn
 
 a key component of GeneTUKit, http://www.qanswers.net/GeneTUKit/demo.jsp
 
+License:
+http://www.eclipse.org/legal/epl-v10.html
+
 See:
 - http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3065680/
 - ftp://ftp.research.microsoft.com/pub/tr/TR-2007-40.pdf
 - https://code.google.com/p/learning-to-rank-listnet/
+- http://www.biocreative.org/news/corpora/biocreative-iii-corpus/
 
 TODO:
 - The jar dependencies aren't fully identified, but included. 

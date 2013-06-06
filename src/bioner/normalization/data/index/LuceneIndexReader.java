@@ -91,7 +91,7 @@ public class LuceneIndexReader implements IndexReader{
 				candidates[i] = candidateVector.elementAt(i);
 			}
 
-            normalizeScores(candidates);
+            ///normalizeScores(candidates); // TODO re-evaluate this
 			
 			return candidates;
 		} catch (ParseException e) {

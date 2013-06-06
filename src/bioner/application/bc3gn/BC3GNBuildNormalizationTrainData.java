@@ -89,11 +89,7 @@ public class BC3GNBuildNormalizationTrainData {
 			BioNERDocument document = documents[i];
 			goldDocIDVector.add(document.getID());
 			for (int j=0; j<pipeline.length; j++) {
-                System.out.println("after pipeline element " + j);
 				pipeline[j].Process(document);
-                for (BioNEREntity entity: document.getAllEntity()) {
-                    System.out.println("  ENTITY: " + entity.toString());
-                } 
 			}
 			
 			int sentence_num = 0;
@@ -102,12 +98,10 @@ public class BC3GNBuildNormalizationTrainData {
 			if (idVector==null) continue;
 			for (BioNERSentence sentence : document.getAllSentence()) {
 				sentence_num++;
-				System.out.println("Sentence #"+sentence_num);
 				//fwriter.write(sentence.getSentenceText());
 				//fwriter.newLine();
 				
 				for (BioNEREntity entity : sentence.getAllEntities()) {
-                    System.out.println("  got an entity...");
 					StringBuffer sb = new StringBuffer();
 					BioNERCandidate[] candidates = entity.getCandidates();
 					int correctIndex = haveCorrectID(candidates, rank, idVector);
@@ -119,7 +113,6 @@ public class BC3GNBuildNormalizationTrainData {
 						Vector<String> lineVector = new Vector<String>();
 						int correctNum = 0;
 						for (int j=0; j<rank && j<candidates.length; j++) {
-                            System.out.println("    got candidates...");
 							String recordID = candidates[j].getRecord().getID();
 							StringBuffer sbLine = new StringBuffer();
 							if (idVector.contains(recordID)) {
@@ -135,7 +128,6 @@ public class BC3GNBuildNormalizationTrainData {
 							}
 							
 							String line = sbLine.toString();
-                    System.out.println("line:" + line );
 							if (!lineVector.contains(line)) {
                                 lineVector.add(line);
                             }
@@ -149,7 +141,6 @@ public class BC3GNBuildNormalizationTrainData {
 							sb.append("\n");
 						}
 						String instanceStr = sb.toString();
-                    System.out.println("instance string:" + sb.toString() );
 						if (!instanceStrVector.contains(instanceStr)) {
 							instanceStrVector.add(instanceStr);
 							fwriter.write("%"+correctID+"_"+document.getID()+"_"+entityNum+" "+correctNum);
@@ -159,9 +150,6 @@ public class BC3GNBuildNormalizationTrainData {
 							fwriter.newLine();
 						}
 					}
-                    else {
-                        System.out.println("do not have correctID " + correctIndex);
-                    }
 				}//entity
 				
 			}//sentence

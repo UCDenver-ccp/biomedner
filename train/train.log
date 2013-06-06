@@ -1,0 +1,742 @@
+max_value_0	1.0
+max_value_1	1.0
+max_value_2	1.0
+max_value_3	0.8823529411764706
+max_value_4	1.0
+max_value_5	1.0
+max_value_6	1.0
+max_value_7	1.0
+max_value_8	1.0
+max_value_9	1.0
+max_value_10	17.010583877563477
+max_value_11	13.297012329101562
+max_value_12	16.09429359436035
+max_value_13	1.0
+max_value_14	1.0
+train with: /home/roederc/work/git/biomedner/RankTrainData_webtool.txt
+develop dataset:null
+rate=0.01	last T: 200	best CorrectNum: 4346
+the BEST rate: 0.01	the BEST prediction: 	4346.0
+@relation gene_normalization
+@attribute class {1,0}
+@attribute species_in_gene_mention real
+@attribute species_nearby real
+@attribute linked_species real
+@attribute species_in_document real
+@attribute species_in_title real
+@attribute is_common_species real
+@attribute type_of_gene real
+@attribute symbol_edit_distance real
+@attribute synonyms_edit_distance real
+@attribute symbol_number_similarity real
+@attribute token_lucene_score real
+@attribute gene_in_bracket real
+@attribute gene_outside_bracket real
+@attribute synonyms_in_sentence real
+@attribute extended_gm_lucene_score real
+@data
+
+w_0	0.04916989103984916
+w_1	0.061449825183141904
+w_2	0.19119005773158296
+w_3	0.6457120100677083
+w_4	0.1543105418996238
+w_5	7.661614526375973E-4
+w_6	0.2422966513508929
+w_7	-0.04695385021047674
+w_8	-0.30582274755359884
+w_9	0.04211598923828326
+w_10	0.04860792417651439
+w_11	0.08477502053631794
+w_12	0.41757427190530805
+w_13	0.03783152704591632
+w_14	0.014432832873969449
+max_value_0	1.0
+max_value_1	1.0
+max_value_2	1.0
+max_value_3	0.8823529411764706
+max_value_4	1.0
+max_value_5	1.0
+max_value_6	1.0
+max_value_7	1.0
+max_value_8	1.0
+max_value_9	1.0
+max_value_10	17.010583877563477
+max_value_11	13.297012329101562
+max_value_12	16.09429359436035
+max_value_13	1.0
+max_value_14	1.0
+train with: /home/roederc/work/git/biomedner/RankTrainData_webtool.txt
+develop dataset:null
+rate=0.01	last T: 200	best CorrectNum: 4346
+the BEST rate: 0.01	the BEST prediction: 	4346.0
+@relation gene_normalization
+@attribute class {1,0}
+@attribute species_in_gene_mention real
+@attribute species_nearby real
+@attribute linked_species real
+@attribute species_in_document real
+@attribute species_in_title real
+@attribute is_common_species real
+@attribute type_of_gene real
+@attribute symbol_edit_distance real
+@attribute synonyms_edit_distance real
+@attribute symbol_number_similarity real
+@attribute token_lucene_score real
+@attribute gene_in_bracket real
+@attribute gene_outside_bracket real
+@attribute synonyms_in_sentence real
+@attribute extended_gm_lucene_score real
+@data
+
+w_0	0.04916989103984916
+w_1	0.061449825183141904
+w_2	0.19119005773158296
+w_3	0.6457120100677083
+w_4	0.1543105418996238
+w_5	7.661614526375973E-4
+w_6	0.2422966513508929
+w_7	-0.04695385021047674
+w_8	-0.30582274755359884
+w_9	0.04211598923828326
+w_10	0.04860792417651439
+w_11	0.08477502053631794
+w_12	0.41757427190530805
+w_13	0.03783152704591632
+w_14	0.014432832873969449
+max_value_0	1.0
+max_value_1	1.0
+max_value_2	1.0
+max_value_3	0.8823529411764706
+max_value_4	1.0
+max_value_5	1.0
+max_value_6	1.0
+max_value_7	1.0
+max_value_8	1.0
+max_value_9	1.0
+max_value_10	17.010583877563477
+max_value_11	13.297012329101562
+max_value_12	16.09429359436035
+max_value_13	1.0
+max_value_14	1.0
+train with: /home/roederc/work/git/biomedner/RankTrainData_webtool.txt
+develop dataset:null
+rate=0.01	last T: 200	best CorrectNum: 4346
+the BEST rate: 0.01	the BEST prediction: 	4346.0
+@relation gene_normalization
+@attribute class {1,0}
+@attribute species_in_gene_mention real
+@attribute species_nearby real
+@attribute linked_species real
+@attribute species_in_document real
+@attribute species_in_title real
+@attribute is_common_species real
+@attribute type_of_gene real
+@attribute symbol_edit_distance real
+@attribute synonyms_edit_distance real
+@attribute symbol_number_similarity real
+@attribute token_lucene_score real
+@attribute gene_in_bracket real
+@attribute gene_outside_bracket real
+@attribute synonyms_in_sentence real
+@attribute extended_gm_lucene_score real
+@data
+
+w_0	0.04916989103984916
+w_1	0.061449825183141904
+w_2	0.19119005773158296
+w_3	0.6457120100677083
+w_4	0.1543105418996238
+w_5	7.661614526375973E-4
+w_6	0.2422966513508929
+w_7	-0.04695385021047674
+w_8	-0.30582274755359884
+w_9	0.04211598923828326
+w_10	0.04860792417651439
+w_11	0.08477502053631794
+w_12	0.41757427190530805
+w_13	0.03783152704591632
+w_14	0.014432832873969449
+max_value_0	1.0
+max_value_1	1.0
+max_value_2	1.0
+max_value_3	0.8823529411764706
+max_value_4	1.0
+max_value_5	1.0
+max_value_6	1.0
+max_value_7	1.0
+max_value_8	1.0
+max_value_9	1.0
+max_value_10	17.010583877563477
+max_value_11	13.297012329101562
+max_value_12	16.09429359436035
+max_value_13	1.0
+max_value_14	1.0
+train with: /home/roederc/work/git/biomedner/RankTrainData_webtool.txt
+develop dataset:null
+rate=0.01	last T: 200	best CorrectNum: 4346
+the BEST rate: 0.01	the BEST prediction: 	4346.0
+@relation gene_normalization
+@attribute class {1,0}
+@attribute species_in_gene_mention real
+@attribute species_nearby real
+@attribute linked_species real
+@attribute species_in_document real
+@attribute species_in_title real
+@attribute is_common_species real
+@attribute type_of_gene real
+@attribute symbol_edit_distance real
+@attribute synonyms_edit_distance real
+@attribute symbol_number_similarity real
+@attribute token_lucene_score real
+@attribute gene_in_bracket real
+@attribute gene_outside_bracket real
+@attribute synonyms_in_sentence real
+@attribute extended_gm_lucene_score real
+@data
+
+w_0	0.04916989103984916
+w_1	0.061449825183141904
+w_2	0.19119005773158296
+w_3	0.6457120100677083
+w_4	0.1543105418996238
+w_5	7.661614526375973E-4
+w_6	0.2422966513508929
+w_7	-0.04695385021047674
+w_8	-0.30582274755359884
+w_9	0.04211598923828326
+w_10	0.04860792417651439
+w_11	0.08477502053631794
+w_12	0.41757427190530805
+w_13	0.03783152704591632
+w_14	0.014432832873969449
+max_value_0	1.0
+max_value_1	1.0
+max_value_2	1.0
+max_value_3	0.8823529411764706
+max_value_4	1.0
+max_value_5	1.0
+max_value_6	1.0
+max_value_7	1.0
+max_value_8	1.0
+max_value_9	1.0
+max_value_10	17.010583877563477
+max_value_11	13.297012329101562
+max_value_12	16.09429359436035
+max_value_13	1.0
+max_value_14	1.0
+train with: /home/roederc/work/git/biomedner/RankTrainData_webtool.txt
+develop dataset:null
+rate=0.01	last T: 200	best CorrectNum: 4346
+the BEST rate: 0.01	the BEST prediction: 	4346.0
+@relation gene_normalization
+@attribute class {1,0}
+@attribute species_in_gene_mention real
+@attribute species_nearby real
+@attribute linked_species real
+@attribute species_in_document real
+@attribute species_in_title real
+@attribute is_common_species real
+@attribute type_of_gene real
+@attribute symbol_edit_distance real
+@attribute synonyms_edit_distance real
+@attribute symbol_number_similarity real
+@attribute token_lucene_score real
+@attribute gene_in_bracket real
+@attribute gene_outside_bracket real
+@attribute synonyms_in_sentence real
+@attribute extended_gm_lucene_score real
+@data
+
+w_0	0.04916989103984916
+w_1	0.061449825183141904
+w_2	0.19119005773158296
+w_3	0.6457120100677083
+w_4	0.1543105418996238
+w_5	7.661614526375973E-4
+w_6	0.2422966513508929
+w_7	-0.04695385021047674
+w_8	-0.30582274755359884
+w_9	0.04211598923828326
+w_10	0.04860792417651439
+w_11	0.08477502053631794
+w_12	0.41757427190530805
+w_13	0.03783152704591632
+w_14	0.014432832873969449
+max_value_0	1.0
+max_value_1	1.0
+max_value_2	1.0
+max_value_3	0.8823529411764706
+max_value_4	1.0
+max_value_5	1.0
+max_value_6	1.0
+max_value_7	1.0
+max_value_8	1.0
+max_value_9	1.0
+max_value_10	17.010583877563477
+max_value_11	13.297012329101562
+max_value_12	16.09429359436035
+max_value_13	1.0
+max_value_14	1.0
+train with: /home/roederc/work/git/biomedner/RankTrainData_webtool.txt
+develop dataset:null
+rate=0.01	last T: 200	best CorrectNum: 4346
+the BEST rate: 0.01	the BEST prediction: 	4346.0
+@relation gene_normalization
+@attribute class {1,0}
+@attribute species_in_gene_mention real
+@attribute species_nearby real
+@attribute linked_species real
+@attribute species_in_document real
+@attribute species_in_title real
+@attribute is_common_species real
+@attribute type_of_gene real
+@attribute symbol_edit_distance real
+@attribute synonyms_edit_distance real
+@attribute symbol_number_similarity real
+@attribute token_lucene_score real
+@attribute gene_in_bracket real
+@attribute gene_outside_bracket real
+@attribute synonyms_in_sentence real
+@attribute extended_gm_lucene_score real
+@data
+
+w_0	0.04916989103984916
+w_1	0.061449825183141904
+w_2	0.19119005773158296
+w_3	0.6457120100677083
+w_4	0.1543105418996238
+w_5	7.661614526375973E-4
+w_6	0.2422966513508929
+w_7	-0.04695385021047674
+w_8	-0.30582274755359884
+w_9	0.04211598923828326
+w_10	0.04860792417651439
+w_11	0.08477502053631794
+w_12	0.41757427190530805
+w_13	0.03783152704591632
+w_14	0.014432832873969449
+max_value_0	1.0
+max_value_1	1.0
+max_value_2	1.0
+max_value_3	0.8823529411764706
+max_value_4	1.0
+max_value_5	1.0
+max_value_6	1.0
+max_value_7	1.0
+max_value_8	1.0
+max_value_9	1.0
+max_value_10	17.010583877563477
+max_value_11	13.297012329101562
+max_value_12	16.09429359436035
+max_value_13	1.0
+max_value_14	1.0
+train with: /home/roederc/work/git/biomedner/RankTrainData_webtool.txt
+develop dataset:null
+rate=0.01	last T: 200	best CorrectNum: 4346
+the BEST rate: 0.01	the BEST prediction: 	4346.0
+@relation gene_normalization
+@attribute class {1,0}
+@attribute species_in_gene_mention real
+@attribute species_nearby real
+@attribute linked_species real
+@attribute species_in_document real
+@attribute species_in_title real
+@attribute is_common_species real
+@attribute type_of_gene real
+@attribute symbol_edit_distance real
+@attribute synonyms_edit_distance real
+@attribute symbol_number_similarity real
+@attribute token_lucene_score real
+@attribute gene_in_bracket real
+@attribute gene_outside_bracket real
+@attribute synonyms_in_sentence real
+@attribute extended_gm_lucene_score real
+@data
+
+w_0	0.04916989103984916
+w_1	0.061449825183141904
+w_2	0.19119005773158296
+w_3	0.6457120100677083
+w_4	0.1543105418996238
+w_5	7.661614526375973E-4
+w_6	0.2422966513508929
+w_7	-0.04695385021047674
+w_8	-0.30582274755359884
+w_9	0.04211598923828326
+w_10	0.04860792417651439
+w_11	0.08477502053631794
+w_12	0.41757427190530805
+w_13	0.03783152704591632
+w_14	0.014432832873969449
+max_value_0	1.0
+max_value_1	1.0
+max_value_2	1.0
+max_value_3	0.8823529411764706
+max_value_4	1.0
+max_value_5	1.0
+max_value_6	1.0
+max_value_7	1.0
+max_value_8	1.0
+max_value_9	1.0
+max_value_10	17.010583877563477
+max_value_11	13.297012329101562
+max_value_12	16.09429359436035
+max_value_13	1.0
+max_value_14	1.0
+train with: /home/roederc/work/git/biomedner/RankTrainData_webtool.txt
+develop dataset:null
+rate=0.01	last T: 200	best CorrectNum: 4346
+the BEST rate: 0.01	the BEST prediction: 	4346.0
+@relation gene_normalization
+@attribute class {1,0}
+@attribute species_in_gene_mention real
+@attribute species_nearby real
+@attribute linked_species real
+@attribute species_in_document real
+@attribute species_in_title real
+@attribute is_common_species real
+@attribute type_of_gene real
+@attribute symbol_edit_distance real
+@attribute synonyms_edit_distance real
+@attribute symbol_number_similarity real
+@attribute token_lucene_score real
+@attribute gene_in_bracket real
+@attribute gene_outside_bracket real
+@attribute synonyms_in_sentence real
+@attribute extended_gm_lucene_score real
+@data
+
+w_0	0.04916989103984916
+w_1	0.061449825183141904
+w_2	0.19119005773158296
+w_3	0.6457120100677083
+w_4	0.1543105418996238
+w_5	7.661614526375973E-4
+w_6	0.2422966513508929
+w_7	-0.04695385021047674
+w_8	-0.30582274755359884
+w_9	0.04211598923828326
+w_10	0.04860792417651439
+w_11	0.08477502053631794
+w_12	0.41757427190530805
+w_13	0.03783152704591632
+w_14	0.014432832873969449
+max_value_0	1.0
+max_value_1	1.0
+max_value_2	1.0
+max_value_3	0.8823529411764706
+max_value_4	1.0
+max_value_5	1.0
+max_value_6	1.0
+max_value_7	1.0
+max_value_8	1.0
+max_value_9	1.0
+max_value_10	17.010583877563477
+max_value_11	13.297012329101562
+max_value_12	16.09429359436035
+max_value_13	1.0
+max_value_14	1.0
+train with: /home/roederc/work/git/biomedner/RankTrainData_webtool.txt
+develop dataset:null
+rate=0.01	last T: 200	best CorrectNum: 4346
+the BEST rate: 0.01	the BEST prediction: 	4346.0
+@relation gene_normalization
+@attribute class {1,0}
+@attribute species_in_gene_mention real
+@attribute species_nearby real
+@attribute linked_species real
+@attribute species_in_document real
+@attribute species_in_title real
+@attribute is_common_species real
+@attribute type_of_gene real
+@attribute symbol_edit_distance real
+@attribute synonyms_edit_distance real
+@attribute symbol_number_similarity real
+@attribute token_lucene_score real
+@attribute gene_in_bracket real
+@attribute gene_outside_bracket real
+@attribute synonyms_in_sentence real
+@attribute extended_gm_lucene_score real
+@data
+
+w_0	0.04916989103984916
+w_1	0.061449825183141904
+w_2	0.19119005773158296
+w_3	0.6457120100677083
+w_4	0.1543105418996238
+w_5	7.661614526375973E-4
+w_6	0.2422966513508929
+w_7	-0.04695385021047674
+w_8	-0.30582274755359884
+w_9	0.04211598923828326
+w_10	0.04860792417651439
+w_11	0.08477502053631794
+w_12	0.41757427190530805
+w_13	0.03783152704591632
+w_14	0.014432832873969449
+max_value_0	1.0
+max_value_1	1.0
+max_value_2	1.0
+max_value_3	0.8823529411764706
+max_value_4	1.0
+max_value_5	1.0
+max_value_6	1.0
+max_value_7	1.0
+max_value_8	1.0
+max_value_9	1.0
+max_value_10	17.010583877563477
+max_value_11	13.297012329101562
+max_value_12	16.09429359436035
+max_value_13	1.0
+max_value_14	1.0
+train with: /home/roederc/work/git/biomedner/RankTrainData_webtool.txt
+develop dataset:null
+rate=0.01	last T: 200	best CorrectNum: 4346
+the BEST rate: 0.01	the BEST prediction: 	4346.0
+@relation gene_normalization
+@attribute class {1,0}
+@attribute species_in_gene_mention real
+@attribute species_nearby real
+@attribute linked_species real
+@attribute species_in_document real
+@attribute species_in_title real
+@attribute is_common_species real
+@attribute type_of_gene real
+@attribute symbol_edit_distance real
+@attribute synonyms_edit_distance real
+@attribute symbol_number_similarity real
+@attribute token_lucene_score real
+@attribute gene_in_bracket real
+@attribute gene_outside_bracket real
+@attribute synonyms_in_sentence real
+@attribute extended_gm_lucene_score real
+@data
+
+w_0	0.04916989103984916
+w_1	0.061449825183141904
+w_2	0.19119005773158296
+w_3	0.6457120100677083
+w_4	0.1543105418996238
+w_5	7.661614526375973E-4
+w_6	0.2422966513508929
+w_7	-0.04695385021047674
+w_8	-0.30582274755359884
+w_9	0.04211598923828326
+w_10	0.04860792417651439
+w_11	0.08477502053631794
+w_12	0.41757427190530805
+w_13	0.03783152704591632
+w_14	0.014432832873969449
+max_value_0	1.0
+max_value_1	1.0
+max_value_2	1.0
+max_value_3	0.8823529411764706
+max_value_4	1.0
+max_value_5	1.0
+max_value_6	1.0
+max_value_7	1.0
+max_value_8	1.0
+max_value_9	1.0
+max_value_10	17.010583877563477
+max_value_11	13.297012329101562
+max_value_12	16.09429359436035
+max_value_13	1.0
+max_value_14	1.0
+train with: /home/roederc/work/git/biomedner/RankTrainData_webtool.txt
+develop dataset:null
+rate=0.01	last T: 200	best CorrectNum: 4346
+the BEST rate: 0.01	the BEST prediction: 	4346.0
+@relation gene_normalization
+@attribute class {1,0}
+@attribute species_in_gene_mention real
+@attribute species_nearby real
+@attribute linked_species real
+@attribute species_in_document real
+@attribute species_in_title real
+@attribute is_common_species real
+@attribute type_of_gene real
+@attribute symbol_edit_distance real
+@attribute synonyms_edit_distance real
+@attribute symbol_number_similarity real
+@attribute token_lucene_score real
+@attribute gene_in_bracket real
+@attribute gene_outside_bracket real
+@attribute synonyms_in_sentence real
+@attribute extended_gm_lucene_score real
+@data
+
+w_0	0.04916989103984916
+w_1	0.061449825183141904
+w_2	0.19119005773158296
+w_3	0.6457120100677083
+w_4	0.1543105418996238
+w_5	7.661614526375973E-4
+w_6	0.2422966513508929
+w_7	-0.04695385021047674
+w_8	-0.30582274755359884
+w_9	0.04211598923828326
+w_10	0.04860792417651439
+w_11	0.08477502053631794
+w_12	0.41757427190530805
+w_13	0.03783152704591632
+w_14	0.014432832873969449
+max_value_0	1.0
+max_value_1	1.0
+max_value_2	1.0
+max_value_3	0.8823529411764706
+max_value_4	1.0
+max_value_5	1.0
+max_value_6	1.0
+max_value_7	1.0
+max_value_8	1.0
+max_value_9	1.0
+max_value_10	17.010583877563477
+max_value_11	13.297012329101562
+max_value_12	16.09429359436035
+max_value_13	1.0
+max_value_14	1.0
+train with: /home/roederc/work/git/biomedner/RankTrainData_webtool.txt
+develop dataset:null
+rate=0.01	last T: 200	best CorrectNum: 4346
+the BEST rate: 0.01	the BEST prediction: 	4346.0
+@relation gene_normalization
+@attribute class {1,0}
+@attribute species_in_gene_mention real
+@attribute species_nearby real
+@attribute linked_species real
+@attribute species_in_document real
+@attribute species_in_title real
+@attribute is_common_species real
+@attribute type_of_gene real
+@attribute symbol_edit_distance real
+@attribute synonyms_edit_distance real
+@attribute symbol_number_similarity real
+@attribute token_lucene_score real
+@attribute gene_in_bracket real
+@attribute gene_outside_bracket real
+@attribute synonyms_in_sentence real
+@attribute extended_gm_lucene_score real
+@data
+
+w_0	0.04916989103984916
+w_1	0.061449825183141904
+w_2	0.19119005773158296
+w_3	0.6457120100677083
+w_4	0.1543105418996238
+w_5	7.661614526375973E-4
+w_6	0.2422966513508929
+w_7	-0.04695385021047674
+w_8	-0.30582274755359884
+w_9	0.04211598923828326
+w_10	0.04860792417651439
+w_11	0.08477502053631794
+w_12	0.41757427190530805
+w_13	0.03783152704591632
+w_14	0.014432832873969449
+max_value_0	1.0
+max_value_1	1.0
+max_value_2	1.0
+max_value_3	0.8823529411764706
+max_value_4	1.0
+max_value_5	1.0
+max_value_6	1.0
+max_value_7	1.0
+max_value_8	1.0
+max_value_9	1.0
+max_value_10	17.010583877563477
+max_value_11	13.297012329101562
+max_value_12	16.09429359436035
+max_value_13	1.0
+max_value_14	1.0
+train with: /home/roederc/work/git/biomedner/RankTrainData_webtool.txt
+develop dataset:null
+rate=0.01	last T: 200	best CorrectNum: 4346
+the BEST rate: 0.01	the BEST prediction: 	4346.0
+@relation gene_normalization
+@attribute class {1,0}
+@attribute species_in_gene_mention real
+@attribute species_nearby real
+@attribute linked_species real
+@attribute species_in_document real
+@attribute species_in_title real
+@attribute is_common_species real
+@attribute type_of_gene real
+@attribute symbol_edit_distance real
+@attribute synonyms_edit_distance real
+@attribute symbol_number_similarity real
+@attribute token_lucene_score real
+@attribute gene_in_bracket real
+@attribute gene_outside_bracket real
+@attribute synonyms_in_sentence real
+@attribute extended_gm_lucene_score real
+@data
+
+w_0	0.04916989103984916
+w_1	0.061449825183141904
+w_2	0.19119005773158296
+w_3	0.6457120100677083
+w_4	0.1543105418996238
+w_5	7.661614526375973E-4
+w_6	0.2422966513508929
+w_7	-0.04695385021047674
+w_8	-0.30582274755359884
+w_9	0.04211598923828326
+w_10	0.04860792417651439
+w_11	0.08477502053631794
+w_12	0.41757427190530805
+w_13	0.03783152704591632
+w_14	0.014432832873969449
+max_value_0	1.0
+max_value_1	1.0
+max_value_2	1.0
+max_value_3	0.8823529411764706
+max_value_4	1.0
+max_value_5	1.0
+max_value_6	1.0
+max_value_7	1.0
+max_value_8	1.0
+max_value_9	1.0
+max_value_10	17.010583877563477
+max_value_11	13.297012329101562
+max_value_12	16.09429359436035
+max_value_13	1.0
+max_value_14	1.0
+train with: /home/roederc/work/git/biomedner/RankTrainData_webtool.txt
+develop dataset:null
+rate=0.01	last T: 200	best CorrectNum: 4346
+the BEST rate: 0.01	the BEST prediction: 	4346.0
+@relation gene_normalization
+@attribute class {1,0}
+@attribute species_in_gene_mention real
+@attribute species_nearby real
+@attribute linked_species real
+@attribute species_in_document real
+@attribute species_in_title real
+@attribute is_common_species real
+@attribute type_of_gene real
+@attribute symbol_edit_distance real
+@attribute synonyms_edit_distance real
+@attribute symbol_number_similarity real
+@attribute token_lucene_score real
+@attribute gene_in_bracket real
+@attribute gene_outside_bracket real
+@attribute synonyms_in_sentence real
+@attribute extended_gm_lucene_score real
+@data
+
+w_0	0.04916989103984916
+w_1	0.061449825183141904
+w_2	0.19119005773158296
+w_3	0.6457120100677083
+w_4	0.1543105418996238
+w_5	7.661614526375973E-4
+w_6	0.2422966513508929
+w_7	-0.04695385021047674
+w_8	-0.30582274755359884
+w_9	0.04211598923828326
+w_10	0.04860792417651439
+w_11	0.08477502053631794
+w_12	0.41757427190530805
+w_13	0.03783152704591632
+w_14	0.014432832873969449

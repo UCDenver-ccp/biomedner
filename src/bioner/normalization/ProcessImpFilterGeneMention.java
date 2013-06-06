@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.File;
+
 import java.util.HashMap;
 import java.util.Vector;
 import java.util.regex.Matcher;
@@ -25,10 +27,18 @@ import bioner.tools.nlptools.DocumentFullNameRecognizer;
 
 public class ProcessImpFilterGeneMention implements BioNERProcess {
 
+    String filterListFilepath;
+    public ProcessImpFilterGeneMention() {
+        filterListFilepath = GlobalConfig.ENTITYFILTER_TABULIST_PATH;
+    }
+        
+    public ProcessImpFilterGeneMention(String filterListFilepath) {
+        this.filterListFilepath = filterListFilepath;
+    }
+
 	@Override
 	public void Process(BioNERDocument document) {
-		// TODO Auto-generated method stub
-		readGMFilterList("./data/filter/tabulist.txt");
+		readGMFilterList(filterListFilepath);
 		for (BioNERSentence sentence : document.getAllSentence()) {
 			filterBySection(sentence);
 			mergeCoveredEntities(sentence, true);
@@ -314,8 +324,13 @@ public class ProcessImpFilterGeneMention implements BioNERProcess {
 	private void readGMFilterList(String filename)
 	{
 		try {
+            File x = new File(filename);
 			BufferedReader freader = new BufferedReader(new FileReader(filename));
 			String line = freader.readLine();
+            if (line == null) { 
+                System.out.println("ProcessImpFilterGeneMention.readGMFilterList() can't read first line of " + filename + "\""); 
+                throw new RuntimeException("ProcessImpFilterGeneMention.readGMFilterList() can't read first line of " + filename + "\""); 
+            }
 			StringBuffer sb = new StringBuffer(line);
 			while ((line=freader.readLine()) != null) {
 				sb.append("|");
@@ -324,11 +339,13 @@ public class ProcessImpFilterGeneMention implements BioNERProcess {
 			freader.close();
 			m_GMFilterPattern = Pattern.compile(sb.toString());
 		} catch (FileNotFoundException e) {
-            System.err.println("error on ProcessImpFilterGeneMention.readGMFilterList() " + e);
+            System.err.println("error on ProcessImpFilterGeneMention.readGMFilterList() \"" + filename +  "\"");
+            System.err.println("exception is: " + e);
 			e.printStackTrace();
             throw new RuntimeException(e);
 		} catch (IOException e) {
-            System.err.println("error on ProcessImpFilterGeneMention.readGMFilterList() " + e);
+            System.err.println("error on ProcessImpFilterGeneMention.readGMFilterList() \"" + filename + "\"");
+            System.err.println("exception is: " + e);
 			e.printStackTrace();
             throw new RuntimeException(e);
 		}
