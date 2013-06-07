@@ -33,6 +33,7 @@ public class BC3GNDataFileReader implements FeatureBuildDocumentBuilder {
 	DocumentBuilderFactory domfac;
 	DocumentBuilder dombuilder;
 	private String m_fileDir = "../../BC3GN/xmls/";
+	private int currentDocSize=0;
 
 	public BC3GNDataFileReader()
 	{
@@ -59,7 +60,6 @@ public class BC3GNDataFileReader implements FeatureBuildDocumentBuilder {
 			domfac.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
 			dombuilder = domfac.newDocumentBuilder();
 		} catch (ParserConfigurationException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
             throw new RuntimeException(e);
 		}
@@ -67,7 +67,6 @@ public class BC3GNDataFileReader implements FeatureBuildDocumentBuilder {
 	
 	@Override
 	public BioNERDocument[] buildDocuments() {
-		// TODO Auto-generated method stub
 		File[] files = (new File(m_fileDir)).listFiles();
 		BioNERDocument[] documents = new BioNERDocument[files.length];
 		try {
@@ -97,15 +96,12 @@ public class BC3GNDataFileReader implements FeatureBuildDocumentBuilder {
                 }
 			}
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
             throw new RuntimeException(e);
 		} catch (SAXException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
             throw new RuntimeException(e);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
             throw new RuntimeException(e);
 		}
@@ -117,7 +113,6 @@ public class BC3GNDataFileReader implements FeatureBuildDocumentBuilder {
 		String filename = file.getName();
 		int pos = filename.indexOf('.');
 		String docID = filename.substring(0, pos);
-	System.err.println("XXXXXX docID is:\"" + docID + "\"");	
 		InputStream is;
 		try {
 			is = new FileInputStream(file.getAbsolutePath());
@@ -135,15 +130,12 @@ public class BC3GNDataFileReader implements FeatureBuildDocumentBuilder {
 			document.linkComponent();
 			return document;
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
             throw new RuntimeException(e);
 		} catch (SAXException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
             throw new RuntimeException(e);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
             throw new RuntimeException(e);
 		}
@@ -169,15 +161,12 @@ public class BC3GNDataFileReader implements FeatureBuildDocumentBuilder {
 			document.linkComponent();
 			return document;
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
             throw new RuntimeException(e);
 		} catch (SAXException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
             throw new RuntimeException(e);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
             throw new RuntimeException(e);
 		}
@@ -187,6 +176,7 @@ public class BC3GNDataFileReader implements FeatureBuildDocumentBuilder {
 	
 	private void parseDocumentTree(Node root, BioNERDocument document)
 	{
+		int currentDocLength=0;
 		for(Node node=root.getFirstChild(); node!=null; node=node.getNextSibling())
 		{
 			if(node.getNodeType()!=Node.ELEMENT_NODE) continue;
@@ -196,8 +186,9 @@ public class BC3GNDataFileReader implements FeatureBuildDocumentBuilder {
 				String nodeValue = getNodeFullString(node);
 				if(nodeValue!=null && document.getTitle()==null)
 				{
-					BioNERSentence sentence = new BioNERSentence(nodeValue, 0);
+					BioNERSentence sentence = new BioNERSentence(nodeValue, 0, currentDocLength);
 					document.setTitle(sentence);
+					currentDocLength += sentence.getLength();
 				}
 			}
 			else if(nodeName.equals("abstract"))
@@ -209,7 +200,9 @@ public class BC3GNDataFileReader implements FeatureBuildDocumentBuilder {
 					absSection.setType("abstract");
 					document.setAbstractSection(absSection);
 				}
-				parseSectionTree(node, absSection);
+				parseSectionTree(node, absSection, currentDocLength);
+				currentDocLength += absSection.getLength();
+System.out.println("ABSTRACT LENGTH: " + absSection.getLength());
 			}
 			else if(nodeName.equals("sec"))
 			{
@@ -218,9 +211,11 @@ public class BC3GNDataFileReader implements FeatureBuildDocumentBuilder {
 				if(typeNode==null)
 				{
 					BioNERSection section = new BioNERSection();
-					parseSectionTree(node, section);
+					parseSectionTree(node, section, currentDocLength);
 					section.setType("text");
 					document.addSection(section);
+					currentDocLength += section.getLength();
+//System.out.println("SECTION LENGTH: " + section.getLength());
 				}
 				else
 				{
@@ -230,9 +225,11 @@ public class BC3GNDataFileReader implements FeatureBuildDocumentBuilder {
 					//		&& !sec_typeStr.contains("material"))
 					{
 						BioNERSection section = new BioNERSection();
-						parseSectionTree(node, section);
+						parseSectionTree(node, section, currentDocLength);
 						section.setType(sec_typeStr);
 						document.addSection(section);
+						currentDocLength += section.getLength();
+//System.out.println("SECTION 2 LENGTH: " + section.getLength());
 					}
 				}
 			}
@@ -242,8 +239,12 @@ public class BC3GNDataFileReader implements FeatureBuildDocumentBuilder {
 			}
 		}
 	}
-	private void parseSectionTree(Node root, BioNERSection section)
+
+	private void parseSectionTree(Node root, BioNERSection section, int currentDocLength)
 	{
+		// need local copy to work up to full section.
+		// global copy is updated up in parseDocumentTree and will catch up there.
+
 		for(Node node=root.getFirstChild(); node!=null; node=node.getNextSibling())
 		{
 			if(node.getNodeType()!=Node.ELEMENT_NODE) continue;
@@ -255,35 +256,41 @@ public class BC3GNDataFileReader implements FeatureBuildDocumentBuilder {
 					String nodeValue = getNodeFullString(node);
 					if(nodeValue!=null)
 					{
-						BioNERSentence sentence = new BioNERSentence(nodeValue, 0);
+						BioNERSentence sentence = new BioNERSentence(nodeValue, 0, currentDocLength);
 						section.setTitleSentence(sentence);
+						currentDocLength += sentence.getLength();
+//System.out.println("SENTENCE LENGTH: " + sentence.getLength());
 					}
 				}
 			}
 			else if(nodeName.equals("p"))
 			{
-				BioNERParagraph paragraph = new BioNERParagraph();
-				parseParagraphTree(node, paragraph);
+				BioNERParagraph paragraph = new BioNERParagraph(currentDocLength);
+				parseParagraphTree(node, paragraph, currentDocLength);
 				section.addParagraph(paragraph);
+				currentDocLength += paragraph.getLength();
+//System.out.println("Paragraph LENGTH: " + paragraph.getLength());
 			}
 			else if(nodeName.equals("sec"))
 			{
 				BioNERSection subSection = new BioNERSection();
-				parseSectionTree(node, subSection);
+				parseSectionTree(node, subSection, currentDocLength);
 				section.addSubSection(subSection);
+				currentDocLength += section.getLength();
+//System.out.println("SECTION 3 LENGTH: " + section.getLength());
 			}
 			else
 			{
-				parseSectionTree(node, section);
+				///System.out.println("-------->really? it goes in here? parseSectionTree()");
+				parseSectionTree(node, section, currentDocLength);
 			}
 		}
 	}
 	
 	private SentenceSpliter sentenceSpliter = NLPToolsFactory.getSentenceSpliter();
-	private void parseParagraphTree(Node root, BioNERParagraph paragraph)
-	{
-		
 
+	private void parseParagraphTree(Node root, BioNERParagraph paragraph, int currentDocLength)
+	{
 		Vector<String> italicVector = new Vector<String>();
 		for(Node node = root.getFirstChild(); node!=null; node = node.getNextSibling())
 		{
@@ -310,7 +317,7 @@ public class BC3GNDataFileReader implements FeatureBuildDocumentBuilder {
 		String paraText = getNodeFullString(root);
 		String[] sentenceTexts = sentenceSpliter.sentenceSplit(paraText);
 		paragraph.setText(paraText);
-		paragraph.setSentence(sentenceTexts);
+		paragraph.setSentence(sentenceTexts, currentDocLength);
 		
 		//Add the italic text to the sentence as the gene mentions.
 		Vector<BioNERSentence> sentences = paragraph.getSentence();
@@ -359,7 +366,8 @@ public class BC3GNDataFileReader implements FeatureBuildDocumentBuilder {
 			value += getNodeFullString(node);
 		}
 		
-		
+
+		// TODO: understand UTF-8 handling here		
 		char[] charArray = value.toCharArray();
 		for(int i=0; i<charArray.length; i++)
 		{

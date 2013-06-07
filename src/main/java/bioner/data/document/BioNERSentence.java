@@ -42,10 +42,13 @@ public class BioNERSentence {
 	
 	public BioNERSentence(String sentence, int begin, int docBegin) {
 		setSentenceText(sentence);
-		this.m_Begin = begin;
-		this.m_DocBegin = docBegin;
+
 		this.m_Size = this.m_text.length();
+
+		this.m_Begin = begin;
 		this.m_End = this.m_Begin + this.m_Size;
+
+		this.m_DocBegin = docBegin;
 		this.m_DocEnd = this.m_DocBegin + this.m_Size;
 	}
 	
@@ -102,7 +105,7 @@ public class BioNERSentence {
 	/**
 	 * This is the end of the sentence relative to the document.
      */
-	public int getDocEnd() { return this.m_End; }
+	public int getDocEnd() { return this.m_DocEnd; }
 	
 	
 	

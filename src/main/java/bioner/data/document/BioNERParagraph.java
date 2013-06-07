@@ -8,7 +8,6 @@ public class BioNERParagraph {
 	private BioNERSection m_section = null;
 	private int docBegin=0;
 
-
 	@Deprecated
 	public BioNERParagraph() {}
 	
@@ -28,19 +27,23 @@ public class BioNERParagraph {
 	}
 
 	public void setSentence(String[] sentences) {
-		int beginIndex = 0;
-		for (int i=0; i<sentences.length; i++) {
-			int pos = m_text.indexOf(sentences[i], beginIndex);
-if (pos == -1)
-	System.out.println(" trouble " + pos);
+		setSentence(sentences, 0);
+	}
 
-			System.out.println("BioNERParagraph: sentence start:" + (docBegin +  pos) + " " + beginIndex);
-			BioNERSentence sentence = new BioNERSentence(sentences[i], pos, docBegin +  pos);
-System.out.println("WTF1:" + sentence.getDocBegin());
+	public void setSentence(String[] sentences,int  currentDocLength) {
+		int beginIndex = 0;
+
+		for (int i=0; i<sentences.length; i++) {
+			// try to map sentence back to paragraph text (m_text).
+			// This is odd because they consist of different things.
+			// The sentence text has been tokenized and has added spaces.
+			int pos = m_text.indexOf(sentences[i], beginIndex);
+
+			BioNERSentence sentence = new BioNERSentence(sentences[i], pos, currentDocLength );
 			beginIndex += sentences[i].length();
+			currentDocLength += sentences[i].length();
 			sentence.setParagraph(this);
 			m_sentenceVector.add(sentence);
-System.out.println("WTF2:" + sentence.getDocBegin());
 		}
 	}
 
@@ -61,5 +64,28 @@ System.out.println("WTF2:" + sentence.getDocBegin());
 		for (BioNERSentence sentence : this.m_sentenceVector) {
 			sentence.setParagraph(this);
 		}
+	}
+
+	public int getLength() {
+		int paragraphLength=0;
+		for (BioNERSentence bns : getSentence()) {
+			paragraphLength += bns.getLength();
+		}
+		return paragraphLength;	
+
+		/***
+		// This does indeed throw. The individual sentences
+		// have been tokenized and are longer.
+		if (sentenceLength == getText().length()) {
+			return paragraphLength;	
+		}
+		else {
+			throw new RuntimeException("BioNERParagraph.getLength() has inconsistent results:" 
+				+ getText().length() + " and " + sentenceLength 
+				+ " num sentences:" + getSentence().size() 
+				+ " difference: " + (getText().length() - sentenceLength) 
+			);
+		}
+		***/
 	}
 }

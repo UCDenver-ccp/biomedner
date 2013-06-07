@@ -14,6 +14,13 @@ public class BioNERSection {
 	private BioNERDocument m_document = null;
 	private BioNERSection m_parentSection = null;
 	private String m_type = null;
+	private int currentDocLength=0;
+
+	public BioNERSection() {}
+	public BioNERSection(int currentDocLength) {
+		this.currentDocLength = currentDocLength;
+	}
+
 	public void setTitleSentence(BioNERSentence titleSentence) {
 		this.m_titleSentence = titleSentence;
 		this.m_titleSentence.setSection(this);
@@ -107,4 +114,12 @@ public class BioNERSection {
 	public BioNERSection getParentSection() {
 		return m_parentSection;
 	}
+
+	public int getLength() {
+		int length=0;
+		for (BioNERSentence bns : getAllSentence()) {
+			length += bns.getSentenceText().length();	
+		}
+		return length;
+	}	
 }

@@ -59,6 +59,7 @@ public class BioNERDocument {
 		}
 		
 		//Get all sentences from all sections.
+		// BUG? does it miss the title sentence?
 		for(int i=0; i<m_sectionVector.size(); i++)
 		{
 			Vector<BioNERSentence> sentenceParaVector = m_sectionVector.elementAt(i).getAllSentence();
@@ -86,15 +87,8 @@ public class BioNERDocument {
 		{
 			sentenceVector.add(sentenceParaVector.elementAt(i));
 		}
-		
-		//Copy to Array.
-		int size = sentenceVector.size();
-		BioNERSentence[] sentences = new BioNERSentence[size];
-		for(int i=0; i<size; i++)
-		{
-			sentences[i] = sentenceVector.elementAt(i);
-		}
-		return sentences;
+	
+		return sentenceVector.toArray(new BioNERSentence[0]);	
 	}
 	
 	/**

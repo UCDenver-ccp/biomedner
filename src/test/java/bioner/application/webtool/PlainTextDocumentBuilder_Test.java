@@ -11,33 +11,35 @@ import bioner.data.document.BioNERSentence;
 
 public class PlainTextDocumentBuilder_Test {
 
-  File file = new File("/Users/roederc/work/sources/biocreativeiii/BC3GNTraining/xmls/2660273.nxml");
+  	String fileString = "/Users/roederc/work/git/biomedner/src/main/resources/2660273.txt";
+  	File file = new File("/Users/roederc/work/git/biomedner/src/main/resources/2660273.txt");
+	String lines[] = {
+		"The NOD/RIP2 Pathway Is Essential for Host Defenses Against Chlamydophila pneumoniae Lung Infection",
+		"Author Summary",
+		"Here we investigated the role of the Nod\\/Rip2 pathway in host responses to Chlamydophila pneumoniae induced pneumonia in mice .",
+		"Rip2 \\/ mice infected with C. pneumoniae exhibited impaired iNOS expression and NO production , and delayed neutrophil recruitment to the lungs ."
+	};
 
-	public void sample_test() {
-		assertEquals(new Integer(5), new Integer(5));
-	}
-
+	@Test
 	public void test() {
- 		BC3GNDataFileReader reader =  new  BC3GNDataFileReader();
-        BioNERDocument doc = reader.getOneDocument(file);
+ 		PlainTextDocumentBuilder reader =  new  PlainTextDocumentBuilder();
+        BioNERDocument doc = reader.getOneDocument(fileString);
         StringBuilder sb = new StringBuilder();
-        for (BioNERSentence sentence : doc.getFullTextSentences()) {
+
+        BioNERSentence[] sentences = doc.getAllSentence();
+
+		if (false) { 
+        for (BioNERSentence sentence : doc.getAllSentence()) {
             sb.append(sentence.getSentenceText());
             sb.append("\n");
+			System.out.println(sentence.getSentenceText());
         }
+		}
+
+
+		assertEquals(lines[0], sentences[0].getSentenceText());
+		assertEquals(lines[1], sentences[1].getSentenceText());
+		assertEquals(lines[2], sentences[2].getSentenceText());
+		assertEquals(lines[3], sentences[3].getSentenceText());
     }
-/**
-
-o String[] lines = jcas.getDocumentText().split("\n");
-        String docId = UIMA_Util.getDocumentID(jcas);
-        BioNERDocument doc = PlainTextDocumentBuilder.getOneDocumentFromStringArray(lines, docId);
-
-        // dEBUG check out this doc.
-        BioNERSentence[] foo = doc.getAllSentence();
-        for (BioNERSentence bns : foo) {
-            System.out.println("AE DEBUG:   begin:" + bns.getBegin() + ", docBegin" + bns.getDocBegin());
-        }
-
-	}
-**/
 }
