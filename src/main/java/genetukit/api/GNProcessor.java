@@ -154,12 +154,16 @@ public class GNProcessor {
 			Vector<BioNEREntity> gmVector = geneIDMap.get(candidates[i].getRecord().getID());
 			for (BioNEREntity gmEntity : gmVector) {
 				items[i].addGeneMention(gmEntity.getText());
+
+				System.out.println("Processor:" + gmEntity.get_Sentence().getSentenceText());
+				//System.out.println("Processor:" 
+				//	+ docText.substring(
+				//		gmEntity.get_Sentence().getDocBegin(),
+				//j		gmEntity.get_Sentence().getDocEnd());
                 items[i].addGNSpan(new GNSpan(
                     gmEntity.getText(), 
-                    //gmEntity.get_Sentence().getBegin() + gmEntity.get_Begin(), 
-                    //gmEntity.get_Sentence().getBegin() + gmEntity.get_End(),
-                    gmEntity.get_Begin(), 
-                    gmEntity.get_End(),
+                    gmEntity.get_Sentence().getDocBegin() + gmEntity.get_Begin(), 
+                    gmEntity.get_Sentence().getDocBegin() + gmEntity.get_End(),
                     gmEntity.get_Sentence().getSentenceText(),
                     gmEntity.get_Sentence() ) );
 			}

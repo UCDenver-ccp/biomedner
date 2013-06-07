@@ -16,8 +16,10 @@ public class BioNERSentence {
 	
 	private BioNERDocument m_document = null;
 	private BioNERSection m_section = null;
-	private int m_Begin;
+	private int m_Begin; 
 	private int m_End;
+	private int m_DocBegin;
+	private int m_DocEnd;
 	private int m_Size;
 	private BioNERToken[] m_tokens=null;
 	
@@ -25,13 +27,26 @@ public class BioNERSentence {
 	private static TokenNormalize m_tokenNormalizer = SentenceNERProcessFactory.createrTokenNormalize();
 	
 	private BioNERParagraph m_paragraph = null;
-	
+
+	/**
+	 * @deprecated use the constructor that includes the beginning relative to the document
+     */
+	@Deprecated	
 	public BioNERSentence(String sentence, int begin)
 	{
 		setSentenceText(sentence);
 		this.m_Begin = begin;
 		this.m_Size = this.m_text.length();
 		this.m_End = this.m_Begin + this.m_Size;
+	}
+	
+	public BioNERSentence(String sentence, int begin, int docBegin) {
+		setSentenceText(sentence);
+		this.m_Begin = begin;
+		this.m_DocBegin = docBegin;
+		this.m_Size = this.m_text.length();
+		this.m_End = this.m_Begin + this.m_Size;
+		this.m_DocEnd = this.m_DocBegin + this.m_Size;
 	}
 	
 	public void setSentenceText(String text)
@@ -67,18 +82,27 @@ public class BioNERSentence {
 	}
 	
 	//Getters for position info.
-	public int getBegin()
-	{
-		return this.m_Begin;
-	}
-	public int getEnd()
-	{
-		return this.m_End;
-	}
-	public int getLength()
-	{
-		return this.m_Size;
-	}
+	/**
+	 * This is the beginning of the sentence relative to the paragraph.
+     */
+	public int getBegin() { return this.m_Begin; }
+
+	/**
+	 * This is the end of the sentence relative to the paragraph.
+     */
+	public int getEnd() { return this.m_End; }
+
+	public int getLength() { return this.m_Size; }
+
+	/**
+	 * This is the beginning of the sentence relative to the document.
+     */
+	public int getDocBegin() { return this.m_DocBegin; }
+
+	/**
+	 * This is the end of the sentence relative to the document.
+     */
+	public int getDocEnd() { return this.m_End; }
 	
 	
 	

@@ -9,8 +9,9 @@ import java.util.Vector;
 
 import bioner.application.api.BioNERDocumentBuilder;
 import bioner.data.document.BioNERDocument;
-import bioner.data.document.BioNERParagraph;
 import bioner.data.document.BioNERSection;
+import bioner.data.document.BioNERParagraph;
+import bioner.data.document.BioNERSentence;
 import bioner.global.GlobalConfig;
 import bioner.tools.nlptools.NLPToolsFactory;
 import bioner.tools.nlptools.SentenceSpliter;
@@ -19,6 +20,7 @@ public class PlainTextDocumentBuilder implements BioNERDocumentBuilder {
 
 	private static SentenceSpliter sentenceSpliter = NLPToolsFactory.getSentenceSpliter();
 	private String m_filename;
+
 	public PlainTextDocumentBuilder(String filename)
 	{
 		m_filename = filename;
@@ -30,6 +32,7 @@ public class PlainTextDocumentBuilder implements BioNERDocumentBuilder {
 	public static BioNERDocument getOneDocument(String filename)
 	{
 		BioNERDocument doc = new BioNERDocument();
+		int currentDocLength=0;
 		File file = new File(filename);
 		String id = file.getName();
 		int pos = id.indexOf('.');
@@ -41,28 +44,35 @@ public class PlainTextDocumentBuilder implements BioNERDocumentBuilder {
 			// title 
 			String line = freader.readLine();
 			doc.setTitle(line);
-
+			currentDocLength += line.length();
+			System.out.println("PlainTextDocumentBuilder.getOneDocument(): docLength: " + currentDocLength);
 
 			// abstract
 			line = freader.readLine();
+
 			String[] sentences = sentenceSpliter.sentenceSplit(line);
 			String absText = "";
-			for(int j=0; j<sentences.length; j++)
-			{
+			for (int j=0; j<sentences.length; j++) {
+				// CHECK: potentially adding space to source texte
+				// Q: does the splitter take these out? 
+				// Why is this here?? It makes the paragraph text different from the combined sentence text.
 				absText += sentences[j]+ " ";
 			}
 			BioNERSection section = new BioNERSection();
-			BioNERParagraph paragraph = new BioNERParagraph();
+			BioNERParagraph paragraph = new BioNERParagraph(currentDocLength);
 			paragraph.setText(absText);
 			paragraph.setSentence(sentences);
 			section.addParagraph(paragraph);
 			doc.setAbstractSection(section);
+
+			currentDocLength += line.length();
+			System.out.println("PlainTextDocumentBuilder.getOneDocument(): docLength: " + currentDocLength);
 		
 
 			// following sections:
 			// one line read, one paragraph, one section
-			while((line=freader.readLine())!=null)
-			{
+			while ((line=freader.readLine())!=null) {
+
 				sentences = sentenceSpliter.sentenceSplit(line);
 				String paraText = "";
 				for(int j=0; j<sentences.length; j++)
@@ -70,24 +80,35 @@ public class PlainTextDocumentBuilder implements BioNERDocumentBuilder {
 					paraText += sentences[j]+ " ";
 				}
 				section = new BioNERSection();
-				paragraph = new BioNERParagraph();
-				// bug?
-				//paragraph.setText(absText);
+				paragraph = new BioNERParagraph(currentDocLength);
 				paragraph.setText(paraText);
 				paragraph.setSentence(sentences);
 				section.addParagraph(paragraph);
 				doc.addSection(section);
+
+				currentDocLength += line.length();
+				System.out.println("PlainTextDocumentBuilder.getOneDocument(): docLength: " + currentDocLength);
 			}
 			
 			freader.close();
 			doc.linkComponent();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			throw new RuntimeException(e);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			throw new RuntimeException(e);
 		}
+
+// am i high? DEBUG
+		{	
+	    BioNERSentence[] foo = doc.getAllSentence();
+        for (BioNERSentence bns : foo) {
+            System.out.println("PlainTextDocumentBuilder.getOneDcoumnet() DEBUG:   begin:" + bns.getBegin() + ", docBegin" + bns.getDocBegin());
+        }
+		}	
+
+
 		return doc;
 	}
 
@@ -96,9 +117,11 @@ public class PlainTextDocumentBuilder implements BioNERDocumentBuilder {
 	{
 		BioNERDocument doc = new BioNERDocument();
 		doc.setID(docId);
+		int currentDocLength=0;
 
 		// title 
 		doc.setTitle(lines[0]);
+		currentDocLength += lines[0].length();
 
 
 		// abstract
@@ -109,11 +132,12 @@ public class PlainTextDocumentBuilder implements BioNERDocumentBuilder {
 				absText += sentences[j]+ " ";
 			}
 			BioNERSection section = new BioNERSection();
-			BioNERParagraph paragraph = new BioNERParagraph();
+			BioNERParagraph paragraph = new BioNERParagraph(currentDocLength);
 			paragraph.setText(absText);
 			paragraph.setSentence(sentences);
 			section.addParagraph(paragraph);
 			doc.setAbstractSection(section);
+			currentDocLength += lines[1].length();
 		}	
 
 		// following sections:
@@ -126,18 +150,32 @@ public class PlainTextDocumentBuilder implements BioNERDocumentBuilder {
 					paraText += sentences[j]+ " ";
 				}
 				BioNERSection section = new BioNERSection();
-				BioNERParagraph paragraph = new BioNERParagraph();
+				BioNERParagraph paragraph = new BioNERParagraph(currentDocLength);
 				paragraph.setText(paraText);
 				paragraph.setSentence(sentences);
 				section.addParagraph(paragraph);
 				doc.addSection(section);
+
+				currentDocLength += lines[i].length();
 			}
 		}
 		
 		doc.linkComponent();
+		{	
+	    BioNERSentence[] foo = doc.getAllSentence();
+        for (BioNERSentence bns : foo) {
+            System.out.println("PlainTextDocumentBuilder.getOneDcoumentFromStringArray() DEBUG:   begin:" + bns.getBegin() + ", docBegin" + bns.getDocBegin());
+            System.out.println("PlainTextDocumentBuilder.getOneDcoumentFromStringArray() DEBUG: " + bns.getSentenceText());
+        }
+		}	
 		return doc;
 	}
 
+	/**
+	 *  TODO: BUG this assumes only 2 lines per document
+	 * @deprecated
+	 */
+	@Deprecated
 	@Override
 	public BioNERDocument[] buildDocuments() {
 		// TODO Auto-generated method stub
@@ -163,10 +201,13 @@ public class PlainTextDocumentBuilder implements BioNERDocumentBuilder {
 			int pos = id.indexOf('.');
 			id = id.substring(0, pos);
 			docs[i].setID(id);
+			int currentDocLength=0;
 			try {
 				BufferedReader freader = new BufferedReader(new FileReader(file));
 				String line = freader.readLine();
 				docs[i].setTitle(line);
+				currentDocLength += line.length();
+
 				freader.readLine();
 				line = freader.readLine();
 				freader.close();
@@ -177,10 +218,12 @@ public class PlainTextDocumentBuilder implements BioNERDocumentBuilder {
 					absText += sentences[j]+ " ";
 				}
 				BioNERSection section = new BioNERSection();
-				BioNERParagraph paragraph = new BioNERParagraph();
+				BioNERParagraph paragraph = new BioNERParagraph(currentDocLength);
 				paragraph.setText(absText);
 				paragraph.setSentence(sentences);
 				section.addParagraph(paragraph);
+				currentDocLength += line.length();
+
 				docs[i].setAbstractSection(section);
 				docs[i].linkComponent();
 			} catch (FileNotFoundException e) {
@@ -190,6 +233,12 @@ public class PlainTextDocumentBuilder implements BioNERDocumentBuilder {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		{	
+	    BioNERSentence[] foo = docs[i].getAllSentence();
+        for (BioNERSentence bns : foo) {
+            System.out.println("PlainTextDocumentBuilder.buildDocuments() DEBUG:   begin:" + bns.getBegin() + ", docBegin" + bns.getDocBegin());
+        }
+		}	
 		}
 		return docs;
 	}

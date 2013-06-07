@@ -177,10 +177,16 @@
 			<artifactId>CRFPP_JNI</artifactId> 
 			<version>CRFPP_JNI</version>
 		</dependency>
+
+		<dependency>
+      		<groupId>junit</groupId>
+      		<artifactId>junit</artifactId>
+      		<version>4.8.1</version>
+      		<scope>test</scope>
+    	</dependency>
     </dependencies>
 
 	<build>
-		<sourceDirectory>src</sourceDirectory>
 	
 		<plugins>
 		<!-- run with plugin parameters below or:
