@@ -190,9 +190,8 @@
 	
 		<plugins>
 		<!-- run with plugin parameters below or:
-  		  	 mvn exec:java -Dexec.mainClass="foo.Bar" -Dexec.args="arg0 arg1"
+  		  	 mvn exec:java -Djava.library.path=/Users/roederc/work/git/biomedner2/biomedner -Dexec.mainClass="foo.Bar" -Dexec.args="arg0 arg1"
 		-->
-<!--
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
@@ -213,7 +212,6 @@
                     </arguments>
                 </configuration>
 			</plugin>
--->
 		</plugins>
 	</build>
 

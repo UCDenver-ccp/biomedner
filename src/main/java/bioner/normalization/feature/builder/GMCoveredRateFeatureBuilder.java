@@ -52,7 +52,6 @@ public class GMCoveredRateFeatureBuilder implements NormalizationPairFeatureBuil
 
 	private static boolean isContained(String str, Vector<String> vector) {
 
-        // WTF 
 		if (str.equals("1")) {//When the str is 1, if the other name has no digital, return true.
 			boolean hasNum = false;
 			for(String strV : vector) {

@@ -77,14 +77,20 @@ public class DocumentFullNameRecognizer {
 					
 					if(longName==null || !isCorrectFullName(abbStr, longName))
 					{
-						int formerEndPos = matcher.start();
-						int formerBeginPos = getFormTextBeginPosition(sentence, formerEndPos);
-						String formerText = text.substring(formerBeginPos, formerEndPos);
-						longName = AbbreviationFinder.findBestLongForm(abbStr, formerText);
-						if(longName!=null && isCorrectFullName(abbStr, longName))
-						{
-							map.put(abbStr, longName);
-							map.put(longName, abbStr);
+						try {
+							int formerEndPos = matcher.start();
+							int formerBeginPos = getFormTextBeginPosition(sentence, formerEndPos);
+							String formerText = text.substring(formerBeginPos, formerEndPos);
+							longName = AbbreviationFinder.findBestLongForm(abbStr, formerText);
+							if(longName!=null && isCorrectFullName(abbStr, longName))
+							{
+								map.put(abbStr, longName);
+								map.put(longName, abbStr);
+							}
+						}
+						catch (Exception e) {
+							System.out.println("ERROR: DocumentFullNameRecognizer choked on " 
+								+ sentence.getSentenceText() + " , ignored");
 						}
 					}
 					

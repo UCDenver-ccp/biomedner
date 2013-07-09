@@ -10,6 +10,8 @@ export MAVEN_OPTS="-Xmx2g -d64"
 # main body of crfpp.
 export LD_LIBRARY_PATH=.:/usr/local/lib
 
+MVN_FLAGS="-o -e"
+
 # phases
 # - DB & Lucene
 CREATE_DB=0
@@ -44,7 +46,7 @@ fi
 GENE_INFO=gene_info.gz
 if (( $CREATE_DB )) 
 then
-	mvn -e exec:java -Dexec.mainClass="bioner.normalization.data.database.MySQLDatabaseBuilder" \
+	mvn $MVN_FLGAS  exec:java -Dexec.mainClass="bioner.normalization.data.database.MySQLDatabaseBuilder" \
 				 -Dexec.args="$GENE_INFO" > /dev/null
 	STATUS=$?
 	if (( $STATUS != 0 ))
@@ -77,7 +79,7 @@ CRFPP_MODEL=$BIOMED_NER_HOME/train/Crfpp.gm.model
 if (( $PREPARE_TRAIN )) 
 then
 	echo "maven.sh: preparing training data"
-	mvn -e exec:java -Dexec.mainClass="crf.featurebuild.bc2gm.BC2GMFeatureBuildRun" \
+	mvn $MVN_FLAGS exec:java -Dexec.mainClass="crf.featurebuild.bc2gm.BC2GMFeatureBuildRun" \
 				 -Dexec.args="$TRAIN_FILE $EVAL_FILE $FEATURE_FILE" > /dev/null
 	STATUS=$?
 	if (( $STATUS != 0 ))
@@ -117,7 +119,7 @@ echo "LD_LIBRARY_PATH: $LD_LIBRARY_PATH"
 # Pipeline stage 1: BC3GNBuildNormalizationTrainData
 #mvn -e exec:java -Dexec.mainClass="bioner.application.bc3gn.BC3GNBuildNormalizationTrainData" \
 #                 -Dexec.args="$XMLS_DIR_32 $GENE_LIST_FILE $NORM_FILE_BC3GN $CRFPP_MODEL"  
-mvn -e exec:java -Dexec.mainClass="bioner.application.webtool.BC3GNBuildNormalizationTrainData" \
+mvn $MVN_FLAGS exec:java -Dexec.mainClass="bioner.application.webtool.BC3GNBuildNormalizationTrainData" \
                  -Dexec.args="$XMLS_DIR_32 $GENE_LIST_FILE $NORM_FILE $CRFPP_MODEL $FILTER_FILE"
 
 	STATUS=$?
@@ -139,7 +141,7 @@ rm $NORM_FILE.model 2> /dev/null > /dev/null
 RERANK_DATA=RerankTrainData_webtool.txt
 if (( $RERANK )) 
 then
-mvn -e exec:java -Dexec.mainClass="bioner.application.webtool.rank.BC3GNBuildRerankTrainData" \
+mvn $MVN_FLAGS exec:java -Dexec.mainClass="bioner.application.webtool.rank.BC3GNBuildRerankTrainData" \
 				  -Dexec.args="$XMLS_DIR_32 $GENE_LIST_FILE $NORM_FILE $FILTER_FILE $RERANK_DATA"  
 	STATUS=$?
 	if (( $STATUS != 0 ))
@@ -167,7 +169,7 @@ DIST_TRAIN_DATA=train/TrainData_1.txt
 DIST_RERANK_DATA=train/RerankTrainData_1.txt
 if (( $TASK )) 
 then
-mvn -e exec:java -Dexec.mainClass="bioner.application.webtool.BC3GNTaskRun" \
+mvn $MVN_FLAGS exec:java -Dexec.mainClass="bioner.application.webtool.BC3GNTaskRun" \
                  -Dexec.args="$XMLS_DIR $NORM_FILE $FILTER_FILE $RERANK_DATA $GN_TXT"  
 	STATUS=$?
 	if (( $STATUS != 0 ))
@@ -180,7 +182,8 @@ fi
 if (( $RUN )) 
 then
 ## args are all different here, but what files does it use? where does it find them?:
-mvn -e exec:java -Dexec.mainClass="bioner.application.webtool.GNRun" \
+mvn $MVN_FLAGS  exec:java -Dexec.mainClass="bioner.application.webtool.GNRun" \
+				-Djava.library.path=/Users/roederc/work/git/biomedner2/biomedner \
 				  -Dexec.args="-x $XMLS_DIR/2660273.nxml $CRFPP_MODEL $NORM_FILE $RERANK_DATA $FILTER_FILE"
 				  #-Dexec.args="-x $XMLS_DIR $CRFPP_MODEL $NORM_FILE $RERANK_DATA"
 				  ##-Dexec.args="-x $XMLS_DIR/2660273.nxml /home/roederc/GeneTUKit/GeneTUKit/train/model  $NORM_FILE $DIST_RERANK_DATA -banner"
