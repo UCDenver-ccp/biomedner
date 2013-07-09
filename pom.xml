@@ -189,8 +189,8 @@
 	<build>
 	
 		<plugins>
-		<!-- run with plugin parameters below or:
-  		  	 mvn exec:java -Djava.library.path=/Users/roederc/work/git/biomedner2/biomedner -Dexec.mainClass="foo.Bar" -Dexec.args="arg0 arg1"
+		<!-- run like so (where /Users/roederc/... is the path of the libCRFPP_JNI.dylib/libCRFPP_JNI.so:
+  		  	 mvn exec:java -Djava.library.path=/Users/roederc/work/git/biomedner2/biomedner 
 		-->
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>

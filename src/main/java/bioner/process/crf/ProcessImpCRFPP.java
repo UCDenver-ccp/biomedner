@@ -31,7 +31,9 @@ public class ProcessImpCRFPP implements BioNERProcess {
 	  catch (UnsatisfiedLinkError e) {
 	    System.err.println("Error in ProcessImpCRFPP (static): Cannot load the example native code.\nMake sure your LD_LIBRARY_PATH contains \'.\'\n" + e);
 	    System.err.println("   On Mac OS X,  DYLD_LIBRARY_PATH contains \'.\'");
-	    System.err.println("   On Mac OS X,  the library should be called libcrfpp.jnilib");
+	    System.err.println("   On Mac OS X,  the library should be called libCRFPP_JNI.dylib");
+	    System.err.println("   On Linux,  LD_LIBRARY_PATH contains \'.\'");
+	    System.err.println("   On Linux,  the library should be called libCRFPP_JNI.so");
 	    System.err.println("" + e);
 	    System.exit(1);
 	  }
