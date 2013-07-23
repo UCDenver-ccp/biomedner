@@ -49,3 +49,7 @@ four phases:
 
 TRAINING:
 
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/croeder/biomedner/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
