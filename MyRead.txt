@@ -1,0 +1,291 @@
+
+This doc describes the mapping from English language descriptions of the
+system to my read of the Java code. The specific articles are:
+Team 98: http://www.biomedcentral.com/content/pdf/1471-2105-12-S8-S2.pdf
+http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3065680/
+
+BiomedNER code here: https://code.google.com/p/biomedner/
+GeneTUKit implementation here: http://www.qanswers.net/GeneTUKit/
+download: http://www.qanswers.net/download/genetukit/GeneTUKit_v1.1.tar.gz
+
+HIGH LEVEL DESCRIPTIONS 
+
+Descriptions of BiomedNER/GeneTUKit in the literature list
+the following modules:
+
+1: Gene Mention Recognition, 4 NER components and concensus
+	1.1 italics extractor
+	1.2 CRF gene mention trained on BC iii
+	1.3  Directionary-Based gene mention recognition using Entrez Gene
+	1.4  ABNER
+
+2: (Normalization?) Gene ID candidate Generation and text normalization
+	2.1 choosing top 50 based on Lucene score
+	2.2 normaliz use rules
+		2.2.1 remove special characters such as dashes and underscores
+		2.2.2 removing stop words
+		2.2.3 separating at places where case changes
+		2.2.4 separating digits from greek letters, roman numbers
+		2.2.5 convert to lower case
+
+3: (Rank) Ranking candidates, disambiguation
+	3.1 trained on 32 gold standard articles
+	3.2 detailed information retrieved from Entrez Gene
+		3.2.1 species info: 
+			3.2.1.1 frequency
+			3.2.1.2 does nearest in text match GS
+			3.2.1.3 is species implied by gene mention FilterAfterGetCandidates*species in original"
+		3.2.2 local features,
+			3.2.2.1 edit distance between mention and name FilterAfterGetCandidates*?*
+			3.2.2.2 edit distance between mention and synonyms FilterAfterGetCandidates*synonym/remove thing?*
+			3.2.2.3 gene ID rank FilterAfterGetCandidates*lucene score*?
+		3.2.3 global, context features: 
+			3.2.3.1 similarity between abbreviation and full name
+			3.2.3.2 do words indicating function appear in context
+			3.2.3.3 does species for the gene appear in the doc?
+			3.2.3.3 does species for the gene appear in the title?
+			3.2.3.3 does species for the gene appear in the paragraph?
+			
+	3.3 ListNet
+	3.4 Dictionary for finding species mentions
+	3.5 species abbreviations: Schwartz and Hearst
+
+4: (Rerank) Provide confidence score, 2 methods:
+	4.1 use top-rated
+	4.2 choose among top 10
+		4.2.1 run on 32 article GS and label pos/neg from GS
+		4.2.2 use features:
+			4.2.2.1 from previous
+			4.2.2.2 info about mentions: minimum word number, etc
+			4.2.2.3 statistics about mention in full text: number of mentions
+			4.2.2.4 total number of mentions
+			4.2.2.4 highest rank
+		4.2.3 two models
+			4.2.3.1 Logistic Regression
+			4.2.3.2 SVM
+			4.2.3.3 probability of a  gene ID being positive is the confidence score
+
+
+ARCHITECTURE
+
+The general architecture of the system....
+
+Third party libraries used:
+- ListNet (no source)
+- Swig to interface to CRFPP in C++
+- CRFPP
+- ABNER
+- mallet
+- lucene
+- postgres/mysql
+- jwordnet
+- opennlp
+- linnaeus
+- trove
+- banner
+- weka
+- stanford postagger
+- libsvm
+- heptag
+
+I've written a Maven POM file to use in builds and execution,
+and I've adapted the various run-scripts into what I thought
+was an uber pipeline. Since the code is what must have been
+used to explore various implementations and twists on the
+algorithm, there are unused parts of code as well as suggestions
+of required inputs that are not used. 
+WHICH ARE THESE???
+	I couldn't indentify
+the versions of all of the jars, so in some cases, I just
+installed what I found in the GeneTUKit distribution in
+my local maven repository and used that.
+
+There is a lack of coherent logging or exception handling,
+though I've added it where it blocked me. In many cases, of
+course, the exception handling doesn't get in the way of
+normal operation, but it's lack doesn't help a new user
+realize his faults. 
+
+There is no use of a unit testing framework as part of the builds.
+Some classes have a main() function that runs a very simple
+test without any assertions checking for correct behavior.
+
+The shell scriting is rudimentary. While using maven simplifies
+Java classpaths, the scripts could be improved with a use of
+variables, for the classpath for example.
+
+The use of Java could involve a more nuanced understanding of
+the available datastructures. Many functions end with a loop
+translating from a Vector to an array of objects instead of
+using available functions for this in the API.
+...this needs fixed.
+
+The vocabulary used is inconsistent between English descriptions
+of the code and the code itself. EXAMPLES???
+
+There may be a bug related to using the ENTITY_LABEL_CRF label
+for entities discovered by BANNER. I switched it to BANNER
+when using BANNER in addition to CRF. I suspect it's a hack
+to cover some situation when BANNER is used in place of CRF.
+
+There is evidence of an evolution towards isolating object
+construction in emulation of a factoroy method pattern. It's
+not centralized as it would be with Juice or Spring. Each
+Interface-Implemenation pair has it's own factory that is
+hard-coded to create a specific implementation. There is
+no data or config file as in a virtual constructor or an
+injection framework to direct the choice of implementation.
+In most cases, there is only one such choice anyway.
+
+I've also written some scripts, maven_webtool.sh and
+maven_bc3gn.sh to run the various pipelines from maven.
+XXX mroe XX
+
+Getting the JNI interface to CRFPP to run on Mac O/S is incomplete,
+though it helps to know that SWIG generates its own library
+to link to the C++ generated library. Initially, the names of
+both were very similar, distinguished only by the case of
+the letters. I renamed one by adding "_jni" as a suffix.
+
+Building CRFPP, not directly an issue here, was difficult since
+it assumed a different version of libtool than what was installed
+on my machine. Some Googling revealed that the solution involves
+the reconfigure command of libtool. 
+
+WEKA is used in a  few places (WHERE??????) 
+and requires a header as well as features. The code is written
+so that it gets the header from a file and the features from
+a feature builder. The focus of my work shifted to teh webtool
+code away from the bc3gn code when I discovered that the files
+available are webtools files and work with the feature generators
+in the webtools package. They have 20 features. The ones with
+54 are from bc3gn and create feature lists incompatible with
+the headers pulled from files shipped with either Biomedner or
+GeneTUKit. The ultimate goal is to run pipelienes that create
+the training files with the correct headers.
+
+I wasn't able to locat the source to ListNet, though I found
+a different version, with different package names, at Microsoft
+Research. I use the included jar with blind faith.
+
+SCALING CONCERNS
+
+The file locations are hard-coded in GlobalConfig.java and 
+involve relative paths that are two steps up from the
+current working directory. This code reads and writes to
+files where streams would be more flexible because you 
+can read a resource file from a jar directly if things
+are coded as streams. There are also points in the UIMA
+integration where no file would be read or written such as pulling
+article text from the CAS in memory. Scaling such code
+involves more file i/o than necessary which will slow 
+things down, but requires care in creating unique names
+to avoid concurrency issues.
+
+DESIGN
+
+One part of the code looks like a home-grown UIMA system with
+documents, annotations and processors.  The annotations are
+purposed towards entity identification, so you have BioNEREntity,
+for example.  Most of this is in the package bioner.data.document.
+
+normalization
+
+The BioCreative code seems split between code that was used in the
+shared-task and code that is set up for the tool that makes this
+available on the web. The packages bioner.application.bc3gn and 
+bioner.application.webtool are very similar. In these you will
+find specific implementation of pipelines. They start with 
+a file reader: BC3GNDataFileReader, go through various processes
+to create a document with annotated features,out to processes
+that produce output files for use with some of the external
+tools. BC3GNGeneIDRerankFeatureBuilder and ?? likely produce output
+for the last module.
+
+The BioNER structures are used to hold the documents (BioNERDocument,
+BioNERSection, BioNERSentence)  and the (named) Entities (BioNEREntity).
+As Candidates are discovered they are put int BioNERCandidates 
+and link to their database record, kept in BioNERRecord.
+
+The project organizes it's 
+
+DATA SOURCES
+	gene_info.gz
+	biocreative iii training files
+	prepare maven with unidentified jars
+
+PRELIMINARIES
+	build lucene gene index
+	build lucene species index
+	build mySQL gene data database
+
+DETAILS (to mirror the algorithm description and numbers above)
+
+1. Gene Mention Recogntion
+	bioner.application.webtool.BC3GNBuildNormalizationTrainData
+	starts with:
+		ProcessImpCRFPP (1.2)
+			- where does this model get created?
+		ProcessImpProteinIndexNER (1.3)
+		ProcessImpProteinABNER (1.4)
+		Italics?? (see below in filters)
+
+2. Normalization and Candidate Generation
+	bioner.application.webtool.BC3GNBuildNormalizationTrainData
+	continues with:
+		ProcessImpFilterGeneMention - misc. processing
+			filterBySection() - some sections are ignored
+			mergeCoveredEntities() - 
+			extendGeneMentionBoundary()
+			addFullnameCombinedBM()
+			mergeCoveredEntities()
+			filterUnreliableGeneMention() - does consensus and italics (1.1)
+			processSentence()
+			filterGMByLists() - stop words, 4000! (2.2.2)
+			extendGMMentionBoundary()
+			filterGMCoverBySpecies() - ?? important
+			
+		ProcessImpGetCandidateID - gets IDs and score from a LuceneQuery (2.1)
+			CandidateFinder
+				LuceneIndexReader
+				DatabaseReader
+
+		ProcessImpFilterAfterGetCandidate
+			filterByScore() - insists on > 2 score from Lucene, few pass this
+			removeNotMatchedCandidates() - ?? very few pass this
+				Each candidate has one or more synonyms. 
+				GMCoveredRateFeatureBuilder.getCoveredRate() (edit distance?)
+				compares a list of tokens from a mention's list of tokens to 
+				the list of tokens from a synonym, forwards and backwards to 
+				get a pair of values. This repeats for each synonym.  if the 
+				value for a synonym is good enough, it gets added to a list of 
+				candidates worth considering.
+	  			- special case for synonyms that start with a letter and continue only with  \W
+			filterGeneIDByExplicitSpecies() (unused) (3.2.1.3 ?)
+
+		NormalizationFeatureBuilder
+			PairFeatureBuilderFactory, NormalizationPairFeatureBuilder
+
+		
+3. Disambiguation (3)
+	ProcessImpFirstRankByListNet (trains (using WHAT input???)  and runs)
+		uses a FirstRankFeatureBuilder,s
+		creates features on cnadidates, the passes to ListNet for score
+		which is then attached to the canddiate.
+		RankCandidate.RankCandidate()
+
+
+4. Confidence (4)
+	GeneRerankByLogistic (4.2.3.1)
+		BC3GNGeneIDRerankFeatureBuilder
+	- or -
+	GeneRerankBySVM (4.2.3.2)
+
+TESTING plans / observed issues
+
+Though the dates of release are very close, I suspect differences
+between the source available on GoogleCode for biomedner  and what 
+is delivered in compiled form with GeneTUKit.
+
+The NormalizationTrainData pipeline has a commented out step
+of pulling in the GS data. Consider using it to test.
